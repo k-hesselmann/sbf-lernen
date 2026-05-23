@@ -78,7 +78,8 @@ export default function Dashboard() {
 
   const progressPercent = useMemo(() => {
     if (stats.total === 0) return 0
-    return Math.round((stats.masteredCount / stats.total) * 100)
+    // Progress measures started learning (learning + mastered) for immediate dashboard response
+    return Math.round(((stats.learningCount + stats.masteredCount) / stats.total) * 100)
   }, [stats])
 
   const accuracyPercent = useMemo(() => {
@@ -130,9 +131,14 @@ export default function Dashboard() {
         {/* Progress Ring */}
         <div className="glass-light rounded-2xl p-6 flex flex-col items-center justify-center animate-fade-in-up" style={{ animationDelay: '400ms' }}>
           <ProgressRing percentage={progressPercent} />
-          <div className="mt-4 text-center">
-            <p className="text-sm font-medium text-white">Gesamtfortschritt</p>
-            <p className="text-xs text-slate-400 mt-1">{stats.masteredCount} von {stats.total} gemeistert</p>
+          <div className="mt-4 text-center space-y-1">
+            <p className="text-sm font-semibold text-white">Gesamtfortschritt</p>
+            <p className="text-xs text-slate-300">
+              {stats.learningCount + stats.masteredCount} von {stats.total} Fragen begonnen
+            </p>
+            <p className="text-[10px] text-slate-500">
+              Davon {stats.masteredCount} vollständig gemeistert
+            </p>
           </div>
         </div>
 
@@ -147,7 +153,7 @@ export default function Dashboard() {
             {orderedCategories.map((cat) => {
               const st = categoryStats[cat] || { total: 0, new: 0, learning: 0, mastered: 0 }
               const colors = CATEGORY_COLORS[cat] || { bg: 'bg-slate-500/20', text: 'text-slate-400' }
-              const pct = st.total > 0 ? Math.round((st.mastered / st.total) * 100) : 0
+              const pct = st.total > 0 ? Math.round(((st.learning + st.mastered) / st.total) * 100) : 0
               const officialSize = OFFICIAL_POOL_SIZES[cat] || st.total
               return (
                 <div key={cat}>

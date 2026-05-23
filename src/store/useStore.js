@@ -69,6 +69,8 @@ const useStore = create(
 
       // ─── Category filter for learning ───
       learningCategory: 'all', // 'all' or a CATEGORIES value
+      learningTopic: 'all',
+      learningMode: 'due',
 
       // ─── Exam State ───
       examState: null,
@@ -78,8 +80,10 @@ const useStore = create(
 
       // ─── Actions ───
       setView: (view) => set({ currentView: view }),
-      setSelectedExamType: (type) => set({ selectedExamType: type, learningCategory: 'all' }),
-      setLearningCategory: (cat) => set({ learningCategory: cat }),
+      setSelectedExamType: (type) => set({ selectedExamType: type, learningCategory: 'all', learningTopic: 'all', learningMode: 'due' }),
+      setLearningCategory: (cat) => set({ learningCategory: cat, learningTopic: 'all' }),
+      setLearningTopic: (topic) => set({ learningTopic: topic }),
+      setLearningMode: (mode) => set({ learningMode: mode }),
 
       initProgress: () => {
         const progress = { ...get().cardProgress }
@@ -121,6 +125,62 @@ const useStore = create(
           if (!p) return true
           return p.nextReview <= now
         })
+      },
+
+      /**
+       * Query cards dynamically for a study session based on category, topic, and mode
+       */
+      getStudyCards: () => {
+        const { questions, cardProgress, selectedExamType, learningCategory, learningTopic, learningMode } = get()
+        let pool = getQuestionsForExam(selectedExamType)
+
+        if (learningCategory !== 'all') {
+          pool = pool.filter((q) => q.category === learningCategory)
+        }
+
+        if (learningTopic !== 'all') {
+          pool = pool.filter((q) => q.topic === learningTopic)
+        }
+
+        const now = Date.now()
+
+        switch (learningMode) {
+          case 'due':
+            return pool.filter((q) => {
+              const p = cardProgress[q.id]
+              if (!p || p.repetitions === 0) return true
+              return p.nextReview <= now
+            })
+          case 'new':
+            return pool.filter((q) => {
+              const p = cardProgress[q.id]
+              return !p || p.repetitions === 0
+            })
+          case 'difficult':
+            return pool.filter((q) => {
+              const p = cardProgress[q.id]
+              if (!p || p.totalAttempts === 0) return false
+              return (p.correctAttempts / p.totalAttempts) < 0.7
+            })
+          case 'all':
+          default:
+            return pool
+        }
+      },
+
+      /**
+       * Get all unique topic strings active in the current category/exam
+       */
+      getTopicsForCategory: (examType, category) => {
+        let pool = getQuestionsForExam(examType)
+        if (category !== 'all') {
+          pool = pool.filter((q) => q.category === category)
+        }
+        const topics = new Set()
+        pool.forEach((q) => {
+          if (q.topic) topics.add(q.topic)
+        })
+        return Array.from(topics)
       },
 
       getCardStatus: (questionId) => {

@@ -1,7 +1,8 @@
 import { useState, useMemo, useCallback, useEffect } from 'react'
-import { Check, X, ArrowRight, RotateCcw, Sparkles, Layers, AlertCircle, Filter } from 'lucide-react'
+import { Check, X, ArrowRight, RotateCcw, Sparkles, Layers, AlertCircle, Filter, ChevronLeft, SlidersHorizontal } from 'lucide-react'
 import useStore from '../store/useStore'
-import { CATEGORY_LABELS, CATEGORY_COLORS, getCategoriesForExam, EXAM_CONFIG } from '../data/examConfig.js'
+import { CATEGORY_LABELS, CATEGORY_COLORS, getCategoriesForExam, EXAM_CONFIG, TOPIC_LABELS } from '../data/examConfig.js'
+import { getQuestionsForExam } from '../data/index.js'
 import { prepareQuestion } from '../utils/shuffleOptions.js'
 
 export default function LearnMode() {
@@ -9,7 +10,13 @@ export default function LearnMode() {
   const selectedExamType = useStore((s) => s.selectedExamType)
   const learningCategory = useStore((s) => s.learningCategory)
   const setLearningCategory = useStore((s) => s.setLearningCategory)
+  const learningTopic = useStore((s) => s.learningTopic)
+  const setLearningTopic = useStore((s) => s.setLearningTopic)
+  const learningMode = useStore((s) => s.learningMode)
+  const setLearningMode = useStore((s) => s.setLearningMode)
   const cardProgress = useStore((s) => s.cardProgress)
+
+  const [isSessionActive, setIsSessionActive] = useState(false)
   const [sessionCards, setSessionCards] = useState([])
   const [currentIndex, setCurrentIndex] = useState(0)
   const [selectedAnswer, setSelectedAnswer] = useState(null)
@@ -19,19 +26,70 @@ export default function LearnMode() {
   const config = useMemo(() => EXAM_CONFIG[selectedExamType], [selectedExamType])
   const availableCategories = useMemo(() => getCategoriesForExam(selectedExamType), [selectedExamType])
 
-  // Get due cards based on current progress & filters
-  const dueCards = useMemo(() => {
-    return useStore.getState().getDueCards()
-  }, [cardProgress, selectedExamType, learningCategory])
+  // Get active topics for the selected license & category filter
+  const availableTopics = useMemo(() => {
+    return useStore.getState().getTopicsForCategory(selectedExamType, learningCategory)
+  }, [selectedExamType, learningCategory])
 
-  // Stabilize session cards: load them only when exam type or category changes
+  // Reset session state when license type changes
   useEffect(() => {
-    const cards = useStore.getState().getDueCards()
+    setIsSessionActive(false)
+  }, [selectedExamType])
+
+  // Dynamic question count for topic filter
+  const getTopicQuestionCount = useCallback((topic) => {
+    let pool = getQuestionsForExam(selectedExamType)
+    if (learningCategory !== 'all') {
+      pool = pool.filter((q) => q.category === learningCategory)
+    }
+    if (topic !== 'all') {
+      pool = pool.filter((q) => q.topic === topic)
+    }
+    return pool.length
+  }, [selectedExamType, learningCategory])
+
+  // Dynamic question counts per study mode
+  const getModeCount = useCallback((mode) => {
+    const { cardProgress } = useStore.getState()
+    let pool = getQuestionsForExam(selectedExamType)
+    if (learningCategory !== 'all') {
+      pool = pool.filter((q) => q.category === learningCategory)
+    }
+    if (learningTopic !== 'all') {
+      pool = pool.filter((q) => q.topic === learningTopic)
+    }
+    const now = Date.now()
+
+    if (mode === 'due') {
+      return pool.filter((q) => {
+        const p = cardProgress[q.id]
+        return !p || p.repetitions === 0 || p.nextReview <= now
+      }).length
+    } else if (mode === 'new') {
+      return pool.filter((q) => {
+        const p = cardProgress[q.id]
+        return !p || p.repetitions === 0
+      }).length
+    } else if (mode === 'difficult') {
+      return pool.filter((q) => {
+        const p = cardProgress[q.id]
+        return p && p.totalAttempts > 0 && (p.correctAttempts / p.totalAttempts) < 0.7
+      }).length
+    } else {
+      return pool.length
+    }
+  }, [selectedExamType, learningCategory, learningTopic, cardProgress])
+
+  // Launch a new session with current config
+  const handleStartSession = useCallback(() => {
+    const cards = useStore.getState().getStudyCards()
     setSessionCards(cards)
     setCurrentIndex(0)
     setSelectedAnswer(null)
     setShowResult(false)
-  }, [selectedExamType, learningCategory])
+    setSessionStats({ correct: 0, incorrect: 0 })
+    setIsSessionActive(true)
+  }, [])
 
   const rawCard = sessionCards[currentIndex]
 
@@ -62,15 +120,159 @@ export default function LearnMode() {
   }, [])
 
   const handleRestart = useCallback(() => {
-    const cards = useStore.getState().getDueCards()
+    const cards = useStore.getState().getStudyCards()
     setSessionCards(cards)
     setCurrentIndex(0)
     setSelectedAnswer(null)
     setShowResult(false)
     setSessionStats({ correct: 0, incorrect: 0 })
+    setIsSessionActive(true)
   }, [])
 
-  // Session Complete
+  // ────────────────────────────────────────────────────────────────────────
+  // UI Rendering
+  // ────────────────────────────────────────────────────────────────────────
+
+  // 1. Session settings screen
+  if (!isSessionActive) {
+    return (
+      <div className="space-y-6 max-w-3xl mx-auto">
+        {/* Header */}
+        <div className="animate-fade-in-up">
+          <div>
+            <h2 className="text-2xl font-bold text-white">Lernen: {config.label}</h2>
+            <p className="text-slate-400 mt-1">Konfiguriere deine Lernsession und lerne mit System</p>
+          </div>
+        </div>
+
+        {/* Settings Card */}
+        <div className="glass-light rounded-2xl p-6 space-y-6 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
+          {/* Category Tabs */}
+          <div>
+            <label className="text-xs uppercase tracking-wider text-slate-500 font-bold mb-2.5 block">Kategorie</label>
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => setLearningCategory('all')}
+                className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold transition-all
+                  ${learningCategory === 'all' ? 'bg-ocean-500/20 text-ocean-300 border border-ocean-500/30' : 'text-slate-400 hover:bg-white/5 border border-transparent'}`}
+              >
+                <Filter className="w-3.5 h-3.5" /> Alle
+              </button>
+              {availableCategories.map((cat) => {
+                const colors = CATEGORY_COLORS[cat] || {}
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => setLearningCategory(cat)}
+                    className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all
+                      ${learningCategory === cat ? `${colors.bg} ${colors.text} border ${colors.border}` : 'text-slate-400 hover:bg-white/5 border border-transparent'}`}
+                  >
+                    {CATEGORY_LABELS[cat]}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Topics Dropdown */}
+          <div>
+            <label className="text-xs uppercase tracking-wider text-slate-500 font-bold mb-2 block">Themenbereich (Subkategorie)</label>
+            <select
+              value={learningTopic}
+              onChange={(e) => setLearningTopic(e.target.value)}
+              className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3.5 text-xs sm:text-sm font-semibold text-slate-200
+                focus:outline-none focus:border-ocean-500/50 transition-colors cursor-pointer"
+            >
+              <option value="all">Alle Themen ({getTopicQuestionCount('all')} Fragen)</option>
+              {availableTopics.map((topic) => (
+                <option key={topic} value={topic}>
+                  {TOPIC_LABELS[topic] || topic.replace(/_/g, ' ')} ({getTopicQuestionCount(topic)} Fragen)
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Study Mode Grid */}
+          <div>
+            <label className="text-xs uppercase tracking-wider text-slate-500 font-bold mb-3 block">Lern-Modus</label>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                {
+                  id: 'due',
+                  label: 'Spaced Repetition',
+                  desc: 'Wiederhole nur fällige und neue Fragen nach Zeitplan.',
+                  icon: '📅',
+                  count: getModeCount('due'),
+                  activeClass: 'border-ocean-500/40 bg-ocean-500/10 text-ocean-300'
+                },
+                {
+                  id: 'all',
+                  label: 'Vollständiges Lernen',
+                  desc: 'Lerne alle Fragen des gewählten Filters der Reihe nach.',
+                  icon: '📖',
+                  count: getModeCount('all'),
+                  activeClass: 'border-cyan-500/40 bg-cyan-500/10 text-cyan-300'
+                },
+                {
+                  id: 'new',
+                  label: 'Nur neue Fragen',
+                  desc: 'Lerne gezielt Fragen, die du noch nie beantwortet hast.',
+                  icon: '🆕',
+                  count: getModeCount('new'),
+                  activeClass: 'border-amber-500/40 bg-amber-500/10 text-amber-300'
+                },
+                {
+                  id: 'difficult',
+                  label: 'Schwierige Fragen',
+                  desc: 'Fehlerschwerpunkte gezielt trainieren (Erfolgsquote < 70%).',
+                  icon: '❌',
+                  count: getModeCount('difficult'),
+                  activeClass: 'border-rose-500/40 bg-rose-500/10 text-rose-300'
+                }
+              ].map((m) => {
+                const isActive = learningMode === m.id
+                return (
+                  <button
+                    key={m.id}
+                    onClick={() => setLearningMode(m.id)}
+                    className={`w-full text-left p-4 rounded-xl border transition-all duration-200 card-hover flex items-start gap-3.5
+                      ${isActive ? m.activeClass + ' shadow-lg border-opacity-100' : 'border-white/5 bg-white/5 text-slate-400 hover:border-white/10'}`}
+                  >
+                    <span className="text-2xl mt-0.5">{m.icon}</span>
+                    <div className="flex-1">
+                      <div className="flex justify-between items-center">
+                        <span className="font-bold text-xs sm:text-sm text-white">{m.label}</span>
+                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${isActive ? 'bg-white/10 text-white' : 'bg-slate-950 text-slate-400'}`}>
+                          {m.count}
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-slate-400 mt-1 leading-relaxed">{m.desc}</p>
+                    </div>
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Start Session Button */}
+          <div className="pt-2">
+            <button
+              onClick={handleStartSession}
+              disabled={getModeCount(learningMode) === 0}
+              className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl font-bold text-sm text-white
+                bg-gradient-to-r from-ocean-500 to-ocean-600 hover:from-ocean-400 hover:to-ocean-500
+                transition-all duration-200 shadow-lg shadow-ocean-500/20 disabled:opacity-50 disabled:cursor-not-allowed
+                disabled:from-slate-800 disabled:to-slate-800 disabled:shadow-none"
+            >
+              Session starten ({getModeCount(learningMode)} Fragen)
+            </button>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // 2. Session Complete Screen
   if (sessionCards.length === 0 || currentIndex >= sessionCards.length) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] animate-fade-in-up">
@@ -79,12 +281,10 @@ export default function LearnMode() {
             <Sparkles className="w-10 h-10 text-white" />
           </div>
           <h2 className="text-2xl font-bold text-white mb-2">
-            {dueCards.length === 0 ? 'Alles erledigt!' : 'Session abgeschlossen!'}
+            Session abgeschlossen!
           </h2>
           <p className="text-slate-400 mb-6">
-            {dueCards.length === 0
-              ? 'Keine Fragen sind gerade fällig. Komm später zurück!'
-              : `Du hast ${sessionStats.correct + sessionStats.incorrect} Fragen beantwortet.`}
+            Du hast {sessionStats.correct + sessionStats.incorrect} Fragen in dieser Session beantwortet.
           </p>
 
           {sessionStats.correct + sessionStats.incorrect > 0 && (
@@ -100,19 +300,30 @@ export default function LearnMode() {
             </div>
           )}
 
-          <button
-            onClick={handleRestart}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-ocean-500 hover:bg-ocean-600
-              text-white font-medium transition-all duration-200 shadow-lg shadow-ocean-500/20"
-          >
-            <RotateCcw className="w-4 h-4" />
-            Nochmal üben
-          </button>
+          <div className="flex flex-col gap-3">
+            <button
+              onClick={handleRestart}
+              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-ocean-500 hover:bg-ocean-600
+                text-white font-semibold text-sm transition-all duration-200 shadow-lg shadow-ocean-500/20"
+            >
+              <RotateCcw className="w-4 h-4" />
+              Nochmal üben (gleiche Filter)
+            </button>
+            <button
+              onClick={() => setIsSessionActive(false)}
+              className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10
+                text-slate-300 font-semibold text-sm transition-all duration-200 border border-white/5"
+            >
+              <SlidersHorizontal className="w-4 h-4" />
+              Einstellungen anpassen
+            </button>
+          </div>
         </div>
       </div>
     )
   }
 
+  // 3. Question Card Review Flow
   const getStatus = (qId) => {
     const p = cardProgress[qId]
     if (!p || p.repetitions === 0) return 'new'
@@ -131,43 +342,22 @@ export default function LearnMode() {
 
   return (
     <div className="space-y-6 max-w-3xl mx-auto">
-      {/* Header */}
+      {/* Active Session Header */}
       <div className="flex items-center justify-between animate-fade-in-up">
-        <div>
-          <h2 className="text-2xl font-bold text-white">Lernen: {config.label}</h2>
-          <p className="text-slate-400 mt-1">Spaced Repetition – lerne effizient</p>
-        </div>
+        <button
+          onClick={() => setIsSessionActive(false)}
+          className="flex items-center gap-2 text-slate-400 hover:text-slate-200 transition-colors text-sm font-semibold"
+        >
+          <ChevronLeft className="w-4 h-4" />
+          Session beenden
+        </button>
         <div className="flex items-center gap-3">
-          <span className="text-xs text-slate-500">{currentIndex + 1} / {sessionCards.length}</span>
-          <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium ${statusConfig.color}`}>
+          <span className="text-xs font-semibold text-slate-500">{currentIndex + 1} / {sessionCards.length}</span>
+          <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold ${statusConfig.color}`}>
             <statusConfig.icon className="w-3 h-3" />
             {statusConfig.label}
           </div>
         </div>
-      </div>
-
-      {/* Category Filter */}
-      <div className="flex flex-wrap gap-2 animate-fade-in-up" style={{ animationDelay: '50ms' }}>
-        <button
-          onClick={() => { setLearningCategory('all'); setCurrentIndex(0); setSelectedAnswer(null); setShowResult(false) }}
-          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all
-            ${learningCategory === 'all' ? 'bg-ocean-500/20 text-ocean-300 border border-ocean-500/30' : 'text-slate-400 hover:bg-white/5 border border-transparent'}`}
-        >
-          <Filter className="w-3 h-3" /> Alle
-        </button>
-        {availableCategories.map((cat) => {
-          const colors = CATEGORY_COLORS[cat] || {}
-          return (
-            <button
-              key={cat}
-              onClick={() => { setLearningCategory(cat); setCurrentIndex(0); setSelectedAnswer(null); setShowResult(false) }}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all
-                ${learningCategory === cat ? `${colors.bg} ${colors.text} border ${colors.border}` : 'text-slate-400 hover:bg-white/5 border border-transparent'}`}
-            >
-              {CATEGORY_LABELS[cat]}
-            </button>
-          )
-        })}
       </div>
 
       {/* Progress Bar */}
@@ -188,8 +378,8 @@ export default function LearnMode() {
             {CATEGORY_LABELS[currentCard.category] || currentCard.category}
           </span>
           {currentCard.topic && (
-            <span className="text-xs text-slate-500 bg-white/5 px-2 py-1 rounded-lg">
-              {currentCard.topic.replace(/_/g, ' ')}
+            <span className="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded-lg">
+              {TOPIC_LABELS[currentCard.topic] || currentCard.topic.replace(/_/g, ' ')}
             </span>
           )}
         </div>
@@ -219,7 +409,7 @@ export default function LearnMode() {
                 onClick={() => handleAnswer(idx)}
                 disabled={showResult}
                 className={`w-full text-left px-5 py-4 rounded-xl border border-white/8
-                  text-sm font-medium flex items-start gap-3 ${btnClass}`}
+                  text-sm font-semibold flex items-start gap-3 ${btnClass}`}
               >
                 <span className="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 text-xs font-bold text-slate-400 mt-0.5">
                   {String.fromCharCode(65 + idx)}
@@ -245,14 +435,14 @@ export default function LearnMode() {
                   <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center">
                     <Check className="w-4 h-4 text-emerald-400" />
                   </div>
-                  <span className="text-sm font-medium text-emerald-400">Richtig!</span>
+                  <span className="text-sm font-semibold text-emerald-400">Richtig!</span>
                 </>
               ) : (
                 <>
                   <div className="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center">
                     <AlertCircle className="w-4 h-4 text-rose-400" />
                   </div>
-                  <span className="text-sm font-medium text-rose-400">Leider falsch</span>
+                  <span className="text-sm font-semibold text-rose-400">Leider falsch</span>
                 </>
               )}
             </div>
@@ -260,7 +450,7 @@ export default function LearnMode() {
               id="btn-next-card"
               onClick={handleNext}
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-ocean-500 hover:bg-ocean-600
-                text-white text-sm font-medium transition-all duration-200 shadow-lg shadow-ocean-500/20"
+                text-white text-sm font-semibold transition-all duration-200 shadow-lg shadow-ocean-500/20"
             >
               Weiter
               <ArrowRight className="w-4 h-4" />
