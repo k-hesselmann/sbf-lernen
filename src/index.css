@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+/* ─── Custom Design Tokens ─── */
+@theme {
+  --color-ocean-50: #eef6ff;
+  --color-ocean-100: #d9eaff;
+  --color-ocean-200: #bcdbff;
+  --color-ocean-300: #8ec5ff;
+  --color-ocean-400: #59a4ff;
+  --color-ocean-500: #3380ff;
+  --color-ocean-600: #1b5ff5;
+  --color-ocean-700: #144ae1;
+  --color-ocean-800: #173db6;
+  --color-ocean-900: #19378f;
+  --color-ocean-950: #142357;
+
+  --color-navy-50: #f0f4ff;
+  --color-navy-100: #dde5ff;
+  --color-navy-200: #c2d0ff;
+  --color-navy-300: #96afff;
+  --color-navy-400: #6080ff;
+  --color-navy-500: #3c53ff;
+  --color-navy-600: #2430f5;
+  --color-navy-700: #1c22d8;
+  --color-navy-800: #1d20ae;
+  --color-navy-900: #1e2289;
+  --color-navy-950: #0c0e3b;
+
+  --color-surface-primary: #0a0e1a;
+  --color-surface-card: #111827;
+  --color-surface-elevated: #1a2332;
+  --color-surface-hover: #1f2b3d;
+  --color-surface-border: #1e293b;
+
+  --color-accent-emerald: #34d399;
+  --color-accent-amber: #fbbf24;
+  --color-accent-rose: #fb7185;
+  --color-accent-violet: #a78bfa;
+}
+
+/* ─── Base ─── */
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-surface-primary);
+  color: #e2e8f0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* ─── Glass Effect ─── */
+.glass {
+  background: rgba(17, 24, 39, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ─── Animated Gradient Background ─── */
+.bg-animated {
+  background: linear-gradient(135deg, #0a0e1a 0%, #111827 30%, #0f172a 70%, #0a0e1a 100%);
+  position: relative;
+}
+
+.bg-animated::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 20% 50%, rgba(51, 128, 255, 0.06) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 20%, rgba(167, 139, 250, 0.04) 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 80%, rgba(52, 211, 153, 0.03) 0%, transparent 50%);
+  animation: bgShift 20s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes bgShift {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-2%, 2%) rotate(3deg); }
+}
+
+/* ─── Card Hover ─── */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(51, 128, 255, 0.1),
+              0 0 0 1px rgba(51, 128, 255, 0.15);
+}
+
+/* ─── Pulse Ring Animation ─── */
+@keyframes pulseRing {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+.pulse-ring::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  border: 2px solid currentColor;
+  animation: pulseRing 2s ease-out infinite;
+}
+
+/* ─── Progress Bar Shine ─── */
+@keyframes progressShine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+.progress-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  animation: progressShine 2s ease-in-out infinite;
+}
+
+/* ─── Fade-In Animation ─── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* ─── Option Button States ─── */
+.option-btn {
+  transition: all 0.2s ease;
+}
+.option-btn:hover:not(:disabled) {
+  background: rgba(51, 128, 255, 0.1);
+  border-color: rgba(51, 128, 255, 0.3);
+}
+.option-btn.selected {
+  background: rgba(51, 128, 255, 0.15);
+  border-color: rgba(51, 128, 255, 0.5);
+  color: #8ec5ff;
+}
+.option-btn.correct {
+  background: rgba(52, 211, 153, 0.15);
+  border-color: rgba(52, 211, 153, 0.5);
+  color: #34d399;
+}
+.option-btn.incorrect {
+  background: rgba(251, 113, 133, 0.15);
+  border-color: rgba(251, 113, 133, 0.5);
+  color: #fb7185;
+}
+
+/* ─── Number counter animation ─── */
+@keyframes countUp {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+.count-animate {
+  animation: countUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}

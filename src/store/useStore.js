@@ -1,0 +1,315 @@
+import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
+import { allQuestions, getQuestionsForExam } from '../data/index.js'
+import { EXAM_TYPES, EXAM_CONFIG, CATEGORIES, CATEGORY_LABELS } from '../data/examConfig.js'
+import { prepareQuestions } from '../utils/shuffleOptions.js'
+
+/**
+ * SM-2 Spaced Repetition Algorithm (simplified)
+ *
+ * Each card has: { interval, repetitions, easeFactor, nextReview }
+ *
+ * On correct:
+ *   rep=0 → interval=1d
+ *   rep=1 → interval=6d
+ *   rep≥2 → interval = prev_interval * ease_factor
+ *   ease_factor += 0.1 (max 2.5)
+ *
+ * On incorrect:
+ *   interval=0, repetitions=0, ease_factor -= 0.2 (min 1.3)
+ */
+function sm2(card, correct) {
+  let { interval, repetitions, easeFactor } = card
+
+  if (correct) {
+    if (repetitions === 0) {
+      interval = 1
+    } else if (repetitions === 1) {
+      interval = 6
+    } else {
+      interval = Math.round(interval * easeFactor)
+    }
+    repetitions += 1
+    easeFactor = Math.min(2.5, easeFactor + 0.1)
+  } else {
+    interval = 0
+    repetitions = 0
+    easeFactor = Math.max(1.3, easeFactor - 0.2)
+  }
+
+  const nextReview = Date.now() + interval * 24 * 60 * 60 * 1000
+
+  return { interval, repetitions, easeFactor, nextReview }
+}
+
+const initialCardProgress = () => ({
+  interval: 0,
+  repetitions: 0,
+  easeFactor: 2.5,
+  nextReview: 0,
+  totalAttempts: 0,
+  correctAttempts: 0,
+})
+
+const useStore = create(
+  persist(
+    (set, get) => ({
+      // ─── Questions (loaded from embedded data) ───
+      questions: allQuestions,
+      questionsLoaded: true,
+
+      // ─── Card Progress ───
+      cardProgress: {},
+
+      // ─── Navigation ───
+      currentView: 'dashboard',
+
+      // ─── Exam Type Selection ───
+      selectedExamType: EXAM_TYPES.SEE_MOTOR,
+
+      // ─── Category filter for learning ───
+      learningCategory: 'all', // 'all' or a CATEGORIES value
+
+      // ─── Exam State ───
+      examState: null,
+
+      // ─── Exam History ───
+      examHistory: [],
+
+      // ─── Actions ───
+      setView: (view) => set({ currentView: view }),
+      setSelectedExamType: (type) => set({ selectedExamType: type, learningCategory: 'all' }),
+      setLearningCategory: (cat) => set({ learningCategory: cat }),
+
+      initProgress: () => {
+        const progress = { ...get().cardProgress }
+        let changed = false
+        allQuestions.forEach((q) => {
+          if (!progress[q.id]) {
+            progress[q.id] = initialCardProgress()
+            changed = true
+          }
+        })
+        if (changed) set({ cardProgress: progress })
+      },
+
+      // ─── Learning Actions ───
+      answerCard: (questionId, correct) => {
+        const progress = { ...get().cardProgress }
+        const card = progress[questionId] || initialCardProgress()
+        const updated = sm2(card, correct)
+        progress[questionId] = {
+          ...updated,
+          totalAttempts: (card.totalAttempts || 0) + 1,
+          correctAttempts: (card.correctAttempts || 0) + (correct ? 1 : 0),
+        }
+        set({ cardProgress: progress })
+      },
+
+      /**
+       * Get due cards filtered by selected exam type and optional category
+       */
+      getDueCards: () => {
+        const { questions, cardProgress, selectedExamType, learningCategory } = get()
+        const examQuestions = getQuestionsForExam(selectedExamType)
+        const filtered = learningCategory === 'all'
+          ? examQuestions
+          : examQuestions.filter((q) => q.category === learningCategory)
+        const now = Date.now()
+        return filtered.filter((q) => {
+          const p = cardProgress[q.id]
+          if (!p) return true
+          return p.nextReview <= now
+        })
+      },
+
+      getCardStatus: (questionId) => {
+        const p = get().cardProgress[questionId]
+        if (!p || p.repetitions === 0) return 'new'
+        if (p.interval >= 6) return 'mastered'
+        return 'learning'
+      },
+
+      getStats: () => {
+        const { cardProgress, selectedExamType } = get()
+        const examQuestions = getQuestionsForExam(selectedExamType)
+        let newCount = 0, learningCount = 0, masteredCount = 0
+        examQuestions.forEach((q) => {
+          const p = cardProgress[q.id]
+          if (!p || p.repetitions === 0) newCount++
+          else if (p.interval >= 6) masteredCount++
+          else learningCount++
+        })
+        return { newCount, learningCount, masteredCount, total: examQuestions.length }
+      },
+
+      getGlobalStats: () => {
+        const { cardProgress, questions } = get()
+        let newCount = 0, learningCount = 0, masteredCount = 0
+        questions.forEach((q) => {
+          const p = cardProgress[q.id]
+          if (!p || p.repetitions === 0) newCount++
+          else if (p.interval >= 6) masteredCount++
+          else learningCount++
+        })
+        return { newCount, learningCount, masteredCount, total: questions.length }
+      },
+
+      /**
+       * Get stats broken down by category for the selected exam type
+       */
+      getCategoryStats: () => {
+        const { cardProgress, selectedExamType } = get()
+        const examQuestions = getQuestionsForExam(selectedExamType)
+        const catStats = {}
+        examQuestions.forEach((q) => {
+          if (!catStats[q.category]) {
+            catStats[q.category] = { total: 0, new: 0, learning: 0, mastered: 0 }
+          }
+          catStats[q.category].total++
+          const p = cardProgress[q.id]
+          if (!p || p.repetitions === 0) catStats[q.category].new++
+          else if (p.interval >= 6) catStats[q.category].mastered++
+          else catStats[q.category].learning++
+        })
+        return catStats
+      },
+
+      getGlobalCategoryStats: () => {
+        const { cardProgress, questions } = get()
+        const catStats = {}
+        questions.forEach((q) => {
+          if (!catStats[q.category]) {
+            catStats[q.category] = { total: 0, new: 0, learning: 0, mastered: 0 }
+          }
+          catStats[q.category].total++
+          const p = cardProgress[q.id]
+          if (!p || p.repetitions === 0) catStats[q.category].new++
+          else if (p.interval >= 6) catStats[q.category].mastered++
+          else catStats[q.category].learning++
+        })
+        return catStats
+      },
+
+      // ─── Exam Actions ───
+      startExam: () => {
+        const { selectedExamType } = get()
+        const config = EXAM_CONFIG[selectedExamType]
+        const examQuestions = getQuestionsForExam(selectedExamType)
+        const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5)
+
+        let selectedQuestions = []
+
+        // Select questions per section according to official distribution
+        for (const section of config.sections) {
+          const pool = examQuestions.filter((q) => q.category === section.category)
+          const selected = shuffle(pool).slice(0, Math.min(section.examCount, pool.length))
+          selectedQuestions.push(...selected)
+        }
+
+        selectedQuestions = shuffle(selectedQuestions)
+
+        // Build sections info for result evaluation
+        const sectionInfo = config.sections.map((s) => ({
+          category: s.category,
+          label: CATEGORY_LABELS[s.category],
+          examCount: s.examCount,
+          passMin: s.passMin,
+        }))
+
+        // Shuffle answer options so students can't memorize position
+        const preparedQuestions = prepareQuestions(selectedQuestions)
+
+        set({
+          examState: {
+            examType: selectedExamType,
+            questions: preparedQuestions,
+            answers: {},
+            startTime: Date.now(),
+            duration: config.duration * 60 * 1000,
+            submitted: false,
+            sectionInfo,
+          },
+          currentView: 'exam',
+        })
+      },
+
+      setExamAnswer: (questionId, answerIndex) => {
+        const exam = get().examState
+        if (!exam || exam.submitted) return
+        set({
+          examState: {
+            ...exam,
+            answers: { ...exam.answers, [questionId]: answerIndex },
+          },
+        })
+      },
+
+      submitExam: () => {
+        const exam = get().examState
+        if (!exam) return
+        const config = EXAM_CONFIG[exam.examType]
+
+        // Evaluate per section
+        const sectionResults = exam.sectionInfo.map((section) => {
+          const sectionQuestions = exam.questions.filter((q) => q.category === section.category)
+          let correct = 0
+          sectionQuestions.forEach((q) => {
+            if (exam.answers[q.id] === q.correctIndex) correct++
+          })
+          return {
+            ...section,
+            correct,
+            total: sectionQuestions.length,
+            passed: correct >= section.passMin,
+          }
+        })
+
+        const totalCorrect = sectionResults.reduce((sum, s) => sum + s.correct, 0)
+        const totalQuestions = exam.questions.length
+        const allSectionsPassed = sectionResults.every((s) => s.passed)
+
+        const result = {
+          id: Date.now(),
+          date: new Date().toISOString(),
+          examType: exam.examType,
+          examLabel: config.label,
+          totalQuestions,
+          correctAnswers: totalCorrect,
+          passed: allSectionsPassed,
+          sectionResults,
+          questions: exam.questions.map((q) => ({
+            id: q.id,
+            question: q.question,
+            category: q.category,
+            selectedAnswer: exam.answers[q.id] ?? null,
+            correctIndex: q.correctIndex,
+            isCorrect: exam.answers[q.id] === q.correctIndex,
+            image: q.image,
+          })),
+        }
+
+        set({
+          examState: { ...exam, submitted: true },
+          examHistory: [result, ...get().examHistory],
+          currentView: 'examResult',
+        })
+      },
+
+      resetProgress: () => {
+        set({ cardProgress: {}, examHistory: [] })
+      },
+    }),
+    {
+      name: 'sbf-lernen-store',
+      version: 2,
+      partialize: (state) => ({
+        cardProgress: state.cardProgress,
+        examHistory: state.examHistory,
+        selectedExamType: state.selectedExamType,
+      }),
+    }
+  )
+)
+
+export default useStore

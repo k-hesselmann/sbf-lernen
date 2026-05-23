@@ -1,0 +1,67 @@
+[
+  {
+    "id": "SEE-001",
+    "category": "basis",
+    "question": "Was ist bei der Benutzung von Rettungswesten zu beachten?",
+    "options": [
+      "Sie müssen ohnmachtssicher sein.",
+      "Sie müssen rot sein.",
+      "Sie müssen mindestens 5 kg wiegen.",
+      "Sie müssen aus Baumwolle sein."
+    ],
+    "correctIndex": 0,
+    "image": null
+  },
+  {
+    "id": "SEE-002",
+    "category": "basis",
+    "question": "Welche Bedeutung hat ein weißes Licht am Heck eines Fahrzeugs?",
+    "options": [
+      "Segelfahrzeug unter Segel",
+      "Hecklicht eines Maschinenfahrzeugs in Fahrt",
+      "Ankerlieger",
+      "Manövrierunfähiges Fahrzeug"
+    ],
+    "correctIndex": 1,
+    "image": null
+  },
+  {
+    "id": "SEE-003",
+    "category": "basis",
+    "question": "Was bedeutet das Schallsignal: ein kurzer Ton?",
+    "options": [
+      "Ich ändere meinen Kurs nach Backbord.",
+      "Ich ändere meinen Kurs nach Steuerbord.",
+      "Meine Maschine läuft rückwärts.",
+      "Achtung."
+    ],
+    "correctIndex": 1,
+    "image": null
+  },
+  {
+    "id": "SEE-004",
+    "category": "specific",
+    "question": "Was ist unter dem Begriff 'Steuerbord' zu verstehen?",
+    "options": [
+      "Die linke Seite des Schiffes in Fahrtrichtung gesehen.",
+      "Die rechte Seite des Schiffes in Fahrtrichtung gesehen.",
+      "Die Vorderseite des Schiffes.",
+      "Die Rückseite des Schiffes."
+    ],
+    "correctIndex": 1,
+    "image": null
+  },
+  {
+    "id": "SEE-005",
+    "category": "specific",
+    "question": "Welchen Kurs steuern Sie in schwerem Wetter bei Motorausfall?",
+    "options": [
+      "Kurs vor dem Wind.",
+      "Kurs am Wind.",
+      "Kurs quer zur See.",
+      "Kurs mit dem Treibanker voraus gegen die See."
+    ],
+    "correctIndex": 3,
+    "image": null
+  }
+]
