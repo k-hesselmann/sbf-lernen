@@ -52,7 +52,7 @@ export default function ExamMode() {
     if (!config) return null
 
     return (
-      <div key={selectedExamType} className="space-y-6 max-w-3xl mx-auto animate-fade-in-up">
+      <div key={selectedExamType} className="space-y-6 max-w-3xl mx-auto animate-fade-in">
         {/* Back Button */}
         <div>
           <button
@@ -194,7 +194,7 @@ export default function ExamMode() {
   return (
     <div className="space-y-6 max-w-3xl mx-auto">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 animate-fade-in-up">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 animate-fade-in">
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-ocean-400 to-ocean-600 flex items-center justify-center text-xl shadow-lg shadow-ocean-500/20 flex-shrink-0">
             {config.icon}
@@ -214,7 +214,7 @@ export default function ExamMode() {
       </div>
 
       {/* Question Navigator Dots */}
-      <div className="glass-light rounded-2xl p-4 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
+      <div className="glass-light rounded-2xl p-4 animate-fade-in" style={{ animationDelay: '100ms' }}>
         <div className="flex flex-wrap gap-2 justify-center">
           {questions.map((q, idx) => (
             <button
@@ -235,7 +235,7 @@ export default function ExamMode() {
       </div>
 
       {/* Question Card */}
-      <div className="glass-light rounded-2xl p-8 animate-fade-in-up" style={{ animationDelay: '200ms' }} key={question.id}>
+      <div className="glass-light rounded-2xl p-8 animate-fade-in" style={{ animationDelay: '200ms' }} key={question.id}>
         <div className="flex items-start gap-3 mb-2 flex-wrap">
           <span className="text-xs font-mono text-slate-500 bg-white/5 px-2 py-1 rounded-lg">
             Frage {currentIndex + 1} von {questions.length}
@@ -279,7 +279,7 @@ export default function ExamMode() {
       </div>
 
       {/* Navigation */}
-      <div className="flex items-center justify-between animate-fade-in-up" style={{ animationDelay: '300ms' }}>
+      <div className="flex items-center justify-between animate-fade-in" style={{ animationDelay: '300ms' }}>
         <button
           onClick={() => setCurrentIndex(Math.max(0, currentIndex - 1))}
           disabled={currentIndex === 0}
@@ -318,7 +318,7 @@ export default function ExamMode() {
       {/* Confirm Modal */}
       {showConfirm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-          <div className="glass rounded-2xl p-8 max-w-sm w-full mx-4 animate-fade-in-up">
+          <div className="glass rounded-2xl p-8 max-w-sm w-full mx-4 animate-fade-in">
             <div className="w-14 h-14 rounded-2xl bg-amber-500/20 flex items-center justify-center mx-auto mb-4">
               <Flag className="w-7 h-7 text-amber-400" />
             </div>

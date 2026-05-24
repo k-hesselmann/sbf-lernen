@@ -6,7 +6,7 @@ import { CATEGORY_LABELS, CATEGORY_COLORS, OFFICIAL_POOL_SIZES, CATEGORIES, TOPI
 function StatCard({ icon: Icon, label, value, color, delay }) {
   return (
     <div
-      className="glass-light rounded-2xl p-5 card-hover animate-fade-in-up"
+      className="glass-light rounded-2xl p-5 card-hover animate-fade-in"
       style={{ animationDelay: `${delay}ms` }}
     >
       <div className="flex items-start justify-between mb-3">
@@ -139,7 +139,7 @@ export default function Dashboard() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="animate-fade-in-up flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="animate-fade-in flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-ocean-400 to-ocean-600 flex items-center justify-center shadow-lg shadow-ocean-500/20">
             <Compass className="w-6 h-6 text-white" />
@@ -152,7 +152,7 @@ export default function Dashboard() {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 animate-fade-in-up">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 animate-fade-in">
         <StatCard icon={BookOpen} label="Neue Fragen" value={stats.newCount} color="bg-ocean-500/20 text-ocean-400" delay={0} />
         <StatCard icon={Brain} label="Im Lernen" value={stats.learningCount} color="bg-amber-500/20 text-amber-400" delay={100} />
         <StatCard icon={Trophy} label="Gemeistert" value={stats.masteredCount} color="bg-emerald-500/20 text-emerald-400" delay={200} />
@@ -160,7 +160,7 @@ export default function Dashboard() {
       </div>
 
       {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade-in" style={{ animationDelay: '100ms' }}>
         {/* Categories (Left Column, 2/3 width) */}
         <div className="lg:col-span-2 glass-light rounded-2xl p-6">
           <div className="flex items-center gap-2 mb-6">

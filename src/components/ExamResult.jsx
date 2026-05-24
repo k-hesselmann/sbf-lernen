@@ -14,7 +14,7 @@ export default function ExamResult() {
   return (
     <div className="space-y-6 max-w-3xl mx-auto">
       {/* Result Header */}
-      <div className="glass-light rounded-3xl p-8 text-center animate-fade-in-up">
+      <div className="glass-light rounded-3xl p-8 text-center animate-fade-in">
         <div className={`w-24 h-24 rounded-3xl mx-auto mb-6 flex items-center justify-center
           shadow-xl ${result.passed
             ? 'bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-emerald-500/20'
@@ -72,7 +72,7 @@ export default function ExamResult() {
 
       {/* Section Results */}
       {result.sectionResults && result.sectionResults.length > 0 && (
-        <div className="glass-light rounded-2xl p-6 animate-fade-in-up" style={{ animationDelay: '150ms' }}>
+        <div className="glass-light rounded-2xl p-6 animate-fade-in" style={{ animationDelay: '150ms' }}>
           <h3 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
             <BarChart3 className="w-4 h-4 text-ocean-400" />
             Ergebnis nach Kategorien
@@ -113,7 +113,7 @@ export default function ExamResult() {
       )}
 
       {/* Actions */}
-      <div className="flex gap-3 justify-center animate-fade-in-up" style={{ animationDelay: '300ms' }}>
+      <div className="flex gap-3 justify-center animate-fade-in" style={{ animationDelay: '300ms' }}>
         <button
           onClick={() => setView('exams')}
           className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium
@@ -141,7 +141,7 @@ export default function ExamResult() {
       </div>
 
       {/* Question Review */}
-      <div className="animate-fade-in-up" style={{ animationDelay: '500ms' }}>
+      <div className="animate-fade-in" style={{ animationDelay: '500ms' }}>
         <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
           <BarChart3 className="w-5 h-5 text-ocean-400" />
           Fragenübersicht

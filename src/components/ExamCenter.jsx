@@ -36,83 +36,66 @@ function ExamCard({ examType, config, history, onSelect }) {
   }[config.color || 'ocean']
 
   return (
-    <div className={`glass-light rounded-2xl p-5 border border-white/5 transition-all duration-300 flex flex-col justify-between card-hover ${colorClasses.border}`}>
+    <div className={`glass-light rounded-2xl p-4 border border-white/5 transition-all duration-300 flex flex-col justify-between card-hover ${colorClasses.border}`}>
       <div>
         {/* Header */}
-        <div className="flex items-start justify-between mb-3">
-          <div className="flex items-center gap-3">
-            <div className={`w-9 h-9 rounded-xl flex items-center justify-center text-lg font-bold ${colorClasses.iconBg}`}>
+        <div className="flex items-start justify-between gap-2">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-base font-bold flex-shrink-0 ${colorClasses.iconBg}`}>
               {config.icon}
             </div>
-            <div>
-              <h3 className="font-bold text-white text-xs sm:text-sm leading-snug">{config.label}</h3>
-              <p className="text-[9px] text-slate-500 font-medium uppercase tracking-wider mt-0.5">
-                {examType.includes('ergaenzung') ? 'Ergänzungsprüfung' : 'Vollprüfung'}
+            <div className="min-w-0">
+              <h3 className="font-bold text-white text-xs sm:text-sm leading-tight truncate">{config.label}</h3>
+              <p className="text-[9px] text-slate-400 leading-none mt-0.5">
+                {config.totalExamQuestions} Fragen · {config.duration} Min. Limit
               </p>
             </div>
           </div>
+          <span className={`text-[8px] font-bold uppercase px-1.5 py-0.5 rounded flex-shrink-0
+            ${examType.includes('ergaenzung') ? 'bg-cyan-500/10 text-cyan-400' : 'bg-ocean-500/10 text-ocean-400'}`}>
+            {examType.includes('ergaenzung') ? 'Ergänzung' : 'Voll'}
+          </span>
         </div>
 
         {/* Description */}
-        <p className="text-[11px] text-slate-400 leading-relaxed mb-3 min-h-[32px]">{config.description}</p>
-
-        {/* Outline Specs */}
-        <div className="grid grid-cols-2 gap-3 mb-3 p-2 rounded-xl bg-white/5 border border-white/5">
-          <div className="flex items-center gap-2 text-slate-400">
-            <Target className="w-3.5 h-3.5 text-slate-500 flex-shrink-0" />
-            <div className="text-[10px] sm:text-xs">
-              <p className="font-semibold text-white">{config.totalExamQuestions}</p>
-              <p className="text-[8px] text-slate-500 font-medium">Fragen</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2 text-slate-400">
-            <Clock className="w-3.5 h-3.5 text-slate-500 flex-shrink-0" />
-            <div className="text-[10px] sm:text-xs">
-              <p className="font-semibold text-white">{config.duration} Min.</p>
-              <p className="text-[8px] text-slate-500 font-medium">Zeitlimit</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Statistics */}
-        <div className="mb-4 pt-3 border-t border-white/5">
-          {stats ? (
-            <div className="space-y-1.5 text-[11px]">
-              <div className="flex justify-between items-center">
-                <span className="text-slate-500 font-medium">Bestehensquote:</span>
-                <span className={`font-bold ${stats.rate >= 80 ? 'text-emerald-400' : stats.rate >= 50 ? 'text-amber-400' : 'text-rose-400'}`}>
-                  {stats.rate}%
-                </span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-slate-500 font-medium">Versuche:</span>
-                <span className="text-white font-semibold">{stats.attempts} ({stats.passed} bestanden)</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-slate-500 font-medium">Letzter Score:</span>
-                <span className={`font-mono font-bold ${stats.last.passed ? 'text-emerald-400' : 'text-rose-400'}`}>
-                  {stats.last.correctAnswers}/{stats.last.totalQuestions}
-                </span>
-              </div>
-            </div>
-          ) : (
-            <div className="flex items-center gap-2 py-0.5 text-slate-500 text-[11px] font-medium">
-              <Trophy className="w-3.5 h-3.5 text-slate-600 flex-shrink-0" />
-              <span>Noch kein Versuch absolviert</span>
-            </div>
-          )}
-        </div>
+        <p className="text-[10px] text-slate-400 mt-2.5 leading-normal truncate" title={config.description}>
+          {config.description}
+        </p>
       </div>
 
-      {/* Button */}
-      <button
-        onClick={onSelect}
-        className={`w-full py-2 rounded-xl text-[11px] font-bold text-white transition-all duration-200
-          flex items-center justify-center gap-1.5 shadow-lg ${colorClasses.button}`}
-      >
-        Prüfungsdetails
-        <ArrowRight className="w-3 h-3" />
-      </button>
+      {/* Footer Info & Details Button */}
+      <div className="mt-3.5 pt-2.5 border-t border-white/5 flex items-center justify-between gap-3">
+        {stats ? (
+          <div className="text-[10px] text-slate-400 space-y-0.5 flex-1 min-w-0">
+            <div className="flex justify-between items-center">
+              <span className="truncate text-slate-500">Erfolg:</span>
+              <span className={`font-bold ml-1 ${stats.rate >= 80 ? 'text-emerald-400' : stats.rate >= 50 ? 'text-amber-400' : 'text-rose-400'}`}>
+                {stats.rate}% ({stats.attempts}x)
+              </span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="truncate text-slate-500">Letzter:</span>
+              <span className={`font-mono font-bold ml-1 ${stats.last.passed ? 'text-emerald-400' : 'text-rose-400'}`}>
+                {stats.last.correctAnswers}/{stats.last.totalQuestions}
+              </span>
+            </div>
+          </div>
+        ) : (
+          <span className="text-[9px] text-slate-500 flex items-center gap-1 flex-1 truncate py-1.5">
+            <Trophy className="w-3 h-3 text-slate-600 flex-shrink-0" />
+            Noch kein Versuch
+          </span>
+        )}
+
+        <button
+          onClick={onSelect}
+          className={`px-3 py-1.5 rounded-lg text-[10px] font-bold text-white transition-all duration-200
+            flex items-center gap-1 shadow flex-shrink-0 ${colorClasses.button}`}
+        >
+          Details
+          <ArrowRight className="w-3.5 h-3.5" />
+        </button>
+      </div>
     </div>
   )
 }
@@ -166,7 +149,7 @@ export default function ExamCenter() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="animate-fade-in-up flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="animate-fade-in flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-ocean-400 to-ocean-600 flex items-center justify-center shadow-lg shadow-ocean-500/20">
             <ClipboardCheck className="w-6 h-6 text-white" />
@@ -179,7 +162,7 @@ export default function ExamCenter() {
       </div>
 
       {/* Main Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade-in" style={{ animationDelay: '100ms' }}>
         {/* Exams Grid (Left Column, 2/3 width) */}
         <div className="lg:col-span-2 space-y-4">
           <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 px-1">Verfügbare Prüfungssimulationen</h3>
