@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
-import { Trophy, Clock, Target, ArrowRight, ClipboardCheck, TrendingUp, History, Calendar, Check, X, ShieldAlert } from 'lucide-react'
+import { Trophy, ArrowRight, ClipboardCheck, TrendingUp, History, Calendar, Check, X, ShieldAlert } from 'lucide-react'
 import useStore from '../store/useStore'
-import { EXAM_CONFIG, EXAM_TYPES } from '../data/examConfig.js'
+import { EXAM_CONFIG } from '../data/examConfig.js'
 
 function ExamCard({ examType, config, history, onSelect }) {
   const stats = useMemo(() => {
@@ -39,49 +39,51 @@ function ExamCard({ examType, config, history, onSelect }) {
     <div className={`glass-light rounded-2xl p-4 border border-white/5 transition-all duration-300 flex flex-col justify-between card-hover ${colorClasses.border}`}>
       <div>
         {/* Header */}
-        <div className="flex items-start justify-between gap-2">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-base font-bold flex-shrink-0 ${colorClasses.iconBg}`}>
-              {config.icon}
-            </div>
-            <div className="min-w-0">
-              <h3 className="font-bold text-white text-xs sm:text-sm leading-tight truncate">{config.label}</h3>
-              <p className="text-[9px] text-slate-400 leading-none mt-0.5">
-                {config.totalExamQuestions} Fragen · {config.duration} Min. Limit
-              </p>
+        <div className="flex items-start gap-3">
+          <div className={`w-8 h-8 rounded-lg flex items-center justify-center text-base font-bold flex-shrink-0 ${colorClasses.iconBg}`}>
+            {config.icon}
+          </div>
+          <div className="min-w-0 flex-1">
+            <h3 className="font-bold text-white text-xs sm:text-sm leading-tight truncate" title={config.label}>
+              {config.label}
+            </h3>
+            <div className="flex flex-wrap items-center gap-1.5 mt-1">
+              <span className={`text-[8px] font-extrabold uppercase px-1 py-0.5 rounded leading-none
+                ${examType.includes('ergaenzung') ? 'bg-cyan-500/10 text-cyan-400' : 'bg-ocean-500/10 text-ocean-400'}`}>
+                {examType.includes('ergaenzung') ? 'Erg.' : 'Voll'}
+              </span>
+              <span className="text-[9px] text-slate-500 font-medium">
+                {config.totalExamQuestions} Fragen · {config.duration} Min.
+              </span>
             </div>
           </div>
-          <span className={`text-[8px] font-bold uppercase px-1.5 py-0.5 rounded flex-shrink-0
-            ${examType.includes('ergaenzung') ? 'bg-cyan-500/10 text-cyan-400' : 'bg-ocean-500/10 text-ocean-400'}`}>
-            {examType.includes('ergaenzung') ? 'Ergänzung' : 'Voll'}
-          </span>
         </div>
 
         {/* Description */}
-        <p className="text-[10px] text-slate-400 mt-2.5 leading-normal truncate" title={config.description}>
+        <p className="text-[10px] text-slate-400 mt-2.5 leading-normal line-clamp-2 min-h-[30px]" title={config.description}>
           {config.description}
         </p>
       </div>
 
       {/* Footer Info & Details Button */}
-      <div className="mt-3.5 pt-2.5 border-t border-white/5 flex items-center justify-between gap-3">
+      <div className="mt-3 pt-2.5 border-t border-white/5 flex items-center justify-between gap-3 flex-shrink-0">
         {stats ? (
           <div className="text-[10px] text-slate-400 space-y-0.5 flex-1 min-w-0">
             <div className="flex justify-between items-center">
-              <span className="truncate text-slate-500">Erfolg:</span>
+              <span className="text-slate-500 truncate">Erfolg:</span>
               <span className={`font-bold ml-1 ${stats.rate >= 80 ? 'text-emerald-400' : stats.rate >= 50 ? 'text-amber-400' : 'text-rose-400'}`}>
                 {stats.rate}% ({stats.attempts}x)
               </span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="truncate text-slate-500">Letzter:</span>
+              <span className="text-slate-500 truncate">Letzter:</span>
               <span className={`font-mono font-bold ml-1 ${stats.last.passed ? 'text-emerald-400' : 'text-rose-400'}`}>
                 {stats.last.correctAnswers}/{stats.last.totalQuestions}
               </span>
             </div>
           </div>
         ) : (
-          <span className="text-[9px] text-slate-500 flex items-center gap-1 flex-1 truncate py-1.5">
+          <span className="text-[9px] text-slate-500 flex items-center gap-1 flex-1 py-1.5 truncate">
             <Trophy className="w-3 h-3 text-slate-600 flex-shrink-0" />
             Noch kein Versuch
           </span>
@@ -92,7 +94,7 @@ function ExamCard({ examType, config, history, onSelect }) {
           className={`px-3 py-1.5 rounded-lg text-[10px] font-bold text-white transition-all duration-200
             flex items-center gap-1 shadow flex-shrink-0 ${colorClasses.button}`}
         >
-          Details
+          Starten
           <ArrowRight className="w-3.5 h-3.5" />
         </button>
       </div>
@@ -106,7 +108,13 @@ export default function ExamCenter() {
   const examHistory = useStore((s) => s.examHistory)
   const prepareExam = useStore((s) => s.prepareExam)
 
-  const allExams = useMemo(() => Object.entries(EXAM_CONFIG), [])
+  const fullExams = useMemo(() => {
+    return Object.entries(EXAM_CONFIG).filter(([key]) => !key.includes('ergaenzung'))
+  }, [])
+
+  const extExams = useMemo(() => {
+    return Object.entries(EXAM_CONFIG).filter(([key]) => key.includes('ergaenzung'))
+  }, [])
 
   const stats = useMemo(() => {
     const total = examHistory.length
@@ -161,58 +169,43 @@ export default function ExamCenter() {
         </div>
       </div>
 
-      {/* Main Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade-in" style={{ animationDelay: '100ms' }}>
-        {/* Exams Grid (Left Column, 2/3 width) */}
-        <div className="lg:col-span-2 space-y-4">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 px-1">Verfügbare Prüfungssimulationen</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {allExams.map(([key, cfg]) => (
-              <ExamCard
-                key={key}
-                examType={key}
-                config={cfg}
-                history={examHistory}
-                onSelect={() => prepareExam(key)}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Stats Sidebar (Right Column, 1/3 width) */}
-        <div className="space-y-6">
-          {/* Readiness Gauge */}
-          <div className="glass-light rounded-2xl p-5">
-            <div className="flex items-center gap-2 mb-3">
-              <TrendingUp className="w-4 h-4 text-ocean-400" />
-              <h3 className="text-sm font-semibold text-white">Prüfungsbereitschaft</h3>
+      {/* Stats Widgets Top Row */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 animate-fade-in" style={{ animationDelay: '50ms' }}>
+        {/* Readiness Gauge */}
+        <div className="glass-light rounded-2xl p-5 flex flex-col justify-between min-h-[140px]">
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <TrendingUp className="w-4 h-4 text-ocean-400 flex-shrink-0" />
+              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Prüfungsbereitschaft</h3>
             </div>
             <div className="flex items-baseline gap-2 mb-2">
-              <span className={`text-4xl font-black ${readinessInfo.color}`}>{readiness}%</span>
-              <span className={`text-xs font-semibold px-2 py-0.5 rounded-full bg-white/5 ${readinessInfo.color}`}>
+              <span className={`text-3xl font-black ${readinessInfo.color}`}>{readiness}%</span>
+              <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-white/5 ${readinessInfo.color}`}>
                 {readinessInfo.label}
               </span>
             </div>
-            <div className="h-2 bg-white/5 rounded-full overflow-hidden">
+            <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
               <div
-                className={`h-full rounded-full ${readinessInfo.barColor} transition-all duration-1000 progress-shine`}
+                className={`h-full rounded-full ${readinessInfo.barColor} transition-all duration-1000`}
                 style={{ width: `${readiness}%` }}
               />
             </div>
-            <p className="text-[10px] text-slate-500 mt-2 leading-relaxed">
-              Berechnet aus dem Spaced Repetition Fortschritt (40%) und den Durchschnittsnoten deiner letzten Simulationen (60%).
-            </p>
           </div>
+          <p className="text-[9px] text-slate-500 leading-snug mt-2">
+            Card-Mastery (40%) + Notenschnitt der letzten 3 Versuche (60%).
+          </p>
+        </div>
 
-          {/* Deine Erfolgsbilanz */}
-          <div className="glass-light rounded-2xl p-5">
-            <div className="flex items-center gap-2 mb-3.5">
-              <Trophy className="w-4 h-4 text-amber-400" />
-              <h3 className="text-sm font-semibold text-white">Erfolgsbilanz</h3>
+        {/* Erfolgsbilanz */}
+        <div className="glass-light rounded-2xl p-5 flex flex-col justify-between min-h-[140px]">
+          <div>
+            <div className="flex items-center gap-2 mb-3">
+              <Trophy className="w-4 h-4 text-amber-400 flex-shrink-0" />
+              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Erfolgsbilanz</h3>
             </div>
-            <div className="space-y-3 text-xs text-slate-400">
+            <div className="space-y-1.5 text-xs text-slate-400">
               <div className="flex justify-between">
-                <span>Absolvierte Simulationen</span>
+                <span>Simulationen absolviert</span>
                 <span className="text-white font-semibold">{stats.total} Versuche</span>
               </div>
               <div className="flex justify-between">
@@ -225,45 +218,33 @@ export default function ExamCenter() {
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Prüfungsverlauf (Attempts History) */}
-          <div className="glass-light rounded-2xl p-5">
-            <div className="flex items-center gap-2 mb-3.5">
-              <History className="w-4 h-4 text-slate-400" />
-              <h3 className="text-sm font-semibold text-white">Prüfungsverlauf</h3>
+        {/* Prüfungsverlauf (Attempts History) */}
+        <div className="glass-light rounded-2xl p-5 flex flex-col justify-between min-h-[140px]">
+          <div>
+            <div className="flex items-center gap-2 mb-2.5">
+              <History className="w-4 h-4 text-slate-400 flex-shrink-0" />
+              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Prüfungsverlauf</h3>
             </div>
             {examHistory.length > 0 ? (
-              <div className="space-y-3">
-                {examHistory.slice(0, 4).map((attempt) => {
+              <div className="space-y-2">
+                {examHistory.slice(0, 2).map((attempt) => {
                   const cfg = EXAM_CONFIG[attempt.examType] || { icon: '📝', shortLabel: 'Prüfung' }
                   return (
-                    <div key={attempt.id} className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 flex items-center justify-between gap-3 text-xs">
-                      <div className="min-w-0">
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-sm">{cfg.icon}</span>
-                          <span className="font-semibold text-white truncate max-w-[130px]">{cfg.shortLabel}</span>
-                        </div>
-                        <div className="flex items-center gap-1 text-[9px] text-slate-500 mt-0.5">
-                          <Calendar className="w-2.5 h-2.5" />
-                          <span>
-                            {new Date(attempt.date).toLocaleDateString('de-DE', {
-                              day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit'
-                            })}
-                          </span>
-                        </div>
+                    <div key={attempt.id} className="flex items-center justify-between text-xs py-0.5 border-b border-white/[0.03] last:border-0">
+                      <div className="flex items-center gap-1.5 min-w-0">
+                        <span className="text-xs">{cfg.icon}</span>
+                        <span className="text-slate-300 font-medium truncate max-w-[120px]">{cfg.shortLabel}</span>
                       </div>
                       <div className="flex items-center gap-2 flex-shrink-0">
-                        <span className="font-mono font-bold text-white bg-white/5 px-2 py-0.5 rounded text-[10px]">
+                        <span className="font-mono font-bold text-slate-400">
                           {attempt.correctAnswers}/{attempt.totalQuestions}
                         </span>
                         {attempt.passed ? (
-                          <span className="p-1 rounded bg-emerald-500/10 text-emerald-400" title="Bestanden">
-                            <Check className="w-3 h-3" />
-                          </span>
+                          <span className="text-emerald-400 font-extrabold">✓</span>
                         ) : (
-                          <span className="p-1 rounded bg-rose-500/10 text-rose-400" title="Nicht bestanden">
-                            <X className="w-3 h-3" />
-                          </span>
+                          <span className="text-rose-400 font-extrabold">✗</span>
                         )}
                       </div>
                     </div>
@@ -271,11 +252,46 @@ export default function ExamCenter() {
                 })}
               </div>
             ) : (
-              <div className="text-center py-6 text-slate-500 space-y-1">
-                <ShieldAlert className="w-6 h-6 text-slate-600 mx-auto" />
-                <p className="text-xs">Noch keine Versuche verzeichnet.</p>
+              <div className="text-center py-2 text-slate-500 space-y-1">
+                <ShieldAlert className="w-5 h-5 text-slate-600 mx-auto" />
+                <p className="text-[10px]">Noch keine Versuche verzeichnet.</p>
               </div>
             )}
+          </div>
+        </div>
+      </div>
+
+      {/* Separator & Exam Sections */}
+      <div className="space-y-6 animate-fade-in" style={{ animationDelay: '100ms' }}>
+        {/* Vollprüfungen */}
+        <div className="space-y-3">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 px-1">Vollprüfungen</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {fullExams.map(([key, cfg]) => (
+              <ExamCard
+                key={key}
+                examType={key}
+                config={cfg}
+                history={examHistory}
+                onSelect={() => prepareExam(key)}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Ergänzungsprüfungen */}
+        <div className="space-y-3">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 px-1">Ergänzungsprüfungen (Basisfragen befreit)</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {extExams.map(([key, cfg]) => (
+              <ExamCard
+                key={key}
+                examType={key}
+                config={cfg}
+                history={examHistory}
+                onSelect={() => prepareExam(key)}
+              />
+            ))}
           </div>
         </div>
       </div>
