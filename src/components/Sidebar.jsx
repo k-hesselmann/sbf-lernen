@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { EXAM_TYPES, EXAM_CONFIG } from '../data/examConfig.js'
 
 export default function Sidebar() {
-  const { currentView, setView, selectedExamType, setSelectedExamType } = useStore()
+  const { currentView, setView, selectedExamType, setSelectedExamType, dashboardTab, setDashboardTab } = useStore()
   const [collapsed, setCollapsed] = useState(false)
   const [learnExpanded, setLearnExpanded] = useState(true)
   const [examsExpanded, setExamsExpanded] = useState(true)
@@ -15,8 +15,7 @@ export default function Sidebar() {
   }
 
   const handleExamSelect = (type) => {
-    setSelectedExamType(type)
-    useStore.getState().startExam()
+    useStore.getState().prepareExam(type)
   }
 
   return (
@@ -43,19 +42,22 @@ export default function Sidebar() {
         {/* Dashboard Button */}
         <div>
           <button
-            onClick={() => setView('dashboard')}
+            onClick={() => {
+              setView('dashboard')
+              setDashboardTab('progress')
+            }}
             className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium
               transition-all duration-200 group relative text-left
-              ${currentView === 'dashboard'
+              ${currentView === 'dashboard' && dashboardTab === 'progress'
                 ? 'bg-ocean-500/15 text-ocean-300 shadow-inner'
                 : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
               }`}
           >
-            {currentView === 'dashboard' && (
+            {currentView === 'dashboard' && dashboardTab === 'progress' && (
               <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 bg-ocean-400 rounded-r-full" />
             )}
             <LayoutDashboard className={`w-[18px] h-[18px] flex-shrink-0 transition-colors
-              ${currentView === 'dashboard' ? 'text-ocean-400' : 'text-slate-500 group-hover:text-slate-300'}`}
+              ${currentView === 'dashboard' && dashboardTab === 'progress' ? 'text-ocean-400' : 'text-slate-500 group-hover:text-slate-300'}`}
             />
             {!collapsed && <span>Dashboard</span>}
           </button>
@@ -124,12 +126,23 @@ export default function Sidebar() {
               } else {
                 setExamsExpanded(!examsExpanded)
               }
+              setView('dashboard')
+              setDashboardTab('exams')
             }}
-            className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium
-              text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-all duration-200 group text-left"
+            className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium
+              transition-all duration-200 group relative text-left
+              ${currentView === 'dashboard' && dashboardTab === 'exams'
+                ? 'bg-ocean-500/15 text-ocean-300 shadow-inner'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
+              }`}
           >
             <div className="flex items-center gap-3">
-              <ClipboardCheck className="w-[18px] h-[18px] text-slate-500 group-hover:text-slate-300 flex-shrink-0" />
+              {currentView === 'dashboard' && dashboardTab === 'exams' && (
+                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 bg-ocean-400 rounded-r-full" />
+              )}
+              <ClipboardCheck className={`w-[18px] h-[18px] flex-shrink-0 transition-colors
+                ${currentView === 'dashboard' && dashboardTab === 'exams' ? 'text-ocean-400' : 'text-slate-500 group-hover:text-slate-300'}`}
+              />
               {!collapsed && <span>Prüfungen</span>}
             </div>
             {!collapsed && (

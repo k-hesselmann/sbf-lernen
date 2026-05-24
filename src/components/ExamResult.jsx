@@ -3,7 +3,7 @@ import useStore from '../store/useStore'
 import { CATEGORY_LABELS, CATEGORY_COLORS, EXAM_CONFIG } from '../data/examConfig.js'
 
 export default function ExamResult() {
-  const { examHistory, setView, startExam } = useStore()
+  const { examHistory, setView, startExam, setDashboardTab } = useStore()
   const result = examHistory[0]
 
   if (!result) return null
@@ -115,12 +115,15 @@ export default function ExamResult() {
       {/* Actions */}
       <div className="flex gap-3 justify-center animate-fade-in-up" style={{ animationDelay: '300ms' }}>
         <button
-          onClick={() => setView('dashboard')}
+          onClick={() => {
+            setView('dashboard')
+            setDashboardTab('exams')
+          }}
           className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium
             text-slate-400 hover:text-white border border-white/10 hover:border-white/20 transition-all duration-200"
         >
           <Home className="w-4 h-4" />
-          Dashboard
+          Zurück zur Übersicht
         </button>
         <button
           onClick={() => setView('learn')}

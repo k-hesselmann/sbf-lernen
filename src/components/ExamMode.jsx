@@ -12,7 +12,14 @@ function formatTime(ms) {
 }
 
 export default function ExamMode() {
-  const { examState, setExamAnswer, submitExam } = useStore()
+  const examState = useStore((s) => s.examState)
+  const selectedExamType = useStore((s) => s.selectedExamType)
+  const setExamAnswer = useStore((s) => s.setExamAnswer)
+  const submitExam = useStore((s) => s.submitExam)
+  const startExam = useStore((s) => s.startExam)
+  const setView = useStore((s) => s.setView)
+  const setDashboardTab = useStore((s) => s.setDashboardTab)
+
   const [currentIndex, setCurrentIndex] = useState(0)
   const [timeLeft, setTimeLeft] = useState(0)
   const [showConfirm, setShowConfirm] = useState(false)
@@ -40,7 +47,125 @@ export default function ExamMode() {
     submitExam()
   }, [submitExam])
 
-  if (!examState || examState.submitted) {
+  // If exam hasn't started yet, show the Exam Start/Outline screen
+  if (!examState) {
+    const config = EXAM_CONFIG[selectedExamType]
+    if (!config) return null
+
+    return (
+      <div key={selectedExamType} className="space-y-6 max-w-3xl mx-auto animate-fade-in-up">
+        {/* Back Button */}
+        <div>
+          <button
+            onClick={() => {
+              setView('dashboard')
+              setDashboardTab('exams')
+            }}
+            className="flex items-center gap-1.5 text-slate-400 hover:text-slate-200 transition-colors text-xs font-semibold"
+          >
+            <ChevronLeft className="w-4 h-4" />
+            Zurück zur Übersicht
+          </button>
+        </div>
+
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-ocean-400 to-ocean-600 flex items-center justify-center text-xl shadow-lg shadow-ocean-500/20 flex-shrink-0">
+              {config.icon}
+            </div>
+            <div>
+              <h2 className="text-xl sm:text-2xl font-bold text-white">{config.label}</h2>
+              <p className="text-slate-400 mt-0.5 text-xs sm:text-sm">{config.description}</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 px-4 py-2 rounded-xl glass-light text-slate-400 font-mono text-sm font-semibold flex-shrink-0">
+            <Clock className="w-4 h-4 text-slate-500" />
+            {config.duration} Min. Limit
+          </div>
+        </div>
+
+        {/* Outline Card */}
+        <div className="glass-light rounded-2xl p-6 space-y-6">
+          <div className="grid grid-cols-3 gap-4">
+            <div className="p-4 rounded-xl bg-white/5 border border-white/5 text-center">
+              <span className="text-lg sm:text-xl font-bold text-white block">{config.totalExamQuestions}</span>
+              <span className="text-[10px] text-slate-500 font-medium">Fragen</span>
+            </div>
+            <div className="p-4 rounded-xl bg-white/5 border border-white/5 text-center">
+              <span className="text-lg sm:text-xl font-bold text-white block">{config.duration} Min.</span>
+              <span className="text-[10px] text-slate-500 font-medium">Zeitlimit</span>
+            </div>
+            <div className="p-4 rounded-xl bg-white/5 border border-white/5 text-center">
+              <span className="text-lg sm:text-xl font-bold text-emerald-400 block">
+                {config.sections.reduce((sum, s) => sum + s.passMin, 0)} / {config.totalExamQuestions}
+              </span>
+              <span className="text-[10px] text-slate-500 font-semibold">Bestehensgrenze</span>
+            </div>
+          </div>
+
+          {/* Rules Section */}
+          <div className="space-y-3">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Prüfungsregeln & Hinweise</h3>
+            <ul className="text-[11px] sm:text-xs text-slate-300 space-y-2.5 leading-relaxed">
+              <li className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-ocean-400 mt-1.5 flex-shrink-0" />
+                <span><strong>Der Timer läuft rückwärts:</strong> Sobald du startest, läuft die Uhr. Bei Ablauf wird die Prüfung sofort eingereicht.</span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-ocean-400 mt-1.5 flex-shrink-0" />
+                <span><strong>Keine Hilfsmittel:</strong> Löse alle Fragen ohne Notizen, offene Tabs oder fremde Hilfe.</span>
+              </li>
+              <li className="flex items-start gap-2.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-ocean-400 mt-1.5 flex-shrink-0" />
+                <span><strong>Freie Navigation:</strong> Du kannst jederzeit zwischen den Fragen springen. Markiere schwierige Fragen im oberen Navigator, um sie später zu korrigieren.</span>
+              </li>
+              {config.sections.some(s => s.category === 'navigation_see') && (
+                <li className="flex items-start gap-2.5 text-emerald-400/90">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 flex-shrink-0" />
+                  <span><strong>Navigationsaufgabe:</strong> Dieser Test enthält eine Navigationskarten-Aufgabe. Nimm dir ausreichend Zeit dafür, da hier min. 7 von 9 Punkten erreicht werden müssen!</span>
+                </li>
+              )}
+            </ul>
+          </div>
+
+          {/* Passing Boundaries Table */}
+          <div className="space-y-3">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Mindestanforderungen je Sektion</h3>
+            <div className="border border-white/5 rounded-xl overflow-hidden text-xs">
+              <div className="bg-white/5 px-4 py-2 font-bold text-slate-300 grid grid-cols-[1.5fr_1fr_1.2fr] border-b border-white/5">
+                <span>Bereich</span>
+                <span className="text-center">Prüfungsfragen</span>
+                <span className="text-right">Bestehensgrenze</span>
+              </div>
+              <div className="divide-y divide-white/5">
+                {config.sections.map((s, idx) => (
+                  <div key={idx} className="px-4 py-2.5 grid grid-cols-[1.5fr_1fr_1.2fr] text-slate-400">
+                    <span className="font-semibold text-slate-300">{CATEGORY_LABELS[s.category]}</span>
+                    <span className="text-center">{s.examCount} Fragen</span>
+                    <span className="text-right text-emerald-400 font-semibold">min. {s.passMin} richtig</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Start Trigger */}
+          <button
+            onClick={() => startExam()}
+            className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-bold text-sm text-white
+              bg-gradient-to-r from-ocean-500 to-ocean-600 hover:from-ocean-400 hover:to-ocean-500
+              transition-all duration-200 shadow-lg shadow-ocean-500/20"
+          >
+            Offizielle Prüfungssimulation starten
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  // If exam has been submitted or closed, go back
+  if (examState.submitted) {
     return null
   }
 
@@ -54,10 +179,13 @@ export default function ExamMode() {
         <div className="glass-light rounded-2xl p-8 text-center max-w-sm">
           <p className="text-white font-medium mb-4">Prüfungsdaten veraltet.</p>
           <button
-            onClick={() => useStore.getState().setView('dashboard')}
+            onClick={() => {
+              setView('dashboard')
+              setDashboardTab('exams')
+            }}
             className="px-5 py-2.5 rounded-xl bg-ocean-500 text-white text-sm font-medium hover:bg-ocean-600 transition-all"
           >
-            Zum Dashboard
+            Zurück zur Übersicht
           </button>
         </div>
       </div>
@@ -74,13 +202,16 @@ export default function ExamMode() {
     <div className="space-y-6 max-w-3xl mx-auto">
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 animate-fade-in-up">
-        <div>
-          <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-            <span>{config.icon}</span> Prüfungssimulation
-          </h2>
-          <p className="text-slate-400 mt-1">{config.label} · {questions.length} Fragen</p>
+        <div className="flex items-center gap-3">
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-ocean-400 to-ocean-600 flex items-center justify-center text-xl shadow-lg shadow-ocean-500/20 flex-shrink-0">
+            {config.icon}
+          </div>
+          <div>
+            <h2 className="text-xl sm:text-2xl font-bold text-white">Prüfungssimulation</h2>
+            <p className="text-slate-400 mt-0.5 text-xs sm:text-sm">{config.label} · {questions.length} Fragen</p>
+          </div>
         </div>
-        <div className={`flex items-center gap-2 px-4 py-2 rounded-xl font-mono text-lg font-bold
+        <div className={`flex items-center gap-2 px-4 py-2 rounded-xl font-mono text-lg font-bold flex-shrink-0
           ${timeCritical ? 'bg-rose-500/20 text-rose-400 animate-pulse' :
             timeWarning ? 'bg-amber-500/20 text-amber-400' :
             'glass-light text-white'}`}>
