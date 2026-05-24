@@ -18,7 +18,6 @@ export default function ExamMode() {
   const submitExam = useStore((s) => s.submitExam)
   const startExam = useStore((s) => s.startExam)
   const setView = useStore((s) => s.setView)
-  const setDashboardTab = useStore((s) => s.setDashboardTab)
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [timeLeft, setTimeLeft] = useState(0)
@@ -57,10 +56,7 @@ export default function ExamMode() {
         {/* Back Button */}
         <div>
           <button
-            onClick={() => {
-              setView('dashboard')
-              setDashboardTab('exams')
-            }}
+            onClick={() => setView('exams')}
             className="flex items-center gap-1.5 text-slate-400 hover:text-slate-200 transition-colors text-xs font-semibold"
           >
             <ChevronLeft className="w-4 h-4" />
@@ -179,10 +175,7 @@ export default function ExamMode() {
         <div className="glass-light rounded-2xl p-8 text-center max-w-sm">
           <p className="text-white font-medium mb-4">Prüfungsdaten veraltet.</p>
           <button
-            onClick={() => {
-              setView('dashboard')
-              setDashboardTab('exams')
-            }}
+            onClick={() => setView('exams')}
             className="px-5 py-2.5 rounded-xl bg-ocean-500 text-white text-sm font-medium hover:bg-ocean-600 transition-all"
           >
             Zurück zur Übersicht

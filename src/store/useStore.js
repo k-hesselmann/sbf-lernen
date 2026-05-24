@@ -63,7 +63,6 @@ const useStore = create(
 
       // ─── Navigation ───
       currentView: 'dashboard',
-      dashboardTab: 'progress',
 
       // ─── Exam Type Selection ───
       selectedExamType: EXAM_TYPES.SEE_MOTOR,
@@ -81,7 +80,6 @@ const useStore = create(
 
       // ─── Actions ───
       setView: (view) => set({ currentView: view }),
-      setDashboardTab: (tab) => set({ dashboardTab: tab }),
       setSelectedExamType: (type) => set({ selectedExamType: type, learningCategory: 'all', learningTopic: 'all', learningMode: 'due' }),
       setLearningCategory: (cat) => set({ learningCategory: cat, learningTopic: 'all' }),
       setLearningTopic: (topic) => set({ learningTopic: topic }),
@@ -370,7 +368,6 @@ const useStore = create(
         cardProgress: state.cardProgress,
         examHistory: state.examHistory,
         selectedExamType: state.selectedExamType,
-        dashboardTab: state.dashboardTab,
       }),
     }
   )

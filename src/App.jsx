@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard'
 import LearnMode from './components/LearnMode'
 import ExamMode from './components/ExamMode'
 import ExamResult from './components/ExamResult'
+import ExamCenter from './components/ExamCenter'
 
 function ViewRouter() {
   const currentView = useStore((s) => s.currentView)
@@ -18,6 +19,8 @@ function ViewRouter() {
       return <ExamMode />
     case 'examResult':
       return <ExamResult />
+    case 'exams':
+      return <ExamCenter />
     default:
       return <Dashboard />
   }

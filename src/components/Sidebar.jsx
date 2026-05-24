@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { EXAM_TYPES, EXAM_CONFIG } from '../data/examConfig.js'
 
 export default function Sidebar() {
-  const { currentView, setView, selectedExamType, setSelectedExamType, dashboardTab, setDashboardTab } = useStore()
+  const { currentView, setView, selectedExamType, setSelectedExamType } = useStore()
   const [collapsed, setCollapsed] = useState(false)
   const [learnExpanded, setLearnExpanded] = useState(true)
   const [examsExpanded, setExamsExpanded] = useState(true)
@@ -39,27 +39,45 @@ export default function Sidebar() {
 
       {/* Navigation List */}
       <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-4 custom-scrollbar">
-        {/* Dashboard Button */}
+        {/* Lern-Cockpit Button */}
         <div>
           <button
-            onClick={() => {
-              setView('dashboard')
-              setDashboardTab('progress')
-            }}
+            onClick={() => setView('dashboard')}
             className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium
               transition-all duration-200 group relative text-left
-              ${currentView === 'dashboard' && dashboardTab === 'progress'
+              ${currentView === 'dashboard'
                 ? 'bg-ocean-500/15 text-ocean-300 shadow-inner'
                 : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
               }`}
           >
-            {currentView === 'dashboard' && dashboardTab === 'progress' && (
+            {currentView === 'dashboard' && (
               <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 bg-ocean-400 rounded-r-full" />
             )}
             <LayoutDashboard className={`w-[18px] h-[18px] flex-shrink-0 transition-colors
-              ${currentView === 'dashboard' && dashboardTab === 'progress' ? 'text-ocean-400' : 'text-slate-500 group-hover:text-slate-300'}`}
+              ${currentView === 'dashboard' ? 'text-ocean-400' : 'text-slate-500 group-hover:text-slate-300'}`}
             />
-            {!collapsed && <span>Dashboard</span>}
+            {!collapsed && <span>Lern-Cockpit</span>}
+          </button>
+        </div>
+
+        {/* Prüfungs-Center Button */}
+        <div>
+          <button
+            onClick={() => setView('exams')}
+            className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium
+              transition-all duration-200 group relative text-left
+              ${currentView === 'exams' || currentView === 'exam' || currentView === 'examResult'
+                ? 'bg-ocean-500/15 text-ocean-300 shadow-inner'
+                : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
+              }`}
+          >
+            {(currentView === 'exams' || currentView === 'exam' || currentView === 'examResult') && (
+              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 bg-ocean-400 rounded-r-full" />
+            )}
+            <ClipboardCheck className={`w-[18px] h-[18px] flex-shrink-0 transition-colors
+              ${currentView === 'exams' || currentView === 'exam' || currentView === 'examResult' ? 'text-ocean-400' : 'text-slate-500 group-hover:text-slate-300'}`}
+            />
+            {!collapsed && <span>Prüfungs-Center</span>}
           </button>
         </div>
 
@@ -126,23 +144,12 @@ export default function Sidebar() {
               } else {
                 setExamsExpanded(!examsExpanded)
               }
-              setView('dashboard')
-              setDashboardTab('exams')
             }}
-            className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium
-              transition-all duration-200 group relative text-left
-              ${currentView === 'dashboard' && dashboardTab === 'exams'
-                ? 'bg-ocean-500/15 text-ocean-300 shadow-inner'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
-              }`}
+            className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium
+              text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-all duration-200 group text-left"
           >
             <div className="flex items-center gap-3">
-              {currentView === 'dashboard' && dashboardTab === 'exams' && (
-                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 bg-ocean-400 rounded-r-full" />
-              )}
-              <ClipboardCheck className={`w-[18px] h-[18px] flex-shrink-0 transition-colors
-                ${currentView === 'dashboard' && dashboardTab === 'exams' ? 'text-ocean-400' : 'text-slate-500 group-hover:text-slate-300'}`}
-              />
+              <ClipboardCheck className="w-[18px] h-[18px] text-slate-500 group-hover:text-slate-300 flex-shrink-0" />
               {!collapsed && <span>Prüfungen</span>}
             </div>
             {!collapsed && (
