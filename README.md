@@ -66,3 +66,7 @@ Keine Programmierkenntnisse erforderlich! Folge einfach diesen Schritten:
 
 6. **Im Browser öffnen:**
    Im Terminal wird eine Adresse angezeigt (meistens `http://localhost:5173`). Klicke darauf oder kopiere sie in deinen Webbrowser (Chrome, Edge, Firefox usw.), um mit dem Lernen zu beginnen!
+
+---
+
+## Viel Erfolg! 🐟
