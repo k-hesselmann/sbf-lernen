@@ -4,8 +4,7 @@ import { useState } from 'react'
 import { EXAM_TYPES, EXAM_CONFIG } from '../data/examConfig.js'
 
 export default function Sidebar() {
-  const { currentView, setView, selectedExamType, setSelectedExamType } = useStore()
-  const [collapsed, setCollapsed] = useState(false)
+  const { currentView, setView, selectedExamType, setSelectedExamType, sidebarCollapsed: collapsed, setSidebarCollapsed: setCollapsed, mobileSidebarOpen, setMobileSidebarOpen } = useStore()
   const [dashboardsExpanded, setDashboardsExpanded] = useState(true)
   const [learnExpanded, setLearnExpanded] = useState(true)
   const [examsExpanded, setExamsExpanded] = useState(true)
@@ -13,18 +12,29 @@ export default function Sidebar() {
   const handleLearnSelect = (type) => {
     setSelectedExamType(type)
     setView('learn')
+    setMobileSidebarOpen(false)
   }
 
   const handleExamSelect = (type) => {
     useStore.getState().prepareExam(type)
+    setMobileSidebarOpen(false)
   }
 
   return (
-    <aside
-      className={`fixed top-0 left-0 h-full z-40 transition-all duration-300 ease-in-out
-        ${collapsed ? 'w-[72px]' : 'w-[250px]'}
-        glass flex flex-col`}
-    >
+    <>
+      {/* Mobile Backdrop */}
+      {mobileSidebarOpen && (
+        <div
+          onClick={() => setMobileSidebarOpen(false)}
+          className="fixed inset-0 bg-black/60 z-40 md:hidden animate-fade-in"
+        />
+      )}
+      <aside
+        className={`fixed top-0 left-0 h-full z-45 transition-all duration-300 ease-in-out
+          ${collapsed ? 'w-[72px]' : 'w-[250px]'}
+          ${mobileSidebarOpen ? 'translate-x-0' : 'max-md:-translate-x-full'}
+          glass flex flex-col`}
+      >
       {/* Logo */}
       <div className="flex items-center gap-3 px-4 py-5 border-b border-white/5 flex-shrink-0">
         <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-ocean-400 to-ocean-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-ocean-500/20">
@@ -69,7 +79,7 @@ export default function Sidebar() {
             <div className="pl-4 pr-1 py-1 space-y-1 border-l border-white/5 ml-5 animate-fade-in">
               {/* Lern-Cockpit Sub-item */}
               <button
-                onClick={() => setView('dashboard')}
+                onClick={() => { setView('dashboard'); setMobileSidebarOpen(false); }}
                 className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200 text-left relative
                   ${currentView === 'dashboard'
                     ? 'text-ocean-300 bg-ocean-500/10'
@@ -84,7 +94,7 @@ export default function Sidebar() {
 
               {/* Prüfungs-Center Sub-item */}
               <button
-                onClick={() => setView('exams')}
+                onClick={() => { setView('exams'); setMobileSidebarOpen(false); }}
                 className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200 text-left relative
                   ${currentView === 'exams' || currentView === 'exam' || currentView === 'examResult'
                     ? 'text-ocean-300 bg-ocean-500/10'
@@ -253,11 +263,12 @@ export default function Sidebar() {
       <button
         onClick={() => setCollapsed(!collapsed)}
         className="absolute -right-3 top-20 w-6 h-6 rounded-full bg-surface-card border border-white/10
-          flex items-center justify-center text-slate-400 hover:text-white hover:border-ocean-500/30
+          md:flex hidden items-center justify-center text-slate-400 hover:text-white hover:border-ocean-500/30
           transition-all duration-200 shadow-lg z-50"
       >
         {collapsed ? <ChevronRight className="w-3 h-3" /> : <ChevronLeft className="w-3 h-3" />}
       </button>
     </aside>
-  )
+  </>
+)
 }

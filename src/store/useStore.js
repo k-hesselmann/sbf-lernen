@@ -78,6 +78,10 @@ const useStore = create(
       // ─── Exam History ───
       examHistory: [],
 
+      // ─── Sidebar State ───
+      sidebarCollapsed: false,
+      mobileSidebarOpen: false,
+
       // ─── Actions ───
       setView: (view) => set({ currentView: view }),
       setSelectedExamType: (type) => set({ selectedExamType: type, learningCategory: 'all', learningTopic: 'all', learningMode: 'due' }),
@@ -85,6 +89,8 @@ const useStore = create(
       setLearningTopic: (topic) => set({ learningTopic: topic }),
       setLearningMode: (mode) => set({ learningMode: mode }),
       prepareExam: (type) => set({ selectedExamType: type, examState: null, currentView: 'exam' }),
+      setSidebarCollapsed: (collapsed) => set({ sidebarCollapsed: collapsed }),
+      setMobileSidebarOpen: (open) => set({ mobileSidebarOpen: open }),
 
       initProgress: () => {
         const progress = { ...get().cardProgress }

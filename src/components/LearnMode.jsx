@@ -22,6 +22,7 @@ export default function LearnMode() {
   const [selectedAnswer, setSelectedAnswer] = useState(null)
   const [showResult, setShowResult] = useState(false)
   const [sessionStats, setSessionStats] = useState({ correct: 0, incorrect: 0 })
+  const [answersHistory, setAnswersHistory] = useState({})
 
   const config = useMemo(() => EXAM_CONFIG[selectedExamType], [selectedExamType])
   const availableCategories = useMemo(() => getCategoriesForExam(selectedExamType), [selectedExamType])
@@ -83,26 +84,27 @@ export default function LearnMode() {
   // Launch a new session with current config
   const handleStartSession = useCallback(() => {
     const cards = useStore.getState().getStudyCards()
-    setSessionCards(cards)
+    const prepared = cards.map(c => prepareQuestion(c))
+    setSessionCards(prepared)
     setCurrentIndex(0)
     setSelectedAnswer(null)
     setShowResult(false)
     setSessionStats({ correct: 0, incorrect: 0 })
+    setAnswersHistory({})
     setIsSessionActive(true)
   }, [])
 
-  const rawCard = sessionCards[currentIndex]
-
-  // Shuffle options once per card (memoized by card id)
-  const currentCard = useMemo(() => {
-    if (!rawCard) return null
-    return prepareQuestion(rawCard)
-  }, [rawCard?.id])
+  const currentCard = sessionCards[currentIndex]
 
   const handleAnswer = useCallback((answerIndex) => {
     if (showResult || !currentCard) return
     setSelectedAnswer(answerIndex)
     setShowResult(true)
+
+    setAnswersHistory((prev) => ({
+      ...prev,
+      [currentCard.id]: answerIndex
+    }))
 
     const correct = answerIndex === currentCard.correctIndex
     answerCard(currentCard.id, correct)
@@ -114,18 +116,43 @@ export default function LearnMode() {
   }, [showResult, currentCard, answerCard])
 
   const handleNext = useCallback(() => {
-    setSelectedAnswer(null)
-    setShowResult(false)
-    setCurrentIndex((prev) => prev + 1)
-  }, [])
+    const nextIndex = currentIndex + 1
+    setCurrentIndex(nextIndex)
+    const nextCard = sessionCards[nextIndex]
+    if (nextCard && answersHistory[nextCard.id] !== undefined) {
+      setSelectedAnswer(answersHistory[nextCard.id])
+      setShowResult(true)
+    } else {
+      setSelectedAnswer(null)
+      setShowResult(false)
+    }
+  }, [currentIndex, sessionCards, answersHistory])
+
+  const handlePrevious = useCallback(() => {
+    if (currentIndex > 0) {
+      const prevIndex = currentIndex - 1
+      setCurrentIndex(prevIndex)
+      const prevCard = sessionCards[prevIndex]
+      if (prevCard) {
+        setSelectedAnswer(answersHistory[prevCard.id] ?? null)
+        setShowResult(answersHistory[prevCard.id] !== undefined)
+      }
+    }
+  }, [currentIndex, sessionCards, answersHistory])
+
+  const handleSkip = useCallback(() => {
+    handleNext()
+  }, [handleNext])
 
   const handleRestart = useCallback(() => {
     const cards = useStore.getState().getStudyCards()
-    setSessionCards(cards)
+    const prepared = cards.map(c => prepareQuestion(c))
+    setSessionCards(prepared)
     setCurrentIndex(0)
     setSelectedAnswer(null)
     setShowResult(false)
     setSessionStats({ correct: 0, incorrect: 0 })
+    setAnswersHistory({})
     setIsSessionActive(true)
   }, [])
 
@@ -393,7 +420,7 @@ export default function LearnMode() {
       </div>
 
       {/* Question Card */}
-      <div className="glass-light rounded-2xl p-8 animate-fade-in-up" style={{ animationDelay: '200ms' }} key={currentCard.id}>
+      <div className="glass-light rounded-2xl p-8 animate-card-enter" key={currentCard.id}>
         <div className="flex items-start gap-3 mb-2 flex-wrap">
           <span className="text-xs font-mono text-slate-500 bg-white/5 px-2 py-1 rounded-lg flex-shrink-0">
             {currentCard.id}
@@ -470,49 +497,57 @@ export default function LearnMode() {
             )
           })}
         </div>
+      </div>
 
-        {/* Feedback & Next */}
-        {showResult && (
-          <div className="mt-6 flex items-center justify-between animate-fade-in-up">
-            <div className="flex items-center gap-2">
-              {selectedAnswer === currentCard.correctIndex ? (
-                <>
-                  <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center">
-                    <Check className="w-4 h-4 text-emerald-400" />
-                  </div>
-                  <span className="text-sm font-semibold text-emerald-400">Richtig!</span>
-                </>
-              ) : (
-                <>
-                  <div className="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center">
-                    <AlertCircle className="w-4 h-4 text-rose-400" />
-                  </div>
-                  <span className="text-sm font-semibold text-rose-400">Leider falsch</span>
-                </>
-              )}
-            </div>
+      {/* Navigation & Stats Bar */}
+      <div className="flex items-center justify-between gap-4 mt-6 animate-fade-in" style={{ animationDelay: '150ms' }}>
+        {/* Left: Vorherige Frage Button */}
+        <div className="w-36 flex justify-start">
+          {currentIndex > 0 && (
+            <button
+              onClick={handlePrevious}
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold
+                text-slate-400 hover:text-slate-200 hover:bg-white/5 border border-white/5 transition-all"
+            >
+              <ChevronLeft className="w-4 h-4" /> Vorherige Frage
+            </button>
+          )}
+        </div>
+
+        {/* Center: Session Stats */}
+        <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2 text-sm">
+            <div className="w-2 h-2 rounded-full bg-emerald-400" />
+            <span className="text-slate-400">{sessionStats.correct} richtig</span>
+          </div>
+          <div className="flex items-center gap-2 text-sm">
+            <div className="w-2 h-2 rounded-full bg-rose-400" />
+            <span className="text-slate-400">{sessionStats.incorrect} falsch</span>
+          </div>
+        </div>
+
+        {/* Right: Überspringen or Nächste Frage Button */}
+        <div className="w-36 flex justify-end">
+          {showResult ? (
             <button
               id="btn-next-card"
               onClick={handleNext}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-ocean-500 hover:bg-ocean-600
-                text-white text-sm font-semibold transition-all duration-200 shadow-lg shadow-ocean-500/20"
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold
+                text-ocean-400 hover:text-ocean-300 hover:bg-ocean-500/10 border border-ocean-500/20 transition-all"
             >
-              Weiter
+              Nächste Frage
               <ArrowRight className="w-4 h-4" />
             </button>
-          </div>
-        )}
-      </div>
-
-      {/* Session Stats Bar */}
-      <div className="flex items-center justify-center gap-6 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
-        <div className="flex items-center gap-2 text-sm">
-          <div className="w-2 h-2 rounded-full bg-emerald-400" />
-          <span className="text-slate-400">{sessionStats.correct} richtig</span>
-        </div>
-        <div className="flex items-center gap-2 text-sm">
-          <div className="w-2 h-2 rounded-full bg-rose-400" />
-          <span className="text-slate-400">{sessionStats.incorrect} falsch</span>
+          ) : (
+            <button
+              onClick={handleSkip}
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold
+                text-slate-400 hover:text-slate-200 hover:bg-white/5 border border-white/5 transition-all"
+            >
+              Überspringen
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          )}
         </div>
       </div>
     </div>
