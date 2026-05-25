@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback, useEffect } from 'react'
-import { Check, X, ArrowRight, RotateCcw, Sparkles, Layers, AlertCircle, Filter, ChevronLeft, SlidersHorizontal } from 'lucide-react'
+import { Check, X, ArrowRight, RotateCcw, Sparkles, Layers, AlertCircle, Filter, ChevronLeft, SlidersHorizontal, Compass } from 'lucide-react'
 import useStore from '../store/useStore'
 import { CATEGORY_LABELS, CATEGORY_COLORS, getCategoriesForExam, EXAM_CONFIG, TOPIC_LABELS } from '../data/examConfig.js'
 import { getQuestionsForExam } from '../data/index.js'
@@ -174,6 +174,28 @@ export default function LearnMode() {
             </div>
           </div>
 
+          {learningCategory === 'navigation_see' && (
+            <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-slate-300 space-y-2">
+              <div className="font-bold text-emerald-400 flex items-center gap-1.5">
+                <Compass className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                Kartenarbeit & Navigationsbesteck benötigt
+              </div>
+              <p className="leading-relaxed text-slate-300">
+                Die Navigationsaufgaben entsprechen den 15 offiziellen Prüfungsaufgaben. Da Messungen und Zeichnungen direkt auf dem Bildschirm ungenau und unskaliert sind, wird dringend empfohlen, die Aufgaben auf der gedruckten **Übungskarte D49** mit einem **Zirkel** und **Kursdreiecken** zu bearbeiten. Du kannst die offiziellen Seekarten-Ausschnitte (PDF) direkt hier öffnen.
+              </p>
+              <div className="flex flex-wrap gap-3 pt-1">
+                <a
+                  href="/Seekarte_D49_Aufgaben_SBF_SEE.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-emerald-400 hover:text-emerald-300 font-bold underline flex items-center gap-1 text-[11px]"
+                >
+                  📂 Seekarten-Ausschnitte D49 (PDF)
+                </a>
+              </div>
+            </div>
+          )}
+
           {/* Topics Dropdown */}
           <div>
             <label className="text-xs uppercase tracking-wider text-slate-500 font-bold mb-2 block">Themenbereich (Subkategorie)</label>
@@ -332,6 +354,8 @@ export default function LearnMode() {
   }
 
   const status = getStatus(currentCard.id)
+  const navTaskIdMatch = currentCard?.id?.match(/^N-(\d+)-\d+$/)
+  const navTaskPage = navTaskIdMatch ? parseInt(navTaskIdMatch[1], 10) : 1
   const statusConfig = {
     new: { label: 'Neu', color: 'bg-ocean-500/20 text-ocean-400', icon: Layers },
     learning: { label: 'Lernen', color: 'bg-amber-500/20 text-amber-400', icon: RotateCcw },
@@ -383,6 +407,27 @@ export default function LearnMode() {
             </span>
           )}
         </div>
+
+        {currentCard.taskDesc && (
+          <div className="mt-4 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-slate-300 space-y-2">
+            <div className="font-bold text-emerald-400 flex items-center justify-between gap-1.5 flex-wrap">
+              <div className="flex items-center gap-1.5">
+                <Compass className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                {currentCard.taskTitle} (Ausgangslage)
+              </div>
+              <a
+                href={`/Seekarte_D49_Aufgaben_SBF_SEE.pdf#page=${navTaskPage}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[10px] text-emerald-400 hover:text-emerald-300 underline font-semibold flex items-center gap-1"
+              >
+                Seekarte D49 öffnen
+              </a>
+            </div>
+            <p className="leading-relaxed font-normal text-slate-300">{currentCard.taskDesc}</p>
+          </div>
+        )}
+
         <h3 className="text-lg font-semibold text-white mt-4 leading-relaxed">{currentCard.question}</h3>
 
         {currentCard.image && (

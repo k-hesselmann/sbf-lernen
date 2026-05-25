@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { Clock, AlertTriangle, ChevronLeft, ChevronRight, Send, Flag } from 'lucide-react'
+import { Clock, AlertTriangle, ChevronLeft, ChevronRight, Send, Flag, Compass } from 'lucide-react'
 import useStore from '../store/useStore'
 import { CATEGORY_LABELS, CATEGORY_COLORS, EXAM_CONFIG } from '../data/examConfig.js'
 
@@ -117,9 +117,25 @@ export default function ExamMode() {
                 <span><strong>Freie Navigation:</strong> Du kannst jederzeit zwischen den Fragen springen. Markiere schwierige Fragen im oberen Navigator, um sie später zu korrigieren.</span>
               </li>
               {config.sections.some(s => s.category === 'navigation_see') && (
-                <li className="flex items-start gap-2.5 text-emerald-400/90">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 flex-shrink-0" />
-                  <span><strong>Navigationsaufgabe:</strong> Dieser Test enthält eine Navigationskarten-Aufgabe. Nimm dir ausreichend Zeit dafür, da hier min. 7 von 9 Punkten erreicht werden müssen!</span>
+                <li className="flex flex-col gap-1.5 text-emerald-400/90">
+                  <div className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 flex-shrink-0" />
+                    <span><strong>Navigationsaufgabe:</strong> Dieser Test enthält eine Navigationskarten-Aufgabe. Nimm dir ausreichend Zeit dafür, da hier min. 7 von 9 Punkten erreicht werden müssen!</span>
+                  </div>
+                  <div className="ml-4 mt-1 p-3 rounded-lg bg-emerald-500/5 border border-emerald-500/10 text-xs text-slate-300 space-y-2">
+                    <p className="font-semibold text-emerald-400">💡 Anleitung zur Kartenarbeit:</p>
+                    <p>Da Zeichnungen am Bildschirm nicht maßstabsgetreu möglich sind, wird empfohlen, die Übung auf der physischen **Übungskarte D49** mit Zirkel und Kursdreiecken zu bearbeiten. Du kannst die offiziellen Seekarten-Ausschnitte (PDF) direkt hier öffnen.</p>
+                    <div className="flex flex-wrap gap-3 mt-1">
+                      <a
+                        href="/Seekarte_D49_Aufgaben_SBF_SEE.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-emerald-400 hover:text-emerald-300 font-bold underline flex items-center gap-1 text-[11px]"
+                      >
+                        📂 Seekarten-Ausschnitte D49 (PDF)
+                      </a>
+                    </div>
+                  </div>
                 </li>
               )}
             </ul>
@@ -186,6 +202,9 @@ export default function ExamMode() {
   }
 
   const question = questions[currentIndex]
+  const navTaskIdMatch = question?.id?.match(/^N-(\d+)-\d+$/)
+  const navTaskPage = navTaskIdMatch ? parseInt(navTaskIdMatch[1], 10) : 1
+
   const answeredCount = Object.keys(answers).length
   const timeWarning = timeLeft < 5 * 60 * 1000
   const timeCritical = timeLeft < 60 * 1000
@@ -244,6 +263,27 @@ export default function ExamMode() {
             {CATEGORY_LABELS[question.category] || question.category}
           </span>
         </div>
+
+        {question.taskDesc && (
+          <div className="mt-4 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-slate-300 space-y-2">
+            <div className="font-bold text-emerald-400 flex items-center justify-between gap-1.5 flex-wrap">
+              <div className="flex items-center gap-1.5">
+                <Compass className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                {question.taskTitle} (Ausgangslage)
+              </div>
+              <a
+                href={`/Seekarte_D49_Aufgaben_SBF_SEE.pdf#page=${navTaskPage}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[10px] text-emerald-400 hover:text-emerald-300 underline font-semibold flex items-center gap-1"
+              >
+                Seekarte D49 öffnen
+              </a>
+            </div>
+            <p className="leading-relaxed font-normal text-slate-300">{question.taskDesc}</p>
+          </div>
+        )}
+
         <h3 className="text-lg font-semibold text-white mt-4 leading-relaxed">{question.question}</h3>
 
         {question.image && (

@@ -176,12 +176,24 @@ export default function ExamResult() {
                         <img src={q.image} alt="Frage Bild" className="max-h-32 rounded border border-white/10" />
                       </div>
                     )}
-                    {!q.isCorrect && (
+                    {!q.isCorrect ? (
                       <p className="text-xs text-slate-400 mt-2">
                         Deine Antwort: <span className="text-rose-400">{q.selectedAnswer !== null ? String.fromCharCode(65 + q.selectedAnswer) : '—'}</span>
                         {' · '}
                         Richtig: <span className="text-emerald-400">{String.fromCharCode(65 + q.correctIndex)}</span>
                       </p>
+                    ) : (
+                      q.selectedAnswer !== null && (
+                        <p className="text-xs text-emerald-400/80 mt-2 font-medium">
+                          Richtig gelöst (Auswahl {String.fromCharCode(65 + q.selectedAnswer)})
+                        </p>
+                      )
+                    )}
+                    {q.explanation && (
+                      <div className="p-3 rounded-lg bg-emerald-500/5 border border-emerald-500/10 text-xs text-slate-400 mt-2 leading-relaxed">
+                        <span className="font-semibold text-emerald-400/90 block mb-1">Erklärung / Lösungsweg:</span>
+                        {q.explanation}
+                      </div>
                     )}
                   </div>
                   <span className="text-xs font-mono text-slate-500 flex-shrink-0">{idx + 1}</span>

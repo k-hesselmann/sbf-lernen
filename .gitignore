@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Seekarten PDF
+public/Seekarte_D49_Aufgaben_SBF_SEE.pdf
+src/data/Seekarte_D49_Aufgaben_SBF_SEE.pdf
