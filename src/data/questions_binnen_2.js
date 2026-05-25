@@ -7,7 +7,7 @@ export const binnenQuestions2 = [
     "id": "BI-092",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was bedeuten diese Sichtzeichen? (schwimmendes Gerät, Vorbeifahrt an jeder Seite, kein Sog)",
+    "question": "Was bedeuten diese Sichtzeichen?",
     "options": [
       "Schwimmendes Gerät bei der Arbeit. Vorbeifahrt an jeder Seite gestattet.",
       "Schwimmendes Gerät bei der Arbeit. Vorbeifahrt nicht gestattet.",
@@ -15,13 +15,13 @@ export const binnenQuestions2 = [
       "Festgefahrenes oder gesunkenes Fahrzeug. Vorbeifahrt nicht gestattet."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q153.gif"
   },
   {
     "id": "BI-093",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was bedeuten diese Sichtzeichen? (festgefahrenes Fahrzeug, Vorbeifahrt an Steuerbordseite)",
+    "question": "Was bedeuten diese Sichtzeichen?",
     "options": [
       "Schwimmendes Gerät bei der Arbeit. Vorbeifahrt an jeder Seite gestattet.",
       "Schwimmendes Gerät bei der Arbeit. Vorbeifahrt nicht gestattet.",
@@ -29,13 +29,13 @@ export const binnenQuestions2 = [
       "Festgefahrenes oder gesunkenes Fahrzeug. Vorbeifahrt nicht gestattet."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q154.gif"
   },
   {
     "id": "BI-094",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was bedeutet diese Tag- und Nachtbezeichnung? (schutzbedürftiges Fahrzeug)",
+    "question": "Was bedeutet diese Tag- und Nachtbezeichnung?",
     "options": [
       "Schutzbedürftiges Fahrzeug, Vorbeifahrt in möglichst weitem Abstand, Geschwindigkeit vermindern, Sog und Wellenschlag vermeiden.",
       "Ein festgefahrenes oder gesunkenes Fahrzeug. Vorbeifahrt nicht gestattet.",
@@ -43,13 +43,13 @@ export const binnenQuestions2 = [
       "Schwimmende Anlage / Schwimmkörper. Vorbeifahrt in möglichst weitem Abstand, Geschwindigkeit vermindern, Sog und Wellenschlag vermeiden."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q155.gif"
   },
   {
     "id": "BI-095",
     "category": "binnen_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Was bedeutet dieses Tafelzeichen? (gesperrte Wasserfläche, Kleinfahrzeuge ohne Antrieb)",
+    "question": "Was bedeutet dieses Tafelzeichen?",
     "options": [
       "Gesperrte Wasserfläche, jedoch für Kleinfahrzeuge ohne Antriebsmaschine befahrbar.",
       "Gesperrte Wasserfläche, jedoch für Kleinfahrzeuge ohne laufende Antriebsmaschine befahrbar.",
@@ -57,13 +57,13 @@ export const binnenQuestions2 = [
       "Gesperrte Wasserfläche, Verbot der Durchfahrt und Sperrung der Schifffahrt."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q156.gif"
   },
   {
     "id": "BI-096",
     "category": "binnen_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Was bedeutet dieses Tafelzeichen? (Fahrverbot für Maschinenfahrzeuge)",
+    "question": "Was bedeutet dieses Tafelzeichen?",
     "options": [
       "Fahrverbot für Fahrzeuge mit Maschinenantrieb.",
       "Fahrverbot für Kleinfahrzeuge mit Maschinenantrieb.",
@@ -71,7 +71,7 @@ export const binnenQuestions2 = [
       "Fahrverbot für Kleinfahrzeuge ohne laufende Antriebsmaschine."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q157.gif"
   },
   {
     "id": "BI-097",
@@ -91,7 +91,7 @@ export const binnenQuestions2 = [
     "id": "BI-098",
     "category": "binnen_spezifisch",
     "topic": "schallsignale",
-    "question": "Was bedeutet dieses Schallsignal? (ein langer, zwei kurze Töne)",
+    "question": "Was bedeutet dieses Schallsignal?",
     "options": [
       "Wenden über Steuerbord.",
       "Kursänderung über Steuerbord.",
@@ -99,13 +99,13 @@ export const binnenQuestions2 = [
       "Wenden über Backbord."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q162.gif"
   },
   {
     "id": "BI-099",
     "category": "binnen_spezifisch",
     "topic": "schallsignale",
-    "question": "Was bedeutet dieses Schallsignal? (ein langer, drei kurze Töne)",
+    "question": "Was bedeutet dieses Schallsignal?",
     "options": [
       "Wenden über Backbord.",
       "Wenden über Steuerbord.",
@@ -113,13 +113,13 @@ export const binnenQuestions2 = [
       "Kursänderung nach Steuerbord."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q163.gif"
   },
   {
     "id": "BI-100",
     "category": "binnen_spezifisch",
     "topic": "schallsignale",
-    "question": "Was bedeutet dieses Schallsignal? (zwei lange, ein kurzer Ton)",
+    "question": "Was bedeutet dieses Schallsignal?",
     "options": [
       "Überholen an der Steuerbordseite des Vorausfahrenden.",
       "Überholen an der Backbordseite des Vorausfahrenden.",
@@ -127,13 +127,13 @@ export const binnenQuestions2 = [
       "Hafen oder Nebenwasserstraße; Ein- oder Ausfahrt mit Kursänderung nach Backbord."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q164.gif"
   },
   {
     "id": "BI-101",
     "category": "binnen_spezifisch",
     "topic": "schallsignale",
-    "question": "Was bedeutet dieses Schallsignal? (zwei lange, zwei kurze Töne)",
+    "question": "Was bedeutet dieses Schallsignal?",
     "options": [
       "Überholen an der Backbordseite des Vorausfahrenden.",
       "Überholen an der Steuerbordseite des Vorausfahrenden.",
@@ -141,13 +141,13 @@ export const binnenQuestions2 = [
       "Hafen oder Nebenwasserstraße; Ein- oder Ausfahrt mit Kursänderung nach Backbord."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q165.gif"
   },
   {
     "id": "BI-102",
     "category": "binnen_spezifisch",
     "topic": "schallsignale",
-    "question": "Was bedeutet dieses Schallsignal? (ein langer Ton)",
+    "question": "Was bedeutet dieses Schallsignal?",
     "options": [
       "Hafen oder Nebenwasserstraße; Ein- oder Ausfahrt mit Kursänderung nach Steuerbord.",
       "Überholen an der Backbordseite des Vorausfahrenden.",
@@ -155,13 +155,13 @@ export const binnenQuestions2 = [
       "Hafen oder Nebenwasserstraße; Ein- oder Ausfahrt mit Kursänderung nach Backbord."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q166.gif"
   },
   {
     "id": "BI-103",
     "category": "binnen_spezifisch",
     "topic": "schallsignale",
-    "question": "Was bedeutet dieses Schallsignal? (zwei kurze Töne)",
+    "question": "Was bedeutet dieses Schallsignal?",
     "options": [
       "Hafen oder Nebenwasserstraße; Ein- oder Ausfahrt mit Kursänderung nach Backbord.",
       "Überholen an der Backbordseite des Vorausfahrenden.",
@@ -169,7 +169,7 @@ export const binnenQuestions2 = [
       "Überholen an der Steuerbordseite des Vorausfahrenden."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q167.gif"
   },
   {
     "id": "BI-104",
@@ -245,7 +245,7 @@ export const binnenQuestions2 = [
     "id": "BI-109",
     "category": "binnen_spezifisch",
     "topic": "ausweichregeln",
-    "question": "Wer ist ausweichpflichtig bzw. wer ist nicht ausweichpflichtig? (Segelfahrzeug vs. Maschinenantrieb beim Ufer)",
+    "question": "Wer ist ausweichpflichtig bzw. wer ist nicht ausweichpflichtig?",
     "options": [
       "Das Fahrzeug unter Segel ist ausweichpflichtig.",
       "Das Fahrzeug unter Segel ist nicht ausweichpflichtig.",
@@ -253,7 +253,7 @@ export const binnenQuestions2 = [
       "Beide Fahrzeuge sind ausweichpflichtig."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q180.gif"
   },
   {
     "id": "BI-110",
@@ -281,7 +281,7 @@ export const binnenQuestions2 = [
       "Ausweichpflichtig ist das Fahrzeug, welches den Wind von Backbord hat."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q183.gif"
   },
   {
     "id": "BI-112",
@@ -309,7 +309,7 @@ export const binnenQuestions2 = [
       "B ist ausweichpflichtig. Segelfahrzeuge mit Wind von Steuerbord müssen Segelfahrzeugen mit Wind von Backbord ausweichen."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q185.gif"
   },
   {
     "id": "BI-114",
@@ -323,7 +323,7 @@ export const binnenQuestions2 = [
       "B ist ausweichpflichtig. Das leeseitige Boot muss dem luvseitigen ausweichen."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q186.gif"
   },
   {
     "id": "BI-115",
@@ -351,13 +351,13 @@ export const binnenQuestions2 = [
       "Boot C, weil leeseitig."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q188.gif"
   },
   {
     "id": "BI-117",
     "category": "binnen_spezifisch",
     "topic": "ausweichregeln",
-    "question": "Wer ist wem gegenüber kurshaltepflichtig? (drei Segelboote A, B, C)",
+    "question": "Wer ist wem gegenüber kurshaltepflichtig?",
     "options": [
       "A gegenüber B und C, B gegenüber C.",
       "C gegenüber A und B, B gegenüber A.",
@@ -365,7 +365,7 @@ export const binnenQuestions2 = [
       "A gegenüber B und C, C gegenüber B."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q189.gif"
   },
   {
     "id": "BI-118",
@@ -399,7 +399,7 @@ export const binnenQuestions2 = [
     "id": "BI-120",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Ein Kleinfahrzeug unter Segel kreuzt nachts das Fahrwasser. An Backbord tauchen folgende Lichter auf. Was bedeuten diese Lichter? (Kleinfahrzeug mit Maschinenantrieb)",
+    "question": "Ein Kleinfahrzeug unter Segel kreuzt nachts das Fahrwasser. An Backbord tauchen folgende Lichter auf. Was bedeuten diese Lichter?",
     "options": [
       "Kleinfahrzeug mit Maschinenantrieb.",
       "Frei fahrende Fähre.",
@@ -407,7 +407,7 @@ export const binnenQuestions2 = [
       "Geschlepptes Kleinfahrzeug."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q192.gif"
   },
   {
     "id": "BI-121",
@@ -421,7 +421,7 @@ export const binnenQuestions2 = [
       "Beide sind ausweichpflichtig."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q193.gif"
   },
   {
     "id": "BI-122",
@@ -463,7 +463,7 @@ export const binnenQuestions2 = [
       "Durchfahrt für Kleinfahrzeuge."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q196.gif"
   },
   {
     "id": "BI-125",
@@ -483,7 +483,7 @@ export const binnenQuestions2 = [
     "id": "BI-126",
     "category": "binnen_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Was bedeutet dieses Tafelzeichen? (Pfeil - vorgeschriebene Fahrtrichtung)",
+    "question": "Was bedeutet dieses Tafelzeichen?",
     "options": [
       "Vorgeschriebene Fahrtrichtung.",
       "Fahrtrichtung nach links verboten.",
@@ -491,7 +491,7 @@ export const binnenQuestions2 = [
       "Empfohlene Fahrtrichtung."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q198.gif"
   },
   {
     "id": "BI-127",
@@ -505,13 +505,13 @@ export const binnenQuestions2 = [
       "Achtung Ausfahrt aus Hafen oder Nebenfahrwasser."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q199.gif"
   },
   {
     "id": "BI-128",
     "category": "binnen_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Was bedeutet dieses Tafelzeichen? (10 km/h Höchstgeschwindigkeit)",
+    "question": "Was bedeutet dieses Tafelzeichen?",
     "options": [
       "10 km/h Höchstgeschwindigkeit gegenüber dem Ufer.",
       "10 km/h Höchstgeschwindigkeit gegenüber der Strömung.",
@@ -519,13 +519,13 @@ export const binnenQuestions2 = [
       "10 km/h für größere Fahrzeuge."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q200.gif"
   },
   {
     "id": "BI-129",
     "category": "binnen_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Was bedeutet dieses Tafelzeichen? (Ausrufezeichen - besondere Vorsicht)",
+    "question": "Was bedeutet dieses Tafelzeichen?",
     "options": [
       "Gebot: Besondere Vorsicht walten lassen.",
       "Gebot: Geradeaus zu fahren.",
@@ -533,13 +533,13 @@ export const binnenQuestions2 = [
       "Gebot: Vor dem Schild anhalten."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q201.gif"
   },
   {
     "id": "BI-130",
     "category": "binnen_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Was bedeutet dieses Tafelzeichen? (U-Zeichen - Wendeverbot)",
+    "question": "Was bedeutet dieses Tafelzeichen?",
     "options": [
       "Wendeverbot.",
       "Verbotene Fahrtrichtung rechts oder links.",
@@ -547,13 +547,13 @@ export const binnenQuestions2 = [
       "Wendeverbot in der Mitte des Fahrwassers."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q202.gif"
   },
   {
     "id": "BI-131",
     "category": "binnen_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Was bedeutet dieses Tafelzeichen? (Wendeplatz)",
+    "question": "Was bedeutet dieses Tafelzeichen?",
     "options": [
       "Empfohlener Wendeplatz. Stillliegen für alle Fahrzeuge verboten.",
       "Empfohlener Wendeplatz. Stillliegen von Kleinfahrzeugen erlaubt.",
@@ -561,13 +561,13 @@ export const binnenQuestions2 = [
       "Vorgeschriebener Wendeplatz. Stillliegen von Kleinfahrzeugen erlaubt."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q203.gif"
   },
   {
     "id": "BI-132",
     "category": "binnen_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Was bedeutet dieses Tafelzeichen? (Wehr-Symbol)",
+    "question": "Was bedeutet dieses Tafelzeichen?",
     "options": [
       "Wehr.",
       "Hubbrücke.",
@@ -575,7 +575,7 @@ export const binnenQuestions2 = [
       "Sicherheitstor."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q204.gif"
   },
   {
     "id": "BI-133",
@@ -1121,13 +1121,13 @@ export const binnenQuestions2 = [
       "Empfohlene Durchfahrt mit Gegenverkehr ohne seitliche Begrenzung der erlaubten Brückendurchfahrt."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q243.gif"
   },
   {
     "id": "BI-172",
     "category": "binnen_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Was bedeutet dieses Tafelzeichen an einer Brückendurchfahrt? (Verbot der Durchfahrt)",
+    "question": "Was bedeutet dieses Tafelzeichen an einer Brückendurchfahrt?",
     "options": [
       "Verbot der Durchfahrt und Sperrung der Schifffahrt.",
       "Gesperrte Durchfahrt, jedoch für Kleinfahrzeuge mit Antriebsmaschine befahrbar.",
@@ -1135,7 +1135,7 @@ export const binnenQuestions2 = [
       "Schutzbedürftige Anlage."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q244.gif"
   },
   {
     "id": "BI-173",

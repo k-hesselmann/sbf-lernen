@@ -589,7 +589,7 @@ export const segelQuestions = [
       "1 Wende, 2 Q-Wende, 3 Halse."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/segel-q295.gif"
   },
   {
     "id": "SE-043",

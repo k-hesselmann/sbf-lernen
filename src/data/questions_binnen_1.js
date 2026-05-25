@@ -749,7 +749,7 @@ export const binnenQuestions1 = [
     "id": "BI-054",
     "category": "binnen_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Was bedeutet dieses Tafelzeichen? (Liegestelle für Fahrzeuge mit explosiven Stoffen)",
+    "question": "Was bedeutet dieses Tafelzeichen?",
     "options": [
       "Liegestelle für Fahrzeuge mit explosiven Stoffen, für Kleinfahrzeuge verboten.",
       "Liegestelle für Fahrzeuge mit brennbaren Stoffen, für Kleinfahrzeuge verboten.",
@@ -757,13 +757,13 @@ export const binnenQuestions1 = [
       "Liegestelle für alle Fahrzeuge, für Kleinfahrzeuge verboten."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q107.gif"
   },
   {
     "id": "BI-055",
     "category": "binnen_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Was bedeuten diese Tafelzeichen? (Liegestelle ohne gefährliche Güter)",
+    "question": "Was bedeuten diese Tafelzeichen?",
     "options": [
       "Liegestelle für Fahrzeuge ohne gefährliche Güter, auch für Kleinfahrzeuge.",
       "Liegestelle für Fahrzeuge ohne gefährliche Güter, nicht für Kleinfahrzeuge.",
@@ -771,7 +771,7 @@ export const binnenQuestions1 = [
       "Liegestelle für Fahrzeuge mit gefährlichen Gütern, nicht für Kleinfahrzeuge."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q108.gif"
   },
   {
     "id": "BI-056",
@@ -791,7 +791,7 @@ export const binnenQuestions1 = [
     "id": "BI-057",
     "category": "binnen_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das nachstehende Tafelzeichen? (Brückendurchfahrt, beide Richtungen)",
+    "question": "Welche Bedeutung hat das nachstehende Tafelzeichen?",
     "options": [
       "Empfohlene Durchfahrtsöffnung, Durchfahrt in beide Richtungen erlaubt.",
       "Empfohlene Durchfahrt, Durchfahrt in Gegenrichtung verboten.",
@@ -799,13 +799,13 @@ export const binnenQuestions1 = [
       "Die Durchfahrt ist nur durch diese Brückenöffnung und in beide Richtungen gestattet."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q110.gif"
   },
   {
     "id": "BI-058",
     "category": "binnen_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung haben die nachstehenden Tafelzeichen? (Brückendurchfahrt, Gegenverkehr verboten)",
+    "question": "Welche Bedeutung haben die nachstehenden Tafelzeichen?",
     "options": [
       "Empfohlene Durchfahrt, Durchfahrt in Gegenrichtung verboten.",
       "Empfohlene Durchfahrtsöffnung, Durchfahrt in beide Richtungen erlaubt.",
@@ -813,13 +813,13 @@ export const binnenQuestions1 = [
       "Die Durchfahrt ist nur durch diese Brückenöffnung und nur in eine Richtung gestattet."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q111.jpg"
   },
   {
     "id": "BI-059",
     "category": "binnen_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Was bedeuten diese Tafelzeichen an Brücken? (Durchfahrt zwischen beiden Tafeln)",
+    "question": "Was bedeuten diese Tafelzeichen an Brücken?",
     "options": [
       "Durchfahrt nur zwischen den beiden Tafeln erlaubt.",
       "Durchfahrt nur außerhalb der beiden Tafeln erlaubt.",
@@ -827,13 +827,13 @@ export const binnenQuestions1 = [
       "Empfohlene Durchfahrt mit Gegenverkehr."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q112.gif"
   },
   {
     "id": "BI-060",
     "category": "binnen_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Was bedeuten diese Tafelzeichen an Brücken? (Empfohlene Durchfahrt)",
+    "question": "Was bedeuten diese Tafelzeichen an Brücken?",
     "options": [
       "Empfohlene Durchfahrt nur zwischen den beiden Tafeln.",
       "Durchfahrt nur zwischen den beiden Tafeln erlaubt.",
@@ -841,13 +841,13 @@ export const binnenQuestions1 = [
       "Empfohlene Durchfahrt mit Gegenverkehr."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q113.gif"
   },
   {
     "id": "BI-061",
     "category": "binnen_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Was bedeutet dieses Tafelzeichen an Brücken? (Empfohlene Durchfahrt mit Gegenverkehr)",
+    "question": "Was bedeutet dieses Tafelzeichen an Brücken?",
     "options": [
       "Empfohlene Durchfahrt mit Gegenverkehr.",
       "Empfohlene Durchfahrt ohne Gegenverkehr.",
@@ -855,13 +855,13 @@ export const binnenQuestions1 = [
       "Durchfahrt nur neben der Tafel erlaubt."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q114.gif"
   },
   {
     "id": "BI-062",
     "category": "binnen_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Was bedeuten diese Tafelzeichen an Brücken? (Empfohlene Durchfahrt ohne Gegenverkehr)",
+    "question": "Was bedeuten diese Tafelzeichen an Brücken?",
     "options": [
       "Empfohlene Durchfahrt ohne Gegenverkehr.",
       "Empfohlene Durchfahrt mit Gegenverkehr.",
@@ -869,7 +869,7 @@ export const binnenQuestions1 = [
       "Durchfahrt nur außerhalb der beiden Tafeln erlaubt."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q115.gif"
   },
   {
     "id": "BI-063",
@@ -883,7 +883,7 @@ export const binnenQuestions1 = [
       "Schutzbedürftige Anlage."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q116.gif"
   },
   {
     "id": "BI-064",
@@ -903,7 +903,7 @@ export const binnenQuestions1 = [
     "id": "BI-065",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was bedeuten diese Lichter? (Maschinenfahrzeug länger als 110 m)",
+    "question": "Was bedeuten diese Lichter?",
     "options": [
       "Fahrzeug mit Maschinenantrieb länger als 110 m.",
       "Schubverband kürzer als 110 m.",
@@ -911,13 +911,13 @@ export const binnenQuestions1 = [
       "Fahrzeug ohne Maschinenantrieb länger als 110 m."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q120.gif"
   },
   {
     "id": "BI-066",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was bedeutet dieses Sichtzeichen? (Schleppfahrzeug an der Spitze)",
+    "question": "Was bedeutet dieses Sichtzeichen?",
     "options": [
       "Schleppfahrzeug an der Spitze eines Schleppverbandes.",
       "Fahrzeug, das vor Anker liegt.",
@@ -925,13 +925,13 @@ export const binnenQuestions1 = [
       "Fahrzeug eines Schleppverbandes."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q121.gif"
   },
   {
     "id": "BI-067",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was bedeutet dieses Sichtzeichen? (Fahrzeug eines Schleppverbandes)",
+    "question": "Was bedeutet dieses Sichtzeichen?",
     "options": [
       "Fahrzeug eines Schleppverbandes.",
       "Fahrzeug, das vor Anker liegt.",
@@ -939,13 +939,13 @@ export const binnenQuestions1 = [
       "Schleppfahrzeug an der Spitze eines Schleppverbandes."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q122.gif"
   },
   {
     "id": "BI-068",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was bedeuten diese Lichter? (Schubverband von vorne)",
+    "question": "Was bedeuten diese Lichter?",
     "options": [
       "Schubverband in Fahrt von vorne.",
       "Schubverband in Fahrt von achtern.",
@@ -953,13 +953,13 @@ export const binnenQuestions1 = [
       "Schubverband unter 110 m Länge."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q123.gif"
   },
   {
     "id": "BI-069",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was bedeuten diese Lichter? (nicht frei fahrende Fähre)",
+    "question": "Was bedeuten diese Lichter?",
     "options": [
       "Nicht frei fahrende Fähre.",
       "Frei fahrende Fähre.",
@@ -967,13 +967,13 @@ export const binnenQuestions1 = [
       "Schubverband von Steuerbordseite."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q124.gif"
   },
   {
     "id": "BI-070",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was bedeuten diese Lichter? (frei fahrende Fähre)",
+    "question": "Was bedeuten diese Lichter?",
     "options": [
       "Frei fahrende Fähre.",
       "Nicht frei fahrende Fähre.",
@@ -981,13 +981,13 @@ export const binnenQuestions1 = [
       "Schubverband von Steuerbordseite."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q125.gif"
   },
   {
     "id": "BI-071",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was bedeutet dieses Sichtzeichen? (blaue Flagge - brennbare Stoffe)",
+    "question": "Was bedeutet dieses Sichtzeichen?",
     "options": [
       "Fahrzeug hat brennbare Stoffe geladen, Abstand beim Stillliegen 10 m.",
       "Fahrzeug hat gesundheitsschädliche Stoffe geladen, Abstand beim Stillliegen 50 m.",
@@ -995,13 +995,13 @@ export const binnenQuestions1 = [
       "Fahrzeug der Überwachungsbehörden im Einsatz."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q127.gif"
   },
   {
     "id": "BI-072",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was bedeutet dieses Sichtzeichen? (zwei blaue Flaggen - gesundheitsschädliche Stoffe)",
+    "question": "Was bedeutet dieses Sichtzeichen?",
     "options": [
       "Fahrzeug hat gesundheitsschädliche Stoffe geladen, Abstand beim Stillliegen 50 m.",
       "Fahrzeug hat explosive Stoffe geladen, Abstand beim Stillliegen 100 m.",
@@ -1009,13 +1009,13 @@ export const binnenQuestions1 = [
       "Fahrzeug der Überwachungsbehörden im Einsatz."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q129.gif"
   },
   {
     "id": "BI-073",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was bedeutet dieses Sichtzeichen? (drei blaue Flaggen - explosive Stoffe)",
+    "question": "Was bedeutet dieses Sichtzeichen?",
     "options": [
       "Fahrzeug hat explosive Stoffe geladen, Abstand beim Stillliegen 100 m.",
       "Fahrzeug hat gesundheitsschädliche Stoffe geladen, Abstand beim Stillliegen 50 m.",
@@ -1023,13 +1023,13 @@ export const binnenQuestions1 = [
       "Fahrzeug der Überwachungsbehörden im Einsatz."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q131.gif"
   },
   {
     "id": "BI-074",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Welches Fahrzeug führt die nachstehende Tagbezeichnung? (roter Ball am Bug)",
+    "question": "Welches Fahrzeug führt die nachstehende Tagbezeichnung?",
     "options": [
       "Ein Fahrzeug, dem die zuständige Behörde einen Vorrang zur Durchfahrt durch Stellen an denen eine bestimmte Reihenfolge gilt eingeräumt hat.",
       "Fahrzeug unter 20 m Länge, für mehr als 12 Fahrgäste zugelassen.",
@@ -1037,7 +1037,7 @@ export const binnenQuestions1 = [
       "Festgefahrenes Fahrzeug, das einseitig nicht passierbar ist."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q132.gif"
   },
   {
     "id": "BI-075",
@@ -1169,7 +1169,7 @@ export const binnenQuestions1 = [
     "id": "BI-084",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was bedeuten diese Lichter? (schwimmendes Gerät, Vorbeifahrt an jeder Seite)",
+    "question": "Was bedeuten diese Lichter?",
     "options": [
       "Schwimmendes Gerät bei der Arbeit. Vorbeifahrt an jeder Seite gestattet. Sog und Wellenschlag vermeiden.",
       "Schwimmendes Gerät bei der Arbeit. Vorbeifahrt nicht gestattet.",
@@ -1177,13 +1177,13 @@ export const binnenQuestions1 = [
       "Festgefahrenes oder gesunkenes Fahrzeug. Vorbeifahrt nicht gestattet."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q145.gif"
   },
   {
     "id": "BI-085",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was bedeuten diese Sichtzeichen? (schwimmendes Gerät, Vorbeifahrt an jeder Seite)",
+    "question": "Was bedeuten diese Sichtzeichen?",
     "options": [
       "Schwimmendes Gerät bei der Arbeit. Vorbeifahrt an jeder Seite gestattet. Sog und Wellenschlag vermeiden.",
       "Schwimmendes Gerät bei der Arbeit. Vorbeifahrt nicht gestattet.",
@@ -1191,13 +1191,13 @@ export const binnenQuestions1 = [
       "Festgefahrenes oder gesunkenes Fahrzeug. Vorbeifahrt nicht gestattet."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q146.gif"
   },
   {
     "id": "BI-086",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was bedeuten diese Lichter? (festgefahrenes Fahrzeug, rot-weiße Seite)",
+    "question": "Was bedeuten diese Lichter?",
     "options": [
       "Festgefahrenes oder gesunkenes Fahrzeug. Vorbeifahrt an der rot-weißen Seite gestattet; rote Seite gesperrt. Sog und Wellenschlag vermeiden.",
       "Festgefahrenes oder gesunkenes Fahrzeug. Vorbeifahrt an der rot-weißen Seite gestattet; rote Seite gesperrt. Vorbeifahrt mit unverminderter Geschwindigkeit möglich.",
@@ -1205,13 +1205,13 @@ export const binnenQuestions1 = [
       "Festgefahrenes oder gesunkenes Fahrzeug. Vorbeifahrt an der roten Seite gestattet; rot-weiße Seite gesperrt. Sog und Wellenschlag vermeiden."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q147.gif"
   },
   {
     "id": "BI-087",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was bedeuten diese Sichtzeichen? (festgefahrenes Fahrzeug, rot-weiße Seite)",
+    "question": "Was bedeuten diese Sichtzeichen?",
     "options": [
       "Festgefahrenes oder gesunkenes Fahrzeug. Vorbeifahrt an der rot-weißen Seite gestattet; rote Seite gesperrt. Sog und Wellenschlag vermeiden.",
       "Festgefahrenes oder gesunkenes Fahrzeug. Vorbeifahrt an der rot-weißen Seite gestattet; rote Seite gesperrt. Vorbeifahrt mit unverminderter Geschwindigkeit möglich.",
@@ -1219,13 +1219,13 @@ export const binnenQuestions1 = [
       "Festgefahrenes oder gesunkenes Fahrzeug. Vorbeifahrt an der roten Seite gestattet; rot-weiße Seite gesperrt. Sog und Wellenschlag vermeiden."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q148.gif"
   },
   {
     "id": "BI-088",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was bedeuten diese Lichter? (schwimmendes Gerät, grüne Seite frei)",
+    "question": "Was bedeuten diese Lichter?",
     "options": [
       "Schwimmendes Gerät bei der Arbeit. Vorbeifahrt an der grünen Seite gestattet; rote Seite gesperrt.",
       "Schwimmendes Gerät bei der Arbeit. Vorbeifahrt an der grünen Seite gestattet; rote Seite gesperrt. Sog und Wellenschlag vermeiden.",
@@ -1233,13 +1233,13 @@ export const binnenQuestions1 = [
       "Schwimmendes Gerät bei der Arbeit. Vorbeifahrt an der roten Seite gestattet; grüne Seite gesperrt."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q149.gif"
   },
   {
     "id": "BI-089",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was bedeuten diese Sichtzeichen? (schwimmendes Gerät, grüne Seite frei)",
+    "question": "Was bedeuten diese Sichtzeichen?",
     "options": [
       "Schwimmendes Gerät bei der Arbeit. Vorbeifahrt an der grünen Seite gestattet; rote Seite gesperrt.",
       "Schwimmendes Gerät bei der Arbeit. Vorbeifahrt an der grünen Seite gestattet; rote Seite gesperrt. Sog und Wellenschlag vermeiden.",
@@ -1247,13 +1247,13 @@ export const binnenQuestions1 = [
       "Schwimmendes Gerät bei der Arbeit. Vorbeifahrt an der roten Seite gestattet; grüne Seite gesperrt."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q150.gif"
   },
   {
     "id": "BI-090",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was bedeuten im Fahrwasser nachstehende Zeichen? (grün-weiß-grün und rot-weiß-rot)",
+    "question": "Was bedeuten im Fahrwasser nachstehende Zeichen?",
     "options": [
       "Schwimmendes Gerät bei der Arbeit. Vorbeifahrt an der Seite mit dem grün-weiß-grünen Tafelzeichen gestattet; rot-weiß-rote Seite gesperrt.",
       "Festgefahrenes oder gesunkenes Fahrzeug. Vorbeifahrt an der Seite mit dem grün-weiß-grünen Tafelzeichen gestattet; rot-weiß-rote Seite gesperrt. Sog und Wellenschlag vermeiden.",
@@ -1261,13 +1261,13 @@ export const binnenQuestions1 = [
       "Festgefahrenes oder gesunkenes Fahrzeug. Vorbeifahrt an der Seite mit dem rot-weiß-roten Tafelzeichen gestattet; grün-weiß-grüne Seite gesperrt."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q151.gif"
   },
   {
     "id": "BI-091",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was bedeuten diese Lichter? (schwimmendes Gerät, Vorbeifahrt an jeder Seite, kein Sog)",
+    "question": "Was bedeuten diese Lichter?",
     "options": [
       "Schwimmendes Gerät bei der Arbeit. Vorbeifahrt an jeder Seite gestattet.",
       "Schwimmendes Gerät bei der Arbeit. Vorbeifahrt nicht gestattet.",
@@ -1275,6 +1275,6 @@ export const binnenQuestions1 = [
       "Festgefahrenes oder gesunkenes Fahrzeug. Vorbeifahrt nicht gestattet."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/binnen-q152.gif"
   }
 ];
