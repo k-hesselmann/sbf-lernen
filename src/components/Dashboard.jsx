@@ -209,7 +209,7 @@ export default function Dashboard() {
                   {/* Category Progress Bar */}
                   <div className="mt-3 h-2 bg-white/5 rounded-full overflow-hidden">
                     <div
-                      className={`h-full rounded-full ${colors.bg.replace('/20', '')} progress-shine relative transition-all duration-1000`}
+                      className={`h-full rounded-full ${colors.solidBg} progress-shine relative transition-all duration-1000`}
                       style={{ width: `${pct}%` }}
                     />
                   </div>
@@ -238,7 +238,7 @@ export default function Dashboard() {
                             </div>
                             <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
                               <div
-                                className={`h-full rounded-full ${colors.bg.replace('/20', '')} transition-all duration-1000`}
+                                className={`h-full rounded-full ${colors.solidBg} transition-all duration-1000`}
                                 style={{ width: `${topPct}%` }}
                               />
                             </div>

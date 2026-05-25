@@ -26,11 +26,11 @@ export const CATEGORY_LABELS = {
 }
 
 export const CATEGORY_COLORS = {
-  [CATEGORIES.BASIS]: { bg: 'bg-ocean-500/20', text: 'text-ocean-400', border: 'border-ocean-500/30' },
-  [CATEGORIES.SEE_SPEZIFISCH]: { bg: 'bg-cyan-500/20', text: 'text-cyan-400', border: 'border-cyan-500/30' },
-  [CATEGORIES.BINNEN_SPEZIFISCH]: { bg: 'bg-amber-500/20', text: 'text-amber-400', border: 'border-amber-500/30' },
-  [CATEGORIES.SEGEL_SPEZIFISCH]: { bg: 'bg-violet-500/20', text: 'text-violet-400', border: 'border-violet-500/30' },
-  [CATEGORIES.NAVIGATION_SEE]: { bg: 'bg-emerald-500/20', text: 'text-emerald-400', border: 'border-emerald-500/30' },
+  [CATEGORIES.BASIS]: { bg: 'bg-ocean-500/20', solidBg: 'bg-ocean-500', text: 'text-ocean-400', border: 'border-ocean-500/30' },
+  [CATEGORIES.SEE_SPEZIFISCH]: { bg: 'bg-cyan-500/20', solidBg: 'bg-cyan-500', text: 'text-cyan-400', border: 'border-cyan-500/30' },
+  [CATEGORIES.BINNEN_SPEZIFISCH]: { bg: 'bg-amber-500/20', solidBg: 'bg-amber-500', text: 'text-amber-400', border: 'border-amber-500/30' },
+  [CATEGORIES.SEGEL_SPEZIFISCH]: { bg: 'bg-violet-500/20', solidBg: 'bg-violet-500', text: 'text-violet-400', border: 'border-violet-500/30' },
+  [CATEGORIES.NAVIGATION_SEE]: { bg: 'bg-emerald-500/20', solidBg: 'bg-emerald-500', text: 'text-emerald-400', border: 'border-emerald-500/30' },
 }
 
 // ─── Topic Subcategories ───
@@ -208,5 +208,5 @@ export const OFFICIAL_POOL_SIZES = {
   [CATEGORIES.SEE_SPEZIFISCH]: 213,
   [CATEGORIES.BINNEN_SPEZIFISCH]: 181,
   [CATEGORIES.SEGEL_SPEZIFISCH]: 47,
-  [CATEGORIES.NAVIGATION_SEE]: 15,  // 15 tasks × 9 subtasks = 135 individual questions
+  [CATEGORIES.NAVIGATION_SEE]: 135,  // 15 tasks × 9 subtasks = 135 individual questions
 }
