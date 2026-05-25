@@ -287,7 +287,7 @@ export const seeQuestions1 = [
     "id": "S-021",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Welches Fahrzeug führt diese Lichter? (manövrierbehinderter Schleppverband, 200 m oder weniger)",
+    "question": "Welches Fahrzeug führt diese Lichter?",
     "options": [
       "Manövrierbehinderter Schleppverband in Fahrt von 200 m Länge oder weniger.",
       "Manövrierbehinderter Schleppverband in Fahrt von mehr als 200 m Länge.",
@@ -301,7 +301,7 @@ export const seeQuestions1 = [
     "id": "S-022",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Welches Fahrzeug führt diese Lichter? (manövrierbehinderter Schleppverband, mehr als 200 m)",
+    "question": "Welches Fahrzeug führt diese Lichter?",
     "options": [
       "Manövrierbehinderter Schleppverband in Fahrt von mehr als 200 m Länge.",
       "Manövrierbehinderter Schleppverband in Fahrt von 200 m Länge oder weniger.",
@@ -343,7 +343,7 @@ export const seeQuestions1 = [
     "id": "S-025",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Welches Fahrzeug führt diese Lichter? (manövrierunfähiges Fahrzeug)",
+    "question": "Welches Fahrzeug führt diese Lichter?",
     "options": [
       "Ein manövrierunfähiges Fahrzeug in Fahrt.",
       "Ein manövrierbehindertes Fahrzeug in Fahrt.",
@@ -357,7 +357,7 @@ export const seeQuestions1 = [
     "id": "S-026",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Welches Fahrzeug führt diese Lichter? (manövrierunfähiges Fahrzeug mit Fahrt durchs Wasser)",
+    "question": "Welches Fahrzeug führt diese Lichter?",
     "options": [
       "Ein manövrierunfähiges Fahrzeug mit Fahrt durch das Wasser.",
       "Ein manövrierbehindertes Fahrzeug mit Fahrt durch das Wasser von 50 und mehr Meter Länge.",
@@ -371,7 +371,7 @@ export const seeQuestions1 = [
     "id": "S-027",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Welches Fahrzeug führt diese Signalkörper? (manövrierunfähiges Fahrzeug)",
+    "question": "Welches Fahrzeug führt diese Signalkörper?",
     "options": [
       "Ein manövrierunfähiges Fahrzeug.",
       "Ein manövrierbehindertes Fahrzeug in Fahrt.",
@@ -413,7 +413,7 @@ export const seeQuestions1 = [
     "id": "S-030",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Welches Fahrzeug führt diese Lichter? (manövrierbehindertes Fahrzeug in Fahrt)",
+    "question": "Welches Fahrzeug führt diese Lichter?",
     "options": [
       "Ein manövrierbehindertes Fahrzeug in Fahrt.",
       "Ein manövrierunfähiges Fahrzeug in Fahrt.",
@@ -427,7 +427,7 @@ export const seeQuestions1 = [
     "id": "S-031",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Welches Fahrzeug muss diese Lichter führen? (manövrierbehindertes Fahrzeug, 50 m und mehr)",
+    "question": "Welches Fahrzeug muss diese Lichter führen?",
     "options": [
       "Ein manövrierbehindertes Fahrzeug mit Fahrt durch das Wasser von 50 und mehr Meter Länge.",
       "Ein manövrierunfähiges Fahrzeug mit Fahrt durch das Wasser von 50 und mehr Meter Länge.",
@@ -441,7 +441,7 @@ export const seeQuestions1 = [
     "id": "S-032",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Welches Fahrzeug führt diese Signalkörper? (manövrierbehindertes Fahrzeug)",
+    "question": "Welches Fahrzeug führt diese Signalkörper?",
     "options": [
       "Ein manövrierbehindertes Fahrzeug.",
       "Ein manövrierunfähiges Fahrzeug in Fahrt.",
@@ -455,7 +455,7 @@ export const seeQuestions1 = [
     "id": "S-033",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Welches Fahrzeug führt diese Lichter? (Grundsitzer unter 50 m)",
+    "question": "Welches Fahrzeug führt diese Lichter?",
     "options": [
       "Ein Grundsitzer von weniger als 50 m Länge.",
       "Ein manövrierbehindertes Fahrzeug.",
@@ -469,7 +469,7 @@ export const seeQuestions1 = [
     "id": "S-034",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Welches Fahrzeug führt diese Signalkörper? (Grundsitzer)",
+    "question": "Welches Fahrzeug führt diese Signalkörper?",
     "options": [
       "Ein Grundsitzer.",
       "Ein manövrierunfähiges Fahrzeug.",
@@ -483,7 +483,7 @@ export const seeQuestions1 = [
     "id": "S-035",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Welches Fahrzeug führt diese Lichter? (Grundsitzer 50 m und mehr)",
+    "question": "Welches Fahrzeug führt diese Lichter?",
     "options": [
       "Ein Grundsitzer von 50 und mehr Meter Länge.",
       "Ein manövrierbehindertes Fahrzeug.",
@@ -497,7 +497,7 @@ export const seeQuestions1 = [
     "id": "S-036",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Welches Fahrzeug muss diese Lichter führen? (tiefgangbehindertes Fahrzeug)",
+    "question": "Welches Fahrzeug muss diese Lichter führen?",
     "options": [
       "Ein tiefgangbehindertes Fahrzeug von 50 und mehr Meter Länge in Fahrt.",
       "Ein manövrierbehindertes Fahrzeug.",
@@ -511,7 +511,7 @@ export const seeQuestions1 = [
     "id": "S-037",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Welches Fahrzeug führt diese Signalkörper? (tiefgangbehindertes Fahrzeug)",
+    "question": "Welches Fahrzeug führt diese Signalkörper?",
     "options": [
       "Ein tiefgangbehindertes Fahrzeug in Fahrt.",
       "Ein manövrierbehindertes Fahrzeug in Fahrt.",
@@ -525,7 +525,7 @@ export const seeQuestions1 = [
     "id": "S-038",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Welches Fahrzeug muss diese Lichter führen? (fischender Trawler mit Fahrt)",
+    "question": "Welches Fahrzeug muss diese Lichter führen?",
     "options": [
       "Ein fischender Trawler (Fischereifahrzeug) mit Fahrt durch das Wasser von 50 und mehr Meter Länge.",
       "Ein fischendes Fahrzeug in Fahrt, das nicht trawlt, z. B. Treibnetzfischer.",
@@ -539,7 +539,7 @@ export const seeQuestions1 = [
     "id": "S-039",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Welches Fahrzeug führt diese Lichter? (fischendes Fahrzeug, nicht trawlend)",
+    "question": "Welches Fahrzeug führt diese Lichter?",
     "options": [
       "Ein fischendes Fahrzeug in Fahrt oder vor Anker, das nicht trawlt, z. B. Treibnetzfischer.",
       "Ein Lotsenfahrzeug im Einsatz.",
@@ -553,7 +553,7 @@ export const seeQuestions1 = [
     "id": "S-040",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Welches Fahrzeug führt diese Signalkörper? (fischendes Fahrzeug)",
+    "question": "Welches Fahrzeug führt diese Signalkörper?",
     "options": [
       "Ein fischendes Fahrzeug in Fahrt oder vor Anker.",
       "Ein manövrierbehindertes Fahrzeug.",
@@ -595,7 +595,7 @@ export const seeQuestions1 = [
     "id": "S-043",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Welches Fahrzeug muss diese Lichter führen? (Ankerlieger 100 m und mehr)",
+    "question": "Welches Fahrzeug muss diese Lichter führen?",
     "options": [
       "Ein vor Anker liegendes Fahrzeug von 100 und mehr Meter Länge.",
       "Ein fischender Trawler (Fischereifahrzeug) mit Fahrt durchs Wasser von 50 und mehr Meter Länge.",
@@ -847,7 +847,7 @@ export const seeQuestions1 = [
     "id": "S-061",
     "category": "see_spezifisch",
     "topic": "ausweichregeln",
-    "question": "Wie muss man sich gegenüber diesem Fahrzeug verhalten? (tiefgangbehindertes Fahrzeug)",
+    "question": "Wie muss man sich gegenüber diesem Fahrzeug verhalten?",
     "options": [
       "Die sichere Durchfahrt des Fahrzeugs darf nicht behindert werden.",
       "Das Fahrzeug muss an Steuerbord passiert werden.",
@@ -861,7 +861,7 @@ export const seeQuestions1 = [
     "id": "S-062",
     "category": "see_spezifisch",
     "topic": "ausweichregeln",
-    "question": "Wie muss man sich gegenüber diesem Fahrzeug verhalten? (Fahrzeug mit Taucher im Einsatz)",
+    "question": "Wie muss man sich gegenüber diesem Fahrzeug verhalten?",
     "options": [
       "Die sichere Durchfahrt des Fahrzeugs darf nicht behindert werden.",
       "Das Fahrzeug muss an Steuerbord passiert werden.",
@@ -945,7 +945,7 @@ export const seeQuestions1 = [
     "id": "S-068",
     "category": "see_spezifisch",
     "topic": "schallsignale",
-    "question": "Welche Bedeutung hat dieses Schallsignal? (mindestens 5 kurze Töne)",
+    "question": "Welche Bedeutung hat dieses Schallsignal?",
     "options": [
       "Ein ausweichpflichtiges Fahrzeug wird auf seine Ausweichpflicht aufmerksam gemacht.",
       "Allgemeines Gefahren- und Warnsignal.",
@@ -959,7 +959,7 @@ export const seeQuestions1 = [
     "id": "S-069",
     "category": "see_spezifisch",
     "topic": "schallsignale",
-    "question": "Welche Bedeutung hat dieses Schallsignal? (kurz, lang, kurz)",
+    "question": "Welche Bedeutung hat dieses Schallsignal?",
     "options": [
       "Ein Ankerlieger macht ein sich näherndes Fahrzeug auf eine gefährliche Annäherung aufmerksam.",
       "Die Maschine des Fahrzeugs läuft rückwärts.",
@@ -1057,7 +1057,7 @@ export const seeQuestions1 = [
     "id": "S-076",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was ist das für ein Fahrzeug und was ist zu beachten? (manövrierbehindertes Fahrzeug mit zwei Rhomben)",
+    "question": "Was ist das für ein Fahrzeug und was ist zu beachten?",
     "options": [
       "Ein manövrierbehindertes Fahrzeug, das baggert oder Unterwasserarbeiten ausführt und dabei die Schifffahrt behindert. Es ist an der Seite zu passieren, an der zwei schwarze Rhomben senkrecht übereinander angeordnet sind.",
       "Ein manövrierbehindertes Fahrzeug, das die Schifffahrt behindert. Es ist an der Seite zu passieren, an der zwei schwarze Bälle senkrecht übereinander angeordnet sind.",
@@ -1071,7 +1071,7 @@ export const seeQuestions1 = [
     "id": "S-077",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was ist das für ein Fahrzeug und was ist zu beachten? (manövrierbehindertes Fahrzeug in Fahrt, nicht behindert)",
+    "question": "Was ist das für ein Fahrzeug und was ist zu beachten?",
     "options": [
       "Ein manövrierbehindertes Fahrzeug mit Fahrt durchs Wasser, das baggert oder Unterwasserarbeiten ausführt und dabei die Schifffahrt nicht behindert. Es ist an der Seite zu passieren, die in Fahrtrichtung rechts liegt.",
       "Ein manövrierbehindertes Fahrzeug mit Fahrt durchs Wasser, das baggert oder Unterwasserarbeiten ausführt und dabei die Schifffahrt behindert. Es ist an der Seite zu passieren, die in Fahrtrichtung links liegt.",
@@ -1085,7 +1085,7 @@ export const seeQuestions1 = [
     "id": "S-078",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was ist das für ein Fahrzeug und was ist zu beachten? (manövrierbehindertes Fahrzeug ohne Fahrt, zwei grüne Rundumlichter)",
+    "question": "Was ist das für ein Fahrzeug und was ist zu beachten?",
     "options": [
       "Ein manövrierbehindertes Fahrzeug ohne Fahrt durchs Wasser, das baggert oder Unterwasserarbeiten ausführt und dabei die Schifffahrt behindert. Es ist an der Seite zu passieren, an der zwei grüne Rundumlichter senkrecht übereinander angeordnet sind.",
       "Ein manövrierbehindertes Fahrzeug ohne Fahrt durchs Wasser, das die Schifffahrt behindert. Es ist an der Seite zu passieren, an der zwei rote Rundumlichter senkrecht übereinander angeordnet sind.",
@@ -1099,7 +1099,7 @@ export const seeQuestions1 = [
     "id": "S-079",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was ist das für ein Fahrzeug und was ist zu beachten? (Fahrzeug mit gefährlichen Gütern)",
+    "question": "Was ist das für ein Fahrzeug und was ist zu beachten?",
     "options": [
       "Fahrzeug mit gefährlichen Gütern, Abstand halten, Rauchen und offenes Feuer verboten.",
       "Fahrzeug des öffentlichen Dienstes. Es darf von den Verkehrsregeln abweichen.",
@@ -1141,7 +1141,7 @@ export const seeQuestions1 = [
     "id": "S-082",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was ist das für ein Fahrzeug und was ist zu beachten? (Fahrzeug des öffentlichen Dienstes)",
+    "question": "Was ist das für ein Fahrzeug und was ist zu beachten?",
     "options": [
       "Fahrzeug des öffentlichen Dienstes im Einsatz. Es darf von den Verkehrsvorschriften abweichen.",
       "Fahrzeug der Bundesmarine im Einsatz. Es hat Munition oder andere Gefahrgüter an Bord.",
@@ -1463,7 +1463,7 @@ export const seeQuestions1 = [
     "id": "S-105",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung haben die Sichtzeichen \"Schutzbedürftige Anlage\"?",
+    "question": "Welche Bedeutung haben diese Sichtzeichen?",
     "options": [
       "Schutzbedürftige Anlage.",
       "Dauernde Sperrung einer Teilstrecke der Seeschifffahrtsstraße.",
@@ -1477,7 +1477,7 @@ export const seeQuestions1 = [
     "id": "S-106",
     "category": "see_spezifisch",
     "topic": "schallsignale",
-    "question": "Welche Bedeutung hat das Schallsignal \"Brücke/Sperrwerk/Schleuse kann vorübergehend nicht geöffnet werden\" und was ist zu beachten?",
+    "question": "Welche Bedeutung hat dieses Schallsignal und was ist zu beachten?",
     "options": [
       "Brücke, Sperrwerk, Schleuse kann vorübergehend nicht geöffnet werden; Fahrt unterbrechen, Freigabe abwarten.",
       "Ein Ausweichpflichtiger wird vom Vorfahrtberechtigten auf seine Ausweichpflicht hingewiesen; sofort Ausweichmanöver einleiten.",
@@ -1491,7 +1491,7 @@ export const seeQuestions1 = [
     "id": "S-107",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Sichtzeichen \"Geschwindigkeit 8 km/h Fahrt durch das Wasser\"?",
+    "question": "Welche Bedeutung hat dieses Sichtzeichen?",
     "options": [
       "Geschwindigkeit von 8 km/h Fahrt durch das Wasser, die innerhalb eines Bereiches von 500 m von der jeweiligen Uferlinie wegen Badebetriebs nicht überschritten werden darf.",
       "Kennzeichnung besonderer Gebiete und Stellen, z. B. Warngebiete; die Bedeutung kann der Seekarte entnommen und aus der Beschriftung des Schifffahrtszeichens erkannt werden.",

@@ -217,7 +217,7 @@ export const basisQuestions = [
     "id": "B-016",
     "category": "basis",
     "topic": "schallsignale",
-    "question": "Welche Bedeutung hat das Bleib-weg-Signal (5 oder mehr kurze Töne)?",
+    "question": "Welche Bedeutung hat das Bleib-weg-Signal?",
     "options": [
       "Bleib-weg-Signal, Gefahrenbereich sofort verlassen.",
       "Allgemeines Gefahr- und Warnsignal.",
@@ -231,7 +231,7 @@ export const basisQuestions = [
     "id": "B-017",
     "category": "basis",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Tafelzeichen \"Überholverbot\" (rotes Kreuz auf weißem Grund)?",
+    "question": "Welche Bedeutung hat das Tafelzeichen (rotes Kreuz auf weißem Grund)?",
     "options": [
       "Überholverbot.",
       "Begegnungsverbot.",
@@ -245,7 +245,7 @@ export const basisQuestions = [
     "id": "B-018",
     "category": "basis",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Tafelzeichen \"Begegnungsverbot an einer Engstelle\"?",
+    "question": "Welche Bedeutung hat dieses Tafelzeichen?",
     "options": [
       "Begegnungsverbot an einer Engstelle.",
       "Begegnungsverbot für Fahrzeuge über 12 m Länge.",
@@ -259,7 +259,7 @@ export const basisQuestions = [
     "id": "B-019",
     "category": "basis",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Tafelzeichen \"Sog und Wellenschlag vermeiden\"?",
+    "question": "Welche Bedeutung hat dieses Tafelzeichen?",
     "options": [
       "Sog und Wellenschlag vermeiden.",
       "Gefährdeter Strandbereich, Überspülungsgefahr; Mindestpassierabstand 100 m.",
@@ -287,7 +287,7 @@ export const basisQuestions = [
     "id": "B-021",
     "category": "basis",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Tafelzeichen \"Haltegebot\" (rotes Stoppsignal)?",
+    "question": "Welche Bedeutung hat das Tafelzeichen (rotes Stoppsignal)?",
     "options": [
       "Haltegebot vor beweglichen Brücken, Sperrwerken und Schleusen.",
       "Dauernde Sperrung einer Teilstrecke der Wasserstraße.",
@@ -301,7 +301,7 @@ export const basisQuestions = [
     "id": "B-022",
     "category": "basis",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Tafelzeichen \"Ankern verboten\"?",
+    "question": "Welche Bedeutung hat dieses Tafelzeichen?",
     "options": [
       "Ankern verboten für alle Fahrzeuge.",
       "Ankern verboten für Kleinfahrzeuge unter 12 m Länge.",
@@ -315,7 +315,7 @@ export const basisQuestions = [
     "id": "B-023",
     "category": "basis",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung haben die Tafelzeichen \"Festmache- und Liegeverbot\"?",
+    "question": "Welche Bedeutung haben diese Tafelzeichen?",
     "options": [
       "Festmache- und Liegeverbot.",
       "Festmache- und Liegeverbot für Sportboote.",
@@ -329,7 +329,7 @@ export const basisQuestions = [
     "id": "B-024",
     "category": "basis",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Tafelzeichen \"Abgabe eines langen Tons\"?",
+    "question": "Welche Bedeutung hat dieses Tafelzeichen?",
     "options": [
       "Abgabe eines langen Tons.",
       "Abgabe eines kurzen Tons.",
@@ -357,7 +357,7 @@ export const basisQuestions = [
     "id": "B-026",
     "category": "basis",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Tafelzeichen \"Ende einer Gebots- oder Verbotsstrecke\"?",
+    "question": "Welche Bedeutung hat dieses Tafelzeichen?",
     "options": [
       "Ende einer Gebots- oder Verbotsstrecke.",
       "Streckenabschnitt für eine nicht frei fahrende Fähre.",
@@ -371,7 +371,7 @@ export const basisQuestions = [
     "id": "B-027",
     "category": "basis",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Tafelzeichen \"Verbot der Durchfahrt und Sperrung der Schifffahrt\"?",
+    "question": "Welche Bedeutung hat dieses Tafelzeichen?",
     "options": [
       "Verbot der Durchfahrt und Sperrung der Schifffahrt.",
       "Verbot der Durchfahrt und Sperrung für Kleinfahrzeuge.",

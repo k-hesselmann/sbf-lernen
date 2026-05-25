@@ -7,7 +7,7 @@ export const seeQuestions2 = [
     "id": "S-108",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Schifffahrtszeichen \"Gesperrt für alle Maschinenfahrzeuge und Wassermotorräder wegen Badebetriebs\"?",
+    "question": "Welche Bedeutung hat dieses Schifffahrtszeichen?",
     "options": [
       "Gesperrt für alle Maschinenfahrzeuge und Wassermotorräder wegen Badebetriebs.",
       "Höchstgeschwindigkeit von 4,3 Knoten Fahrt durch das Wasser, die innerhalb von 500 m von der jeweiligen Uferlinie wegen Badebetriebs nicht überschritten werden darf.",
@@ -77,7 +77,7 @@ export const seeQuestions2 = [
     "id": "S-113",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Welche Bedeutung hat das Flaggensignal \"Anhalten\" auf See?",
+    "question": "Welche Bedeutung hat dieses Flaggensignal auf See?",
     "options": [
       "Anhalten.",
       "Seenotsignal.",
@@ -105,7 +105,7 @@ export const seeQuestions2 = [
     "id": "S-115",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung haben die Sichtzeichen \"Dauernde Sperrung der Seeschifffahrtsstraße. Weiterfahrt verboten.\"?",
+    "question": "Welche Bedeutung haben diese Sichtzeichen?",
     "options": [
       "Dauernde Sperrung der Seeschifffahrtsstraße. Weiterfahrt verboten.",
       "Schutzbedürftige Anlage. Sog und Wellenschlag vermeiden.",
@@ -119,7 +119,7 @@ export const seeQuestions2 = [
     "id": "S-116",
     "category": "see_spezifisch",
     "topic": "schallsignale",
-    "question": "Welche Bedeutung hat das Schallsignal \"Sperrung der Seeschifffahrtsstraße, Weiterfahrt verboten\"?",
+    "question": "Welche Bedeutung hat dieses Schallsignal?",
     "options": [
       "Sperrung der Seeschifffahrtsstraße, Weiterfahrt verboten.",
       "Einfahrt in Schleuse oder Anlage gesperrt, auf Freigabe warten.",
@@ -133,7 +133,7 @@ export const seeQuestions2 = [
     "id": "S-117",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung haben die Sichtzeichen \"Außergewöhnliche Schifffahrtsbehinderung\"?",
+    "question": "Welche Bedeutung haben diese Sichtzeichen?",
     "options": [
       "Außergewöhnliche Schifffahrtsbehinderung.",
       "Dauernde Sperrung der Seeschifffahrtsstraße.",
@@ -189,7 +189,7 @@ export const seeQuestions2 = [
     "id": "S-121",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat diese Tonne/dieses Schifffahrtszeichen (Steuerbordseite des Fahrwassers, Wattgebiet)?",
+    "question": "Welche Bedeutung hat diese Tonne/dieses Schifffahrtszeichen?",
     "options": [
       "Die Steuerbordseite des Fahrwassers.",
       "Die Backbordseite des Fahrwassers.",
@@ -203,7 +203,7 @@ export const seeQuestions2 = [
     "id": "S-122",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat diese Tonne/dieses Schifffahrtszeichen (Backbordseite des Fahrwassers, Wattgebiet)?",
+    "question": "Welche Bedeutung hat diese Tonne/dieses Schifffahrtszeichen?",
     "options": [
       "Die Backbordseite des Fahrwassers.",
       "Die Steuerbordseite des Fahrwassers.",
@@ -217,7 +217,7 @@ export const seeQuestions2 = [
     "id": "S-123",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat diese Tonne (Steuerbordseite des durchgehenden Fahrwassers/Backbordseite des abzweigenden Fahrwassers)?",
+    "question": "Welche Bedeutung hat diese Tonne?",
     "options": [
       "Steuerbordseite des durchgehenden Fahrwassers/Backbordseite des abzweigenden oder einmündenden Fahrwassers.",
       "Backbordseite des durchgehenden Fahrwassers/Steuerbordseite des abzweigenden oder einmündenden Fahrwassers.",
@@ -231,7 +231,7 @@ export const seeQuestions2 = [
     "id": "S-124",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat diese Tonne (Backbordseite des durchgehenden Fahrwassers/Steuerbordseite des abzweigenden Fahrwassers)?",
+    "question": "Welche Bedeutung hat diese Tonne?",
     "options": [
       "Backbordseite des durchgehenden Fahrwassers, Steuerbordseite des abzweigenden oder einmündenden Fahrwassers.",
       "Steuerbordseite des durchgehenden Fahrwassers, Backbordseite des abzweigenden oder einmündenden Fahrwassers.",
@@ -287,7 +287,7 @@ export const seeQuestions2 = [
     "id": "S-128",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Schifffahrtszeichen \"Kennzeichnung einer allgemeinen Gefahrenstelle, Nordquadrant\"?",
+    "question": "Welche Bedeutung hat dieses Schifffahrtszeichen?",
     "options": [
       "Kennzeichnung einer allgemeinen Gefahrenstelle, Nordquadrant.",
       "Kennzeichnung einer allgemeinen Gefahrenstelle, Südquadrant.",
@@ -301,7 +301,7 @@ export const seeQuestions2 = [
     "id": "S-129",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Schifffahrtszeichen \"Kennzeichnung einer allgemeinen Gefahrenstelle, Ostquadrant\"?",
+    "question": "Welche Bedeutung hat dieses Schifffahrtszeichen?",
     "options": [
       "Kennzeichnung einer allgemeinen Gefahrenstelle, Ostquadrant.",
       "Kennzeichnung einer allgemeinen Gefahrenstelle, Nordquadrant.",
@@ -315,7 +315,7 @@ export const seeQuestions2 = [
     "id": "S-130",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Schifffahrtszeichen \"Kennzeichnung einer allgemeinen Gefahrenstelle, Südquadrant\"?",
+    "question": "Welche Bedeutung hat dieses Schifffahrtszeichen?",
     "options": [
       "Kennzeichnung einer allgemeinen Gefahrenstelle, Südquadrant.",
       "Kennzeichnung einer allgemeinen Gefahrenstelle, Nordquadrant.",
@@ -329,7 +329,7 @@ export const seeQuestions2 = [
     "id": "S-131",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Schifffahrtszeichen \"Kennzeichnung einer allgemeinen Gefahrenstelle, Westquadrant\"?",
+    "question": "Welche Bedeutung hat dieses Schifffahrtszeichen?",
     "options": [
       "Kennzeichnung einer allgemeinen Gefahrenstelle, Westquadrant.",
       "Kennzeichnung einer allgemeinen Gefahrenstelle, Ostquadrant.",
@@ -399,7 +399,7 @@ export const seeQuestions2 = [
     "id": "S-136",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Was kennzeichnet dieses Schifffahrtszeichen und welches Verhalten wird gefordert? (Einzelgefahrenstelle)",
+    "question": "Was kennzeichnet dieses Schifffahrtszeichen und welches Verhalten wird gefordert?",
     "options": [
       "Eine Einzelgefahrenstelle, die an allen Seiten passiert werden kann.",
       "Den nördlichen Quadranten einer allgemeinen Gefahrenstelle, die nördlich passiert werden muss.",
@@ -1435,7 +1435,7 @@ export const seeQuestions2 = [
     "id": "S-210",
     "category": "see_spezifisch",
     "topic": "sicherheit",
-    "question": "Was bedeutet das folgende durch Licht oder Schallsignal gegebene Morsesignal (SOS)?",
+    "question": "Was bedeutet das folgende durch Licht- oder Schallsignal gegebene Morsesignal?",
     "options": [
       "Seenotsignal.",
       "Nebelsignal.",
@@ -1463,7 +1463,7 @@ export const seeQuestions2 = [
     "id": "S-212",
     "category": "see_spezifisch",
     "topic": "sicherheit",
-    "question": "Was bedeutet das Flaggensignal NC (Fahrzeug in Seenot)?",
+    "question": "Was bedeutet das Flaggensignal NC?",
     "options": [
       "Fahrzeug in Seenot.",
       "Fahrzeug des öffentlichen Dienstes.",
@@ -1477,7 +1477,7 @@ export const seeQuestions2 = [
     "id": "S-213",
     "category": "see_spezifisch",
     "topic": "sicherheit",
-    "question": "Was bedeutet dieses Signal auf einem Schiff? (seitliches Heben und Senken der ausgestreckten Arme)",
+    "question": "Was bedeutet dieses Signal auf einem Schiff?",
     "options": [
       "Fahrzeug in Seenot.",
       "Fahrzeug ist manövrierbehindert.",
