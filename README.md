@@ -4,7 +4,7 @@ Kostenlose App zur Vorbereitung zu allen SBF-Theorieprüfungen. Enthält ausschl
 
 ---
 
-## Features 🚀
+## Features
 
 - **Lern-Cockpit:** Lerne alle offiziellen Fragen nach Kategorien geordnet (Basisfragen, Spez. Fragen See, Spez. Fragen Binnen, Spez. Fragen Segeln).
 - **Spaced-Repetition:** Nutze ein intelligentes Lernsystem zur gezielten Wiederholung schwieriger und fälliger Fragen.
@@ -14,7 +14,7 @@ Kostenlose App zur Vorbereitung zu allen SBF-Theorieprüfungen. Enthält ausschl
 
 ---
 
-## Wichtig: Seekarten-PDF für die Navigation 🗺️
+## Wichtig: Seekarten-PDF für die Navigation 
 
 Aufgrund von Urheberrechtsbestimmungen ist das offizielle D49-Kartenaufgaben-PDF nicht direkt im Code-Repository enthalten.
 
@@ -22,10 +22,11 @@ Um die Navigationsaufgaben zu nutzen:
 1. Besorge dir das offizielle PDF der D49-Kartenaufgaben: **`Seekarte_D49_Aufgaben_SBF_SEE.pdf`**.
 2. Lege die Datei in das Projektverzeichnis unter:
    `src/data/Seekarte_D49_Aufgaben_SBF_SEE.pdf`
+3. Drucke das PDF in Originalgröße auf A3-Papier
 
 ---
 
-## Schnellstart-Anleitung ⏱️
+## Quick-Start-Anleitung 
 
 So installierst und startest du die Anwendung auf deinem Computer:
 
