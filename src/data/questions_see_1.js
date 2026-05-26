@@ -855,7 +855,7 @@ export const seeQuestions1 = [
       "Kurs und Geschwindigkeit beibehalten."
     ],
     "correctIndex": 0,
-    "image": "/questions/see-q116.png"
+    "image": "/questions/see-q109.png"
   },
   {
     "id": "S-062",
