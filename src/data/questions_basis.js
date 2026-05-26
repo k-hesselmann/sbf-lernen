@@ -225,7 +225,7 @@ export const basisQuestions = [
       "Manövrierbehinderter Schleppverband über 200 m Länge."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/basis-q16.png"
   },
   {
     "id": "B-017",

@@ -43,7 +43,7 @@ export const binnenQuestions2 = [
       "Schwimmende Anlage / Schwimmkörper. Vorbeifahrt in möglichst weitem Abstand, Geschwindigkeit vermindern, Sog und Wellenschlag vermeiden."
     ],
     "correctIndex": 0,
-    "image": "/questions/binnen-q155.gif"
+    "image": "/questions/binnen-q155.png"
   },
   {
     "id": "BI-095",

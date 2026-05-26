@@ -1395,7 +1395,7 @@ export const seeQuestions2 = [
     "topic": "sicherheit",
     "question": "Welche Notsignale können gegeben werden?",
     "options": [
-      "Leuchtrakete mit rotem Leuchtstern oder rot brennende Handfackel, anhaltendes Ertönen eines Nebelsignalgerätes, dreimaliges Geben (···—···) per Licht oder Ton, dreimal das Wort MAYDAY über Sprechfunk, seitliches Heben und Senken der Arme, Flaggensignal NC, EPIRB, DSC, Radartransponder.",
+      "Leuchtrakete mit rotem Leuchtstern oder rot brennende Handfackel, anhaltendes Ertönen eines Nebelsignalgerätes, dreimaliges Geben (•••———•••) per Licht oder Ton, dreimal das Wort MAYDAY über Sprechfunk, seitliches Heben und Senken der Arme, Flaggensignal NC, EPIRB, DSC, Radartransponder.",
       "Leuchtrakete mit rotem Leuchtstern oder rot brennende Handfackel, anhaltendes Ertönen eines Nebelsignalgerätes, dreimaliges Geben per Licht oder Ton, Seewasserfärber, seitliches Heben und Senken der Arme, Ball über oder unter Flaggensignal NC, EPIRB, DSC, Radartransponder.",
       "Leuchtrakete mit orangem Leuchtstern oder orange brennende Handfackel, rotes Rauchsignal, anhaltendes Ertönen eines Nebelsignalgerätes, dreimaliges Geben per Licht oder Ton, dreimal das Wort MAYDAY über Sprechfunk, seitliches Heben und Senken der Arme, Flaggensignal NC, EPIRB, DSC, Radartransponder.",
       "Leuchtrakete mit rotem Leuchtstern oder rot brennende Handfackel, anhaltendes Ertönen eines Nebelsignalgerätes, dreimaliges Geben per Licht oder Ton, dreimal das Wort MAYDAY über Sprechfunk, seitliches Heben und Senken der Arme, Flaggensignal NC, EPIRB, DSC, Radartransponder."

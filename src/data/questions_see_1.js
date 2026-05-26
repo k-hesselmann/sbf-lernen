@@ -631,7 +631,7 @@ export const seeQuestions1 = [
       "Ein vor Anker liegendes Fahrzeug von 100 und mehr Meter Länge."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/see-q117.png"
   },
   {
     "id": "S-046",
@@ -645,7 +645,7 @@ export const seeQuestions1 = [
       "Ein manövrierunfähiges Fahrzeug in Fahrt, ein Segelfahrzeug in Fahrt, ein schleppendes oder schiebendes Fahrzeug in Fahrt, ein geschlepptes Fahrzeug oder das letzte bemannte Fahrzeug eines Schleppverbandes in Fahrt, ein fischendes Fahrzeug in Fahrt oder vor Anker."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/see-q118.png"
   },
   {
     "id": "S-047",
@@ -667,10 +667,10 @@ export const seeQuestions1 = [
     "topic": "schallsignale",
     "question": "Was für ein Schallsignal muss ein Segelfahrzeug in Fahrt von 12 und mehr Meter Länge bei verminderter Sicht geben?",
     "options": [
-      "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife: lang, kurz, kurz.",
-      "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife: lang, lang, kurz.",
+      "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife: lang, kurz, kurz (— • •).",
+      "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife: lang, lang, kurz (— — •).",
       "Mindestens alle zwei Minuten ein kräftiges Schallsignal, das mit den vorgeschriebenen nicht verwechselt werden kann.",
-      "Mit der Pfeife: kurz, lang, kurz."
+      "Mit der Pfeife: kurz, lang, kurz (• — •)."
     ],
     "correctIndex": 0,
     "image": null
@@ -682,9 +682,9 @@ export const seeQuestions1 = [
     "question": "Welches Schallsignal muss ein Fahrzeug in Fahrt von weniger als 12 m Länge bei verminderter Sicht geben, wenn es die sonst vorgeschriebenen Schallsignale nicht geben kann?",
     "options": [
       "Mindestens alle zwei Minuten ein kräftiges Schallsignal, das mit den vorgeschriebenen nicht verwechselt werden kann.",
-      "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife: lang, kurz, kurz.",
-      "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife: lang, lang, kurz.",
-      "Mit der Pfeife: kurz, lang, kurz."
+      "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife: lang, kurz, kurz (— • •).",
+      "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife: lang, lang, kurz (— — •).",
+      "Mit der Pfeife: kurz, lang, kurz (• — •)."
     ],
     "correctIndex": 0,
     "image": null
@@ -723,10 +723,10 @@ export const seeQuestions1 = [
     "topic": "schallsignale",
     "question": "Welches zusätzliche Schallsignal darf jeder Ankerlieger bei verminderter Sicht geben, um einem sich nähernden Fahrzeug seinen Standort anzuzeigen?",
     "options": [
-      "Mit der Pfeife: kurz, lang, kurz.",
+      "Mit der Pfeife: kurz, lang, kurz (• — •).",
       "Mindestens alle zwei Minuten ein kräftiges Schallsignal, das mit den vorgeschriebenen nicht verwechselt werden kann.",
-      "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife: lang, kurz, kurz.",
-      "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife: lang, lang, kurz."
+      "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife: lang, kurz, kurz (— • •).",
+      "Mindestens alle zwei Minuten drei aufeinander folgende Töne mit der Pfeife: lang, lang, kurz (— — •)."
     ],
     "correctIndex": 0,
     "image": null
@@ -855,7 +855,7 @@ export const seeQuestions1 = [
       "Kurs und Geschwindigkeit beibehalten."
     ],
     "correctIndex": 0,
-    "image": "/questions/see-q109.png"
+    "image": "/questions/see-q133.png"
   },
   {
     "id": "S-062",
@@ -1253,7 +1253,7 @@ export const seeQuestions1 = [
     "id": "S-090",
     "category": "see_spezifisch",
     "topic": "schallsignale",
-    "question": "Welche Bedeutung hat das allgemeine Gefahr- und Warnsignal (SeeSchStrO)?",
+    "question": "Welche Bedeutung hat dieses Schallsignal?",
     "options": [
       "Allgemeines \"Gefahr- und Warnsignal\".",
       "Sperrung der Seeschifffahrtsstraße.",
@@ -1261,7 +1261,7 @@ export const seeQuestions1 = [
       "Brücke/Schleuse kann vorübergehend nicht geöffnet werden."
     ],
     "correctIndex": 0,
-    "image": null
+    "image": "/questions/see-q162.png"
   },
   {
     "id": "S-091",

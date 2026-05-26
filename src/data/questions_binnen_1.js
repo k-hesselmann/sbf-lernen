@@ -771,7 +771,7 @@ export const binnenQuestions1 = [
       "Liegestelle für Fahrzeuge mit gefährlichen Gütern, nicht für Kleinfahrzeuge."
     ],
     "correctIndex": 0,
-    "image": "/questions/binnen-q108.gif"
+    "image": "/questions/binnen-q108.png"
   },
   {
     "id": "BI-056",
