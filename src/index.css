@@ -209,3 +209,59 @@ body {
 .count-animate {
   animation: countUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
+
+/* ─── 3D Perspective Card Transitions ─── */
+@keyframes cardEnterRight {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) rotateY(-8deg) translateX(16px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1000px) rotateY(0) translateX(0) scale(1);
+  }
+}
+@keyframes cardEnterLeft {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) rotateY(8deg) translateX(-16px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1000px) rotateY(0) translateX(0) scale(1);
+  }
+}
+@keyframes cardLeaveLeft {
+  from {
+    opacity: 1;
+    transform: perspective(1000px) rotateY(0) translateX(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: perspective(1000px) rotateY(8deg) translateX(-16px) scale(0.99);
+  }
+}
+@keyframes cardLeaveRight {
+  from {
+    opacity: 1;
+    transform: perspective(1000px) rotateY(0) translateX(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: perspective(1000px) rotateY(-8deg) translateX(16px) scale(0.99);
+  }
+}
+
+.animate-card-enter-right {
+  animation: cardEnterRight 0.22s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+.animate-card-enter-left {
+  animation: cardEnterLeft 0.22s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+.animate-card-leave-left {
+  animation: cardLeaveLeft 0.18s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+.animate-card-leave-right {
+  animation: cardLeaveRight 0.18s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+

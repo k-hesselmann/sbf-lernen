@@ -1197,7 +1197,7 @@ export const seeQuestions2 = [
     "id": "S-193",
     "category": "see_spezifisch",
     "topic": "wetterkunde",
-    "question": "Was zeigt die Abbildung eines Hochdruckgebietes auf der Nordhalbkugel in der Wetterkarte?",
+    "question": "Was zeigt die folgende Abbildung?",
     "options": [
       "Abbildung eines Hochdruckgebietes auf der Nordhalbkugel, Isobaren mit Angabe des Luftdrucks in hPa.",
       "Abbildung eines Hochdruckgebietes auf der Südhalbkugel, Isobaren mit Angabe des Luftdrucks in hPa.",
@@ -1211,7 +1211,7 @@ export const seeQuestions2 = [
     "id": "S-194",
     "category": "see_spezifisch",
     "topic": "wetterkunde",
-    "question": "Was zeigt die Abbildung eines Tiefdruckgebietes auf der Nordhalbkugel in der Wetterkarte?",
+    "question": "Was zeigt die folgende Abbildung?",
     "options": [
       "Abbildung eines Tiefdruckgebietes auf der Nordhalbkugel mit Warm- und Kaltfront, Isobaren mit Angabe des Luftdrucks in hPa, warme und kalte Luftströmung.",
       "Abbildung eines Tiefdruckgebietes auf der Südhalbkugel mit Kalt- und Warmfront, Isobaren mit Angabe des Luftdrucks in hPa, kalte und warme Luftströmung.",

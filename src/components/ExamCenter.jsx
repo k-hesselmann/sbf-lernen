@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { Trophy, ArrowRight, ClipboardCheck, TrendingUp, History, Calendar, Check, X, ShieldAlert } from 'lucide-react'
+import { Trophy, ArrowRight, ClipboardCheck, TrendingUp, History, Calendar, Check, X, ShieldAlert, ChevronLeft } from 'lucide-react'
 import useStore from '../store/useStore'
 import { EXAM_CONFIG } from '../data/examConfig.js'
 
@@ -107,6 +107,7 @@ export default function ExamCenter() {
   const cardProgress = useStore((s) => s.cardProgress)
   const examHistory = useStore((s) => s.examHistory)
   const prepareExam = useStore((s) => s.prepareExam)
+  const setView = useStore((s) => s.setView)
 
   const fullExams = useMemo(() => {
     return Object.entries(EXAM_CONFIG).filter(([key]) => !key.includes('ergaenzung'))
@@ -156,6 +157,17 @@ export default function ExamCenter() {
 
   return (
     <div className="space-y-6">
+      {/* Back Button */}
+      <div>
+        <button
+          onClick={() => setView('dashboard')}
+          className="flex items-center gap-1.5 text-slate-400 hover:text-slate-200 transition-colors text-xs font-semibold cursor-pointer"
+        >
+          <ChevronLeft className="w-4 h-4" />
+          Zurück zum Lern-Cockpit
+        </button>
+      </div>
+
       {/* Header */}
       <div className="animate-fade-in flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3">

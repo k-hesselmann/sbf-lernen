@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback, useEffect } from 'react'
-import { Check, X, ArrowRight, RotateCcw, Sparkles, Layers, AlertCircle, Filter, ChevronLeft, SlidersHorizontal, Compass } from 'lucide-react'
+import { Check, X, ArrowRight, RotateCcw, Sparkles, Layers, AlertCircle, Filter, ChevronLeft, SlidersHorizontal, Compass, GraduationCap } from 'lucide-react'
 import useStore from '../store/useStore'
 import { CATEGORY_LABELS, CATEGORY_COLORS, getCategoriesForExam, EXAM_CONFIG, TOPIC_LABELS } from '../data/examConfig.js'
 import { getQuestionsForExam } from '../data/index.js'
@@ -15,6 +15,7 @@ export default function LearnMode() {
   const learningMode = useStore((s) => s.learningMode)
   const setLearningMode = useStore((s) => s.setLearningMode)
   const cardProgress = useStore((s) => s.cardProgress)
+  const setView = useStore((s) => s.setView)
 
   const [isSessionActive, setIsSessionActive] = useState(false)
   const [sessionCards, setSessionCards] = useState([])
@@ -23,6 +24,15 @@ export default function LearnMode() {
   const [showResult, setShowResult] = useState(false)
   const [sessionStats, setSessionStats] = useState({ correct: 0, incorrect: 0 })
   const [answersHistory, setAnswersHistory] = useState({})
+
+  // Local state for study options & autoplay timer
+  const [shuffleSession, setShuffleSession] = useState(false)
+  const [autoplayActive, setAutoplayActive] = useState(true)
+  const [autoplayPaused, setAutoplayPaused] = useState(false)
+  const [autoplayProgress, setAutoplayProgress] = useState(0)
+  const [isTransitioning, setIsTransitioning] = useState(false)
+  const [transitionDirection, setTransitionDirection] = useState('next')
+  const [autoplaySuspended, setAutoplaySuspended] = useState(false)
 
   const config = useMemo(() => EXAM_CONFIG[selectedExamType], [selectedExamType])
   const availableCategories = useMemo(() => getCategoriesForExam(selectedExamType), [selectedExamType])
@@ -84,15 +94,21 @@ export default function LearnMode() {
   // Launch a new session with current config
   const handleStartSession = useCallback(() => {
     const cards = useStore.getState().getStudyCards()
-    const prepared = cards.map(c => prepareQuestion(c))
+    let prepared = cards.map(c => prepareQuestion(c))
+    if (shuffleSession) {
+      prepared = [...prepared].sort(() => Math.random() - 0.5)
+    }
     setSessionCards(prepared)
     setCurrentIndex(0)
     setSelectedAnswer(null)
     setShowResult(false)
     setSessionStats({ correct: 0, incorrect: 0 })
     setAnswersHistory({})
+    setAutoplaySuspended(false)
+    setIsTransitioning(false)
+    setTransitionDirection('next')
     setIsSessionActive(true)
-  }, [])
+  }, [shuffleSession])
 
   const currentCard = sessionCards[currentIndex]
 
@@ -100,6 +116,7 @@ export default function LearnMode() {
     if (showResult || !currentCard) return
     setSelectedAnswer(answerIndex)
     setShowResult(true)
+    setAutoplayPaused(false) // Reset pause state when answering
 
     setAnswersHistory((prev) => ({
       ...prev,
@@ -115,7 +132,7 @@ export default function LearnMode() {
     }))
   }, [showResult, currentCard, answerCard])
 
-  const handleNext = useCallback(() => {
+  const executeNext = useCallback(() => {
     const nextIndex = currentIndex + 1
     setCurrentIndex(nextIndex)
     const nextCard = sessionCards[nextIndex]
@@ -128,8 +145,9 @@ export default function LearnMode() {
     }
   }, [currentIndex, sessionCards, answersHistory])
 
-  const handlePrevious = useCallback(() => {
+  const executePrevious = useCallback(() => {
     if (currentIndex > 0) {
+      setAutoplaySuspended(true)
       const prevIndex = currentIndex - 1
       setCurrentIndex(prevIndex)
       const prevCard = sessionCards[prevIndex]
@@ -140,21 +158,92 @@ export default function LearnMode() {
     }
   }, [currentIndex, sessionCards, answersHistory])
 
+  const executeSkip = useCallback(() => {
+    executeNext()
+  }, [executeNext])
+
+  const handleNext = useCallback(() => {
+    if (isTransitioning) return
+    setIsTransitioning(true)
+    setTransitionDirection('next')
+    setTimeout(() => {
+      executeNext()
+      setIsTransitioning(false)
+    }, 200)
+  }, [isTransitioning, executeNext])
+
+  const handlePrevious = useCallback(() => {
+    if (isTransitioning) return
+    setIsTransitioning(true)
+    setTransitionDirection('prev')
+    setTimeout(() => {
+      executePrevious()
+      setIsTransitioning(false)
+    }, 200)
+  }, [isTransitioning, executePrevious])
+
   const handleSkip = useCallback(() => {
-    handleNext()
-  }, [handleNext])
+    if (isTransitioning) return
+    setIsTransitioning(true)
+    setTransitionDirection('next')
+    setTimeout(() => {
+      executeSkip()
+      setIsTransitioning(false)
+    }, 200)
+  }, [isTransitioning, executeSkip])
 
   const handleRestart = useCallback(() => {
     const cards = useStore.getState().getStudyCards()
-    const prepared = cards.map(c => prepareQuestion(c))
+    let prepared = cards.map(c => prepareQuestion(c))
+    if (shuffleSession) {
+      prepared = [...prepared].sort(() => Math.random() - 0.5)
+    }
     setSessionCards(prepared)
     setCurrentIndex(0)
     setSelectedAnswer(null)
     setShowResult(false)
     setSessionStats({ correct: 0, incorrect: 0 })
     setAnswersHistory({})
+    setAutoplaySuspended(false)
+    setIsTransitioning(false)
+    setTransitionDirection('next')
     setIsSessionActive(true)
-  }, [])
+  }, [shuffleSession])
+
+  // Reset autoplay progress when card changes
+  useEffect(() => {
+    setAutoplayProgress(0)
+    setAutoplayPaused(false) // Reset pause state to prevent stuck hover states
+  }, [currentIndex])
+
+  // Reset autoplay suspension state when landing on an unanswered card (displaying "Überspringen")
+  useEffect(() => {
+    if (currentCard && answersHistory[currentCard.id] === undefined) {
+      setAutoplaySuspended(false)
+    }
+  }, [currentIndex, currentCard, answersHistory])
+
+  // Autoplay countdown timer
+  useEffect(() => {
+    if (!showResult || !autoplayActive || autoplaySuspended || autoplayPaused) return
+
+    const intervalTime = 30
+    const totalTime = 3000
+    const step = (intervalTime / totalTime) * 100
+
+    const timer = setInterval(() => {
+      setAutoplayProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(timer)
+          handleNext()
+          return 100
+        }
+        return prev + step
+      })
+    }, intervalTime)
+
+    return () => clearInterval(timer)
+  }, [showResult, autoplayActive, autoplaySuspended, autoplayPaused, handleNext])
 
   // ────────────────────────────────────────────────────────────────────────
   // UI Rendering
@@ -163,12 +252,28 @@ export default function LearnMode() {
   // 1. Session settings screen
   if (!isSessionActive) {
     return (
-      <div className="space-y-6 max-w-3xl mx-auto">
+      <div className="space-y-6 max-w-3xl mx-auto animate-fade-in">
+        {/* Back Button */}
+        <div>
+          <button
+            onClick={() => setView('dashboard')}
+            className="flex items-center gap-1.5 text-slate-400 hover:text-slate-200 transition-colors text-xs font-semibold cursor-pointer"
+          >
+            <ChevronLeft className="w-4 h-4" />
+            Zurück zum Lern-Cockpit
+          </button>
+        </div>
+
         {/* Header */}
-        <div className="animate-fade-in-up">
-          <div>
-            <h2 className="text-2xl font-bold text-white">Lernen: {config.label}</h2>
-            <p className="text-slate-400 mt-1">Konfiguriere deine Lernsession und lerne mit System</p>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-ocean-400 to-ocean-600 flex items-center justify-center shadow-lg shadow-ocean-500/20 flex-shrink-0">
+              <GraduationCap className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold text-white">Lernen: {config.label}</h2>
+              <p className="text-slate-400 mt-0.5 text-sm">Konfiguriere deine Lernsession und lerne mit System</p>
+            </div>
           </div>
         </div>
 
@@ -243,7 +348,30 @@ export default function LearnMode() {
 
           {/* Study Mode Grid */}
           <div>
-            <label className="text-xs uppercase tracking-wider text-slate-500 font-bold mb-3 block">Lern-Modus</label>
+            <div className="flex items-center justify-between mb-3">
+              <label className="text-xs uppercase tracking-wider text-slate-500 font-bold block">Lern-Modus</label>
+              <div className="flex items-center gap-2.5">
+                {/* Shuffle Option */}
+                <button
+                  onClick={() => setShuffleSession(!shuffleSession)}
+                  className={`text-xs transition-all duration-200 cursor-pointer select-none
+                    ${shuffleSession ? 'text-white font-semibold' : 'text-slate-500 hover:text-slate-300 font-medium'}`}
+                >
+                  Shuffle
+                </button>
+                
+                <span className="text-slate-700 text-xs select-none">|</span>
+
+                {/* Autoplay Option */}
+                <button
+                  onClick={() => setAutoplayActive(!autoplayActive)}
+                  className={`text-xs transition-all duration-200 cursor-pointer select-none
+                    ${autoplayActive ? 'text-white font-semibold' : 'text-slate-500 hover:text-slate-300 font-medium'}`}
+                >
+                  Autoplay
+                </button>
+              </div>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
                 {
@@ -420,7 +548,14 @@ export default function LearnMode() {
       </div>
 
       {/* Question Card */}
-      <div className="glass-light rounded-2xl p-8 animate-card-enter" key={currentCard.id}>
+      <div 
+        className={`glass-light rounded-2xl p-8 ${
+          isTransitioning
+            ? (transitionDirection === 'next' ? 'animate-card-leave-left' : 'animate-card-leave-right')
+            : (transitionDirection === 'next' ? 'animate-card-enter-right' : 'animate-card-enter-left')
+        }`}
+        key={currentCard.id}
+      >
         <div className="flex items-start gap-3 mb-2 flex-wrap">
           <span className="text-xs font-mono text-slate-500 bg-white/5 px-2 py-1 rounded-lg flex-shrink-0">
             {currentCard.id}
@@ -479,7 +614,7 @@ export default function LearnMode() {
                 key={idx}
                 id={`option-${idx}`}
                 onClick={() => handleAnswer(idx)}
-                disabled={showResult}
+                disabled={showResult || isTransitioning}
                 className={`w-full text-left px-5 py-4 rounded-xl border border-white/8
                   text-sm font-semibold flex items-start gap-3 ${btnClass}`}
               >
@@ -506,7 +641,7 @@ export default function LearnMode() {
           {currentIndex > 0 && (
             <button
               onClick={handlePrevious}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold
+              className="flex items-center justify-center gap-1.5 px-3 h-[36px] rounded-xl text-xs font-semibold
                 text-slate-400 hover:text-slate-200 hover:bg-white/5 border border-white/5 transition-all"
             >
               <ChevronLeft className="w-4 h-4" /> Vorherige Frage
@@ -527,22 +662,71 @@ export default function LearnMode() {
         </div>
 
         {/* Right: Überspringen or Nächste Frage Button */}
-        <div className="w-36 flex justify-end">
+        <div className="w-36 flex justify-end items-center">
           {showResult ? (
-            <button
-              id="btn-next-card"
-              onClick={handleNext}
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold
-                text-ocean-400 hover:text-ocean-300 hover:bg-ocean-500/10 border border-ocean-500/20 transition-all"
-            >
-              Nächste Frage
-              <ArrowRight className="w-4 h-4" />
-            </button>
+            (autoplayActive && !autoplaySuspended) ? (
+              <div
+                onMouseEnter={() => setAutoplayPaused(true)}
+                onMouseLeave={() => setAutoplayPaused(false)}
+                className="flex items-center"
+              >
+                {autoplayPaused ? (
+                  <div className="w-[130px] h-[36px] rounded-xl overflow-hidden border border-ocean-500/30 flex bg-ocean-500/10 animate-fade-in">
+                    {/* Cancel Autoplay (X) */}
+                    <button
+                      onClick={() => {
+                        setAutoplayActive(false)
+                        setAutoplayPaused(false)
+                      }}
+                      className="w-1/2 h-full flex items-center justify-center text-rose-400 hover:bg-rose-500/15 border-0 border-r border-ocean-500/30 transition-colors cursor-pointer"
+                      title="Auto-Play anhalten"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                    {/* Go Immediately (Check) */}
+                    <button
+                      onClick={handleNext}
+                      className="w-1/2 h-full flex items-center justify-center text-emerald-400 hover:bg-emerald-500/15 border-0 transition-colors cursor-pointer"
+                      title="Sofort weiter"
+                    >
+                      <Check className="w-4 h-4" />
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    id="btn-next-card"
+                    onClick={handleNext}
+                    className="relative overflow-hidden inline-flex items-center justify-center w-[130px] h-[36px] rounded-xl text-xs font-semibold
+                      text-ocean-300 hover:text-ocean-200 bg-ocean-500/10 hover:bg-ocean-500/20 border border-ocean-500/30 transition-all cursor-pointer"
+                  >
+                    <span className="relative z-10 flex items-center gap-1">
+                      Nächste ({Math.max(1, Math.ceil((3000 * (1 - autoplayProgress / 100)) / 1000))}s)
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </span>
+                    {/* Progress Bar Overlay */}
+                    <div
+                      className="absolute bottom-0 left-0 h-1 bg-ocean-500/60 transition-all duration-100 ease-linear"
+                      style={{ width: `${autoplayProgress}%` }}
+                    />
+                  </button>
+                )}
+              </div>
+            ) : (
+              <button
+                id="btn-next-card"
+                onClick={handleNext}
+                className="inline-flex items-center justify-center w-[130px] h-[36px] rounded-xl text-xs font-semibold
+                  text-ocean-400 hover:text-ocean-300 hover:bg-ocean-500/10 border border-ocean-500/30 transition-all cursor-pointer animate-fade-in"
+              >
+                Nächste Frage
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            )
           ) : (
             <button
               onClick={handleSkip}
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold
-                text-slate-400 hover:text-slate-200 hover:bg-white/5 border border-white/5 transition-all"
+              className="inline-flex items-center justify-center w-[130px] h-[36px] rounded-xl text-xs font-semibold
+                text-slate-400 hover:text-slate-200 hover:bg-white/5 border border-white/5 transition-all cursor-pointer"
             >
               Überspringen
               <ArrowRight className="w-4 h-4" />
