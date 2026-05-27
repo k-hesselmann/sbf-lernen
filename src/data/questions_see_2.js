@@ -63,7 +63,7 @@ export const seeQuestions2 = [
     "id": "S-112",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung haben die Schifffahrtszeichen für Sperrgebiete (militärisch)?",
+    "question": "Welche Bedeutung haben folgende Schifffahrtszeichen?",
     "options": [
       "Sperrgebiet.",
       "Sperrgebiet und Badezone.",
@@ -77,7 +77,7 @@ export const seeQuestions2 = [
     "id": "S-113",
     "category": "see_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Welche Bedeutung hat dieses Flaggensignal auf See?",
+    "question": "Welche Bedeutung hat dieses Flaggensignal?",
     "options": [
       "Anhalten.",
       "Seenotsignal.",
@@ -91,7 +91,7 @@ export const seeQuestions2 = [
     "id": "S-114",
     "category": "see_spezifisch",
     "topic": "schallsignale",
-    "question": "Welche Bedeutung hat das Schallsignal eines Polizeifahrzeugs, das zum Anhalten auffordert?",
+    "question": "Welche Bedeutung hat folgendes Schallsignal?",
     "options": [
       "Polizeifahrzeug fordert zum Anhalten auf.",
       "Ankerlieger macht auf gefährliche Annäherung aufmerksam.",
@@ -147,7 +147,7 @@ export const seeQuestions2 = [
     "id": "S-118",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat die Tonne zur Kennzeichnung der Mitte von Schifffahrtswegen?",
+    "question": "Welche Bedeutung hat folgende Tonne?",
     "options": [
       "Kennzeichnung der Mitte von Schifffahrtswegen.",
       "Kennzeichnung von Einzelgefahrenstellen.",
@@ -161,7 +161,7 @@ export const seeQuestions2 = [
     "id": "S-119",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Schifffahrtszeichen für die Steuerbordseite des Fahrwassers?",
+    "question": "Welche Bedeutung hat folgendes Schifffahrtszeichen?",
     "options": [
       "Die Steuerbordseite des Fahrwassers.",
       "Die Backbordseite des Fahrwassers.",
@@ -175,7 +175,7 @@ export const seeQuestions2 = [
     "id": "S-120",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Schifffahrtszeichen für die Backbordseite des Fahrwassers?",
+    "question": "Welche Bedeutung hat folgendes Schifffahrtszeichen?",
     "options": [
       "Die Backbordseite des Fahrwassers.",
       "Die Steuerbordseite des Fahrwassers.",
@@ -343,7 +343,7 @@ export const seeQuestions2 = [
     "id": "S-132",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Feuer einer Leuchttonne mit der Kennung des Nordquadranten?",
+    "question": "Welche Bedeutung hat das Feuer einer Leuchttonne mit folgender Kennung?",
     "options": [
       "Kennzeichnung einer allgemeinen Gefahrenstelle, die nördlich zu passieren ist.",
       "Kennzeichnung einer allgemeinen Gefahrenstelle, die südlich zu passieren ist.",
@@ -357,7 +357,7 @@ export const seeQuestions2 = [
     "id": "S-133",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Feuer einer Leuchttonne mit der Kennung des Ostquadranten?",
+    "question": "Welche Bedeutung hat das Feuer einer Leuchttonne mit folgender Kennung?",
     "options": [
       "Kennzeichnung einer allgemeinen Gefahrenstelle, die östlich zu passieren ist.",
       "Kennzeichnung einer allgemeinen Gefahrenstelle, die nördlich zu passieren ist.",
@@ -371,7 +371,7 @@ export const seeQuestions2 = [
     "id": "S-134",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Feuer einer Leuchttonne mit der Kennung des Südquadranten?",
+    "question": "Welche Bedeutung hat das Feuer einer Leuchttonne mit folgender Kennung?",
     "options": [
       "Kennzeichnung einer allgemeinen Gefahrenstelle, Südquadrant.",
       "Kennzeichnung einer allgemeinen Gefahrenstelle, Westquadrant.",
@@ -385,7 +385,7 @@ export const seeQuestions2 = [
     "id": "S-135",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Feuer einer Leuchttonne mit der Kennung des Westquadranten?",
+    "question": "Welche Bedeutung hat das Feuer einer Leuchttonne mit folgender Kennung?",
     "options": [
       "Kennzeichnung einer allgemeinen Gefahrenstelle, Westquadrant. Sie ist westlich zu passieren.",
       "Kennzeichnung einer allgemeinen Gefahrenstelle, Südquadrant. Sie ist südlich zu passieren.",
