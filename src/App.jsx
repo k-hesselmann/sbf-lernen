@@ -85,7 +85,7 @@ export default function App() {
                 <X className="w-3.5 h-3.5" />
               </button>
               <p className="text-[11px] text-slate-300 leading-relaxed pr-4">
-                <strong className="text-white italic text-xs block mb-2.5">Ahoi Matrose! ⛵</strong>
+                <strong className="text-white text-xs block mb-2.5">Ahoi Matrose! ⛵</strong>
                 Es freut mich, dass du diese App nutzt. Falls du mich unterstützen willst, kannst du das gerne über meinen GitHub Support Link tun.
                 <br />
                 <br />
@@ -125,7 +125,7 @@ export default function App() {
               <X className="w-3.5 h-3.5" />
             </button>
             <p className="text-[11px] text-slate-300 leading-relaxed pr-4">
-              <strong className="text-white italic text-xs block mb-2.5">Ahoi Matrose! ⛵</strong>
+              <strong className="text-white text-xs block mb-2.5">Ahoi Matrose! ⛵</strong>
               Es freut mich, dass du diese App zur Lernvorbereitung nutzt. Falls du mich unterstützen willst, kannst du das gerne über meinen GitHub Support Link tun.
               <br />
               <br />

@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback, useEffect } from 'react'
-import { Check, X, ArrowRight, RotateCcw, Sparkles, Layers, AlertCircle, Filter, ChevronLeft, SlidersHorizontal, Compass, GraduationCap } from 'lucide-react'
+import { Check, X, ArrowRight, RotateCcw, Sparkles, Layers, AlertCircle, Filter, ChevronLeft, SlidersHorizontal, Compass, GraduationCap, ChevronDown } from 'lucide-react'
 import useStore from '../store/useStore'
 import { CATEGORY_LABELS, CATEGORY_COLORS, getCategoriesForExam, EXAM_CONFIG, TOPIC_LABELS } from '../data/examConfig.js'
 import { getQuestionsForExam } from '../data/index.js'
@@ -8,10 +8,9 @@ import { prepareQuestion } from '../utils/shuffleOptions.js'
 export default function LearnMode() {
   const answerCard = useStore((s) => s.answerCard)
   const selectedExamType = useStore((s) => s.selectedExamType)
-  const learningCategory = useStore((s) => s.learningCategory)
-  const setLearningCategory = useStore((s) => s.setLearningCategory)
-  const learningTopic = useStore((s) => s.learningTopic)
-  const setLearningTopic = useStore((s) => s.setLearningTopic)
+  const selectedTopics = useStore((s) => s.selectedTopics) || []
+  const setSelectedTopics = useStore((s) => s.setSelectedTopics)
+  const initializeTopics = useStore((s) => s.initializeTopics)
   const learningMode = useStore((s) => s.learningMode)
   const setLearningMode = useStore((s) => s.setLearningMode)
   const cardProgress = useStore((s) => s.cardProgress)
@@ -33,42 +32,72 @@ export default function LearnMode() {
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [transitionDirection, setTransitionDirection] = useState('next')
   const [autoplaySuspended, setAutoplaySuspended] = useState(false)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   const config = useMemo(() => EXAM_CONFIG[selectedExamType], [selectedExamType])
-  const availableCategories = useMemo(() => getCategoriesForExam(selectedExamType), [selectedExamType])
 
-  // Get active topics for the selected license & category filter
-  const availableTopics = useMemo(() => {
-    return useStore.getState().getTopicsForCategory(selectedExamType, learningCategory)
-  }, [selectedExamType, learningCategory])
+  // Group topics by category dynamically for the selected exam type
+  const categoriesAndTopics = useMemo(() => {
+    const pool = getQuestionsForExam(selectedExamType)
+    const cats = getCategoriesForExam(selectedExamType)
+    
+    const mapping = {}
+    cats.forEach((cat) => {
+      mapping[cat] = new Set()
+    })
+    
+    pool.forEach((q) => {
+      if (q.category && q.topic && mapping[q.category]) {
+        mapping[q.category].add(q.topic)
+      }
+    })
+    
+    return cats.map((cat) => ({
+      category: cat,
+      label: CATEGORY_LABELS[cat] || cat,
+      topics: Array.from(mapping[cat]).map((topic) => ({
+        id: `${cat}:${topic}`,
+        label: TOPIC_LABELS[topic] || topic.replace(/_/g, ' '),
+      })),
+    }))
+  }, [selectedExamType])
+
+  // Memoize question counts per topic using composite keys (category:topic)
+  const topicQuestionCounts = useMemo(() => {
+    const pool = getQuestionsForExam(selectedExamType)
+    const counts = {}
+    pool.forEach((q) => {
+      if (q.category && q.topic) {
+        const key = `${q.category}:${q.topic}`
+        counts[key] = (counts[key] || 0) + 1
+      }
+    })
+    return counts
+  }, [selectedExamType])
+
+  // Check if any navigation topics are selected
+  const isNavigationSelected = useMemo(() => {
+    const navCategory = categoriesAndTopics.find((c) => c.category === 'navigation_see')
+    if (!navCategory) return false
+    return navCategory.topics.some((t) => selectedTopics.includes(t.id))
+  }, [categoriesAndTopics, selectedTopics])
 
   // Reset session state when license type changes
   useEffect(() => {
     setIsSessionActive(false)
   }, [selectedExamType])
 
-  // Dynamic question count for topic filter
-  const getTopicQuestionCount = useCallback((topic) => {
-    let pool = getQuestionsForExam(selectedExamType)
-    if (learningCategory !== 'all') {
-      pool = pool.filter((q) => q.category === learningCategory)
-    }
-    if (topic !== 'all') {
-      pool = pool.filter((q) => q.topic === topic)
-    }
-    return pool.length
-  }, [selectedExamType, learningCategory])
+  // Initialize topics for selected exam type
+  useEffect(() => {
+    initializeTopics()
+  }, [selectedExamType, initializeTopics])
 
   // Dynamic question counts per study mode
   const getModeCount = useCallback((mode) => {
     const { cardProgress } = useStore.getState()
     let pool = getQuestionsForExam(selectedExamType)
-    if (learningCategory !== 'all') {
-      pool = pool.filter((q) => q.category === learningCategory)
-    }
-    if (learningTopic !== 'all') {
-      pool = pool.filter((q) => q.topic === learningTopic)
-    }
+    const topics = selectedTopics || []
+    pool = pool.filter((q) => topics.includes(`${q.category}:${q.topic}`))
     const now = Date.now()
 
     if (mode === 'due') {
@@ -89,7 +118,58 @@ export default function LearnMode() {
     } else {
       return pool.length
     }
-  }, [selectedExamType, learningCategory, learningTopic, cardProgress])
+  }, [selectedExamType, selectedTopics, cardProgress])
+
+  const handleToggleTopic = useCallback((topicId) => {
+    if (selectedTopics.includes(topicId)) {
+      setSelectedTopics(selectedTopics.filter((t) => t !== topicId))
+    } else {
+      setSelectedTopics([...selectedTopics, topicId])
+    }
+  }, [selectedTopics, setSelectedTopics])
+
+  const handleToggleCategory = useCallback((catGroup) => {
+    const topicIds = catGroup.topics.map((t) => t.id)
+    const selectedCount = topicIds.filter((t) => selectedTopics.includes(t)).length
+    
+    if (selectedCount > 0) {
+      // Uncheck all topics in this category
+      setSelectedTopics(selectedTopics.filter((t) => !topicIds.includes(t)))
+    } else {
+      // Check all topics in this category
+      setSelectedTopics([...selectedTopics, ...topicIds])
+    }
+  }, [selectedTopics, setSelectedTopics])
+
+  const handleSelectAll = useCallback(() => {
+    const allTopics = categoriesAndTopics.flatMap((c) => c.topics.map((t) => t.id))
+    setSelectedTopics(allTopics)
+  }, [categoriesAndTopics, setSelectedTopics])
+
+  const handleClearSelection = useCallback(() => {
+    setSelectedTopics([])
+  }, [setSelectedTopics])
+
+  const selectionSummary = useMemo(() => {
+    const allExamTopics = categoriesAndTopics.flatMap((c) => c.topics)
+    const totalTopicsCount = allExamTopics.length
+    const activeSelected = selectedTopics.filter((t) => allExamTopics.some((at) => at.id === t))
+    const selectedCount = activeSelected.length
+    
+    // Calculate total questions in selected topics
+    let totalQuestions = 0
+    activeSelected.forEach((t) => {
+      totalQuestions += (topicQuestionCounts[t] || 0)
+    })
+    
+    if (selectedCount === totalTopicsCount) {
+      return `Alle Themen ausgewählt (${totalQuestions} Fragen)`
+    }
+    if (selectedCount === 0) {
+      return `Keine Themen ausgewählt (0 Fragen)`
+    }
+    return `${selectedCount} von ${totalTopicsCount} Themen ausgewählt (${totalQuestions} Fragen)`
+  }, [categoriesAndTopics, selectedTopics, topicQuestionCounts])
 
   // Launch a new session with current config
   const handleStartSession = useCallback(() => {
@@ -279,41 +359,141 @@ export default function LearnMode() {
 
         {/* Settings Card */}
         <div className="glass-light rounded-2xl p-6 space-y-6 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
-          {/* Category Tabs */}
-          <div>
-            <label className="text-xs uppercase tracking-wider text-slate-500 font-bold mb-2.5 block">Kategorie</label>
-            <div className="flex flex-wrap gap-2">
-              <button
-                onClick={() => setLearningCategory('all')}
-                className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold transition-all
-                  ${learningCategory === 'all' ? 'bg-ocean-500/20 text-ocean-300 border border-ocean-500/30' : 'text-slate-400 hover:bg-white/5 border border-transparent'}`}
-              >
-                <Filter className="w-3.5 h-3.5" /> Alle
-              </button>
-              {availableCategories.map((cat) => {
-                const colors = CATEGORY_COLORS[cat] || {}
-                return (
-                  <button
-                    key={cat}
-                    onClick={() => setLearningCategory(cat)}
-                    className={`px-3.5 py-2 rounded-lg text-xs font-semibold transition-all
-                      ${learningCategory === cat ? `${colors.bg} ${colors.text} border ${colors.border}` : 'text-slate-400 hover:bg-white/5 border border-transparent'}`}
-                  >
-                    {CATEGORY_LABELS[cat]}
-                  </button>
-                )
-              })}
-            </div>
+          {/* Custom Multiselect Dropdown */}
+          <div className="relative">
+            <label className="text-xs uppercase tracking-wider text-slate-500 font-bold mb-2 block">
+              Themen & Kategorien
+            </label>
+            <button
+              type="button"
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3.5 text-xs sm:text-sm font-semibold text-slate-200
+                focus:outline-none focus:border-ocean-500/50 transition-colors cursor-pointer flex justify-between items-center"
+            >
+              <span className="truncate">{selectionSummary}</span>
+              <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+            </button>
+
+            {isDropdownOpen && (
+              <>
+                {/* Transparent backdrop for outside click */}
+                <div
+                  className="fixed inset-0 z-40 bg-transparent"
+                  onClick={() => setIsDropdownOpen(false)}
+                />
+                
+                {/* Floating Dropdown Panel */}
+                <div className="absolute left-0 right-0 mt-2 z-50 bg-slate-900 border border-white/10 rounded-xl p-4 shadow-2xl max-h-96 overflow-y-auto space-y-4 animate-fade-in">
+                  {/* Dropdown Utilities */}
+                  <div className="flex justify-between items-center pb-2 border-b border-white/5 text-xs">
+                    <span className="text-slate-400 font-bold uppercase tracking-wider">Auswahl</span>
+                    <div className="flex gap-3">
+                      <button
+                        type="button"
+                        onClick={handleSelectAll}
+                        className="text-ocean-400 hover:text-ocean-300 font-bold transition-colors cursor-pointer"
+                      >
+                        Alle auswählen
+                      </button>
+                      <span className="text-slate-700">|</span>
+                      <button
+                        type="button"
+                        onClick={handleClearSelection}
+                        className="text-rose-400 hover:text-rose-300 font-bold transition-colors cursor-pointer"
+                      >
+                        Auswahl aufheben
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Dropdown Categories and Topics */}
+                  <div className="space-y-4">
+                    {categoriesAndTopics.map((catGroup) => {
+                      const catId = catGroup.category
+                      const catLabel = catGroup.label
+                      const topics = catGroup.topics
+
+                      // Calculate group selection status
+                      const selectedCount = topics.filter((t) => selectedTopics.includes(t.id)).length
+                      const isAllSelected = selectedCount === topics.length
+                      const isSomeSelected = selectedCount > 0 && selectedCount < topics.length
+
+                      // Calculate question counts for this category
+                      const selectedQuestions = topics.reduce((sum, t) => {
+                        return sum + (selectedTopics.includes(t.id) ? (topicQuestionCounts[t.id] || 0) : 0)
+                      }, 0)
+                      
+                      const totalQuestions = topics.reduce((sum, t) => {
+                        return sum + (topicQuestionCounts[t.id] || 0)
+                      }, 0)
+
+                      return (
+                        <div key={catId} className="space-y-2">
+                          {/* Category Header */}
+                          <label className="flex items-center gap-2 px-2 py-1.5 rounded hover:bg-white/5 cursor-pointer select-none transition-colors">
+                            <input
+                              type="checkbox"
+                              checked={isAllSelected}
+                              ref={(el) => {
+                                if (el) {
+                                  el.indeterminate = isSomeSelected
+                                }
+                              }}
+                              onChange={() => handleToggleCategory(catGroup)}
+                              className="w-4 h-4 rounded border-white/10 bg-slate-950 text-ocean-500 focus:ring-ocean-500/20 focus:ring-offset-0 transition-all cursor-pointer"
+                            />
+                            <span className="text-xs uppercase tracking-wider text-slate-300 font-bold flex-1">
+                              {catLabel}
+                            </span>
+                            <span className="text-[10px] text-slate-500 font-bold bg-white/5 px-2 py-0.5 rounded-full">
+                              {selectedQuestions}/{totalQuestions}
+                            </span>
+                          </label>
+
+                          {/* Sub-Topics List */}
+                          <div className="pl-6 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            {topics.map((topic) => {
+                              const isSelected = selectedTopics.includes(topic.id)
+                              const count = topicQuestionCounts[topic.id] || 0
+
+                              return (
+                                <label
+                                  key={topic.id}
+                                  className="flex items-center gap-2 p-2 rounded-lg hover:bg-white/5 cursor-pointer select-none transition-colors"
+                                >
+                                  <input
+                                    type="checkbox"
+                                    checked={isSelected}
+                                    onChange={() => handleToggleTopic(topic.id)}
+                                    className="w-4 h-4 rounded border-white/10 bg-slate-950 text-ocean-500 focus:ring-ocean-500/20 focus:ring-offset-0 transition-all cursor-pointer"
+                                  />
+                                  <span className="text-xs font-semibold text-slate-400 flex-1 truncate">
+                                    {topic.label}
+                                  </span>
+                                  <span className="text-[10px] text-slate-600 font-medium">
+                                    ({count} Fragen)
+                                  </span>
+                                </label>
+                              )
+                            })}
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                </div>
+              </>
+            )}
           </div>
 
-          {learningCategory === 'navigation_see' && (
-            <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-slate-300 space-y-2">
+          {isNavigationSelected && (
+            <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-slate-300 space-y-2 animate-fade-in">
               <div className="font-bold text-emerald-400 flex items-center gap-1.5">
                 <Compass className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                 Kartenarbeit & Navigationsbesteck benötigt
               </div>
-              <p className="leading-relaxed text-slate-300">
-                Die Navigationsaufgaben entsprechen den 15 offiziellen Prüfungsaufgaben. Da Messungen und Zeichnungen direkt auf dem Bildschirm ungenau und unskaliert sind, wird dringend empfohlen, die Aufgaben auf der gedruckten **Übungskarte D49** mit einem **Zirkel** und **Kursdreiecken** zu bearbeiten. Du kannst die offiziellen Seekarten-Ausschnitte (PDF) direkt hier öffnen.
+              <p className="leading-relaxed text-slate-300 font-normal">
+                Die Navigationsaufgaben entsprechen den 15 offiziellen Prüfungsaufgaben. Da Messungen und Zeichnungen direkt auf dem Bildschirm ungenau und unskaliert sind, wird dringend empfohlen, die Aufgaben auf der gedruckten <strong className="font-bold text-white">Übungskarte D49</strong> mit einem <strong className="font-bold text-white">Zirkel</strong> und <strong className="font-bold text-white">Kursdreiecken</strong> zu bearbeiten. Du kannst die offiziellen Seekarten-Ausschnitte (PDF) direkt hier öffnen.
               </p>
               <div className="flex flex-wrap gap-3 pt-1">
                 <a
@@ -327,24 +507,6 @@ export default function LearnMode() {
               </div>
             </div>
           )}
-
-          {/* Topics Dropdown */}
-          <div>
-            <label className="text-xs uppercase tracking-wider text-slate-500 font-bold mb-2 block">Themenbereich (Subkategorie)</label>
-            <select
-              value={learningTopic}
-              onChange={(e) => setLearningTopic(e.target.value)}
-              className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3.5 text-xs sm:text-sm font-semibold text-slate-200
-                focus:outline-none focus:border-ocean-500/50 transition-colors cursor-pointer"
-            >
-              <option value="all">Alle Themen ({getTopicQuestionCount('all')} Fragen)</option>
-              {availableTopics.map((topic) => (
-                <option key={topic} value={topic}>
-                  {TOPIC_LABELS[topic] || topic.replace(/_/g, ' ')} ({getTopicQuestionCount(topic)} Fragen)
-                </option>
-              ))}
-            </select>
-          </div>
 
           {/* Study Mode Grid */}
           <div>

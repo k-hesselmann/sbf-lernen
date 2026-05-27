@@ -51,6 +51,17 @@ const initialCardProgress = () => ({
   correctAttempts: 0,
 })
 
+function getTopicsForExamHelper(examType) {
+  const pool = getQuestionsForExam(examType)
+  const topics = new Set()
+  pool.forEach((q) => {
+    if (q.category && q.topic) {
+      topics.add(`${q.category}:${q.topic}`)
+    }
+  })
+  return Array.from(topics)
+}
+
 const useStore = create(
   persist(
     (set, get) => ({
@@ -67,9 +78,8 @@ const useStore = create(
       // ─── Exam Type Selection ───
       selectedExamType: EXAM_TYPES.SEE_MOTOR,
 
-      // ─── Category filter for learning ───
-      learningCategory: 'all', // 'all' or a CATEGORIES value
-      learningTopic: 'all',
+      // ─── Selected Topics for learning ───
+      selectedTopics: getTopicsForExamHelper(EXAM_TYPES.SEE_MOTOR),
       learningMode: 'due',
 
       // ─── Exam State ───
@@ -84,9 +94,23 @@ const useStore = create(
 
       // ─── Actions ───
       setView: (view) => set({ currentView: view }),
-      setSelectedExamType: (type) => set({ selectedExamType: type, learningCategory: 'all', learningTopic: 'all', learningMode: 'due' }),
-      setLearningCategory: (cat) => set({ learningCategory: cat, learningTopic: 'all' }),
-      setLearningTopic: (topic) => set({ learningTopic: topic }),
+      setSelectedExamType: (type) => {
+        const topics = getTopicsForExamHelper(type)
+        set({
+          selectedExamType: type,
+          selectedTopics: topics,
+          learningMode: 'due'
+        })
+      },
+      setSelectedTopics: (topics) => set({ selectedTopics: topics }),
+      initializeTopics: () => {
+        const { selectedExamType, selectedTopics } = get()
+        const allTopics = getTopicsForExamHelper(selectedExamType)
+        const isValid = selectedTopics && selectedTopics.length > 0 && selectedTopics.every(t => allTopics.includes(t))
+        if (!isValid) {
+          set({ selectedTopics: allTopics })
+        }
+      },
       setLearningMode: (mode) => set({ learningMode: mode }),
       prepareExam: (type) => set({ selectedExamType: type, examState: null, currentView: 'exam' }),
       setSidebarCollapsed: (collapsed) => set({ sidebarCollapsed: collapsed }),
@@ -118,14 +142,13 @@ const useStore = create(
       },
 
       /**
-       * Get due cards filtered by selected exam type and optional category
+       * Get due cards filtered by selected exam type and topics
        */
       getDueCards: () => {
-        const { questions, cardProgress, selectedExamType, learningCategory } = get()
+        const { cardProgress, selectedExamType, selectedTopics } = get()
         const examQuestions = getQuestionsForExam(selectedExamType)
-        const filtered = learningCategory === 'all'
-          ? examQuestions
-          : examQuestions.filter((q) => q.category === learningCategory)
+        const topics = selectedTopics || []
+        const filtered = examQuestions.filter((q) => topics.includes(`${q.category}:${q.topic}`))
         const now = Date.now()
         return filtered.filter((q) => {
           const p = cardProgress[q.id]
@@ -135,19 +158,13 @@ const useStore = create(
       },
 
       /**
-       * Query cards dynamically for a study session based on category, topic, and mode
+       * Query cards dynamically for a study session based on topics and mode
        */
       getStudyCards: () => {
-        const { questions, cardProgress, selectedExamType, learningCategory, learningTopic, learningMode } = get()
+        const { cardProgress, selectedExamType, selectedTopics, learningMode } = get()
         let pool = getQuestionsForExam(selectedExamType)
-
-        if (learningCategory !== 'all') {
-          pool = pool.filter((q) => q.category === learningCategory)
-        }
-
-        if (learningTopic !== 'all') {
-          pool = pool.filter((q) => q.topic === learningTopic)
-        }
+        const topics = selectedTopics || []
+        pool = pool.filter((q) => topics.includes(`${q.category}:${q.topic}`))
 
         const now = Date.now()
 
@@ -395,6 +412,7 @@ const useStore = create(
         cardProgress: state.cardProgress,
         examHistory: state.examHistory,
         selectedExamType: state.selectedExamType,
+        selectedTopics: state.selectedTopics,
       }),
     }
   )
