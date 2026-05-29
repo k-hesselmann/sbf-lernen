@@ -217,7 +217,7 @@ export const basisQuestions = [
     "id": "B-016",
     "category": "basis",
     "topic": "schallsignale",
-    "question": "Welche Bedeutung hat das Bleib-weg-Signal?",
+    "question": "Welche Bedeutung hat folgendes Schallsignal?",
     "options": [
       "Bleib-weg-Signal, Gefahrenbereich sofort verlassen.",
       "Allgemeines Gefahr- und Warnsignal.",
@@ -231,7 +231,7 @@ export const basisQuestions = [
     "id": "B-017",
     "category": "basis",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Tafelzeichen (rotes Kreuz auf weißem Grund)?",
+    "question": "Welche Bedeutung hat das dieses Tafelzeichen?",
     "options": [
       "Überholverbot.",
       "Begegnungsverbot.",
@@ -287,7 +287,7 @@ export const basisQuestions = [
     "id": "B-021",
     "category": "basis",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Tafelzeichen (rotes Stoppsignal)?",
+    "question": "Welche Bedeutung hat dieses Tafelzeichen?",
     "options": [
       "Haltegebot vor beweglichen Brücken, Sperrwerken und Schleusen.",
       "Dauernde Sperrung einer Teilstrecke der Wasserstraße.",
@@ -343,7 +343,7 @@ export const basisQuestions = [
     "id": "B-025",
     "category": "basis",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung haben die Tafelzeichen für Wasserski und Wassermotorräder?",
+    "question": "Welche Bedeutung haben diese Tafelzeichen?",
     "options": [
       "Wasserflächen, auf denen mit Wasserski oder Wassermotorrädern gefahren werden darf.",
       "Genehmigungspflichtige Übungsstrecke für das Fahren mit Wasserski oder Wassermotorrädern.",

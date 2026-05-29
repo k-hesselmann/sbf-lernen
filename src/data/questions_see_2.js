@@ -35,7 +35,7 @@ export const seeQuestions2 = [
     "id": "S-110",
     "category": "see_spezifisch",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung hat das Schifffahrtszeichen zur Kennzeichnung besonderer Gebiete?",
+    "question": "Welche Bedeutung hat folgendes Schifffahrtszeichen?",
     "options": [
       "Kennzeichnung von besonderen Gebieten und Stellen.",
       "Kennzeichnung von Sperrgebieten.",

@@ -27,9 +27,9 @@ export const navigationTasks = [
         "question": "Die Ablenkung beträgt +4°, die Mw ist der Seekarte zu entnehmen. Wie lautet der MgK?",
         "options": [
           "MgK = 074° *)",
-          "MgK = 074° *) (Abweichung -10%)",
-          "MgK = 074° *) (Abweichung +10%)",
-          "Wert nicht bestimmbar"
+          "MgK = 084° *)",
+          "MgK = 079° *)",
+          "MgK = 069° *)"
         ],
         "correctIndex": 0,
         "explanation": "Offizielles ELWIS-Ergebnis: MgK = 074° *)"
@@ -302,24 +302,24 @@ export const navigationTasks = [
       },
       {
         "number": 6,
-        "question": "Auf Position",
+        "question": "Auf Position 53° 49,5' N 007° 36,8' E (ca. 1,9 sm nordwestlich der Ansteuerungstonne \"Otzumer Balje\") finden Sie einen roten Eintrag mit einem \"A\". Was bedeutet diese Eintragung in die Seekarte?",
         "options": [
-          "Position der Gezeitenstromangabe (Stromraute)",
+          "Position der Gezeitenstromangabe, oder \"Stromraute\"",
           "Ankerverbot oder Sperrgebiet",
           "Wrackstelle mit bekannter Kartentiefe",
           "Verkehrsüberwachungssystem (TCTS)"
         ],
         "correctIndex": 0,
-        "explanation": "Offizielles ELWIS-Ergebnis: 53° 49,5' N 007° 36,8' E (ca. 1,9 sm nordwestlich der Ansteuerungstonne \"Otzumer Balje\") finden Sie einen roten Eintrag mit einem \"A\". Was bedeutet diese Eintragung in die Seekarte? Position der Gezeitenstromangabe, oder \"Stromraute\""
+        "explanation": "Offizielles ELWIS-Ergebnis: Position der Gezeitenstromangabe, oder \"Stromraute\""
       },
       {
         "number": 7,
-        "question": "Um 14:30 Uhr wird mit dem Peilaufsatz des Magnetkompasses eine Kreuzpeilung durchgeführt. Die Ablenkung für den anliegenden Kurs beträgt -2°, die Mw ist der Seekarte zu entnehmen. Tonne \"TG15\" MgP = 292° Tonne \"TG17/Weser1\" MgP = 347° Tonne \"Accumer Ee\" MgP = 234° Wie lauten die rw-Peilungen? Tonne \"TG15\"",
+        "question": "Um 14:30 Uhr wird mit dem Peilaufsatz des Magnetkompasses eine Kreuzpeilung durchgeführt. Die Ablenkung für den anliegenden Kurs beträgt -2°, die Mw ist der Seekarte zu entnehmen. Tonne \"TG15\" MgP = 292° Tonne \"TG17/Weser1\" MgP = 347° Tonne \"Accumer Ee\" MgP = 234° Wie lauten die rw-Peilungen?",
         "options": [
-          "rwP = 290° Tonne \"TG17/Weser1\" rwP = 345° Tonne \"Accumer Ee\" rwP = 232° (Abweichung -10%)",
+          "rwP = 294° Tonne \"TG17/Weser1\" rwP = 349° Tonne \"Accumer Ee\" rwP = 236°",
           "rwP = 290° Tonne \"TG17/Weser1\" rwP = 345° Tonne \"Accumer Ee\" rwP = 232°",
-          "rwP = 290° Tonne \"TG17/Weser1\" rwP = 345° Tonne \"Accumer Ee\" rwP = 232° (Abweichung +10%)",
-          "Wert nicht bestimmbar"
+          "rwP = 292° Tonne \"TG17/Weser1\" rwP = 347° Tonne \"Accumer Ee\" rwP = 234°",
+          "rwP = 288° Tonne \"TG17/Weser1\" rwP = 343° Tonne \"Accumer Ee\" rwP = 230°"
         ],
         "correctIndex": 1,
         "explanation": "Offizielles ELWIS-Ergebnis: rwP = 290° Tonne \"TG17/Weser1\" rwP = 345° Tonne \"Accumer Ee\" rwP = 232°"
@@ -441,15 +441,15 @@ export const navigationTasks = [
       },
       {
         "number": 8,
-        "question": "Um 10:15 Uhr peilen Sie mit dem Peilaufsatz am Magnetkompass die westlichste der drei Kirchen auf Spiekeroog in MgP = 110° und die Tonne \"Otzumer Balje\" in MgP = 030°. Die Ablenkung für den anliegenden Kurs beträgt +5°, die Mw ist der Karte zu entnehmen. Wie lauten die rw-Peilungen? Kirche",
+        "question": "Um 10:15 Uhr peilen Sie mit dem Peilaufsatz am Magnetkompass die westlichste der drei Kirchen auf Spiekeroog in MgP = 110° und die Tonne \"Otzumer Balje\" in MgP = 030°. Die Ablenkung für den anliegenden Kurs beträgt +5°, die Mw ist der Karte zu entnehmen. Wie lauten die rw-Peilungen?",
         "options": [
-          "rwP = 115° Tonne rwp = 035°",
-          "rwP = 115° Tonne rwp = 035° (Abweichung -10%)",
-          "rwP = 115° Tonne rwp = 035° (Abweichung +10%)",
-          "Wert nicht bestimmbar"
+          "rwP = 115° Tonne rwP = 035°",
+          "rwP = 105° Tonne rwP = 025°",
+          "rwP = 110° Tonne rwP = 030°",
+          "rwP = 120° Tonne rwP = 040°"
         ],
         "correctIndex": 0,
-        "explanation": "Offizielles ELWIS-Ergebnis: rwP = 115° Tonne rwp = 035°"
+        "explanation": "Offizielles ELWIS-Ergebnis: rwP = 115° Tonne rwP = 035°"
       },
       {
         "number": 9,
@@ -817,24 +817,24 @@ export const navigationTasks = [
     "questions": [
       {
         "number": 1,
-        "question": "Durch Peilung und Abstandsmessung wird eine Standortbestimmung durchgeführt. Die Tonne \"E2\" wird gepeilt:",
+        "question": "Durch Peilung und Abstandsmessung wird eine Standortbestimmung durchgeführt. Die Tonne \"E2\" wird gepeilt: rwP = 084°, Distanz = 1,6 sm. Tragen Sie die rw-Peilung in die Seekarte ein.",
         "options": [
-          "rwP = 084°, Distanz 1,6 sm. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte (Abweichung -10%)",
-          "rwP = 084°, Distanz 1,6 sm. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte",
-          "rwP = 084°, Distanz 1,6 sm. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte (Abweichung +10%)",
-          "Wert nicht bestimmbar"
+          "rwP = 094°, Distanz = 2,6 sm. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte",
+          "rwP = 084°, Distanz = 1,6 sm. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte",
+          "rwP = 074°, Distanz = 1,0 sm. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte",
+          "rwP = 084°, Distanz = 3,2 sm. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte"
         ],
         "correctIndex": 1,
-        "explanation": "Offizielles ELWIS-Ergebnis: rwP = 084°, Distanz 1,6 sm. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte"
+        "explanation": "Offizielles ELWIS-Ergebnis: rwP = 084°, Distanz = 1,6 sm. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte"
       },
       {
         "number": 2,
         "question": "Entnehmen Sie der Seekarte die geographische Position",
         "options": [
-          "54° 8,0' N, 007° 42,0' E",
-          "54° 6,0' N, 007° 40,0' E",
+          "54° 08,0' N, 007° 42,0' E",
+          "54° 06,0' N, 007° 40,0' E",
           "54° 07,0' N, 007° 41,0' E",
-          "54° 5,0' N, 007° 42,5' E"
+          "54° 05,0' N, 007° 42,5' E"
         ],
         "correctIndex": 2,
         "explanation": "Offizielles ELWIS-Ergebnis: 54° 07,0' N 007° 41,0' E"
@@ -904,9 +904,9 @@ export const navigationTasks = [
         "question": "Welcher Zeitraum wird für das Queren des Verkehrstrennungsgebietes Jade Approach voraussichtlich benötigt?",
         "options": [
           "Zeitraum = 20 min.",
-          "Zeitraum = 20 min. (Abweichung -10%)",
-          "Zeitraum = 20 min. (Abweichung +10%)",
-          "Wert nicht bestimmbar"
+          "Zeitraum = 10 min.",
+          "Zeitraum = 30 min.",
+          "Zeitraum = 40 min."
         ],
         "correctIndex": 0,
         "explanation": "Offizielles ELWIS-Ergebnis: Zeitraum = 20 min."
@@ -980,12 +980,12 @@ export const navigationTasks = [
       },
       {
         "number": 5,
-        "question": "Um 14:20 Uhr zeigt das GPS folgende Position:",
+        "question": "Um 14:20 Uhr zeigt das GPS folgende Position: 53° 56,0' N 008° 11,0' E. Tragen Sie diese in die Karte ein.",
         "options": [
-          "53° 54,0' N, 008° 12,5' E",
-          "53° 55,0' N, 008° 10,0' E",
-          "53° 57,0' N, 008° 12,0' E",
-          "53° 56,0' N, 008° 11,0' E"
+          "53° 54,0' N 008° 12,5' E. Tragen Sie diese in die Karte ein. Siehe Karte",
+          "53° 55,0' N 008° 10,0' E. Tragen Sie diese in die Karte ein. Siehe Karte",
+          "53° 57,0' N 008° 12,0' E. Tragen Sie diese in die Karte ein. Siehe Karte",
+          "53° 56,0' N 008° 11,0' E. Tragen Sie diese in die Karte ein. Siehe Karte"
         ],
         "correctIndex": 3,
         "explanation": "Offizielles ELWIS-Ergebnis: 53° 56,0' N 008° 11,0' E. Tragen Sie diese in die Karte ein. Siehe Karte"
@@ -1030,9 +1030,9 @@ export const navigationTasks = [
         "number": 9,
         "question": "Gegen 15:20 Uhr sind Sie am Leuchtturm \"Alte Weser\". Wie groß ist die Geschwindigkeit der letzten Stunde?",
         "options": [
-          "Wert nicht bestimmbar",
-          "4,6 kn (Abweichung -10%)",
-          "4,6 kn (Abweichung +10%)",
+          "5,6 kn",
+          "3,6 kn",
+          "6,2 kn",
           "4,6 kn"
         ],
         "correctIndex": 3,
@@ -1107,12 +1107,12 @@ export const navigationTasks = [
       },
       {
         "number": 6,
-        "question": "Um 12:26 Uhr wird die Tonne \"A2\" querab passiert. Wie groß ist die Geschwindigkeit über Grund seit Passage der Tonne \"A10\"?",
+        "question": "Um 12:26 Uhr wird die Tonne \"A2\" querab passiert. Wie groß ist die Geschwindigkeit über Grund (FüG) seit Passage der Tonne \"A10\"?",
         "options": [
-          "12,0 kn (Abweichung +10%)",
-          "12,0 kn (Abweichung -10%)",
+          "10,0 kn",
+          "14,0 kn",
           "12,0 kn",
-          "Wert nicht bestimmbar"
+          "8,5 kn"
         ],
         "correctIndex": 2,
         "explanation": "Offizielles ELWIS-Ergebnis: 12,0 kn"
@@ -1349,11 +1349,11 @@ export const navigationTasks = [
       },
       {
         "number": 7,
-        "question": "Um 09:00 Uhr wird die Tonne \"ST\" gepeilt:",
+        "question": "Um 09:00 Uhr wird die Tonne \"ST\" gepeilt: rwP = 168°. Als Distanz werden 2,0 sm ermittelt. Tragen Sie die rw-Peilung in die Seekarte ein.",
         "options": [
-          "Wert nicht bestimmbar",
-          "rwP = 168°. Als Distanz werden 2,0 sm ermittelt. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte (Abweichung -10%)",
-          "rwP = 168°. Als Distanz werden 2,0 sm ermittelt. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte (Abweichung +10%)",
+          "rwP = 158°. Als Distanz werden 1,5 sm ermittelt. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte",
+          "rwP = 178°. Als Distanz werden 2,5 sm ermittelt. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte",
+          "rwP = 168°. Als Distanz werden 3,0 sm ermittelt. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte",
           "rwP = 168°. Als Distanz werden 2,0 sm ermittelt. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte"
         ],
         "correctIndex": 3,
@@ -1648,10 +1648,10 @@ export const navigationTasks = [
         "number": 3,
         "question": "Geben Sie die ermittelte Position nach geographischer Breite und Länge an",
         "options": [
-          "53° 53,9' N, 008° 6,6' E",
+          "53° 53,9' N, 008° 06,6' E",
           "53° 54,9' N, 008° 07,6' E",
-          "53° 55,9' N, 008° 8,6' E",
-          "53° 52,9' N, 008° 9,1' E"
+          "53° 55,9' N, 008° 08,6' E",
+          "53° 52,9' N, 008° 09,1' E"
         ],
         "correctIndex": 1,
         "explanation": "Offizielles ELWIS-Ergebnis: 53° 54,9' N 008° 07,6' E"
@@ -1718,11 +1718,11 @@ export const navigationTasks = [
       },
       {
         "number": 9,
-        "question": "Die Revierzentrale \"Cuxhaven Elbe Traffic\" meldet drei über Bord gefallene Container in Position",
+        "question": "Die Revierzentrale \"Cuxhaven Elbe Traffic\" meldet drei über Bord gefallene Container in Position 53° 59,6' N und 008° 23,2' E. Tragen Sie die Position in die Seekarte ein.",
         "options": [
-          "Wert nicht bestimmbar",
-          "53° 59,6' N und 008° 23,2 E. Tragen Sie die Position in die Seekarte ein. Siehe Karte (Abweichung -10%)",
-          "53° 59,6' N und 008° 23,2 E. Tragen Sie die Position in die Seekarte ein. Siehe Karte (Abweichung +10%)",
+          "53° 58,6' N und 008° 22,2 E. Tragen Sie die Position in die Seekarte ein. Siehe Karte",
+          "54° 00,6' N und 008° 24,2 E. Tragen Sie die Position in die Seekarte ein. Siehe Karte",
+          "53° 57,6' N und 008° 25,2 E. Tragen Sie die Position in die Seekarte ein. Siehe Karte",
           "53° 59,6' N und 008° 23,2 E. Tragen Sie die Position in die Seekarte ein. Siehe Karte"
         ],
         "correctIndex": 3,
