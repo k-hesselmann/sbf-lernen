@@ -1,7 +1,7 @@
 import { LayoutDashboard, GraduationCap, ClipboardCheck, Anchor, Ship, ChevronLeft, ChevronRight, BookOpen, Trophy } from 'lucide-react'
 import useStore from '../store/useStore'
 import { useState } from 'react'
-import { EXAM_TYPES, EXAM_CONFIG } from '../data/examConfig.js'
+import { EXAM_CONFIG } from '../data/examConfig.js'
 
 export default function Sidebar() {
   const { currentView, setView, selectedExamType, setSelectedExamType, sidebarCollapsed: collapsed, setSidebarCollapsed: setCollapsed, mobileSidebarOpen, setMobileSidebarOpen } = useStore()

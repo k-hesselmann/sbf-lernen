@@ -1,4 +1,4 @@
-import { BookOpen, Brain, Trophy, Target, TrendingUp, Clock, BarChart3, Zap, Compass, ChevronDown, ChevronRight } from 'lucide-react'
+import { BookOpen, Brain, Trophy, Target, TrendingUp, BarChart3, Zap, Compass, ChevronDown, ChevronRight } from 'lucide-react'
 import useStore from '../store/useStore'
 import { useMemo, useState } from 'react'
 import { CATEGORY_LABELS, CATEGORY_COLORS, OFFICIAL_POOL_SIZES, CATEGORIES, TOPIC_LABELS } from '../data/examConfig.js'
@@ -103,15 +103,16 @@ export default function Dashboard() {
     return data
   }, [questions, cardProgress])
 
+  const [now] = useState(() => Date.now())
+
   // Global due count
   const dueCount = useMemo(() => {
-    const now = Date.now()
     return questions.filter((q) => {
       const p = cardProgress[q.id]
       if (!p) return true
       return p.nextReview <= now
     }).length
-  }, [questions, cardProgress])
+  }, [questions, cardProgress, now])
 
   const progressPercent = useMemo(() => {
     if (stats.total === 0) return 0

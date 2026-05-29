@@ -1,5 +1,9 @@
 import { EXAM_CONFIG, CATEGORIES, EXAM_TYPES } from './examConfig.js'
-import { OFFICIAL_SEE_SHEETS } from './officialExamsData.js'
+import {
+  OFFICIAL_SEE_SHEETS,
+  OFFICIAL_BINNEN_MOTOR_SHEETS,
+  OFFICIAL_BINNEN_SEGEL_SHEETS,
+} from './officialExamsData.js'
 
 /**
  * Creates a seeded pseudo-random number generator.
@@ -30,6 +34,8 @@ export function getOfficialBogenQuestions(examType, bogenNumber, allQuestions) {
 
   // Check if we are running SBF See (Voll- or Ergänzungsprüfung)
   const isSee = examType === EXAM_TYPES.SEE_MOTOR || examType === EXAM_TYPES.SEE_MOTOR_ERGAENZUNG
+  const isBinnenMotor = examType === EXAM_TYPES.BINNEN_MOTOR || examType === EXAM_TYPES.BINNEN_MOTOR_ERGAENZUNG
+  const isBinnenSegel = examType === EXAM_TYPES.BINNEN_SEGEL || examType === EXAM_TYPES.BINNEN_SEGEL_ERGAENZUNG
 
   if (isSee && OFFICIAL_SEE_SHEETS[bogenNumber]) {
     const sheetIds = OFFICIAL_SEE_SHEETS[bogenNumber]
@@ -57,6 +63,30 @@ export function getOfficialBogenQuestions(examType, bogenNumber, allQuestions) {
     })
 
     return [...selectedQuestions, ...navQuestions]
+  }
+
+  if (isBinnenMotor && OFFICIAL_BINNEN_MOTOR_SHEETS[bogenNumber]) {
+    const sheetIds = OFFICIAL_BINNEN_MOTOR_SHEETS[bogenNumber]
+    const qMap = new Map(allQuestions.map(q => [q.id, q]))
+    
+    let selectedIds = sheetIds
+    if (examType === EXAM_TYPES.BINNEN_MOTOR_ERGAENZUNG) {
+      selectedIds = sheetIds.filter(id => !id.startsWith('B-'))
+    }
+    return selectedIds.map(id => qMap.get(id)).filter(Boolean)
+  }
+
+  if (isBinnenSegel && OFFICIAL_BINNEN_MOTOR_SHEETS[bogenNumber] && OFFICIAL_BINNEN_SEGEL_SHEETS[bogenNumber]) {
+    const motorIds = OFFICIAL_BINNEN_MOTOR_SHEETS[bogenNumber]
+    const segelIds = OFFICIAL_BINNEN_SEGEL_SHEETS[bogenNumber]
+    const qMap = new Map(allQuestions.map(q => [q.id, q]))
+    
+    let selectedIds = [...motorIds]
+    if (examType === EXAM_TYPES.BINNEN_SEGEL_ERGAENZUNG) {
+      selectedIds = selectedIds.filter(id => !id.startsWith('B-'))
+    }
+    selectedIds.push(...segelIds)
+    return selectedIds.map(id => qMap.get(id)).filter(Boolean)
   }
 
   // Fallback: Seeded deterministic generator for Binnen, Binnen-Segel, etc.

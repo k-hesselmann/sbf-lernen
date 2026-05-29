@@ -189,7 +189,7 @@ const useStore = create(
               const p = cardProgress[q.id]
               return !p || p.repetitions === 0
             })
-          case 'difficult':
+          case 'difficult': {
             const pinned = get().pinnedQuestions || []
             return pool.filter((q) => {
               if (pinned.includes(q.id)) return true
@@ -197,6 +197,7 @@ const useStore = create(
               if (!p || p.totalAttempts === 0) return false
               return (p.correctAttempts / p.totalAttempts) < 0.7
             })
+          }
           case 'all':
           default:
             return pool

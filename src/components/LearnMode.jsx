@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback, useEffect } from 'react'
-import { Check, X, ArrowRight, RotateCcw, Sparkles, Layers, AlertCircle, Filter, ChevronLeft, SlidersHorizontal, Compass, GraduationCap, ChevronDown, Pause, Pin } from 'lucide-react'
+import { Check, X, ArrowRight, RotateCcw, Sparkles, Layers, ChevronLeft, SlidersHorizontal, Compass, GraduationCap, ChevronDown, Pause, Pin } from 'lucide-react'
 import useStore from '../store/useStore'
 import { CATEGORY_LABELS, CATEGORY_COLORS, getCategoriesForExam, EXAM_CONFIG, TOPIC_LABELS } from '../data/examConfig.js'
 import { getQuestionsForExam } from '../data/index.js'
@@ -84,10 +84,6 @@ export default function LearnMode() {
     return navCategory.topics.some((t) => selectedTopics.includes(t.id))
   }, [categoriesAndTopics, selectedTopics])
 
-  // Reset session state when license type changes
-  useEffect(() => {
-    setIsSessionActive(false)
-  }, [selectedExamType])
 
   // Initialize topics for selected exam type
   useEffect(() => {
@@ -190,6 +186,8 @@ export default function LearnMode() {
     setSessionStats({ correct: 0, incorrect: 0 })
     setAnswersHistory({})
     setAutoplaySuspended(false)
+    setAutoplayProgress(0)
+    setAutoplayPaused(false)
     setIsTransitioning(false)
     setTransitionDirection('next')
     setIsSessionActive(true)
@@ -227,7 +225,10 @@ export default function LearnMode() {
     } else {
       setSelectedAnswer(null)
       setShowResult(false)
+      setAutoplaySuspended(false)
     }
+    setAutoplayProgress(0)
+    setAutoplayPaused(false)
   }, [currentIndex, sessionCards, answersHistory])
 
   const executePrevious = useCallback(() => {
@@ -239,7 +240,12 @@ export default function LearnMode() {
       if (prevCard) {
         setSelectedAnswer(answersHistory[prevCard.id] ?? null)
         setShowResult(answersHistory[prevCard.id] !== undefined)
+        if (answersHistory[prevCard.id] === undefined) {
+          setAutoplaySuspended(false)
+        }
       }
+      setAutoplayProgress(0)
+      setAutoplayPaused(false)
     }
   }, [currentIndex, sessionCards, answersHistory])
 
@@ -290,23 +296,12 @@ export default function LearnMode() {
     setSessionStats({ correct: 0, incorrect: 0 })
     setAnswersHistory({})
     setAutoplaySuspended(false)
+    setAutoplayProgress(0)
+    setAutoplayPaused(false)
     setIsTransitioning(false)
     setTransitionDirection('next')
     setIsSessionActive(true)
   }, [shuffleSession])
-
-  // Reset autoplay progress when card changes
-  useEffect(() => {
-    setAutoplayProgress(0)
-    setAutoplayPaused(false) // Reset pause state to prevent stuck hover states
-  }, [currentIndex])
-
-  // Reset autoplay suspension state when landing on an unanswered card (displaying "Überspringen")
-  useEffect(() => {
-    if (currentCard && answersHistory[currentCard.id] === undefined) {
-      setAutoplaySuspended(false)
-    }
-  }, [currentIndex, currentCard, answersHistory])
 
   // Autoplay countdown timer
   useEffect(() => {

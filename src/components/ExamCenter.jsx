@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { Trophy, ArrowRight, ClipboardCheck, TrendingUp, History, Calendar, Check, X, ShieldAlert, ChevronLeft } from 'lucide-react'
+import { Trophy, ArrowRight, ClipboardCheck, TrendingUp, History, ShieldAlert, ChevronLeft } from 'lucide-react'
 import useStore from '../store/useStore'
 import { EXAM_CONFIG } from '../data/examConfig.js'
 
@@ -132,11 +132,7 @@ export default function ExamCenter() {
     const masteryPct = globalStats.total > 0 ? (globalStats.masteredCount / globalStats.total) * 100 : 0
 
     const recentAttempts = examHistory.slice(0, 3)
-    let examPct = 0
-    if (recentAttempts.length > 0) {
-      const totalScore = recentAttempts.reduce((sum, att) => sum + (att.correctAnswers / att.totalQuestions) * 100, 0)
-      examPct = totalScore / recentAttempts.length
-    } else {
+    if (recentAttempts.length === 0) {
       // Capped progress if no exams simulated yet
       const progressPct = globalStats.total > 0 
         ? ((globalStats.masteredCount + globalStats.learningCount * 0.5) / globalStats.total) * 100 
@@ -144,6 +140,8 @@ export default function ExamCenter() {
       return Math.min(50, Math.round(progressPct))
     }
 
+    const totalScore = recentAttempts.reduce((sum, att) => sum + (att.correctAnswers / att.totalQuestions) * 100, 0)
+    const examPct = totalScore / recentAttempts.length
     return Math.round(masteryPct * 0.4 + examPct * 0.6)
   }, [examHistory, questions, cardProgress])
 
