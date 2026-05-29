@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback, useEffect } from 'react'
-import { Check, X, ArrowRight, RotateCcw, Sparkles, Layers, AlertCircle, Filter, ChevronLeft, SlidersHorizontal, Compass, GraduationCap, ChevronDown } from 'lucide-react'
+import { Check, X, ArrowRight, RotateCcw, Sparkles, Layers, AlertCircle, Filter, ChevronLeft, SlidersHorizontal, Compass, GraduationCap, ChevronDown, Pause, Pin } from 'lucide-react'
 import useStore from '../store/useStore'
 import { CATEGORY_LABELS, CATEGORY_COLORS, getCategoriesForExam, EXAM_CONFIG, TOPIC_LABELS } from '../data/examConfig.js'
 import { getQuestionsForExam } from '../data/index.js'
@@ -15,6 +15,8 @@ export default function LearnMode() {
   const setLearningMode = useStore((s) => s.setLearningMode)
   const cardProgress = useStore((s) => s.cardProgress)
   const setView = useStore((s) => s.setView)
+  const pinnedQuestions = useStore((s) => s.pinnedQuestions) || []
+  const togglePinQuestion = useStore((s) => s.togglePinQuestion)
 
   const [isSessionActive, setIsSessionActive] = useState(false)
   const [sessionCards, setSessionCards] = useState([])
@@ -111,14 +113,17 @@ export default function LearnMode() {
         return !p || p.repetitions === 0
       }).length
     } else if (mode === 'difficult') {
+      const { pinnedQuestions } = useStore.getState()
+      const pinned = pinnedQuestions || []
       return pool.filter((q) => {
+        if (pinned.includes(q.id)) return true
         const p = cardProgress[q.id]
         return p && p.totalAttempts > 0 && (p.correctAttempts / p.totalAttempts) < 0.7
       }).length
     } else {
       return pool.length
     }
-  }, [selectedExamType, selectedTopics, cardProgress])
+  }, [selectedExamType, selectedTopics, pinnedQuestions, cardProgress])
 
   const handleToggleTopic = useCallback((topicId) => {
     if (selectedTopics.includes(topicId)) {
@@ -562,8 +567,8 @@ export default function LearnMode() {
                 },
                 {
                   id: 'difficult',
-                  label: 'Schwierige Fragen',
-                  desc: 'Fehlerschwerpunkte gezielt trainieren (Erfolgsquote < 70%).',
+                  label: 'Schwierige & gemerkte Fragen',
+                  desc: 'Fehlerschwerpunkte (Erfolgsquote < 70%) und markierte Karten trainieren.',
                   icon: '❌',
                   count: getModeCount('difficult'),
                   activeClass: 'border-rose-500/40 bg-rose-500/10 text-rose-300'
@@ -718,18 +723,33 @@ export default function LearnMode() {
         }`}
         key={currentCard.id}
       >
-        <div className="flex items-start gap-3 mb-2 flex-wrap">
-          <span className="text-xs font-mono text-slate-500 bg-white/5 px-2 py-1 rounded-lg flex-shrink-0">
-            {currentCard.id}
-          </span>
-          <span className={`text-xs px-2 py-1 rounded-lg ${catColors.bg} ${catColors.text}`}>
-            {CATEGORY_LABELS[currentCard.category] || currentCard.category}
-          </span>
-          {currentCard.topic && (
-            <span className="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded-lg">
-              {TOPIC_LABELS[currentCard.topic] || currentCard.topic.replace(/_/g, ' ')}
+        <div className="flex justify-between items-start gap-4 mb-2">
+          <div className="flex items-start gap-3 flex-wrap">
+            <span className="text-xs font-mono text-slate-500 bg-white/5 px-2 py-1 rounded-lg flex-shrink-0">
+              {currentCard.id}
             </span>
-          )}
+            <span className={`text-xs px-2 py-1 rounded-lg ${catColors.bg} ${catColors.text}`}>
+              {CATEGORY_LABELS[currentCard.category] || currentCard.category}
+            </span>
+            {currentCard.topic && (
+              <span className="text-xs text-slate-400 bg-white/5 px-2 py-1 rounded-lg">
+                {TOPIC_LABELS[currentCard.topic] || currentCard.topic.replace(/_/g, ' ')}
+              </span>
+            )}
+          </div>
+          {/* Pin Button */}
+          <button
+            onClick={() => togglePinQuestion(currentCard.id)}
+            className="transition-all duration-200 cursor-pointer flex-shrink-0 hover:scale-110 p-1"
+            title={pinnedQuestions.includes(currentCard.id) ? 'Karte entpinnen' : 'Karte merken'}
+          >
+            <Pin
+              className={`w-4 h-4 transition-all duration-200 rotate-45
+                ${pinnedQuestions.includes(currentCard.id)
+                  ? 'text-white fill-white'
+                  : 'text-slate-500 hover:text-slate-300'}`}
+            />
+          </button>
         </div>
 
         {currentCard.taskDesc && (
@@ -834,24 +854,24 @@ export default function LearnMode() {
               >
                 {autoplayPaused ? (
                   <div className="w-[130px] h-[36px] rounded-xl overflow-hidden border border-ocean-500/30 flex bg-ocean-500/10 animate-fade-in">
-                    {/* Cancel Autoplay (X) */}
+                    {/* Cancel Autoplay (Pause) */}
                     <button
                       onClick={() => {
-                        setAutoplayActive(false)
+                        setAutoplaySuspended(true)
                         setAutoplayPaused(false)
                       }}
-                      className="w-1/2 h-full flex items-center justify-center text-rose-400 hover:bg-rose-500/15 border-0 border-r border-ocean-500/30 transition-colors cursor-pointer"
+                      className="w-1/2 h-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/5 border-0 border-r border-ocean-500/30 transition-colors cursor-pointer"
                       title="Auto-Play anhalten"
                     >
-                      <X className="w-4 h-4" />
+                      <Pause className="w-4 h-4" />
                     </button>
-                    {/* Go Immediately (Check) */}
+                    {/* Go Immediately (ArrowRight) */}
                     <button
                       onClick={handleNext}
-                      className="w-1/2 h-full flex items-center justify-center text-emerald-400 hover:bg-emerald-500/15 border-0 transition-colors cursor-pointer"
+                      className="w-1/2 h-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/5 border-0 transition-colors cursor-pointer"
                       title="Sofort weiter"
                     >
-                      <Check className="w-4 h-4" />
+                      <ArrowRight className="w-4 h-4" />
                     </button>
                   </div>
                 ) : (

@@ -413,7 +413,7 @@ export const binnenQuestions2 = [
     "id": "BI-121",
     "category": "binnen_spezifisch",
     "topic": "ausweichregeln",
-    "question": "Ein Kleinfahrzeug unter Segel kreuzt nachts das Fahrwasser. An Backbord kommt ein Kleinfahrzeug mit Maschinenantrieb. Wer ist ausweichpflichtig?",
+    "question": "Ein Kleinfahrzeug unter Segel kreuzt nachts das Fahrwasser. An Backbord tauchen die nachstehenden Lichter eines Fahrzeugs auf, das in spitzem Winkel den Kurs des Kleinfahrzeugs unter Segel kreuzen will. Wer ist ausweichpflichtig?",
     "options": [
       "Kleinfahrzeug mit Maschinenantrieb.",
       "Kleinfahrzeug unter Segel.",
@@ -455,7 +455,7 @@ export const binnenQuestions2 = [
     "id": "BI-124",
     "category": "binnen_spezifisch",
     "topic": "lichter_sichtzeichen",
-    "question": "Was bedeuten nachts auf einer Binnenschifffahrtsstraße grüne und weiße Lichter, die auf Sog und Wellenschlag hinweisen?",
+    "question": "Was bedeuten nachts auf einer Binnenschifffahrtsstraße die nachstehenden Lichte?",
     "options": [
       "Sog und Wellenschlag vermeiden.",
       "Keine Durchfahrt für Kleinfahrzeuge.",

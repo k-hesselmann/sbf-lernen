@@ -81,6 +81,7 @@ const useStore = create(
       // ─── Selected Topics for learning ───
       selectedTopics: getTopicsForExamHelper(EXAM_TYPES.SEE_MOTOR),
       learningMode: 'due',
+      pinnedQuestions: [],
 
       // ─── Exam State ───
       examState: null,
@@ -110,6 +111,13 @@ const useStore = create(
         if (!isValid) {
           set({ selectedTopics: allTopics })
         }
+      },
+      togglePinQuestion: (questionId) => {
+        const pinned = get().pinnedQuestions || []
+        const updated = pinned.includes(questionId)
+          ? pinned.filter(id => id !== questionId)
+          : [...pinned, questionId]
+        set({ pinnedQuestions: updated })
       },
       setLearningMode: (mode) => set({ learningMode: mode }),
       prepareExam: (type) => set({ selectedExamType: type, examState: null, currentView: 'exam' }),
@@ -181,7 +189,9 @@ const useStore = create(
               return !p || p.repetitions === 0
             })
           case 'difficult':
+            const pinned = get().pinnedQuestions || []
             return pool.filter((q) => {
+              if (pinned.includes(q.id)) return true
               const p = cardProgress[q.id]
               if (!p || p.totalAttempts === 0) return false
               return (p.correctAttempts / p.totalAttempts) < 0.7
@@ -413,6 +423,7 @@ const useStore = create(
         examHistory: state.examHistory,
         selectedExamType: state.selectedExamType,
         selectedTopics: state.selectedTopics,
+        pinnedQuestions: state.pinnedQuestions,
       }),
     }
   )
