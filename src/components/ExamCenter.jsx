@@ -108,6 +108,7 @@ export default function ExamCenter() {
   const examHistory = useStore((s) => s.examHistory)
   const prepareExam = useStore((s) => s.prepareExam)
   const setView = useStore((s) => s.setView)
+  const viewExamResult = useStore((s) => s.viewExamResult)
 
   const fullExams = useMemo(() => {
     return Object.entries(EXAM_CONFIG).filter(([key]) => !key.includes('ergaenzung'))
@@ -233,19 +234,28 @@ export default function ExamCenter() {
         {/* Prüfungsverlauf (Attempts History) */}
         <div className="glass-light rounded-2xl p-5 flex flex-col justify-between min-h-[140px]">
           <div>
-            <div className="flex items-center gap-2 mb-2.5">
-              <History className="w-4 h-4 text-slate-400 flex-shrink-0" />
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Prüfungsverlauf</h3>
+            <div className="flex items-center justify-between mb-2.5">
+              <div className="flex items-center gap-2">
+                <History className="w-4 h-4 text-slate-400 flex-shrink-0" />
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Prüfungsverlauf</h3>
+              </div>
+              {examHistory.length > 3 && (
+                <span className="text-[9px] text-slate-500 font-medium">{examHistory.length} gesamt</span>
+              )}
             </div>
             {examHistory.length > 0 ? (
-              <div className="space-y-2">
-                {examHistory.slice(0, 2).map((attempt) => {
+              <div className="space-y-1.5 max-h-[90px] overflow-y-auto pr-1 custom-scrollbar">
+                {examHistory.map((attempt) => {
                   const cfg = EXAM_CONFIG[attempt.examType] || { icon: '📝', shortLabel: 'Prüfung' }
                   return (
-                    <div key={attempt.id} className="flex items-center justify-between text-xs py-0.5 border-b border-white/[0.03] last:border-0">
+                    <button
+                      key={attempt.id}
+                      onClick={() => viewExamResult(attempt.id)}
+                      className="w-full flex items-center justify-between text-xs py-1.5 px-2 rounded-lg border border-transparent hover:border-white/5 hover:bg-white/5 text-left transition-all duration-200 cursor-pointer"
+                    >
                       <div className="flex items-center gap-1.5 min-w-0">
                         <span className="text-xs">{cfg.icon}</span>
-                        <span className="text-slate-300 font-medium truncate max-w-[120px]">{cfg.shortLabel}</span>
+                        <span className="text-slate-300 font-medium truncate max-w-[120px]" title={cfg.shortLabel}>{cfg.shortLabel}</span>
                       </div>
                       <div className="flex items-center gap-2 flex-shrink-0">
                         <span className="font-mono font-bold text-slate-400">
@@ -257,7 +267,7 @@ export default function ExamCenter() {
                           <span className="text-rose-400 font-extrabold">✗</span>
                         )}
                       </div>
-                    </div>
+                    </button>
                   )
                 })}
               </div>

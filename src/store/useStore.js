@@ -89,6 +89,7 @@ const useStore = create(
 
       // ─── Exam History ───
       examHistory: [],
+      viewExamResultId: null,
 
       // ─── Sidebar State ───
       sidebarCollapsed: false,
@@ -96,6 +97,7 @@ const useStore = create(
 
       // ─── Actions ───
       setView: (view) => set({ currentView: view }),
+      viewExamResult: (resultId) => set({ viewExamResultId: resultId, currentView: 'examResult' }),
       setSelectedExamType: (type) => {
         const topics = getTopicsForExamHelper(type)
         set({
@@ -353,6 +355,7 @@ const useStore = create(
             officialBogenNumber,
           },
           currentView: 'exam',
+          viewExamResultId: null,
         })
       },
 
@@ -401,22 +404,35 @@ const useStore = create(
           passed: allSectionsPassed,
           sectionResults,
           officialBogenNumber: exam.officialBogenNumber,
-          questions: exam.questions.map((q) => ({
-            id: q.id,
-            question: q.question,
-            category: q.category,
-            selectedAnswer: exam.answers[q.id] ?? null,
-            correctIndex: q.correctIndex,
-            isCorrect: exam.answers[q.id] === q.correctIndex,
-            image: q.image,
-            explanation: q.solutionExplanation || null,
-          })),
+          questions: exam.questions.map((q) => {
+            const originalQuestion = allQuestions.find((aq) => aq.id === q.id)
+            const selectedShuffledIdx = exam.answers[q.id]
+            let originalSelectedIdx = null
+            if (selectedShuffledIdx !== undefined && selectedShuffledIdx !== null) {
+              const selectedOptionText = q.options[selectedShuffledIdx]
+              if (originalQuestion) {
+                originalSelectedIdx = originalQuestion.options.indexOf(selectedOptionText)
+              }
+            }
+            return {
+              id: q.id,
+              question: q.question,
+              category: q.category,
+              options: originalQuestion ? originalQuestion.options : q.options,
+              selectedAnswer: originalSelectedIdx,
+              correctIndex: originalQuestion ? originalQuestion.correctIndex : q.correctIndex,
+              isCorrect: exam.answers[q.id] === q.correctIndex,
+              image: q.image,
+              explanation: q.solutionExplanation || null,
+            }
+          }),
         }
 
         set({
           examState: { ...exam, submitted: true },
           examHistory: [result, ...get().examHistory],
           currentView: 'examResult',
+          viewExamResultId: null,
         })
       },
 

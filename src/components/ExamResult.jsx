@@ -1,10 +1,23 @@
-import { Check, X, Trophy, AlertCircle, RotateCcw, Home, BarChart3 } from 'lucide-react'
+import { useState } from 'react'
+import { Check, X, Trophy, AlertCircle, RotateCcw, Home, BarChart3, Pin } from 'lucide-react'
 import useStore from '../store/useStore'
-import { CATEGORY_LABELS, CATEGORY_COLORS, EXAM_CONFIG } from '../data/examConfig.js'
+import { CATEGORY_LABELS, CATEGORY_COLORS, EXAM_CONFIG, TOPIC_LABELS } from '../data/examConfig.js'
+import { allQuestions } from '../data/index.js'
 
 export default function ExamResult() {
-  const { examHistory, setView, startExam } = useStore()
-  const result = examHistory[0]
+  const { examHistory, setView, startExam, viewExamResultId, pinnedQuestions, togglePinQuestion } = useStore()
+  const result = viewExamResultId
+    ? examHistory.find((r) => r.id === viewExamResultId)
+    : examHistory[0]
+
+  const [expandedQuestions, setExpandedQuestions] = useState({})
+
+  const toggleQuestionExpand = (questionId) => {
+    setExpandedQuestions((prev) => ({
+      ...prev,
+      [questionId]: !prev[questionId],
+    }))
+  }
 
   if (!result) return null
 
@@ -149,11 +162,25 @@ export default function ExamResult() {
         <div className="space-y-3">
           {result.questions.map((q, idx) => {
             const catColors = CATEGORY_COLORS[q.category] || { bg: 'bg-slate-500/20', text: 'text-slate-400' }
+            const isExpanded = !!expandedQuestions[q.id]
+            const isPinned = pinnedQuestions.includes(q.id)
+            const originalQuestion = allQuestions.find((aq) => aq.id === q.id)
+            const options = q.options || originalQuestion?.options || []
+            const topic = q.topic || originalQuestion?.topic
+
+            const isOldExam = !q.options
+            const correctIndex = isOldExam ? (originalQuestion?.correctIndex ?? 0) : q.correctIndex
+            const selectedAnswer = isOldExam 
+              ? (q.isCorrect ? correctIndex : null)
+              : q.selectedAnswer
+
             return (
               <div
                 key={q.id}
-                className={`glass-light rounded-xl p-4 border-l-[3px] transition-all duration-200
-                  ${q.isCorrect ? 'border-l-emerald-400' : 'border-l-rose-400'}`}
+                onClick={() => options.length > 0 && toggleQuestionExpand(q.id)}
+                className={`glass-light rounded-xl p-4 border-l-[3px] transition-all duration-200 select-none
+                  ${q.isCorrect ? 'border-l-emerald-400' : 'border-l-rose-400'}
+                  ${options.length > 0 ? 'cursor-pointer hover:bg-white/[0.03]' : ''}`}
               >
                 <div className="flex items-start gap-3">
                   <div className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5
@@ -165,26 +192,71 @@ export default function ExamResult() {
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
+                    {/* Header Row: ID, category, topic */}
+                    <div className="flex items-center gap-2 flex-wrap mb-2 border-b border-white/5 pb-2">
+                      <span className="text-[10px] font-mono text-slate-400 bg-white/5 px-1.5 py-0.5 rounded">
+                        {q.id}
+                      </span>
                       <span className={`text-[10px] px-1.5 py-0.5 rounded ${catColors.bg} ${catColors.text}`}>
                         {CATEGORY_LABELS[q.category] || q.category}
                       </span>
+                      {topic && (
+                        <span className="text-[10px] text-slate-400 bg-white/5 px-1.5 py-0.5 rounded">
+                          {TOPIC_LABELS[topic] || topic.replace(/_/g, ' ')}
+                        </span>
+                      )}
                     </div>
+
                     <p className="text-sm font-medium text-white leading-relaxed">{q.question}</p>
                     {q.image && (
                       <div className="mt-2 flex justify-start">
                         <img src={q.image} alt="Frage Bild" className="max-h-32 rounded border border-white/10" />
                       </div>
                     )}
+
+                    {/* Options list shown on click */}
+                    {isExpanded && options.length > 0 && (
+                      <div className="mt-3.5 space-y-2 animate-fade-in">
+                        {options.map((option, optIdx) => {
+                          const isSelected = selectedAnswer === optIdx
+                          const isCorrectOpt = correctIndex === optIdx
+                          
+                          let optStyle = "bg-white/5 border-white/5 text-slate-300"
+                          let icon = null
+
+                          if (isCorrectOpt) {
+                            optStyle = "bg-emerald-500/10 border-emerald-500/30 text-emerald-300 font-medium"
+                            icon = <Check className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
+                          } else if (isSelected) {
+                            optStyle = "bg-rose-500/10 border-rose-500/30 text-rose-300"
+                            icon = <X className="w-3.5 h-3.5 text-rose-400 flex-shrink-0" />
+                          }
+
+                          return (
+                            <div
+                              key={optIdx}
+                              className={`flex items-start gap-2.5 p-2.5 rounded-lg border text-xs leading-relaxed ${optStyle}`}
+                            >
+                              <span className="font-bold text-slate-500 flex-shrink-0">
+                                {String.fromCharCode(65 + optIdx)}:
+                              </span>
+                              <span className="flex-1">{option}</span>
+                              {icon}
+                            </div>
+                          )
+                        })}
+                      </div>
+                    )}
+
                     {!q.isCorrect ? (
-                      <p className="text-xs text-slate-400 mt-2">
-                        Deine Antwort: <span className="text-rose-400">{q.selectedAnswer !== null ? String.fromCharCode(65 + q.selectedAnswer) : '—'}</span>
+                      <p className="text-xs text-slate-400 mt-2.5">
+                        Deine Antwort: <span className="text-rose-400">{q.selectedAnswer !== null && q.selectedAnswer !== undefined ? String.fromCharCode(65 + q.selectedAnswer) : '—'}</span>
                         {' · '}
                         Richtig: <span className="text-emerald-400">{String.fromCharCode(65 + q.correctIndex)}</span>
                       </p>
                     ) : (
-                      q.selectedAnswer !== null && (
-                        <p className="text-xs text-emerald-400/80 mt-2 font-medium">
+                      q.selectedAnswer !== null && q.selectedAnswer !== undefined && (
+                        <p className="text-xs text-emerald-400/80 mt-2.5 font-medium">
                           Richtig gelöst (Auswahl {String.fromCharCode(65 + q.selectedAnswer)})
                         </p>
                       )
@@ -196,7 +268,34 @@ export default function ExamResult() {
                       </div>
                     )}
                   </div>
-                  <span className="text-xs font-mono text-slate-500 flex-shrink-0">{idx + 1}</span>
+                  
+                  {/* Right Column details and bookmark pin */}
+                  <div className="flex flex-col items-end justify-between self-stretch flex-shrink-0 gap-3">
+                    <div className="flex items-center gap-2">
+                      {/* Pin Button */}
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          togglePinQuestion(q.id)
+                        }}
+                        className="transition-all duration-200 cursor-pointer flex-shrink-0 hover:scale-110 p-1"
+                        title={isPinned ? 'Karte entpinnen' : 'Karte merken'}
+                      >
+                        <Pin
+                          className={`w-4 h-4 transition-all duration-200 rotate-45
+                            ${isPinned
+                              ? 'text-white fill-white'
+                              : 'text-slate-500 hover:text-slate-300'}`}
+                        />
+                      </button>
+                      <span className="text-xs font-mono text-slate-500">{idx + 1}</span>
+                    </div>
+                    {options.length > 0 && (
+                      <span className="text-[10px] text-slate-500 font-medium hover:text-slate-300">
+                        {isExpanded ? 'Details ausblenden' : 'Details einblenden'}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
             )
