@@ -22,6 +22,7 @@ export default function ExamMode() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [timeLeft, setTimeLeft] = useState(0)
   const [showConfirm, setShowConfirm] = useState(false)
+  const [showOfficialBogenSelector, setShowOfficialBogenSelector] = useState(false)
   const intervalRef = useRef(null)
 
   // Timer
@@ -122,17 +123,38 @@ export default function ExamMode() {
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 flex-shrink-0" />
                     <span><strong>Navigationsaufgabe:</strong> Dieser Test enthält eine Navigationskarten-Aufgabe. Nimm dir ausreichend Zeit dafür, da hier min. 7 von 9 Punkten erreicht werden müssen!</span>
                   </div>
-                  <div className="ml-4 mt-1 p-3 rounded-lg bg-emerald-500/5 border border-emerald-500/10 text-xs text-slate-300 space-y-2">
+                  <div className="ml-4 mt-1 p-3.5 rounded-lg bg-emerald-500/5 border border-emerald-500/10 text-xs text-slate-300 space-y-2">
                     <p className="font-semibold text-emerald-400">💡 Anleitung zur Kartenarbeit:</p>
-                    <p>Da Zeichnungen am Bildschirm nicht maßstabsgetreu möglich sind, wird empfohlen, die Übung auf der physischen **Übungskarte D49** mit Zirkel und Kursdreiecken zu bearbeiten. Du kannst die offiziellen Seekarten-Ausschnitte (PDF) direkt hier öffnen.</p>
-                    <div className="flex flex-wrap gap-3 mt-1">
+                    <p>
+                      Die Navigationsaufgaben entsprechen den 15 offiziellen Prüfungsaufgaben.
+                      In der <strong>echten Prüfung</strong> sind diese Fragen jedoch <strong>keine</strong> Multiple-Choice-Fragen,
+                      sondern Freitextaufgaben, bei denen du deine ermittelten Werte eintragen musst.
+                      In dieser App behalten wir das Multiple-Choice-Format für die automatische Auswertung bei. Wir empfehlen dir aber,
+                      die Aufgaben zuerst handschriftlich zu lösen.
+                    </p>
+                    <p>
+                      Da Messungen und Zeichnungen direkt auf dem Bildschirm ungenau und unskaliert sind, wird dringend empfohlen,
+                      die Aufgaben auf der gedruckten <strong>Übungskarte D49</strong> mit einem <strong>Zirkel</strong> und <strong>Kursdreiecken</strong> zu bearbeiten.
+                    </p>
+                    <div className="p-3 rounded-lg bg-slate-950/40 border border-white/5 space-y-1.5 text-[11px] mt-2">
+                      <div className="font-semibold text-amber-400">⚓ Wichtig: Seekarten-PDF für die Navigation</div>
+                      <p className="text-slate-300 leading-relaxed font-normal">
+                        Aufgrund von Urheberrechtsbestimmungen ist das offizielle D49-Kartenaufgaben-PDF nicht im Code-Repository enthalten.
+                      </p>
+                      <div className="space-y-1 text-slate-400 font-normal">
+                        <p>1. Besorge dir das offizielle PDF der D49-Kartenaufgaben: <strong>Seekarte_D49_Aufgaben_SBF_SEE.pdf</strong>.</p>
+                        <p>2. Lege die Datei in das Projektverzeichnis unter: <strong>public/Seekarte_D49_Aufgaben_SBF_SEE.pdf</strong>.</p>
+                        <p>3. Drucke das PDF in Originalgröße auf <strong>DIN A3-Papier (100% Skalierung)</strong> aus.</p>
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap gap-3 mt-2 pt-1 border-t border-white/5">
                       <a
                         href="/Seekarte_D49_Aufgaben_SBF_SEE.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-emerald-400 hover:text-emerald-300 font-bold underline flex items-center gap-1 text-[11px]"
                       >
-                        📂 Seekarten-Ausschnitte D49 (PDF)
+                        📂 Seekarten-Ausschnitte D49 (PDF) öffnen
                       </a>
                     </div>
                   </div>
@@ -163,14 +185,51 @@ export default function ExamMode() {
           </div>
 
           {/* Start Trigger */}
-          <button
-            onClick={() => startExam()}
-            className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-bold text-sm text-white
-              bg-gradient-to-r from-ocean-500 to-ocean-600 hover:from-ocean-400 hover:to-ocean-500
-              transition-all duration-200 shadow-lg shadow-ocean-500/20"
-          >
-            Offizielle Prüfungssimulation starten
-          </button>
+          {!showOfficialBogenSelector ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <button
+                onClick={() => startExam()}
+                className={`w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-bold text-sm text-white
+                  bg-gradient-to-r ${config.color === 'amber' ? 'from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 shadow-amber-500/20' : config.color === 'violet' ? 'from-violet-500 to-violet-600 hover:from-violet-400 hover:to-violet-500 shadow-violet-500/20' : 'from-ocean-500 to-ocean-600 hover:from-ocean-400 hover:to-ocean-500 shadow-ocean-500/20'}
+                  transition-all duration-200 shadow-lg cursor-pointer`}
+              >
+                Zufällige Simulation starten
+              </button>
+              <button
+                onClick={() => setShowOfficialBogenSelector(true)}
+                className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-bold text-sm text-slate-300
+                  bg-white/5 hover:bg-white/10 border border-white/10
+                  transition-all duration-200 cursor-pointer"
+              >
+                Amtliche Bögen 1-15
+              </button>
+            </div>
+          ) : (
+            <div className="space-y-4 p-5 rounded-2xl bg-white/5 border border-white/5 animate-fade-in">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">Amtlichen Prüfungsbogen wählen (1–15)</span>
+                <button
+                  onClick={() => setShowOfficialBogenSelector(false)}
+                  className="text-xs font-semibold text-slate-400 hover:text-slate-200 transition-colors cursor-pointer"
+                >
+                  Abbrechen
+                </button>
+              </div>
+              <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                {Array.from({ length: 15 }, (_, i) => i + 1).map((num) => (
+                  <button
+                    key={num}
+                    onClick={() => startExam(num)}
+                    className={`py-2.5 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer
+                      bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/5
+                      hover:scale-102 active:scale-98`}
+                  >
+                    Bogen {num}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     )
@@ -220,7 +279,9 @@ export default function ExamMode() {
           </div>
           <div>
             <h2 className="text-xl sm:text-2xl font-bold text-white">Prüfungssimulation</h2>
-            <p className="text-slate-400 mt-0.5 text-xs sm:text-sm">{config.label} · {questions.length} Fragen</p>
+            <p className="text-slate-400 mt-0.5 text-xs sm:text-sm">
+              {config.label} · {examState.officialBogenNumber !== null ? `Amtlicher Bogen ${examState.officialBogenNumber}` : 'Zufällige Simulation'} · {questions.length} Fragen
+            </p>
           </div>
         </div>
         <div className={`flex items-center gap-2 px-4 py-2 rounded-xl font-mono text-lg font-bold flex-shrink-0

@@ -492,22 +492,42 @@ export default function LearnMode() {
           </div>
 
           {isNavigationSelected && (
-            <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-slate-300 space-y-2 animate-fade-in">
+            <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-slate-300 space-y-2.5 animate-fade-in">
               <div className="font-bold text-emerald-400 flex items-center gap-1.5">
                 <Compass className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                 Kartenarbeit & Navigationsbesteck benötigt
               </div>
               <p className="leading-relaxed text-slate-300 font-normal">
-                Die Navigationsaufgaben entsprechen den 15 offiziellen Prüfungsaufgaben. Da Messungen und Zeichnungen direkt auf dem Bildschirm ungenau und unskaliert sind, wird dringend empfohlen, die Aufgaben auf der gedruckten <strong className="font-bold text-white">Übungskarte D49</strong> mit einem <strong className="font-bold text-white">Zirkel</strong> und <strong className="font-bold text-white">Kursdreiecken</strong> zu bearbeiten. Du kannst die offiziellen Seekarten-Ausschnitte (PDF) direkt hier öffnen.
+                Die Navigationsaufgaben entsprechen den 15 offiziellen Prüfungsaufgaben.
+                In der <strong>echten Prüfung</strong> sind diese Fragen jedoch <strong>keine</strong> Multiple-Choice-Fragen,
+                sondern Freitextaufgaben. In dieser App behalten wir das Multiple-Choice-Format für die automatische Auswertung bei. Wir empfehlen dir aber,
+                die Aufgaben zuerst handschriftlich auf Papier zu lösen.
               </p>
-              <div className="flex flex-wrap gap-3 pt-1">
+              <p className="leading-relaxed text-slate-300 font-normal">
+                Da Messungen und Zeichnungen direkt auf dem Bildschirm ungenau und unskaliert sind, wird dringend empfohlen,
+                die Aufgaben auf der gedruckten <strong>Übungskarte D49</strong> mit einem <strong>Zirkel</strong> und <strong>Kursdreiecken</strong> zu bearbeiten.
+              </p>
+              <div className="p-3.5 rounded-lg bg-slate-950/40 border border-white/5 space-y-2 text-[11px]">
+                <div className="font-semibold text-amber-400 flex items-center gap-1">
+                  ⚓ Wichtig: Seekarten-PDF für die Navigation
+                </div>
+                <p className="text-slate-300 leading-relaxed font-normal">
+                  Aufgrund von Urheberrechtsbestimmungen ist das offizielle D49-Kartenaufgaben-PDF nicht direkt im Code-Repository enthalten.
+                </p>
+                <div className="space-y-1.5 text-slate-400 font-normal">
+                  <p>1. Besorge dir das offizielle PDF der D49-Kartenaufgaben: <strong>Seekarte_D49_Aufgaben_SBF_SEE.pdf</strong>.</p>
+                  <p>2. Lege die Datei in das Projektverzeichnis unter: <strong>public/Seekarte_D49_Aufgaben_SBF_SEE.pdf</strong> (oder im Hauptordner, damit die App sie öffnen kann).</p>
+                  <p>3. Drucke das PDF in Originalgröße auf <strong>DIN A3-Papier (100% Skalierung)</strong> aus, damit Entfernungen und Winkel genau stimmen.</p>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-3 pt-1 border-t border-white/5">
                 <a
                   href="/Seekarte_D49_Aufgaben_SBF_SEE.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-emerald-400 hover:text-emerald-300 font-bold underline flex items-center gap-1 text-[11px]"
                 >
-                  📂 Seekarten-Ausschnitte D49 (PDF)
+                  📂 Seekarten-Ausschnitte D49 (PDF) öffnen
                 </a>
               </div>
             </div>

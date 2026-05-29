@@ -6,1727 +6,1727 @@
 
 export const navigationTasks = [
   {
-    id: 1,
-    title: "Navigationsaufgabe 1",
-    description: "Ausgangslage: Eine Yacht befindet sich in der Deutschen Bucht auf der Reise von Borkum nach Cuxhaven. Um 10:00 Uhr wird die Leuchttonne 'TG 19/Weser 2' an Backbord in nächster Nähe passiert. Die Fahrt über Grund (Fdg) beträgt 8,0 kn.",
-    questions: [
+    "id": 1,
+    "title": "Navigationsaufgabe 1",
+    "description": "Ein Sportboot befindet sich am 05.05.2012 in der Deutschen Bucht auf der Reise von Borkum nach Cuxhaven. Die Fahrt über Grund beträgt 8 kn. Um 10:00 Uhr wird die Leuchttonne \"TG19/Weser 2\" nahebei passiert. Von dieser Tonne wird der Kurs auf die Ansteuerungstonne der alten Weser \"ST\" abgesetzt.",
+    "questions": [
       {
-        number: 1,
-        question: "Geben Sie die geographischen Koordinaten der Leuchttonne 'TG 19/Weser 2' an.",
-        options: [
-          "53° 50,5' N, 007° 52,2' E",
-          "53° 49,8' N, 007° 51,0' E",
-          "53° 52,1' N, 007° 54,3' E",
-          "53° 50,0' N, 007° 50,0' E"
+        "number": 1,
+        "question": "Wie lautet der rwK?",
+        "options": [
+          "rwk = 089°",
+          "rwk = 074°",
+          "rwk = 084°",
+          "rwk = 079°"
         ],
-        correctIndex: 0,
-        explanation: "Die Position der Tonne 'TG 19/Weser 2' wird direkt am Breiten- und Längenmaßstab der Karte abgelesen: 53° 50,5' N, 007° 52,2' E."
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwk = 079°"
       },
       {
-        number: 2,
-        question: "Von der Tonne 'TG 19/Weser 2' wird der Kurs zur Tonne 'ST' abgesetzt. Welchen rechtweisenden Kurs (rwK) entnehmen Sie der Karte?",
-        options: [
-          "079°",
-          "084°",
-          "074°",
-          "089°"
+        "number": 2,
+        "question": "Die Ablenkung beträgt +4°, die Mw ist der Seekarte zu entnehmen. Wie lautet der MgK?",
+        "options": [
+          "MgK = 074° *)",
+          "MgK = 074° *) (Abweichung -10%)",
+          "MgK = 074° *) (Abweichung +10%)",
+          "Wert nicht bestimmbar"
         ],
-        correctIndex: 0,
-        explanation: "Das Verbinden der beiden Tonnen in der Seekarte ergibt mit dem Kursdreieck einen rechtweisenden Kurs von 079°."
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: MgK = 074° *)"
       },
       {
-        number: 3,
-        question: "Die Missweisung (Mw) für das laufende Jahr beträgt +1° (Ost). Die Ablenkung (Abl) beträgt +4°. Berechnen Sie den zu steuernden Magnetkompasskurs (MgK).",
-        options: [
-          "074°",
-          "084°",
-          "076°",
-          "082°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: MgK = rwK - Mw - Abl = 079° - (+1°) - (+4°) = 074°."
-      },
-      {
-        number: 4,
-        question: "Welche Distanz (d) legt die Yacht in 1,5 Stunden (bis 11:30 Uhr) bei einer Fahrt über Grund von 8,0 kn zurück?",
-        options: [
-          "12,0 sm",
-          "8,0 sm",
-          "10,5 sm",
-          "16,0 sm"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: d = Fdg * t = 8 kn * 1,5 h = 12,0 sm."
-      },
-      {
-        number: 5,
-        question: "Bestimmen Sie die geographischen Koordinaten des Koppelorts (Ok) für 11:30 Uhr.",
-        options: [
-          "53° 52,8' N, 008° 12,0' E",
-          "53° 51,0' N, 008° 08,5' E",
-          "53° 54,2' N, 008° 15,2' E",
-          "53° 50,1' N, 008° 10,0' E"
-        ],
-        correctIndex: 0,
-        explanation: "Tragen Sie auf der Kurslinie (079°) eine Distanz von 12,0 sm ab dem Startpunkt ab. Die Position lautet 53° 52,8' N, 008° 12,0' E."
-      },
-      {
-        number: 6,
-        question: "Um 11:30 Uhr wird die Leuchttonne 'Alte Weser' mit dem Magnetkompass gepeilt. Die Magnetkompasspeilung (MgP) beträgt 186°. Berechnen Sie die rechtweisende Peilung (rwP) (Mw = +1°, Abl = +4°).",
-        options: [
-          "191°",
-          "181°",
-          "186°",
-          "196°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: rwP = MgP + Mw + Abl = 186° + 1° + 4° = 191°."
-      },
-      {
-        number: 7,
-        question: "Zeichnen Sie die rwP (191°) in die Seekarte ein. Welches feste Schifffahrtszeichen schneidet diese Peillinie als Standlinie?",
-        options: [
-          "Leuchtturm Alte Weser",
-          "Leuchtturm Roter Sand",
-          "Leuchtfeuer Mellumplate",
-          "Leuchtfeuer Tegeler Plate"
-        ],
-        correctIndex: 0,
-        explanation: "Durch Einzeichnen des Peilstrahls (Gegenpeilung 011° ab Leuchtturm Alte Weser) kreuzt die Peillinie den Leuchtturm 'Alte Weser'."
-      },
-      {
-        number: 8,
-        question: "Um 12:00 Uhr wird ein beobachteter Ort (Ob) bestimmt: 53° 53,5' N, 008° 16,8' E. Der Koppelort (Ok) für 12:00 Uhr war 53° 53,0' N, 008° 20,0' E. Bestimmen Sie die Besteckversetzung (BV).",
-        options: [
-          "Richtung 285° (WNW), Distanz 2,0 sm",
-          "Richtung 105° (ESE), Distanz 2,0 sm",
-          "Richtung 285° (WNW), Distanz 1,0 sm",
-          "Richtung 045° (NE), Distanz 3,5 sm"
-        ],
-        correctIndex: 0,
-        explanation: "Die Versetzung zeigt vom Koppelort (Ok) zum beobachteten Ort (Ob). Der gemessene Winkel beträgt 285° und die Distanz beträgt 2,0 sm."
-      },
-      {
-        number: 9,
-        question: "In der Seekarte finden Sie nahe dem Koppelort ein Symbol für ein Wrack mit der Angabe '2,4m'. Was bedeutet dies?",
-        options: [
-          "Die Kartentiefe über dem Wrack beträgt 2,4 m bezogen auf das Seekartennull.",
-          "Das Wrack ragt 2,4 m über das Wasser hinaus.",
-          "Die Wrackteile liegen in einer Wassertiefe von 24 m.",
-          "Hier darf nur mit Booten bis 2,4 m Tiefgang geankert werden."
-        ],
-        correctIndex: 0,
-        explanation: "Eine Zahl neben einem Wracksymbol gibt die geringste Wassertiefe über dem Hindernis an, bezogen auf das Seekartennull (SKN)."
-      }
-    ]
-  },
-  {
-    id: 2,
-    title: "Navigationsaufgabe 2",
-    description: "Ausgangslage: Nach dem Ablegen in Helgoland passiert die Yacht um 09:00 Uhr die Leuchttonne 'Helgoland-O' an Steuerbord in nächster Nähe. Es soll Kurs auf die Leuchttonne 'Elbe 1' genommen werden. Die Fahrt über Grund (Fdg) beträgt 6,0 kn.",
-    questions: [
-      {
-        number: 1,
-        question: "Geben Sie die geographischen Koordinaten der Leuchttonne 'Helgoland-O' an.",
-        options: [
-          "54° 10,8' N, 007° 55,4' E",
-          "54° 11,5' N, 007° 53,0' E",
-          "54° 09,2' N, 007° 57,1' E",
-          "54° 12,0' N, 007° 56,0' E"
-        ],
-        correctIndex: 0,
-        explanation: "Die Position von 'Helgoland-O' entnimmt man direkt aus der Karte am Randmaßstab."
-      },
-      {
-        number: 2,
-        question: "Vom Ausgangspunkt wird der Kurs zur Tonne 'Elbe 1' abgesetzt. Welchen rechtweisenden Kurs (rwK) entnehmen Sie der Karte?",
-        options: [
-          "125°",
-          "130°",
-          "120°",
-          "135°"
-        ],
-        correctIndex: 0,
-        explanation: "Die Kurslinie von Helgoland-O nach Elbe 1 verläuft in Richtung 125°."
-      },
-      {
-        number: 3,
-        question: "Die Missweisung (Mw) beträgt +1° (Ost), die Ablenkung (Abl) beträgt -3° (West). Berechnen Sie den Magnetkompasskurs (MgK).",
-        options: [
-          "127°",
-          "123°",
-          "121°",
-          "129°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: MgK = rwK - Mw - Abl = 125° - (+1°) - (-3°) = 125° - 1° + 3° = 127°."
-      },
-      {
-        number: 4,
-        question: "Welche Distanz (d) liegt zwischen den Tonnen 'Helgoland-O' und 'Elbe 1'?",
-        options: [
-          "18,0 sm",
-          "15,5 sm",
-          "20,0 sm",
-          "22,5 sm"
-        ],
-        correctIndex: 0,
-        explanation: "Das Abgreifen der Distanz mit dem Zirkel ergibt am Breitenmaßstab genau 18,0 Seemeilen."
-      },
-      {
-        number: 5,
-        question: "Berechnen Sie die voraussichtliche Ankunftszeit (ETA) an der Tonne 'Elbe 1' bei Fdg = 6,0 kn.",
-        options: [
-          "12:00 Uhr",
-          "11:30 Uhr",
-          "12:30 Uhr",
-          "11:00 Uhr"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: t = d / Fdg = 18 sm / 6 kn = 3,0 Stunden. Abfahrt war 09:00 Uhr, d.h. Ankunft um 12:00 Uhr."
-      },
-      {
-        number: 6,
-        question: "Unterwegs wird um 10:30 Uhr ein Leuchtfeuer mit MgP = 295° gepeilt. Berechnen Sie die rechtweisende Peilung (rwP) (Mw = +1°, Abl = -3°).",
-        options: [
-          "293°",
-          "297°",
-          "299°",
-          "291°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: rwP = MgP + Mw + Abl = 295° + 1° + (-3°) = 293°."
-      },
-      {
-        number: 7,
-        question: "Welches markante Leuchtfeuer auf Helgoland wurde gepeilt (rwP = 293°)?",
-        options: [
-          "Hauptfeuer Helgoland (auf dem Oberland)",
-          "Düne-Feuer",
-          "Helgoland-Südhafen-Feuer",
-          "Westhafen-Feuer"
-        ],
-        correctIndex: 0,
-        explanation: "Der rückwärtige Peilstrahl führt direkt zum Hauptfeuer Helgoland auf der Felseninsel."
-      },
-      {
-        number: 8,
-        question: "Die Seekarte zeigt nahe der Route das Symbol 'PSSA'. Was bedeutet dies?",
-        options: [
-          "Particularly Sensitive Sea Area (besonders empfindliches Meeresgebiet)",
-          "Protected Sailing Area",
-          "Private Sea Area",
-          "Port Security Area"
-        ],
-        correctIndex: 0,
-        explanation: "PSSA steht für Particularly Sensitive Sea Area. In diesen ökologisch wertvollen Gebieten gelten verschärfte Umweltschutzbestimmungen."
-      },
-      {
-        number: 9,
-        question: "Nahe der Tonne 'Elbe 1' liegt ein verankertes Feuerschiff (Ersatzfeuer). Welche Kennung hat ein solches orientierendes Feuer oft laut Karte?",
-        options: [
-          "Iso. 8s (Gleichtakt)",
-          "Fl. 10s (Blitzfeuer)",
-          "F. (Festfeuer)",
-          "Oc. 5s (Unterbrochenes Feuer)"
-        ],
-        correctIndex: 0,
-        explanation: "Feuerschiffe besitzen markante Kennungen wie Iso. 8s (Isophase/Gleichtaktfeuer) zur sicheren Ansteuerung."
-      }
-    ]
-  },
-  {
-    id: 3,
-    title: "Navigationsaufgabe 3",
-    description: "Ausgangslage: Die Yacht befindet sich im Jade-Fahrwasser auf Höhe der Tonne 'Jade' um 14:00 Uhr. Es wird Kurs in Richtung Innenjade abgesetzt. Fahrt über Grund 7,0 kn.",
-    questions: [
-      {
-        number: 1,
-        question: "Geben Sie die geographischen Koordinaten der Tonne 'Jade' an.",
-        options: [
-          "53° 51,5' N, 007° 56,5' E",
-          "53° 50,0' N, 007° 53,0' E",
-          "53° 53,1' N, 007° 58,0' E",
-          "53° 52,0' N, 007° 55,0' E"
-        ],
-        correctIndex: 0,
-        explanation: "Die Koordinaten werden am Kartenrand abgelesen."
-      },
-      {
-        number: 2,
-        question: "Vorschriftsmäßiger rechtweisender Kurs (rwK) auf dem Weg zur Innenjade beträgt 210°. Bestimmen Sie diesen Kurs in der Karte.",
-        options: [
-          "210°",
-          "215°",
-          "205°",
-          "220°"
-        ],
-        correctIndex: 0,
-        explanation: "Der rwK beträgt 210° laut Kurslinie."
-      },
-      {
-        number: 3,
-        question: "Die Missweisung (Mw) beträgt +2° (Ost), die Ablenkung (Abl) beträgt +5° (Ost). Berechnen Sie den Magnetkompasskurs (MgK).",
-        options: [
-          "203°",
-          "217°",
-          "213°",
-          "207°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: MgK = rwK - Mw - Abl = 210° - 2° - 5° = 203°."
-      },
-      {
-        number: 4,
-        question: "Welche Strecke legt das Boot bis 15:30 Uhr zurück bei Fdg = 7,0 kn?",
-        options: [
-          "10,5 sm",
-          "7,0 sm",
-          "14,0 sm",
-          "12,5 sm"
-        ],
-        correctIndex: 0,
-        explanation: "Fahrtdauer: 1,5 Stunden. Distanz d = 7,0 kn * 1,5 h = 10,5 sm."
-      },
-      {
-        number: 5,
-        question: "Geben Sie die Position des Koppelorts (Ok) um 15:30 Uhr an.",
-        options: [
-          "53° 42,4' N, 007° 48,0' E",
-          "53° 44,0' N, 007° 50,2' E",
-          "53° 41,0' N, 007° 46,0' E",
-          "53° 43,5' N, 007° 49,5' E"
-        ],
-        correctIndex: 0,
-        explanation: "Wir tragen 10,5 sm in Kursrichtung 210° ab Tonne Jade ab."
-      },
-      {
-        number: 6,
-        question: "Eine Peilung wird vorgenommen. MgP zu einer Bake auf Minsener Oog beträgt 045°. Berechnen Sie die rwP (Mw = +2°, Abl = +5°).",
-        options: [
-          "052°",
-          "038°",
-          "047°",
-          "040°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: rwP = MgP + Mw + Abl = 045° + 2° + 5° = 052°."
-      },
-      {
-        number: 7,
-        question: "Nach Einzeichnen der rwP (052°) schneidet die Standlinie das Ostbucht-Feuer. Welcher Ob wird um 15:30 Uhr bestimmt?",
-        options: [
-          "53° 43,0' N, 007° 47,0' E",
-          "53° 41,5' N, 007° 49,0' E",
-          "53° 44,2' N, 007° 45,5' E",
-          "53° 42,0' N, 007° 48,0' E"
-        ],
-        correctIndex: 0,
-        explanation: "Der Schnittpunkt aus Kurslinie und Peillinie ergibt den beobachteten Ort (Ob) bei 53° 43,0' N, 007° 47,0' E."
-      },
-      {
-        number: 8,
-        question: "Bestimmen Sie die Besteckversetzung (BV) zwischen Ok (15:30) und Ob (15:30).",
-        options: [
-          "Richtung 330°, Distanz 0,8 sm",
-          "Richtung 150°, Distanz 0,8 sm",
-          "Richtung 330°, Distanz 1,5 sm",
-          "Richtung 045°, Distanz 1,0 sm"
-        ],
-        correctIndex: 0,
-        explanation: "Die Richtung vom Ok zum Ob beträgt 330°, die gemessene Distanz 0,8 sm."
-      },
-      {
-        number: 9,
-        question: "Was bedeutet das Symbol eines Ankers mit einer roten Verbotslinie in der Karte?",
-        options: [
-          "Ankerverbot",
-          "Liegeverbot",
-          "Fischereiverbot",
-          "Sperrgebiet für Yachten"
-        ],
-        correctIndex: 0,
-        explanation: "Das Ankersymbol mit einer diagonalen roten Linie bedeutet ein behördliches Ankerverbot in diesem Bereich."
-      }
-    ]
-  },
-  {
-    id: 4,
-    title: "Navigationsaufgabe 4",
-    description: "Ausgangslage: Die Yacht steht um 08:00 Uhr dicht bei der Leuchttonne 'Elbe 1'. Es soll der Elbe aufwärts nach Cuxhaven gefolgt werden. Die Geschwindigkeit der Yacht beträgt 9,0 kn.",
-    questions: [
-      {
-        number: 1,
-        question: "Geben Sie die geographische Position der Tonne 'Elbe 1' an.",
-        options: [
-          "54° 00,0' N, 008° 06,6' E",
-          "54° 01,2' N, 008° 08,0' E",
-          "53° 59,1' N, 008° 05,3' E",
-          "54° 00,5' N, 008° 04,0' E"
-        ],
-        correctIndex: 0,
-        explanation: "Die Position von Elbe 1 lautet 54° 00,0' N, 008° 06,6' E."
-      },
-      {
-        number: 2,
-        question: "Der rechtweisende Kurs (rwK) von 'Elbe 1' zur Tonne 'Elbe 3' beträgt laut Karte 095°. Wie lautet dieser?",
-        options: [
-          "095°",
-          "100°",
-          "090°",
-          "085°"
-        ],
-        correctIndex: 0,
-        explanation: "Der abgelesene rwK beträgt 095°."
-      },
-      {
-        number: 3,
-        question: "Mw ist +1° (Ost), Abl ist +2° (Ost). Berechnen Sie den Magnetkompasskurs (MgK).",
-        options: [
-          "092°",
-          "098°",
-          "096°",
-          "094°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: MgK = rwK - Mw - Abl = 095° - 1° - 2° = 092°."
-      },
-      {
-        number: 4,
-        question: "Die Distanz zwischen 'Elbe 1' und 'Elbe 3' beträgt laut Karte...",
-        options: [
-          "4,5 sm",
+        "number": 3,
+        "question": "Wie groß ist die Distanz zwischen der Tonne \"TG19/Weser 2\" und der Tonne \"ST\"?",
+        "options": [
           "5,5 sm",
-          "3,5 sm",
-          "6,0 sm"
+          "6,1 sm",
+          "6,7 sm",
+          "7,3 sm"
         ],
-        correctIndex: 0,
-        explanation: "Am Breitenmaßstab gemessen beträgt die Distanz 4,5 sm."
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: 6,1 sm"
       },
       {
-        number: 5,
-        question: "Wie lange braucht die Yacht für diese Strecke bei einer Fahrt über Grund von 9,0 kn?",
-        options: [
-          "30 Min.",
-          "20 Min.",
-          "40 Min.",
-          "15 Min."
+        "number": 4,
+        "question": "In welcher Zeit wird die Distanz zwischen der Tonne \"TG19/Weser 2\" und der Tonne \"ST\" zurückgelegt?",
+        "options": [
+          "ca. 56 min.",
+          "ca. 36 min.",
+          "ca. 46 min. (in einer 3/4 Stunde)",
+          "ca. 66 min."
         ],
-        correctIndex: 0,
-        explanation: "Formel: t = d / V * 60 = 4,5 / 9 * 60 = 30 Minuten."
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: 45,75 min., also 46 min. oder \"in einer 3/4 Stunde\""
       },
       {
-        number: 6,
-        question: "Unterwegs wird das Feuer 'Neuwerk' gepeilt. MgP = 220°. Mw = +1°, Abl = +2°. Wie lautet die rwP?",
-        options: [
-          "223°",
-          "217°",
-          "219°",
-          "221°"
+        "number": 5,
+        "question": "Auf welcher Position befindet sich das Schiff nach Koppelort um 10:30 Uhr?",
+        "options": [
+          "53° 53,8' N, 007° 52,8' E",
+          "53° 54,8' N, 007° 50,3' E",
+          "53° 56,8' N, 007° 52,3' E",
+          "53° 55,8' N, 007° 51,3' E"
         ],
-        correctIndex: 0,
-        explanation: "Formel: rwP = MgP + Mw + Abl = 220° + 1° + 2° = 223°."
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: 53° 55,8' N 007° 51,3' E"
       },
       {
-        number: 7,
-        question: "Durch Zeichnen der rwP (223°) erhalten wir den Schnittpunkt mit dem Kurs. Wo befindet sich das Boot zur Peilzeit?",
-        options: [
-          "53° 59,7' N, 008° 11,2' E",
-          "53° 58,5' N, 008° 09,0' E",
-          "54° 00,2' N, 008° 12,5' E",
-          "53° 59,0' N, 008° 10,0' E"
+        "number": 6,
+        "question": "Um 10:30 Uhr werden nachfolgende Schifffahrtszeichen mit den Hand- Peilkompass gepeilt. Die Ablenkung beträgt dabei 0°, die Mw ist der Seekarte zu entnehmen. Neue Weser, Leuchttonne \"4a\", MgP = 169° Alte Weser, Leuchttonne \"ST\", MgP = 064°. Wie lauten die rw-Peilungen? Leuchttonne \"4a\"",
+        "options": [
+          "Leuchttonne \"ST\": rwP = 170°, Objekt 2: rwP = 065°",
+          "Leuchttonne \"ST\": rwP = 165°, Objekt 2: rwP = 070°",
+          "Leuchttonne \"ST\": rwP = 175°, Objekt 2: rwP = 060°",
+          "Leuchttonne \"ST\": rwP = 180°, Objekt 2: rwP = 075°"
         ],
-        correctIndex: 0,
-        explanation: "Der Schnittpunkt der Peillinie mit dem rwK (095°) ergibt die Position 53° 59,7' N, 008° 11,2' E."
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwP = 170° Leuchttonne \"ST\" rwP = 065°"
       },
       {
-        number: 8,
-        question: "Was bedeutet die Abkürzung 'TCTS' an einem Fahrwasserrand in der Elbe?",
-        options: [
-          "Traffic Control Tracking System (Verkehrsüberwachungssystem)",
-          "Tidal Current Tracking Station",
-          "Temporary Coast Guard Station",
-          "Tide Control Tower Station"
+        "number": 7,
+        "question": "Tragen Sie die rechtweisenden Peilungen in die Seekarte ein",
+        "options": [
+          "Zeichnung nicht erforderlich.",
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt.",
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts."
         ],
-        correctIndex: 0,
-        explanation: "TCTS steht für ein System zur Verkehrsüberwachung und Funkberichterstattung im Revier."
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
       },
       {
-        number: 9,
-        question: "Was besagt das Schild 'Rechtsfahrgebot' im Fahrwasser der Elbe für Sportboote?",
-        options: [
-          "Es muss so weit rechts wie sicher und praktisch möglich gefahren werden.",
-          "Es muss immer am rechten Tonnenstrich gefahren werden.",
-          "Überholen ist nur auf der rechten Seite erlaubt.",
-          "Die Elbe darf nur an Steuerbord-Tonnen passiert werden."
+        "number": 8,
+        "question": "Wie lautet die Besteckversetzung?",
+        "options": [
+          "BV = 103° - 1,3 sm",
+          "BV = 283° - 0,8 sm",
+          "BV = 103° - 0,8 sm",
+          "BV = 118° - 1,0 sm"
         ],
-        correctIndex: 0,
-        explanation: "Das Rechtsfahrgebot der SeeSchStrO verlangt, dass Fahrzeuge sich so weit an der Steuerbordseite des Fahrwassers halten müssen, wie es sicher und möglich ist."
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: BV = 103° - 0,8 sm"
+      },
+      {
+        "number": 9,
+        "question": "Beschreiben Sie Farbe, Kennung und Toppzeichen der Leuchttonne \"ST\"",
+        "options": [
+          "Farbe: rot, Kennung: rotes unterbrochenes Feuer, Toppzeichen: roter Zylinder",
+          "Farbe: rot/weiß waagerecht gestreift, Kennung: weißes Blitzfeuer, Toppzeichen: roter Ball",
+          "Farbe: grün, Kennung: grünes Gleichtaktfeuer mit 8 Sekunden Wiederkehr, Toppzeichen: kein Toppzeichen",
+          "Farbe: rot/weiß senkrecht gestreift, Kennung: weißes Gleichtaktfeuer mit 8 Sekunden Wiederkehr, Toppzeichen: roter Ball"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: Farbe: rot/weiß senkrecht gestreift Kennung: weißes Gleichtaktfeuer mit 8 Sekunden Wiederkehr Toppzeichen: roter Ball *) Auf Basis des gemäß Verkehrsblatt vom 15.01.2013 geänderten Ergebnisses zu Frage 1 (rwK = 079°) wird der Magnetkompasskurs unter Berücksichtigung einer Ablenkung von +4° und der laut zugehörigem Kartenausschnitt des Fragebogens Nummer 1 angegebenen Missweisung von +1° ermittelt. Demnach lautet der MgK tatsächlich: 074° --- PAGE 90 ---"
       }
     ]
   },
   {
-    id: 5,
-    title: "Navigationsaufgabe 5",
-    description: "Ausgangslage: Eine Yacht läuft in der Deutschen Bucht nördlich von Wangerooge. Um 11:00 Uhr steht die Yacht dicht bei der Leuchttonne 'Wangerooge-O'. Die Fahrt über Grund (Fdg) beträgt 6,5 kn.",
-    questions: [
+    "id": 2,
+    "title": "Navigationsaufgabe 2",
+    "description": "Ein Sportboot befindet sich am 10.06.2011 in der Deutschen Bucht auf der Reise von Helgoland nach Cuxhaven. Die Fahrt über Grund beträgt 10 kn. Um 11:00 Uhr wird 1,2 sm südlich von Helgoland die Tonne \"Helgoland-O\" nahebei passiert.",
+    "questions": [
       {
-        number: 1,
-        question: "Geben Sie die Position der Leuchttonne 'Wangerooge-O' an.",
-        options: [
-          "53° 49,0' N, 007° 58,8' E",
-          "53° 48,0' N, 007° 56,2' E",
-          "53° 50,2' N, 008° 00,5' E",
-          "53° 49,5' N, 007° 57,0' E"
+        "number": 1,
+        "question": "Entnehmen Sie der Seekarte die geographische Position des Sportbootes um 11:00 Uhr",
+        "options": [
+          "54° 8,0' N, 007° 52,5' E",
+          "54° 09,0' N, 007° 53,5' E",
+          "54° 10,0' N, 007° 54,5' E",
+          "54° 7,0' N, 007° 55,0' E"
         ],
-        correctIndex: 0,
-        explanation: "Die Position wird am Rand der Karte ermittelt: 53° 49,0' N, 007° 58,8' E."
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: 54° 09,0' N 007° 53,5' E"
       },
       {
-        number: 2,
-        question: "Von 'Wangerooge-O' wird Kurs zur Tonne 'Jade 1' abgesetzt. Welcher rwK ergibt sich aus der Karte?",
-        options: [
-          "085°",
-          "090°",
-          "080°",
-          "075°"
+        "number": 2,
+        "question": "Im Abstand von ca. 0,6 sm südwestlich der Tonne \"Helgoland-O\" befindet sich eine Eintragung. Was bedeutet diese Eintragung in der Seekarte?",
+        "options": [
+          "Kabel- oder Pipeline-Trasse",
+          "Gezeitenstromangabe (Stromraute)",
+          "Wrack, Kartentiefe 53,6 m",
+          "Unterwasserhindernis mit einer Kartentiefe von 20 m"
         ],
-        correctIndex: 0,
-        explanation: "Das Lineal zeigt einen Kurs von 085° zur Tonne Jade 1."
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: Wrack, Kartentiefe 53,6 m"
       },
       {
-        number: 3,
-        question: "Mw = +2° (Ost), Abl = -4° (West). Berechnen Sie den Magnetkompasskurs (MgK).",
-        options: [
-          "087°",
-          "083°",
-          "089°",
-          "081°"
+        "number": 3,
+        "question": "Von der Tonne \"Helgoland-O\" aus wird ein MgK von 116° gesteuert. Die Ablenkung beträgt +3°, die Mw ist der Seekarte zu entnehmen. Wie lautet der rwK?",
+        "options": [
+          "rwK = 130°",
+          "rwK = 115°",
+          "rwK = 125°",
+          "rwK = 120°"
         ],
-        correctIndex: 0,
-        explanation: "Formel: MgK = rwK - Mw - Abl = 085° - (+2°) - (-4°) = 085° - 2° + 4° = 087°."
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwK = 120°"
       },
       {
-        number: 4,
-        question: "Welche Distanz misst die Route von 'Wangerooge-O' nach 'Jade 1'?",
-        options: [
-          "6,5 sm",
-          "7,5 sm",
-          "5,5 sm",
-          "8,0 sm"
+        "number": 4,
+        "question": "Tragen Sie den rechtweisenden Kurs in die Seekarte ein",
+        "options": [
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt.",
+          "Zeichnung nicht erforderlich.",
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts."
         ],
-        correctIndex: 0,
-        explanation: "Am Breitenmaßstab abgegriffen beträgt die Distanz genau 6,5 sm."
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
       },
       {
-        number: 5,
-        question: "Bestimmen Sie den Koppelort (Ok) für 12:00 Uhr bei Fdg = 6,5 kn.",
-        options: [
-          "53° 49,6' N, 008° 09,8' E",
-          "53° 48,0' N, 008° 05,0' E",
-          "53° 51,0' N, 008° 12,0' E",
-          "53° 49,0' N, 008° 08,0' E"
+        "number": 5,
+        "question": "Nach 11,1 sm Distanz wird die Tonne \"Außenelbe-Reede 4\" nahebei passiert. Beschreiben Sie Farbe, Kennung und Toppzeichen des Schifffahrtszeichens",
+        "options": [
+          "Farbe: gelb-schwarz waagerecht gestreift, Kennung: weißes Funkelfeuer, Toppzeichen: zwei schwarze Kegel",
+          "Farbe: gelb, Kennung: gelbes Blitzfeuer mit 4 Sekunden Wiederkehr, Toppzeichen: keines",
+          "Farbe: rot-weiß senkrecht gestreift, Kennung: weißes Gleichtaktfeuer, Toppzeichen: roter Ball",
+          "Farbe: gelb, Kennung: gelbes Festfeuer, Toppzeichen: gelbes liegendes Kreuz"
         ],
-        correctIndex: 0,
-        explanation: "Fahrtdauer = 1 Std. Zurückgelegte Distanz = 6,5 sm. Auf der Kurslinie abgetragen ergibt sich 53° 49,6' N, 008° 09,8' E."
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: Farbe: gelb Kennung: gelbes Blitzfeuer mit 4 Sekunden Wiederkehr Toppzeichen: keines"
       },
       {
-        number: 6,
-        question: "Um 12:00 Uhr wird der Leuchtturm Mellumplate gepeilt. MgP = 175°. Berechnen Sie die rwP (Mw = +2°, Abl = -4°).",
-        options: [
-          "173°",
-          "177°",
-          "179°",
-          "171°"
+        "number": 6,
+        "question": "In welcher Zeit wird die in Frage 5 genannte Distanz zurückgelegt?",
+        "options": [
+          "77 min.",
+          "57 min.",
+          "67 min.",
+          "82 min."
         ],
-        correctIndex: 0,
-        explanation: "Formel: rwP = MgP + Mw + Abl = 175° + 2° + (-4°) = 173°."
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: 67 min."
       },
       {
-        number: 7,
-        question: "Zeichnen Sie die rwP (173°) in die Seekarte ein. Sie schneidet den Peilturm Mellumplate. Welches Signal zeigt dieser Turm laut Abkürzung 'LFl.WR.8s'?",
-        options: [
-          "Langes Blinkfeuer, weiß-rot, Wiederkehr 8 Sekunden",
-          "Blitzfeuer, weiß-rot, alle 8 Sekunden",
-          "Festfeuer, weiß-rot, 8 Sekunden",
-          "Lauflicht, weiß-rot, 8 Sekunden"
+        "number": 7,
+        "question": "Auf welcher Position befindet sich das Schiff nach Koppelort um 11:54 Uhr?",
+        "options": [
+          "54° 2,5' N, 008° 8,2' E",
+          "54° 3,5' N, 008° 5,7' E",
+          "54° 5,5' N, 008° 7,7' E",
+          "54° 04,5' N, 008° 06,7' E"
         ],
-        correctIndex: 0,
-        explanation: "LFl steht für Long Flashing (Langes Blinkfeuer). WR steht für White/Red (Weiß/Rot). 8s ist die Wiederkehr (8 Sekunden)."
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: 54° 04,5' N 008° 06,7' E"
       },
       {
-        number: 8,
-        question: "Um 12:15 Uhr weicht der Ob um 1,0 sm nach Norden ab. Welche Strömungsrichtung vermuten Sie hier?",
-        options: [
-          "Nordwärts setzender Gezeitenstrom (Flutstrom)",
-          "Südwärts setzender Ebbstrom",
-          "Keine Strömung",
-          "Oststrom"
+        "number": 8,
+        "question": "Um 11:54 Uhr wird die Leuchttonne \"Außenelbe-Reede 4\" mit den Hand- Peilkompass gepeilt: MgP = 146°. Die Ablenkung beträgt 0°, die Mw ist der Seekarte zu entnehmen. Wie lautet die rw-Peilung?",
+        "options": [
+          "rwP = 147°",
+          "rwP = 142°",
+          "rwP = 152°",
+          "rwP = 157°"
         ],
-        correctIndex: 0,
-        explanation: "Da das Boot nach Norden versetzt wurde, setzt die Strömung nach Norden (z.B. einlaufende Flut in Richtung Jade/Weser)."
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwP = 147°"
       },
       {
-        number: 9,
-        question: "Was bedeutet das Flachwassersymbol 'Watt' (grün/gelbe Schraffur) in der Seekarte?",
-        options: [
-          "Flächen, die bei Niedrigwasser trockenfallen.",
-          "Sperrgebiet für alle Fahrzeuge.",
-          "Naturschutzgebiet, das nicht betreten werden darf.",
-          "Ankerplätze für Flachwasserboote."
+        "number": 9,
+        "question": "Das Schiff befindet sich zeitgleich zur Peilung auf der 20-Meter-Linie. Wie lautet die Besteckversetzung?",
+        "options": [
+          "BV = 187° - 1,6 sm",
+          "BV = 007° - 1,6 sm",
+          "BV = 007° - 2,1 sm",
+          "BV = 022° - 1,8 sm"
         ],
-        correctIndex: 0,
-        explanation: "Grün/gelbe Trockenflächen (Watt) sind Bereiche, die bei Ebbe trockenfallen (Tidehochwasser überflutet)."
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: BV = 007° - 1,6 sm"
       }
     ]
   },
   {
-    id: 6,
-    title: "Navigationsaufgabe 6",
-    description: "Ausgangslage: Die Yacht steht im Weser-Fahrwasser nahe der Leuchttonne 'Weser' um 13:00 Uhr. Kurs wird Elbe-abwärts gesetzt. Die Fahrt über Grund beträgt 7,5 kn.",
-    questions: [
+    "id": 3,
+    "title": "Navigationsaufgabe 3",
+    "description": "Ein Sportboot befindet sich am 23.05.2011 in der Deutschen Bucht auf der Fahrt aus der Jade nach Langeoog. Um 13:30 Uhr wird die Tonne \"1b/Jade 1\" nahebei passiert. Die Fahrt über Grund wird mit 6 kn angenommen.",
+    "questions": [
       {
-        number: 1,
-        question: "Geben Sie die Position der Leuchttonne 'Weser' an.",
-        options: [
-          "53° 53,5' N, 007° 59,5' E",
-          "53° 52,1' N, 007° 57,0' E",
-          "53° 55,0' N, 008° 02,0' E",
-          "53° 54,0' N, 008° 00,0' E"
+        "number": 1,
+        "question": "Entnehmen Sie der Seekarte die geographische Position des Sportbootes um 13:30 Uhr",
+        "options": [
+          "53° 50,4' N, 007° 45,5' E",
+          "53° 51,4' N, 007° 43,0' E",
+          "53° 53,4' N, 007° 45,0' E",
+          "53° 52,4' N, 007° 44,0' E"
         ],
-        correctIndex: 0,
-        explanation: "Die Position lautet laut Seekarte 53° 53,5' N, 007° 59,5' E."
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: 53° 52,4' N 007° 44,0' E"
       },
       {
-        number: 2,
-        question: "Der rechtweisende Kurs (rwK) zur nächsten Kursänderungsmarke beträgt 160°. Tragen Sie diesen Kurs in der Karte ein.",
-        options: [
-          "160°",
-          "165°",
-          "155°",
-          "170°"
+        "number": 2,
+        "question": "Von dieser Tonne aus wird der Kurs auf die Tonne \"Accumer Ee\" abgesetzt. Tragen Sie den Kurs in die Seekarte ein",
+        "options": [
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt.",
+          "Zeichnung nicht erforderlich.",
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts."
         ],
-        correctIndex: 0,
-        explanation: "Der rwK beträgt 160°."
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
       },
       {
-        number: 3,
-        question: "Mw = +1° (Ost), Abl = +3° (Ost). Berechnen Sie den Magnetkompasskurs (MgK).",
-        options: [
-          "156°",
-          "164°",
-          "162°",
-          "158°"
+        "number": 3,
+        "question": "Wie lautet der rwK?",
+        "options": [
+          "rwK = 235°",
+          "rwK = 240°",
+          "rwK = 245°",
+          "rwK = 250°"
         ],
-        correctIndex: 0,
-        explanation: "Formel: MgK = rwK - Mw - Abl = 160° - 1° - 3° = 156°."
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwK = 240°"
       },
       {
-        number: 4,
-        question: "Welche Strecke legt die Yacht bis 14:12 Uhr (48 Minuten) zurück?",
-        options: [
+        "number": 4,
+        "question": "Die Ablenkung beträgt -2°, die Mw ist der Seekarte zu entnehmen. Wie lautet der MgK?",
+        "options": [
+          "MgK = 247°",
+          "MgK = 237°",
+          "MgK = 242°",
+          "MgK = 252°"
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: MgK = 242°"
+      },
+      {
+        "number": 5,
+        "question": "Wann wird die Tonne \"Accumer Ee\" voraussichtlich erreicht?",
+        "options": [
+          "Um 14:27 Uhr",
+          "Um 15:02 Uhr",
+          "Um 15:22 Uhr",
+          "Um 15:12 Uhr"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: 15:12 Uhr"
+      },
+      {
+        "number": 6,
+        "question": "Auf Position",
+        "options": [
+          "Position der Gezeitenstromangabe (Stromraute)",
+          "Ankerverbot oder Sperrgebiet",
+          "Wrackstelle mit bekannter Kartentiefe",
+          "Verkehrsüberwachungssystem (TCTS)"
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: 53° 49,5' N 007° 36,8' E (ca. 1,9 sm nordwestlich der Ansteuerungstonne \"Otzumer Balje\") finden Sie einen roten Eintrag mit einem \"A\". Was bedeutet diese Eintragung in die Seekarte? Position der Gezeitenstromangabe, oder \"Stromraute\""
+      },
+      {
+        "number": 7,
+        "question": "Um 14:30 Uhr wird mit dem Peilaufsatz des Magnetkompasses eine Kreuzpeilung durchgeführt. Die Ablenkung für den anliegenden Kurs beträgt -2°, die Mw ist der Seekarte zu entnehmen. Tonne \"TG15\" MgP = 292° Tonne \"TG17/Weser1\" MgP = 347° Tonne \"Accumer Ee\" MgP = 234° Wie lauten die rw-Peilungen? Tonne \"TG15\"",
+        "options": [
+          "rwP = 290° Tonne \"TG17/Weser1\" rwP = 345° Tonne \"Accumer Ee\" rwP = 232° (Abweichung -10%)",
+          "rwP = 290° Tonne \"TG17/Weser1\" rwP = 345° Tonne \"Accumer Ee\" rwP = 232°",
+          "rwP = 290° Tonne \"TG17/Weser1\" rwP = 345° Tonne \"Accumer Ee\" rwP = 232° (Abweichung +10%)",
+          "Wert nicht bestimmbar"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwP = 290° Tonne \"TG17/Weser1\" rwP = 345° Tonne \"Accumer Ee\" rwP = 232°"
+      },
+      {
+        "number": 8,
+        "question": "Tragen Sie die rechtweisenden Peilungen in die Seekarte ein",
+        "options": [
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Zeichnung nicht erforderlich.",
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt.",
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts."
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
+      },
+      {
+        "number": 9,
+        "question": "Beschreiben Sie Farbe, Kennung und Toppzeichen der Tonne \"Accumer Ee\"",
+        "options": [
+          "Farbe: gelb, Kennung: gelbes Blitzfeuer, Toppzeichen: keines",
+          "Farbe: grün, Kennung: grünes unterbrochenes Feuer, Toppzeichen: grüner Kegel",
+          "Farbe: rot, Kennung: rotes Funkelfeuer, Toppzeichen: roter Zylinder",
+          "Farbe: rot-weiß senkrecht gestreift, Kennung: weißes Gleichtaktfeuer mit 8 Sekunden Wiederkehr, Toppzeichen: roter Ball"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: Farbe: rot-weiß senkrecht gestreift Kennung: weißes Gleichtaktfeuer mit 8 Sekunden Wiederkehr Toppzeichen: roter Ball"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Navigationsaufgabe 4",
+    "description": "Ein aus Langeoog auslaufendes Sportboot befindet sich am 18.04.2014 um 09:00 Uhr nahe bei der Tonne \"Accumer Ee\".",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Entnehmen Sie der Seekarte die geographische Position des Bootes um 09:00 Uhr",
+        "options": [
+          "53° 46,2' N, 007° 28,1' E",
+          "53° 47,2' N, 007° 29,1' E",
+          "53° 48,2' N, 007° 30,1' E",
+          "53° 45,2' N, 007° 30,6' E"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: 53° 47,2' N 007° 29,1' E"
+      },
+      {
+        "number": 2,
+        "question": "Von der Tonne \"Accumer Ee\" aus wird der Kurs auf die Tonne \"Otzumer Balje\" abgesetzt. Tragen Sie den Kurs in die Seekarte ein",
+        "options": [
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Zeichnung nicht erforderlich.",
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt.",
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts."
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
+      },
+      {
+        "number": 3,
+        "question": "Wie lautet der rwK?",
+        "options": [
+          "rwK = 091°",
+          "rwK = 076°",
+          "rwK = 086°",
+          "rwK = 081°"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwK = 081°"
+      },
+      {
+        "number": 4,
+        "question": "Die Ablenkung beträgt +7°, die Mw ist der Seekarte zu entnehmen. Wie lautet der MgK?",
+        "options": [
+          "MgK = 074°",
+          "MgK = 069°",
+          "MgK = 079°",
+          "MgK = 084°"
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: MgK = 074°"
+      },
+      {
+        "number": 5,
+        "question": "Beschreiben Sie Farbe, Kennung und Toppzeichen der Tonne \"Otzumer Balje\"",
+        "options": [
+          "Farbe: rot-weiß waagerecht gestreift, Kennung: weißes Gleichtaktfeuer mit 8 Sekunden Wiederkehr, Toppzeichen: roter Ball",
+          "Farbe: rot-weiß senkrecht gestreift, Kennung: weißes Gleichtaktfeuer mit 4 Sekunden Wiederkehr, Toppzeichen: roter Ball",
+          "Farbe: gelb, Kennung: gelbes Blitzfeuer mit 4 Sekunden Wiederkehr, Toppzeichen: keines",
+          "Farbe: rot, Kennung: rotes Gleichtaktfeuer, Toppzeichen: roter Zylinder"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: Farbe: rot-weiß senkrecht gestreift Kennung: weißes Gleichtaktfeuer mit 4 Sekunden Wiederkehr Toppzeichen: roter Ball"
+      },
+      {
+        "number": 6,
+        "question": "Es ist 10:00 Uhr. Die durchschnittliche Fahrt über Grund betrug in der letzten Stunde 6 kn. Auf welcher Position befindet sich das Schiff nach Koppelort?",
+        "options": [
+          "53° 49,2' N, 007° 40,2' E",
+          "53° 47,2' N, 007° 38,2' E",
+          "53° 48,2' N, 007° 39,2' E",
+          "53° 46,2' N, 007° 40,7' E"
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: 53° 48,2'N 007° 39,2' E"
+      },
+      {
+        "number": 7,
+        "question": "Sie beschließen über die Otzumer Balje und das Langeooger Wattfahrwasser hinter der Insel zurück zum Hafen zu laufen. ca. 1,2 sm südwestlich der Tonne \"Otzumer Balje\" finden Sie zwei ähnliche Einträge. Was bedeuten diese Eintragungen in der Seekarte?",
+        "options": [
+          "Verankerungen für Feuerschiffe in 3,7 m und 1,4 m Tiefe",
+          "Kabeltrassen mit einer Tiefe von 3,7 m und 1,4 m",
+          "Wattflächen, die bei Niedrigwasser trockenfallen",
+          "Wracks mit 3,7 m bzw. 1,4 m Tiefe"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: Wracks mit 3,7 m bzw. 1,4 m Tiefe"
+      },
+      {
+        "number": 8,
+        "question": "Um 10:15 Uhr peilen Sie mit dem Peilaufsatz am Magnetkompass die westlichste der drei Kirchen auf Spiekeroog in MgP = 110° und die Tonne \"Otzumer Balje\" in MgP = 030°. Die Ablenkung für den anliegenden Kurs beträgt +5°, die Mw ist der Karte zu entnehmen. Wie lauten die rw-Peilungen? Kirche",
+        "options": [
+          "rwP = 115° Tonne rwp = 035°",
+          "rwP = 115° Tonne rwp = 035° (Abweichung -10%)",
+          "rwP = 115° Tonne rwp = 035° (Abweichung +10%)",
+          "Wert nicht bestimmbar"
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwP = 115° Tonne rwp = 035°"
+      },
+      {
+        "number": 9,
+        "question": "Tragen Sie die rechtweisenden Peilungen in die Karte ein",
+        "options": [
+          "Zeichnung nicht erforderlich.",
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt.",
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts."
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Navigationsaufgabe 5",
+    "description": "Ein Motorboot befindet sich am 29.07.2011 in der Küstenverkehrszone und möchte in die Jade einlaufen.",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Zur Standortbestimmung werden um 14:00 Uhr mit dem Peilaufsatz am Magnetkompass die folgenden Objekte gepeilt. Die Ablenkung für den anliegenden Kurs beträgt -4°, die Mw ist der Seekarte zu entnehmen. Wasserturm Langeoog MgP = 225° Tonne \"Otzumer Balje\" MgP = 131° Wie lauten die rw-Peilungen? Wasserturm",
+        "options": [
+          "Tonne rwP: rwP = 231°, Objekt 2: rwP = 137°",
+          "Tonne rwP: rwP = 216°, Objekt 2: rwP = 132°",
+          "Tonne rwP: rwP = 226°, Objekt 2: rwP = 122°",
+          "Tonne rwP: rwP = 221°, Objekt 2: rwP = 127°"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwP = 221° Tonne rwP = 127°"
+      },
+      {
+        "number": 2,
+        "question": "Tragen Sie die rechtweisenden Peilungen in die Seekarte ein",
+        "options": [
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt.",
+          "Zeichnung nicht erforderlich.",
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts."
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
+      },
+      {
+        "number": 3,
+        "question": "Entnehmen Sie der Seekarte die geographische Position des ermittelten Standortes",
+        "options": [
+          "53° 48,7' N, 007° 34,8' E",
+          "53° 49,7' N, 007° 35,8' E",
+          "53° 50,7' N, 007° 36,8' E",
+          "53° 47,7' N, 007° 37,3' E"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: 53° 49,7' N 007° 35,8' E"
+      },
+      {
+        "number": 4,
+        "question": "Von diesem Ort aus wird der Kurs auf die Tonne \"1b/Jade1\" abgesetzt. Tragen Sie den Kurs in die Seekarte ein",
+        "options": [
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Zeichnung nicht erforderlich.",
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt.",
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts."
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
+      },
+      {
+        "number": 5,
+        "question": "Wie lautet der rwK?",
+        "options": [
+          "rwK = 071°",
+          "rwK = 056°",
+          "rwK = 066°",
+          "rwK = 061°"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwK = 061°"
+      },
+      {
+        "number": 6,
+        "question": "Die Ablenkung beträgt -2°, die Mw ist der Seekarte zu entnehmen. Wie lautet der MgK?",
+        "options": [
+          "MgK = 063°",
+          "MgK = 058°",
+          "MgK = 068°",
+          "MgK = 073°"
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: MgK = 063°"
+      },
+      {
+        "number": 7,
+        "question": "Das Motorboot macht 11 kn Fahrt über Grund. Zu welcher Uhrzeit wird die Tonne \"1b/Jade1\" voraussichtlich erreicht?",
+        "options": [
+          "Um 14:20 Uhr",
+          "Um 14:30 Uhr",
+          "Um 14:40 Uhr",
+          "Um 13:45 Uhr"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: 14:30 Uhr"
+      },
+      {
+        "number": 8,
+        "question": "Beschreiben Sie Farbe, Kennung und Toppzeichen der Tonne \"1b/Jade1\"",
+        "options": [
+          "Farbe: grün, Kennung: grünes Gleichtaktfeuer mit 8 Sekunden Wiederkehr, Toppzeichen: grüner Kegel",
+          "Farbe: rot-weiß senkrecht gestreift, Kennung: weißes Gleichtaktfeuer, Toppzeichen: roter Ball",
+          "Farbe: grün, Kennung: grünes unterbrochenes Feuer mit 4 Sekunden Wiederkehr, Toppzeichen: keines",
+          "Farbe: schwarz-gelb gestreift, Kennung: weißes Funkelfeuer, Toppzeichen: zwei Kegel"
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: Farbe: grün Kennung: grünes unterbrochenes Feuer mit 4 Sekunden Wiederkehr Toppzeichen: keines"
+      },
+      {
+        "number": 9,
+        "question": "Das Motorboot macht weiterhin 11 kn Fahrt über Grund, als um 14:06 Uhr ein Maschinenschaden eintritt. Auf welcher Position befindet sich das Schiff zu diesem Zeitpunkt nach Koppelort?",
+        "options": [
+          "53° 48,2' N, 007° 38,9' E",
+          "53° 49,2' N, 007° 36,4' E",
+          "53° 51,2' N, 007° 38,4' E",
+          "53° 50,2' N, 007° 37,4' E"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: 53° 50,2' N 007° 37,4' E"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Navigationsaufgabe 6",
+    "description": "Ein aus der Alten Weser auslaufendes Motorboot befindet sich am 30.06.2012 auf dem Weg in die Elbe und steht um 09:00 Uhr nahebei der Tonne \"A2\".",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Entnehmen Sie der Seekarte die geographische Position des Motorbootes",
+        "options": [
+          "53° 54,3' N, 007° 57,8' E",
+          "53° 55,3' N, 007° 58,8' E",
+          "53° 56,3' N, 007° 59,8' E",
+          "53° 53,3' N, 007° 60,3' E"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: 53° 55,3' N 007° 58,8' E"
+      },
+      {
+        "number": 2,
+        "question": "Von der Tonne \"A2\" aus setzt das Boot seinen Kurs auf die Tonne \"Westertill-N\" ab. Tragen Sie den Kurs in die Seekarte ein",
+        "options": [
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Zeichnung nicht erforderlich.",
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt.",
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts."
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
+      },
+      {
+        "number": 3,
+        "question": "Wie lautet der rwK?",
+        "options": [
+          "rwK = 069°",
+          "rwK = 054°",
+          "rwK = 064°",
+          "rwK = 059°"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwK = 059°"
+      },
+      {
+        "number": 4,
+        "question": "Die Ablenkung beträgt -2°, die Mw ist der Seekarte zu entnehmen. Wie lautet der MgK?",
+        "options": [
+          "MgK = 060°",
+          "MgK = 055°",
+          "MgK = 065°",
+          "MgK = 070°"
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: MgK = 060°"
+      },
+      {
+        "number": 5,
+        "question": "Nach einiger Zeit wird die Tonne \"NGN\" an Backbordseite passiert. Beschreiben Sie Farbe, Kennung und Toppzeichen des Schifffahrtszeichens",
+        "options": [
+          "Farbe: oben gelb und unten schwarz, Kennung: weißes schnelles Funkelfeuer, Toppzeichen: zwei Kegel - Spitze unten",
+          "Farbe: oben schwarz und unten gelb, Kennung: weißes schnelles Funkelfeuer, Toppzeichen: zwei Kegel - beide \"Spitze oben\" - senkrecht übereinander",
+          "Farbe: rot-weiß senkrecht gestreift, Kennung: weißes Gleichtaktfeuer, Toppzeichen: roter Ball",
+          "Farbe: gelb mit schwarzem Band, Kennung: weißes Blitzfeuer, Toppzeichen: zwei Kegel - Spitzen zueinander"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: Farbe: oben schwarz und unten gelb Kennung: weißes schnelles Funkelfeuer Toppzeichen: zwei Kegel - beide \"Spitze oben\" - senkrecht übereinander"
+      },
+      {
+        "number": 6,
+        "question": "Im weiteren Fahrtverlauf werden mit dem Peilaufsatz am Magnetkompass die folgenden Objekte gepeilt. Die Ablenkung für den anliegenden Kurs beträgt -2°, die Mw ist der Seekarte zu entnehmen. Leuchtturm \"Alte Weser\" MgP = 160° Tonne \"Westertill-N\" MgP = 056° Wie lauten die rw-Peilungen? Leuchtturm",
+        "options": [
+          "Tonne rwP: rwP = 164°, Objekt 2: rwP = 050°",
+          "Tonne rwP: rwP = 154°, Objekt 2: rwP = 060°",
+          "Tonne rwP: rwP = 159°, Objekt 2: rwP = 055°",
+          "Tonne rwP: rwP = 169°, Objekt 2: rwP = 065°"
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwP = 159° Tonne rwP = 055°"
+      },
+      {
+        "number": 7,
+        "question": "Tragen Sie die rechtweisenden Peilungen in die Seekarte ein",
+        "options": [
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts.",
+          "Zeichnung nicht erforderlich.",
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt."
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
+      },
+      {
+        "number": 8,
+        "question": "Um 09:54 Uhr wird die Tonne \"Westertill-N\" passiert. Wie groß ist die Geschwindigkeit seit 09:00 Uhr?",
+        "options": [
+          "FüG = 6 kn",
+          "FüG = 5,0 kn",
+          "FüG = 7,0 kn",
+          "FüG = 8,0 kn"
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: FüG = 6 kn"
+      },
+      {
+        "number": 9,
+        "question": "Unmittelbar südlich der Tonne \"Westertill-N\" befindet sich eine Eintragung. Was bedeutet diese Eintragung in der Seekarte?",
+        "options": [
+          "Position der Gezeitenstromangabe (Stromraute)",
+          "Kartentiefe 24 m",
+          "Sperrgebiet für Yachten",
+          "Tiefenlinie von 24 m"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: Kartentiefe 24 m"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Navigationsaufgabe 7",
+    "description": "Ein aus der Elbe auslaufendes Motorboot steht am 22.10.2010 um 11:00 Uhr nahebei der Tonne \"Außenelbe-Reede 2\". Die Fahrt über Grund beträgt 8 kn.",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Entnehmen Sie der Seekarte die geographische Position des Motorbootes um 11:00 Uhr",
+        "options": [
+          "54° 1,5' N, 008° 8,4' E",
+          "54° 2,5' N, 008° 5,9' E",
+          "54° 4,5' N, 008° 7,9' E",
+          "54° 03,5' N, 008° 06,9' E"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: 54° 03,5' N 008° 06,9' E"
+      },
+      {
+        "number": 2,
+        "question": "Beschreiben Sie Farbe, Kennung und Toppzeichen der Tonne \"Außenelbe- Reede 2\"",
+        "options": [
+          "Farbe: gelb, Kennung: gelbes unterbrochenes Feuer mit 3 Gruppen und der Wiederkehr 12 Sekunden, Toppzeichen: keines",
+          "Farbe: gelb, Kennung: gelbes Blitzfeuer mit 4 Sekunden Wiederkehr, Toppzeichen: gelbes liegendes Kreuz",
+          "Farbe: rot-weiß gestreift, Kennung: weißes Gleichtaktfeuer, Toppzeichen: roter Ball",
+          "Farbe: gelb, Kennung: gelbes Festfeuer, Toppzeichen: keines"
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: Farbe: gelb Kennung: gelbes unterbrochenes Feuer mit 3 Gruppen und der Wiederkehr 12 Sekunden Toppzeichen: keines"
+      },
+      {
+        "number": 3,
+        "question": "Von der angegebenen Position aus wird am Magnetkompasskurs ein Kurs von 218° gesteuert. Die Ablenkung beträgt -3°, die Mw ist der Seekarte zu entnehmen. Wie lautet der rwK?",
+        "options": [
+          "rwK = 211°",
+          "rwK = 216°",
+          "rwK = 221°",
+          "rwK = 226°"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwK = 216°"
+      },
+      {
+        "number": 4,
+        "question": "Tragen Sie den rechtweisenden Kurs in die Seekarte ein",
+        "options": [
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Zeichnung nicht erforderlich.",
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt.",
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts."
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
+      },
+      {
+        "number": 5,
+        "question": "Wann erreichen Sie die Tonne \"NGN\"?",
+        "options": [
+          "Um 10:12 Uhr",
+          "Um 11:47 Uhr",
+          "Um 11:07 Uhr",
+          "Um 11:57 Uhr"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: 11:57 Uhr"
+      },
+      {
+        "number": 6,
+        "question": "Welche Bedeutung hat die Tonne \"NGN\"?",
+        "options": [
+          "Nord-Kardinal-Zeichen (Zeigt an, dass die Gefahrenstelle nördlich der Tonne sicher umfahren werden kann.)",
+          "Süd-Kardinal-Zeichen (Zeigt an, dass die Gefahrenstelle südlich der Tonne sicher umfahren werden kann.)",
+          "Nord-Kardinal-Zeichen (Zeigt an, dass die Gefahrenstelle im Norden liegt und südlich umfahren werden muss.)",
+          "Fahrwassermitte-Zeichen (Zeigt die Mitte des Schifffahrtsweges an.)"
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: Nord-Kardinal-Zeichen Zeigt an, dass die Gefahrenstelle nördlich der Tonne sicher umfahren werden kann."
+      },
+      {
+        "number": 7,
+        "question": "Um 12:00 Uhr werden mit dem Hand-Peilkompass folgende Tonnen gepeilt: Tonne \"ST\" MgP = 240° Tonne \"A2\" MgP = 150° Die Ablenkung beträgt 0°, die Mw ist aus der Seekarte zu entnehmen. Wie lauten die rw-Peilungen? Tonne \"ST\"",
+        "options": [
+          "Tonne \"A2\": rwP = 236°, Objekt 2: rwP = 156°",
+          "Tonne \"A2\": rwP = 241°, Objekt 2: rwP = 151°",
+          "Tonne \"A2\": rwP = 246°, Objekt 2: rwP = 146°",
+          "Tonne \"A2\": rwP = 251°, Objekt 2: rwP = 161°"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwP = 241° Tonne \"A2\" rwP = 151°"
+      },
+      {
+        "number": 8,
+        "question": "Tragen Sie die rechtweisenden Peilungen in die Seekarte ein",
+        "options": [
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Zeichnung nicht erforderlich.",
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt.",
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts."
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
+      },
+      {
+        "number": 9,
+        "question": "Wie lautet die Besteckversetzung?",
+        "options": [
+          "BV = 288° - 1,3 sm",
+          "BV = 093° - 1,1 sm",
+          "BV = 273° - 1,6 sm",
+          "BV = 273° - 1,1 sm"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: BV = 273° -1,1 sm"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Navigationsaufgabe 8",
+    "description": "Ein Motorboot steht am 28.05.2012 um 10:00 Uhr in der Deutschen Bucht. Die Fahrt über Grund wird mit 9 kn angenommen.",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Durch Peilung und Abstandsmessung wird eine Standortbestimmung durchgeführt. Die Tonne \"E2\" wird gepeilt:",
+        "options": [
+          "rwP = 084°, Distanz 1,6 sm. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte (Abweichung -10%)",
+          "rwP = 084°, Distanz 1,6 sm. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte",
+          "rwP = 084°, Distanz 1,6 sm. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte (Abweichung +10%)",
+          "Wert nicht bestimmbar"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwP = 084°, Distanz 1,6 sm. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte"
+      },
+      {
+        "number": 2,
+        "question": "Entnehmen Sie der Seekarte die geographische Position",
+        "options": [
+          "54° 8,0' N, 007° 42,0' E",
+          "54° 6,0' N, 007° 40,0' E",
+          "54° 07,0' N, 007° 41,0' E",
+          "54° 5,0' N, 007° 42,5' E"
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: 54° 07,0' N 007° 41,0' E"
+      },
+      {
+        "number": 3,
+        "question": "An dem ermittelten Ort befindet sich ein Eintrag. Was bedeutet diese Eintragung in die Seekarte?",
+        "options": [
+          "Sicherer Ankergrund in 37 m Tiefe",
+          "Gezeitenstromangabe (Stromraute)",
+          "Wrack mit einer Tiefe von 37 m",
+          "Kartentiefe 37 m"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: Kartentiefe 37 m"
+      },
+      {
+        "number": 4,
+        "question": "Von dem ermittelten Ort wird das Verkehrstrennungsgebiet Jade Approach auf einem rechtweisenden Kurs von 232° angesteuert. Tragen Sie den Kurs in die Seekarte ein",
+        "options": [
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt.",
+          "Zeichnung nicht erforderlich.",
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts."
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
+      },
+      {
+        "number": 5,
+        "question": "Wie groß ist die Distanz zum Verkehrstrennungsgebiet?",
+        "options": [
+          "3,2 sm",
+          "3,8 sm",
+          "4,4 sm",
+          "5,0 sm"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: 3,8 sm"
+      },
+      {
+        "number": 6,
+        "question": "Die Ablenkung beträgt +2°, die Mw ist der Seekarte zu entnehmen. Wie lautet der MgK?",
+        "options": [
+          "MgK = 234°",
+          "MgK = 224°",
+          "MgK = 229°",
+          "MgK = 239°"
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: MgK = 229°"
+      },
+      {
+        "number": 7,
+        "question": "Bei Erreichen des Verkehrstrennungsgebietes Jade Approach wird der Kurs geändert, um das Verkehrstrennungsgebiet rechtwinklig zu queren (Annahme: kein Versatz durch Strom und Wind). Wie lautet der rwK?",
+        "options": [
+          "rwK = 252°",
+          "rwK = 237°",
+          "rwK = 247°",
+          "rwK = 242°"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwK = 242°"
+      },
+      {
+        "number": 8,
+        "question": "Welcher Zeitraum wird für das Queren des Verkehrstrennungsgebietes Jade Approach voraussichtlich benötigt?",
+        "options": [
+          "Zeitraum = 20 min.",
+          "Zeitraum = 20 min. (Abweichung -10%)",
+          "Zeitraum = 20 min. (Abweichung +10%)",
+          "Wert nicht bestimmbar"
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: Zeitraum = 20 min."
+      },
+      {
+        "number": 9,
+        "question": "Nach einiger Zeit wird die Tonne \"TG16/Reede\" querab an Backbord passiert. Beschreiben Sie Farbe, Kennung und Toppzeichen des Schifffahrtszeichens",
+        "options": [
+          "Farbe: grün, Kennung: grünes Funkelfeuer, Toppzeichen: grüner Kegel",
+          "Farbe: rot, Kennung: rotes unterbrochenes Feuer in 3er Gruppen und einer Wiederkehr von 12 Sekunden, Toppzeichen: keines",
+          "Farbe: rot-weiß gestreift, Kennung: weißes Gleichtaktfeuer, Toppzeichen: roter Ball",
+          "Farbe: rot, Kennung: rotes Blitzfeuer mit 4 Sekunden Wiederkehr, Toppzeichen: roter Zylinder"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: Farbe: rot Kennung: rotes unterbrochenes Feuer in 3er Gruppen und einer Wiederkehr von 12 Sekunden Toppzeichen: keines"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Navigationsaufgabe 9",
+    "description": "Ein Sportboot befährt am 23.06.2011 nördlich des roten Tonnenstrichs die Elbe seewärts. Gegen 12:00 Uhr wird die Tonne \"14\" nahebei passiert. Die Fahrt über Grund beträgt 5,8 kn.",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Wann erreicht das Boot voraussichtlich die Tonne \"6\"?",
+        "options": [
+          "Um 12:15 Uhr",
+          "Um 13:50 Uhr",
+          "Um 13:10 Uhr",
+          "Um 13:00 Uhr"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: Gegen 13:00 Uhr"
+      },
+      {
+        "number": 2,
+        "question": "An der Tonne \"6\" wird das Fahrwasser zügig und ohne die Berufsschifffahrt zu behindern nach Süden gequert. Gut südlich des grünen Tonnenstrichs geht es weiter elbabwärts auf der 5 m Linie, bis gegen 13:50 Uhr Tonne \"1\" an Steuerbord querab ist. Nun wird der rwK 206° auf den Leuchtturm \"Alte Weser\" abgesetzt. Die Ablenkung beträgt +4°, die Mw ist der Seekarte zu entnehmen. Wie lautet der MgK?",
+        "options": [
+          "MgK = 202°",
+          "MgK = 197°",
+          "MgK = 207°",
+          "MgK = 212°"
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: MgK = 202°"
+      },
+      {
+        "number": 3,
+        "question": "Beschreiben Sie das Feuer des Leuchtturms \"Alte Weser\" anhand der Eintragung in der Karte",
+        "options": [
+          "Blinkfeuer in Sektoren in den Farben weiß, rot und grün. Feuerhöhe 33 m, Tragweite 12 sm.",
+          "Festfeuer in Sektoren in den Farben weiß, rot und grün. Feuerhöhe 33 m, Tragweiten 23 sm bis 18 sm.",
+          "Gleichtaktfeuer, weiß, mit 8 Sekunden Wiederkehr. Feuerhöhe 25 m, Tragweite 18 sm.",
+          "Festfeuer, rot-weiß gestreift. Feuerhöhe 33 m, Tragweiten 23 sm bis 18 sm."
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: Festfeuer in Sektoren in den Farben weiß, rot und grün. Feuerhöhe 33 m, Tragweiten 23 sm bis 18 sm."
+      },
+      {
+        "number": 4,
+        "question": "Was bedeutet der Zusatz \"Horn Mo(AL)60s\"?",
+        "options": [
+          "Lichtsignal in den Morsebuchstaben A und L alle 60 Sekunden.",
+          "Schallsignalanlage mit kontinuierlichem Alarm alle 60 Sekunden.",
+          "Nebelhorn in den Morsebuchstaben A und L alle 60 Sekunden.",
+          "Nebelhorn mit Morsecode \"AL\" alle 60 Minuten."
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: Nebelhorn in den Morsebuchstaben A und L alle 60 Sekunden."
+      },
+      {
+        "number": 5,
+        "question": "Um 14:20 Uhr zeigt das GPS folgende Position:",
+        "options": [
+          "53° 54,0' N, 008° 12,5' E",
+          "53° 55,0' N, 008° 10,0' E",
+          "53° 57,0' N, 008° 12,0' E",
+          "53° 56,0' N, 008° 11,0' E"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: 53° 56,0' N 008° 11,0' E. Tragen Sie diese in die Karte ein. Siehe Karte"
+      },
+      {
+        "number": 6,
+        "question": "Die GPS-Position soll anhand von Peilungen kontrolliert werden. Wie lauten von dieser GPS-Position aus die rw-Peilungen auf Leuchtturm \"Neuwerk\" und Leuchtturm \"Alte Weser\"?",
+        "options": [
+          "Objekt 1: rwP = 096°, Objekt 2: rwP = 205°",
+          "Objekt 1: rwP = 091°, Objekt 2: rwP = 210°",
+          "Objekt 1: rwP = 101°, Objekt 2: rwP = 200°",
+          "Objekt 1: rwP = 106°, Objekt 2: rwP = 215°"
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwP = 096° Neuwerk rwP = 205° Alte Weser"
+      },
+      {
+        "number": 7,
+        "question": "Tragen Sie die rw-Peilungen in die Seekarte ein",
+        "options": [
+          "Zeichnung nicht erforderlich.",
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt.",
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts."
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
+      },
+      {
+        "number": 8,
+        "question": "Wie groß ist die Distanz zum Leuchtturm \"Alte Weser\"?",
+        "options": [
+          "5,2 sm",
+          "4,0 sm",
+          "4,6 sm",
+          "5,8 sm"
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: 4,6 sm"
+      },
+      {
+        "number": 9,
+        "question": "Gegen 15:20 Uhr sind Sie am Leuchtturm \"Alte Weser\". Wie groß ist die Geschwindigkeit der letzten Stunde?",
+        "options": [
+          "Wert nicht bestimmbar",
+          "4,6 kn (Abweichung -10%)",
+          "4,6 kn (Abweichung +10%)",
+          "4,6 kn"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: 4,6 kn"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Navigationsaufgabe 10",
+    "description": "Ein am 14.07.2010 aus der \"Alten Weser\" auslaufendes Fahrzeug hat den Leuchtturm \"Alte Weser\" passiert und steht um 12:00 Uhr nahebei der Tonne \"A10\".",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Entnehmen Sie der Seekarte die geographische Position dieser Tonne",
+        "options": [
+          "53° 51,6' N, 008° 5,4' E",
+          "53° 52,6' N, 008° 06,4' E",
+          "53° 53,6' N, 008° 7,4' E",
+          "53° 50,6' N, 008° 7,9' E"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: 53° 52,6' N 008° 06,4' E"
+      },
+      {
+        "number": 2,
+        "question": "Beschreiben Sie das Feuer des Leuchtturms \"Alte Weser\"",
+        "options": [
+          "Unterbrochenes Feuer, weiß, Wiederkehr 8 Sekunden. Feuerhöhe 33 m.",
+          "Blitzfeuer mit weißen, roten und grünen Sektoren. Feuerhöhe 33 m, 12 sm Tragweite.",
+          "Festfeuer mit weißen, roten und grünen Sektoren. Feuerhöhe 33 m, 23 sm bis 18 sm Nenntragweite.",
+          "Festfeuer in den Farben weiß, rot und grün. Feuerhöhe 43 m, 25 sm Tragweite."
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: Festfeuer mit weißen, roten und grünen Sektoren. Feuerhöhe 33 m, 23 sm bis 18 sm Nenntragweite."
+      },
+      {
+        "number": 3,
+        "question": "Vom angegebenen Standort aus wird der Kurs auf die Tonne \"A2\" abgesetzt. Tragen Sie den Kurs in die Seekarte ein",
+        "options": [
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts.",
+          "Zeichnung nicht erforderlich.",
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt."
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
+      },
+      {
+        "number": 4,
+        "question": "Wie lautet der rwK?",
+        "options": [
+          "rwK = 301°",
+          "rwK = 296°",
+          "rwK = 306°",
+          "rwK = 311°"
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwK = 301°"
+      },
+      {
+        "number": 5,
+        "question": "Die Ablenkung beträgt -4°, die Mw ist der Seekarte zu entnehmen. Wie lautet der MgK?",
+        "options": [
+          "MgK = 299°",
+          "MgK = 304°",
+          "MgK = 309°",
+          "MgK = 314°"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: MgK = 304°"
+      },
+      {
+        "number": 6,
+        "question": "Um 12:26 Uhr wird die Tonne \"A2\" querab passiert. Wie groß ist die Geschwindigkeit über Grund seit Passage der Tonne \"A10\"?",
+        "options": [
+          "12,0 kn (Abweichung +10%)",
+          "12,0 kn (Abweichung -10%)",
+          "12,0 kn",
+          "Wert nicht bestimmbar"
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: 12,0 kn"
+      },
+      {
+        "number": 7,
+        "question": "Nach Passage der Tonne \"A2\" wird der Kurs nach Steuerbord geändert und auf die Tonne \"E3\" abgesetzt. Wenig später wird die Tonne \"ST\" passiert. Welche Bedeutung hat dieses Schifffahrtszeichen?",
+        "options": [
+          "Kennzeichnung einer Reede- oder Ankerzone",
+          "Kennzeichnung einer Gefahrenstelle (Kardinalzeichen)",
+          "Sperrgebiet für die Schifffahrt",
+          "Kennzeichnung der Zufahrt zu Fahrwassern und der Mitte von Schifffahrtswegen"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: Kennzeichnung der Zufahrt zu Fahrwassern und der Mitte von Schifffahrtswegen"
+      },
+      {
+        "number": 8,
+        "question": "Zur Standortbestimmung werden danach mit dem Peilaufsatz am Magnetkompass folgende Schifffahrtszeichen gepeilt: Tonne \"Nordergründe-N\" MgP = 110° Tonne \"ST\" MgP = 225° Die Ablenkung für den anliegenden Kurs beträgt +1°, die Mw ist der Seekarte zu entnehmen. Wie lauten die rw-Peilungen?",
+        "options": [
+          "Tonne \"NGN\": rwP = 112°, Tonne \"ST\": rwP = 227°",
+          "Tonne \"NGN\": rwP = 107°, Tonne \"ST\": rwP = 232°",
+          "Tonne \"NGN\": rwP = 117°, Tonne \"ST\": rwP = 222°",
+          "Tonne \"NGN\": rwP = 122°, Tonne \"ST\": rwP = 237°"
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwP = 112° Tonne \"NGN\" rwP = 227° Tonne \"ST\""
+      },
+      {
+        "number": 9,
+        "question": "Tragen Sie die rechtweisenden Peilungen in die Seekarte ein",
+        "options": [
+          "Zeichnung nicht erforderlich.",
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt.",
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts."
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Navigationsaufgabe 11",
+    "description": "Ein Sportboot steht am 05.08.2013 um 09:00 Uhr in der Deutschen Bucht auf Position 53° 54,2' N und 007° 53,8' E und möchte in die Neue Weser einlaufen.",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Tragen Sie die Position in die Karte ein",
+        "options": [
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts.",
+          "Zeichnung nicht erforderlich.",
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt."
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
+      },
+      {
+        "number": 2,
+        "question": "Auf der o. g. Position befindet sich ein Eintrag. Was bedeutet diese Eintragung in die Seekarte?",
+        "options": [
+          "Kartentiefe 18,5 m",
+          "Besteckversetzung von 18,5 sm",
+          "Gezeitenstromangabe (Stromraute)",
+          "Unterwasserhindernis mit einer Tiefe von 18,5 m"
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: Kartentiefe 18,5 m"
+      },
+      {
+        "number": 3,
+        "question": "Von der o. g. Position wird der Kurs auf die Tonne \"5\" des Fahrwassers der Neuen Weser abgesetzt. Wie lautet der rwK?",
+        "options": [
+          "rwK = 143°",
+          "rwK = 148°",
+          "rwK = 153°",
+          "rwK = 158°"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwK = 148°"
+      },
+      {
+        "number": 4,
+        "question": "Tragen Sie den rechtweisenden Kurs in die Seekarte ein",
+        "options": [
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Zeichnung nicht erforderlich.",
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt.",
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts."
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
+      },
+      {
+        "number": 5,
+        "question": "Die Ablenkung beträgt -5°, die Mw ist der Seekarte zu entnehmen. Wie lautet der MgK?",
+        "options": [
+          "MgK = 162°",
+          "MgK = 147°",
+          "MgK = 157°",
+          "MgK = 152°"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: MgK = 152°"
+      },
+      {
+        "number": 6,
+        "question": "Beschreiben Sie Farbe, Kennung und Toppzeichen der Tonne \"5\" der Neuen Weser",
+        "options": [
+          "Farbe: grün, Kennung: grünes unterbrochenes Feuer in 2er Gruppen mit einer Wiederkehr von 9 Sekunden, Toppzeichen: keines",
+          "Farbe: grün, Kennung: grünes Funkelfeuer, Toppzeichen: grüner Kegel",
+          "Farbe: rot-weiß gestreift, Kennung: weißes Gleichtaktfeuer, Toppzeichen: roter Ball",
+          "Farbe: grün, Kennung: grünes unterbrochenes Feuer, Toppzeichen: grüner Zylinder"
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: Farbe: grün Kennung: grünes unterbrochenes Feuer in 2er Gruppen mit einer Wiederkehr von 9 Sekunden Toppzeichen: keines"
+      },
+      {
+        "number": 7,
+        "question": "Wann wird die Tonne \"5\" voraussichtlich passiert, wenn das Boot eine Fahrt über Grund von 6 kn macht?",
+        "options": [
+          "Um 09:27 Uhr",
+          "Um 09:37 Uhr",
+          "Um 09:47 Uhr",
+          "Um 08:52 Uhr"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: Um 09:37 Uhr"
+      },
+      {
+        "number": 8,
+        "question": "Im weiteren Verlauf der Reise werden mit dem Hand- Peilkompass folgende Leuchttürme gepeilt: Leuchtturm \"Alte Weser\" MgP = 011° Leuchtturm \"Tegeler Plate\" MgP = 102° Die Ablenkung beträgt 0°, die Mw ist der Seekarte zu entnehmen. Wie lauten die rw-Peilungen?",
+        "options": [
+          "LT \"Alte Weser\": rwP = 017°, LT \"Tegeler Plate\": rwP = 098°",
+          "LT \"Alte Weser\": rwP = 007°, LT \"Tegeler Plate\": rwP = 108°",
+          "LT \"Alte Weser\": rwP = 012°, LT \"Tegeler Plate\": rwP = 103°",
+          "LT \"Alte Weser\": rwP = 022°, LT \"Tegeler Plate\": rwP = 113°"
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwP = 012° LT \"Alte Weser\" rwP = 103° LT \"Tegeler Plate\""
+      },
+      {
+        "number": 9,
+        "question": "Tragen Sie die rwP in die Karte ein",
+        "options": [
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts.",
+          "Zeichnung nicht erforderlich.",
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt."
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Navigationsaufgabe 12",
+    "description": "Ein am 02.05.2012 aus der Jade auslaufendes Sportboot steht um 08:00 Uhr nahebei der Tonne \"10\" des Wangerooger Fahrwassers und möchte in nördlicher Richtung ablaufen. Die Fahrt über Grund wird mit 8 kn angenommen.",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Entnehmen Sie der Seekarte die geographische Position des Bootes",
+        "options": [
+          "53° 49,0' N, 007° 52,4' E",
+          "53° 50,0' N, 007° 53,4' E",
+          "53° 51,0' N, 007° 54,4' E",
+          "53° 48,0' N, 007° 54,9' E"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: 53° 50,0' N 007° 53,4' E"
+      },
+      {
+        "number": 2,
+        "question": "Von der angegebenen Position wird der Kurs auf die Tonne \"ST\" abgesetzt. Tragen Sie den Kurs in die Seekarte ein",
+        "options": [
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Zeichnung nicht erforderlich.",
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt.",
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts."
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
+      },
+      {
+        "number": 3,
+        "question": "Wie lautet der rwK?",
+        "options": [
+          "rwK = 017°",
+          "rwK = 002°",
+          "rwK = 012°",
+          "rwK = 007°"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwK = 007°"
+      },
+      {
+        "number": 4,
+        "question": "Die Ablenkung beträgt -3°, die Mw ist der Seekarte zu entnehmen. Wie lautet der MgK?",
+        "options": [
+          "MgK = 009°",
+          "MgK = 004°",
+          "MgK = 014°",
+          "MgK = 019°"
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: MgK = 009°"
+      },
+      {
+        "number": 5,
+        "question": "Die Tonne \"4a\" der \"Neuen Weser\" wird passiert. Beschreiben Sie Farbe, Kennung und Toppzeichen des Schifffahrtszeichens",
+        "options": [
+          "Farbe: grün, Kennung: grünes unterbrochenes Feuer, Toppzeichen: grüner Kegel",
+          "Farbe: rot, Kennung: rotes unterbrochenes Funkelfeuer mit 13 Sekunden Wiederkehr, Toppzeichen: roter Zylinder",
+          "Farbe: rot-weiß gestreift, Kennung: weißes Gleichtaktfeuer, Toppzeichen: roter Ball",
+          "Farbe: rot, Kennung: rotes Blitzfeuer mit 4 Sekunden Wiederkehr, Toppzeichen: keines"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: Farbe: rot Kennung: rotes unterbrochenes Funkelfeuer mit 13 Sekunden Wiederkehr Toppzeichen: roter Zylinder"
+      },
+      {
+        "number": 6,
+        "question": "Um 08:30 Uhr wird ein treibendes und leckendes Ölfass nahebei passiert und an die Verkehrszentrale gemeldet. Auf welcher Position befindet sich das Schiff nach Koppelort zu diesem Zeitpunkt?",
+        "options": [
+          "53° 55,0' N, 007° 55,3' E",
+          "53° 53,0' N, 007° 53,3' E",
+          "53° 54,0' N, 007° 54,3' E",
+          "53° 52,0' N, 007° 55,8' E"
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: 53° 54,0' N 007° 54,3' E"
+      },
+      {
+        "number": 7,
+        "question": "Um 09:00 Uhr wird die Tonne \"ST\" gepeilt:",
+        "options": [
+          "Wert nicht bestimmbar",
+          "rwP = 168°. Als Distanz werden 2,0 sm ermittelt. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte (Abweichung -10%)",
+          "rwP = 168°. Als Distanz werden 2,0 sm ermittelt. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte (Abweichung +10%)",
+          "rwP = 168°. Als Distanz werden 2,0 sm ermittelt. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwP = 168°. Als Distanz werden 2,0 sm ermittelt. Tragen Sie die rw-Peilung in die Seekarte ein. Siehe Karte"
+      },
+      {
+        "number": 8,
+        "question": "Wie lautet die Besteckversetzung?",
+        "options": [
+          "BV = 296° - 0,7 sm",
+          "BV = 116° - 0,7 sm",
+          "BV = 296° - 1,2 sm",
+          "BV = 311° - 0,9 sm"
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: BV = 296° -0,7 sm"
+      },
+      {
+        "number": 9,
+        "question": "Welche Bedeutung hat die Tonne \"ST\"?",
+        "options": [
+          "Kennzeichnung einer Gefahrenstelle im Osten",
+          "Kennzeichnung der Zufahrt zu Fahrwassern und der Mitte von Schifffahrtswegen (hier: \"Alte Weser\")",
+          "Sperrgebiet für die Sportschifffahrt",
+          "Ansteuerungstonne für Helgoland"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: Kennzeichnung der Zufahrt zu Fahrwassern und der Mitte von Schifffahrtswegen (hier: \"Alte Weser\")"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "title": "Navigationsaufgabe 13",
+    "description": "Ein aus Helgoland ausgelaufenes Sportboot befindet sich am 02.07.2014 auf dem Weg nach Bremerhaven.",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Um 09:00 Uhr werden mit dem Hand-Peilkompass folgende Schifffahrtszeichen gepeilt: Tonne \"Helgoland-O\" MgP = 284° Tonne \"Düne-S\" MgP = 008° Die Ablenkung beträgt 0°, die Mw ist der Seekarte zu entnehmen. Wie lauten die rw-Peilungen?",
+        "options": [
+          "Tonne \"Helgoland-O\": rwP = 295°, Tonne \"Düne-S\": rwP = 019°",
+          "Tonne \"Helgoland-O\": rwP = 280°, Tonne \"Düne-S\": rwP = 014°",
+          "Tonne \"Helgoland-O\": rwP = 290°, Tonne \"Düne-S\": rwP = 004°",
+          "Tonne \"Helgoland-O\": rwP = 285°, Tonne \"Düne-S\": rwP = 009°"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwP = 285° Tonne \"Helgoland-O\" rwP = 009° Tonne \"Düne-S\""
+      },
+      {
+        "number": 2,
+        "question": "Tragen Sie die rechtweisenden Peilungen in die Seekarte ein",
+        "options": [
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt.",
+          "Zeichnung nicht erforderlich.",
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts."
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
+      },
+      {
+        "number": 3,
+        "question": "Entnehmen Sie der Seekarte die geographische Position des durch Peilung ermittelten Standortes",
+        "options": [
+          "54° 7,6' N, 007° 54,7' E",
+          "54° 08,6' N, 007° 55,7' E",
+          "54° 9,6' N, 007° 56,7' E",
+          "54° 6,6' N, 007° 57,2' E"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: 54° 08,6' N 007° 55,7' E"
+      },
+      {
+        "number": 4,
+        "question": "Welche Bedeutung hat die Tonne \"Helgoland-O\"?",
+        "options": [
+          "Nord-Kardinal-Zeichen (Zeigt an, dass die Gefahrenstelle im Norden sicher umfahren werden kann.)",
+          "West-Kardinal-Zeichen (Zeigt an, dass die Gefahrenstelle im Osten liegt und westlich sicher umfahren werden kann.)",
+          "Ost-Kardinal-Zeichen (Zeigt an, dass die Gefahrenstelle im Westen liegt und östlich sicher umfahren werden kann.)",
+          "Sicherwasser-Zeichen (Zeigt die Mitte des Fahrwassers an.)"
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: Ost-Kardinal-Zeichen Zeigt an, dass die Gefahrenstelle im Osten sicher umfahren werden kann"
+      },
+      {
+        "number": 5,
+        "question": "Von dem durch Peilung ermittelten Standort wird der Kurs auf die Tonne \"ST\" abgesetzt. Tragen Sie den Kurs in die Seekarte ein",
+        "options": [
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts.",
+          "Zeichnung nicht erforderlich.",
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt."
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
+      },
+      {
+        "number": 6,
+        "question": "Wie lautet der rwK?",
+        "options": [
+          "rwK = 182°",
+          "rwK = 177°",
+          "rwK = 187°",
+          "rwK = 192°"
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwK = 182°"
+      },
+      {
+        "number": 7,
+        "question": "Die Ablenkung beträgt +4°, die Mw ist der Seekarte zu entnehmen. Wie lautet der MgK?",
+        "options": [
+          "MgK = 172°",
+          "MgK = 177°",
+          "MgK = 182°",
+          "MgK = 187°"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: MgK = 177°"
+      },
+      {
+        "number": 8,
+        "question": "Um 09:40 Uhr wird die Tonne \"E3\" querab passiert. Wie groß ist die Geschwindigkeit des Bootes seit dem durch Peilung bestimmten Standort?",
+        "options": [
+          "FüG = 8,5 kn",
+          "FüG = 6,5 kn",
+          "FüG = 7,5 kn",
+          "FüG = 9,5 kn"
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: FüG = 7,5 kn"
+      },
+      {
+        "number": 9,
+        "question": "Beschreiben Sie Farbe, Kennung und Toppzeichen der Tonne \"ST\"",
+        "options": [
+          "Farbe: rot, Kennung: rotes Blitzfeuer, Toppzeichen: roter Zylinder",
+          "Farbe: rot-weiß waagerecht gestreift, Kennung: weißes Gleichtaktfeuer, Toppzeichen: roter Ball",
+          "Farbe: grün, Kennung: grünes Funkelfeuer, Toppzeichen: grüner Kegel",
+          "Farbe: rot-weiß senkrecht gestreift, Kennung: weißes Gleichtaktfeuer mit 8 Sekunden Wiederkehr, Toppzeichen: roter Ball"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: Farbe: rot-weiß senkrecht gestreift Kennung: weißes Gleichtaktfeuer mit 8 Sekunden Wiederkehr Toppzeichen: roter Ball"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "title": "Navigationsaufgabe 14",
+    "description": "Ein Sportboot verlässt am frühen Morgen des 31.08.2013 die Insel Neuwerk mit dem Ziel Husum. Die Fahrt über Grund wird mit 6 kn angegeben.",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Beschreiben Sie das Feuer des Leuchtturms Neuwerk",
+        "options": [
+          "Festfeuer in Sektoren, weiß-rot. 15 Sekunden Wiederkehr. Feuerträger 38 m hoch.",
+          "Blink in 3er Gruppen, weiß-rot-grün. 20 Sekunden Wiederkehr. Feuerträger 38 m hoch. Nenntragweite 16 sm bis 11 sm.",
+          "Blinkfeuer, weiß, mit 8 Sekunden Wiederkehr. Feuerträger 33 m hoch.",
+          "Funkelfeuer, weiß-rot-grün. 20 Sekunden Wiederkehr. Feuerträger 38 m hoch."
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: Blink in 3er Gruppen, weiß-rot- grün. 20 Sekunden Wiederkehr. Feuerträger 38 m hoch. Nenntragweite 16 sm bis 11 sm."
+      },
+      {
+        "number": 2,
+        "question": "Erläutern Sie die Bedeutung folgender Hintergrundfarben in der Seekarte: weiß, hellblau, hellgrün und hellgelb",
+        "options": [
+          "weiß: \"tiefes Wasser\", hellblau: \"Watt\", hellgrün: \"flaches Wasser\", hellgelb: \"Land\"",
+          "weiß: \"Land\", hellblau: \"tiefes Wasser\", hellgrün: \"Watt\", hellgelb: \"flaches Wasser\"",
+          "weiß: \"tiefes Wasser\", hellblau: \"flaches Wasser\", hellgrün: \"Watt\", hellgelb: \"Land\"",
+          "weiß: \"Ankergebiet\", hellblau: \"flaches Wasser\", hellgrün: \"Naturschutzgebiet\", hellgelb: \"Land\""
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: weiß: \"tiefes Wasser\" hellblau: \"flaches Wasser\" hellgrün: \"Watt\" hellgelb: \"Land\""
+      },
+      {
+        "number": 3,
+        "question": "Gegen 07:00 Uhr wird die Tonne \"13/Neuwerk-Reede1\" nahebei passiert. Entnehmen Sie der Seekarte die geographische Position dieser Tonne",
+        "options": [
+          "53° 56,4' N, 008° 29,7' E",
+          "53° 57,4' N, 008° 27,2' E",
+          "53° 59,4' N, 008° 29,2' E",
+          "53° 58,4' N, 008° 28,2' E"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: 53° 58,4' N 008° 28,2' E"
+      },
+      {
+        "number": 4,
+        "question": "Von der Tonne \"13/Neuwerk-Reede1\" aus wird das Fahrwasser zunächst gequert. Dann fährt das Sportboot außerhalb des roten Tonnenstriches elbabwärts zur Tonne \"8\", die es um 07:45 Uhr erreicht. Von der Tonne \"8\" wird der Kurs auf die Tonne \"Norderelbe\" abgesetzt. Tragen Sie den Kurs ab Tonne \"8\" in die Seekarte ein",
+        "options": [
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt.",
+          "Zeichnung nicht erforderlich.",
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts."
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
+      },
+      {
+        "number": 5,
+        "question": "Wie lautet der rwK?",
+        "options": [
+          "rwK = 033°",
+          "rwK = 038°",
+          "rwK = 043°",
+          "rwK = 048°"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwK = 038°"
+      },
+      {
+        "number": 6,
+        "question": "Die Ablenkung beträgt +4°, die Mw ist der Seekarte zu entnehmen. Wie lautet der MgK?",
+        "options": [
+          "MgK = 038°",
+          "MgK = 028°",
+          "MgK = 033°",
+          "MgK = 043°"
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: MgK = 033°"
+      },
+      {
+        "number": 7,
+        "question": "Wie groß ist die Distanz zwischen den Tonnen \"8\" und \"Norderelbe\"?",
+        "options": [
+          "4,8 sm",
+          "3,0 sm",
+          "4,2 sm",
+          "3,6 sm"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: 3,6 sm"
+      },
+      {
+        "number": 8,
+        "question": "Um 08:30 Uhr werden mit dem Peilaufsatz am Magnetkompass die Tonne \"Süderpiep\" in MgP = 020° und die Tonne \"Norderelbe\" in MgP = 098° gepeilt. Die Ablenkung für den anliegenden Kurs beträgt +1°, die Mw ist der Seekarte zu entnehmen. Wie lauten die rw-Peilungen?",
+        "options": [
+          "Objekt 1: rwP = 022°, Objekt 2: rwP = 100°",
+          "Objekt 1: rwP = 017°, Objekt 2: rwP = 105°",
+          "Objekt 1: rwP = 027°, Objekt 2: rwP = 095°",
+          "Objekt 1: rwP = 032°, Objekt 2: rwP = 110°"
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwP = 022° Süderpiep rwP = 100° Norderelbe"
+      },
+      {
+        "number": 9,
+        "question": "Tragen Sie die rechtweisenden Peilungen in die Seekarte ein",
+        "options": [
+          "Zeichnung nicht erforderlich.",
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt.",
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts."
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "title": "Navigationsaufgabe 15",
+    "description": "Ein Sportboot läuft am 20.08.2011 von der Weser kommend in die Elbmündung.",
+    "questions": [
+      {
+        "number": 1,
+        "question": "Um 09:00 Uhr werden folgende Peilungen ermittelt: Leuchtturm \"Alte Weser\" MgP = 175° Leuchtturm \"Neuwerk\" MgP = 085° Die Ablenkung beträgt +5°, die Mw ist der Seekarte zu entnehmen. Wie lauten die rw-Peilungen?",
+        "options": [
+          "Objekt 1: rwP = 190°, Objekt 2: rwP = 100°",
+          "Objekt 1: rwP = 175°, Objekt 2: rwP = 095°",
+          "Objekt 1: rwP = 185°, Objekt 2: rwP = 085°",
+          "Objekt 1: rwP = 180°, Objekt 2: rwP = 090°"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwP = 180° Alte Weser rwP = 090° Neuwerk"
+      },
+      {
+        "number": 2,
+        "question": "Tragen Sie die rwP in die Karte ein",
+        "options": [
+          "Zeichnung erfolgreich auf der Papierkarte D49 durchgeführt.",
+          "Zeichnung nicht erforderlich.",
+          "Die gezeichnete Kurslinie / Peilung führt fälschlicherweise über Land.",
+          "Die gezeichnete Position liegt außerhalb des zulässigen Kartenausschnitts."
+        ],
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: Siehe Karte"
+      },
+      {
+        "number": 3,
+        "question": "Geben Sie die ermittelte Position nach geographischer Breite und Länge an",
+        "options": [
+          "53° 53,9' N, 008° 6,6' E",
+          "53° 54,9' N, 008° 07,6' E",
+          "53° 55,9' N, 008° 8,6' E",
+          "53° 52,9' N, 008° 9,1' E"
+        ],
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: 53° 54,9' N 008° 07,6' E"
+      },
+      {
+        "number": 4,
+        "question": "Von dieser Position aus setzen Sie Kurs auf die Tonne \"1\" des Elbe- Fahrwassers. Wie lautet der rwK?",
+        "options": [
+          "rwK = 042°",
+          "rwK = 032°",
+          "rwK = 037°",
+          "rwK = 047°"
+        ],
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: rwK = 037°"
+      },
+      {
+        "number": 5,
+        "question": "Die Ablenkung beträgt -2°, die Mw ist der Seekarte zu entnehmen. Wie lautet der MgK?",
+        "options": [
+          "MgK = 049°",
+          "MgK = 034°",
+          "MgK = 044°",
+          "MgK = 039°"
+        ],
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: MgK = 039°"
+      },
+      {
+        "number": 6,
+        "question": "Wie groß ist die Distanz zur Tonne \"1\"?",
+        "options": [
+          "5,4 sm",
+          "4,8 sm",
           "6,0 sm",
-          "7,5 sm",
-          "5,0 sm",
-          "8,0 sm"
+          "6,6 sm"
         ],
-        correctIndex: 0,
-        explanation: "Formel: d = Fdg * (t / 60) = 7,5 * (48 / 60) = 7,5 * 0,8 = 6,0 sm."
+        "correctIndex": 0,
+        "explanation": "Offizielles ELWIS-Ergebnis: 5,4 sm"
       },
       {
-        number: 5,
-        question: "Bestimmen Sie die Koordinaten des Koppelorts (Ok) um 14:12 Uhr.",
-        options: [
-          "53° 47,9' N, 008° 02,9' E",
-          "53° 49,0' N, 008° 05,0' E",
-          "53° 46,5' N, 008° 01,0' E",
-          "53° 48,5' N, 008° 03,5' E"
+        "number": 7,
+        "question": "Nach 1,8 sm kreuzt Ihr Kurs eine Eintragung in der Seekarte, die mit \"Obstn\" beschriftet ist. Was bedeutet diese Eintragung in der Seekarte?",
+        "options": [
+          "Wrackstelle mit einer Kartentiefe von 9,7 m",
+          "Schifffahrtshindernis mit einer Kartentiefe von 9,7 m",
+          "Gezeitenstrommessstation in 9,7 m Wassertiefe",
+          "Ankerplatz für Boote bis 9,7 m Tiefgang"
         ],
-        correctIndex: 0,
-        explanation: "Vom Startpunkt 6,0 sm auf Kurs 160° abtragen ergibt 53° 47,9' N, 008° 02,9' E."
+        "correctIndex": 1,
+        "explanation": "Offizielles ELWIS-Ergebnis: Schifffahrtshindernis mit einer Kartentiefe von 9,7 m"
       },
       {
-        number: 6,
-        question: "Um 14:12 Uhr wird Mellumplate-Leuchtturm gepeilt. MgP = 310°. Berechnen Sie die rwP (Mw = +1°, Abl = +3°).",
-        options: [
-          "314°",
-          "306°",
-          "308°",
-          "312°"
+        "number": 8,
+        "question": "Beschreiben Sie Farbe, Kennung und Toppzeichen der Tonne \"1\" des Elbe- Fahrwassers",
+        "options": [
+          "Farbe: grün, Kennung: grünes Gleichtaktfeuer, Toppzeichen: keines",
+          "Farbe: rot, Kennung: rotes Funkelfeuer, Toppzeichen: roter Zylinder",
+          "Farbe: grün, Kennung: grünes Funkelfeuer, Toppzeichen: grüner Kegel Spitze oben",
+          "Farbe: grün, Kennung: grünes unterbrochenes Feuer, Toppzeichen: grüner Kegel Spitze unten"
         ],
-        correctIndex: 0,
-        explanation: "Formel: rwP = MgP + Mw + Abl = 310° + 1° + 3° = 314°."
+        "correctIndex": 2,
+        "explanation": "Offizielles ELWIS-Ergebnis: Farbe: grün Kennung: grünes Funkelfeuer Toppzeichen: grüner Kegel Spitze oben"
       },
       {
-        number: 7,
-        question: "Nach Einzeichnen der rwP (314°) bestimmen Sie den Ob um 14:12 Uhr.",
-        options: [
-          "53° 48,2' N, 008° 02,0' E",
-          "53° 47,5' N, 008° 03,5' E",
-          "53° 49,0' N, 008° 01,0' E",
-          "53° 47,0' N, 008° 04,0' E"
+        "number": 9,
+        "question": "Die Revierzentrale \"Cuxhaven Elbe Traffic\" meldet drei über Bord gefallene Container in Position",
+        "options": [
+          "Wert nicht bestimmbar",
+          "53° 59,6' N und 008° 23,2 E. Tragen Sie die Position in die Seekarte ein. Siehe Karte (Abweichung -10%)",
+          "53° 59,6' N und 008° 23,2 E. Tragen Sie die Position in die Seekarte ein. Siehe Karte (Abweichung +10%)",
+          "53° 59,6' N und 008° 23,2 E. Tragen Sie die Position in die Seekarte ein. Siehe Karte"
         ],
-        correctIndex: 0,
-        explanation: "Der Schnittpunkt der Peillinie mit dem rwK ergibt 53° 48,2' N, 008° 02,0' E."
-      },
-      {
-        number: 8,
-        question: "Bestimmen Sie die BV für 14:12 Uhr.",
-        options: [
-          "Richtung 335°, Distanz 0,6 sm",
-          "Richtung 155°, Distanz 0,6 sm",
-          "Richtung 335°, Distanz 1,2 sm",
-          "Richtung 090°, Distanz 0,5 sm"
-        ],
-        correctIndex: 0,
-        explanation: "Die Richtung vom Ok zum Ob beträgt 335°, die Distanz 0,6 sm."
-      },
-      {
-        number: 9,
-        question: "Welches Symbol in der Karte markiert ein Sperrgebiet (z.B. militärisch oder Naturschutz)?",
-        options: [
-          "Eine gestrichelte rote oder magenta Linie mit Aufschriften wie 'Sperrgebiet' oder 'Sicherheit'",
-          "Ein rotes Dreieck",
-          "Ein blaues Ankerverbotsschild",
-          "Ein grünes Kreuz"
-        ],
-        correctIndex: 0,
-        explanation: "Sperrgebiete werden mit magenta- oder rot-gestrichelten Begrenzungslinien und erklärenden Texten gekennzeichnet."
-      }
-    ]
-  },
-  {
-    id: 7,
-    title: "Navigationsaufgabe 7",
-    description: "Ausgangslage: Die Yacht steht um 09:30 Uhr dicht bei der Tonne 'Dovetief' (Norderney-Seegatt). Es soll Kurs auf Helgoland genommen werden. Die Fahrt über Grund beträgt 6,0 kn.",
-    questions: [
-      {
-        number: 1,
-        question: "Geben Sie die Position der Tonne 'Dovetief' an.",
-        options: [
-          "53° 44,5' N, 007° 13,8' E",
-          "53° 43,2' N, 007° 12,0' E",
-          "53° 45,8' N, 007° 15,5' E",
-          "53° 44,0' N, 007° 11,0' E"
-        ],
-        correctIndex: 0,
-        explanation: "Die Position von Dovetief lautet 53° 44,5' N, 007° 13,8' E."
-      },
-      {
-        number: 2,
-        question: "Vom Dovetief wird Kurs nach Helgoland abgesetzt. Welcher rwK ergibt sich aus der Karte?",
-        options: [
-          "345°",
-          "350°",
-          "340°",
-          "355°"
-        ],
-        correctIndex: 0,
-        explanation: "Die Kurslinie von Dovetief nach Helgoland verläuft in Richtung 345°."
-      },
-      {
-        number: 3,
-        question: "Mw = +1° (Ost), Abl = -2° (West). Berechnen Sie den Magnetkompasskurs (MgK).",
-        options: [
-          "346°",
-          "342°",
-          "344°",
-          "348°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: MgK = rwK - Mw - Abl = 345° - (+1°) - (-2°) = 345° - 1° + 2° = 346°."
-      },
-      {
-        number: 4,
-        question: "Die Distanz nach Helgoland (Tonne Helgoland-S) beträgt laut Karte...",
-        options: [
-          "30,0 sm",
-          "28,5 sm",
-          "32,0 sm",
-          "35,0 sm"
-        ],
-        correctIndex: 0,
-        explanation: "Die gemessene Distanz beträgt genau 30,0 sm."
-      },
-      {
-        number: 5,
-        question: "Berechnen Sie die Fahrtdauer bis Helgoland bei einer Fdg von 6,0 kn.",
-        options: [
-          "5 Std. 00 Min.",
-          "4 Std. 30 Min.",
-          "5 Std. 30 Min.",
-          "6 Std. 00 Min."
-        ],
-        correctIndex: 0,
-        explanation: "Formel: t = d / V = 30 sm / 6 kn = 5,0 Std."
-      },
-      {
-        number: 6,
-        question: "Um 12:00 Uhr (nach 2,5 Stunden Fahrt) wird das Helgoland-Hauptfeuer gepeilt. MgP = 085°. Mw = +1°, Abl = -2°. Berechnen Sie die rwP.",
-        options: [
-          "084°",
-          "086°",
-          "088°",
-          "082°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: rwP = MgP + Mw + Abl = 085° + 1° + (-2°) = 084°."
-      },
-      {
-        number: 7,
-        question: "Zeichnen Sie den Koppelort (Ok) für 12:00 Uhr ein. Wie lautet seine Position (d = 15,0 sm auf rwK 345°)?",
-        options: [
-          "53° 59,0' N, 007° 07,2' E",
-          "53° 58,0' N, 007° 09,0' E",
-          "54° 00,5' N, 007° 05,0' E",
-          "53° 57,5' N, 007° 08,0' E"
-        ],
-        correctIndex: 0,
-        explanation: "Die Koppelposition nach 15 sm Fahrt auf 345° lautet 53° 59,0' N, 007° 07,2' E."
-      },
-      {
-        number: 8,
-        question: "Nach Einzeichnen des rwP-Strahls (084°) schneidet dieser die Kurslinie. Welchen Ob bestimmen Sie um 12:00 Uhr?",
-        options: [
-          "53° 59,0' N, 007° 07,2' E",
-          "53° 58,5' N, 007° 08,0' E",
-          "53° 59,5' N, 007° 06,5' E",
-          "53° 57,8' N, 007° 09,5' E"
-        ],
-        correctIndex: 0,
-        explanation: "Da der Peilstrahl die Kurslinie genau im Ok schneidet (Peilung verläuft exakt durch den Koppelpunkt), stimmt der Ob mit dem Ok überein: 53° 59,0' N, 007° 07,2' E (keine Versetzung)."
-      },
-      {
-        number: 9,
-        question: "Welche Bedeutung hat das Seekartensymbol 'Naturpark' (grüne Begrenzungslinie)?",
-        options: [
-          "Befahrens- und Verhaltensregeln zum Schutz der Natur beachten.",
-          "Ankerplatz für Naturfreunde.",
-          "Fahrverbot für alle Yachten.",
-          "Hier darf kein Müll entsorgt werden (nur außerhalb)."
-        ],
-        correctIndex: 0,
-        explanation: "Ein Naturpark-Symbol verweist auf Schutzgebiete mit besonderen Naturschutzregeln (z.B. Geschwindigkeitsbegrenzungen, Wegegebote)."
-      }
-    ]
-  },
-  {
-    id: 8,
-    title: "Navigationsaufgabe 8",
-    description: "Ausgangslage: Die Yacht steht um 15:00 Uhr dicht bei der Tonne 'Elbe 3'. Sie läuft mit einer Fdg von 8,0 kn aus der Elbmündung heraus Richtung Westen.",
-    questions: [
-      {
-        number: 1,
-        question: "Geben Sie die Position der Leuchttonne 'Elbe 3' an.",
-        options: [
-          "53° 59,5' N, 008° 18,5' E",
-          "53° 58,2' N, 008° 16,0' E",
-          "54° 00,1' N, 008° 20,2' E",
-          "53° 59,0' N, 008° 17,0' E"
-        ],
-        correctIndex: 0,
-        explanation: "Die Position von Elbe 3 lautet 53° 59,5' N, 008° 18,5' E."
-      },
-      {
-        number: 2,
-        question: "Es wird Kurs West (rwK = 270°) gesteuert. Tragen Sie diesen Kurs in der Karte ein.",
-        options: [
-          "270°",
-          "275°",
-          "265°",
-          "280°"
-        ],
-        correctIndex: 0,
-        explanation: "Der Kurs verläuft direkt nach Westen (270°)."
-      },
-      {
-        number: 3,
-        question: "Mw = +2° (Ost), Abl = +4° (Ost). Berechnen Sie den Magnetkompasskurs (MgK).",
-        options: [
-          "264°",
-          "276°",
-          "274°",
-          "266°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: MgK = rwK - Mw - Abl = 270° - 2° - 4° = 264°."
-      },
-      {
-        number: 4,
-        question: "Welche Strecke (d) wird bis 16:15 Uhr zurückgelegt?",
-        options: [
-          "10,0 sm",
-          "8,0 sm",
-          "12,0 sm",
-          "9,5 sm"
-        ],
-        correctIndex: 0,
-        explanation: "Fahrtdauer = 1 Std. 15 Min. = 1,25 Std. Distanz = 8 kn * 1,25 h = 10,0 sm."
-      },
-      {
-        number: 5,
-        question: "Bestimmen Sie die Koordinaten des Koppelorts (Ok) für 16:15 Uhr.",
-        options: [
-          "53° 59,5' N, 008° 01,5' E",
-          "53° 59,5' N, 008° 05,0' E",
-          "53° 58,0' N, 008° 00,0' E",
-          "54° 00,5' N, 008° 03,0' E"
-        ],
-        correctIndex: 0,
-        explanation: "Da der Kurs 270° (rein westlich) ist, bleibt die Breite identisch (53° 59,5' N) und die Länge verschiebt sich um 10,0 sm nach Westen zu 008° 01,5' E."
-      },
-      {
-        number: 6,
-        question: "Um 16:15 Uhr wird eine Peilung durchgeführt. Die Magnetkompasspeilung (MgP) zu Scharhörn-Bake beträgt 135°. Berechnen Sie die rwP (Mw = +2°, Abl = +4°).",
-        options: [
-          "141°",
-          "129°",
-          "137°",
-          "133°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: rwP = MgP + Mw + Abl = 135° + 2° + 4° = 141°."
-      },
-      {
-        number: 7,
-        question: "Nach Einzeichnen der rwP (141°) stellen Sie fest, dass der Ob bei 53° 59,5' N, 008° 03,0' E liegt. Bestimmen Sie die Besteckversetzung.",
-        options: [
-          "Richtung 090° (Ost), Distanz 1,5 sm",
-          "Richtung 270° (West), Distanz 1,5 sm",
-          "Richtung 090° (Ost), Distanz 0,8 sm",
-          "Richtung 180° (Süd), Distanz 1,0 sm"
-        ],
-        correctIndex: 0,
-        explanation: "Der Ok lag bei 008° 01,5' E, der Ob liegt bei 008° 03,0' E. Der Versatz geht nach Osten (090°) über eine Distanz von 1,5 sm."
-      },
-      {
-        number: 8,
-        question: "Was bedeutet das Symbol 'Fischerei' (zwei sich berührende Dreiecke) in diesem Seegebiet?",
-        options: [
-          "Gebiet mit intensiver Fischerei; erhöhte Ausguckpflicht",
-          "Fischzuchtanlage",
-          "Fischereiverbot",
-          "Ankergebiet für Fischer"
-        ],
-        correctIndex: 0,
-        explanation: "Zwei Dreiecke markieren Gebiete mit erhöhter Fischereiaktivität (z.B. Krabbenkutter), wo besondere Vorsicht geboten ist."
-      },
-      {
-        number: 9,
-        question: "Welches Schallsignal muss ein fischendes Fahrzeug bei verminderter Sicht abgeben?",
-        options: [
-          "Ein langer, zwei kurze Töne (alle 2 Minuten)",
-          "Ein kurzer Ton (jede Minute)",
-          "Zwei lange Töne (alle 2 Minuten)",
-          "Drei kurze Töne (alle 2 Minuten)"
-        ],
-        correctIndex: 0,
-        explanation: "Manövrierbehinderte oder fischende Fahrzeuge geben bei Nebel das Schallsignal 'lang-kurz-kurz' ab."
-      }
-    ]
-  },
-  {
-    id: 9,
-    title: "Navigationsaufgabe 9",
-    description: "Ausgangslage: Die Yacht läuft aus dem Südhafen von Helgoland aus. Um 08:30 Uhr steht sie dicht bei der Hafeneinfahrt. Es wird Kurs nach Süden abgesetzt. Die Fdg beträgt 7,0 kn.",
-    questions: [
-      {
-        number: 1,
-        question: "Geben Sie die Position der Helgoländer Südhafen-Ausfahrt an.",
-        options: [
-          "54° 10,6' N, 007° 53,4' E",
-          "54° 11,2' N, 007° 52,0' E",
-          "54° 09,5' N, 007° 55,0' E",
-          "54° 12,0' N, 007° 51,5' E"
-        ],
-        correctIndex: 0,
-        explanation: "Die Position am Randmaßstab abgelesen lautet 54° 10,6' N, 007° 53,4' E."
-      },
-      {
-        number: 2,
-        question: "Vom Ausgangspunkt wird Kurs nach Süden (rwK = 185°) abgesetzt. Tragen Sie diesen Kurs in der Karte ein.",
-        options: [
-          "185°",
-          "190°",
-          "180°",
-          "195°"
-        ],
-        correctIndex: 0,
-        explanation: "Der Kurs verläuft fast genau nach Süden (185°)."
-      },
-      {
-        number: 3,
-        question: "Mw = +1° (Ost), Abl = -1° (West). Berechnen Sie den Magnetkompasskurs (MgK).",
-        options: [
-          "185°",
-          "187°",
-          "183°",
-          "189°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: MgK = rwK - Mw - Abl = 185° - (+1°) - (-1°) = 185° - 1° + 1° = 185°."
-      },
-      {
-        number: 4,
-        question: "Welche Distanz wird in 2 Stunden (bis 10:30 Uhr) zurückgelegt?",
-        options: [
-          "14,0 sm",
-          "10,0 sm",
-          "12,5 sm",
-          "15,0 sm"
-        ],
-        correctIndex: 0,
-        explanation: "Distanz: 7 kn * 2 h = 14,0 sm."
-      },
-      {
-        number: 5,
-        question: "Bestimmen Sie die Koordinaten des Koppelorts (Ok) um 10:30 Uhr.",
-        options: [
-          "53° 56,7' N, 007° 51,2' E",
-          "53° 58,0' N, 007° 53,5' E",
-          "53° 55,0' N, 007° 50,0' E",
-          "53° 57,5' N, 007° 52,0' E"
-        ],
-        correctIndex: 0,
-        explanation: "Wir tragen 14,0 sm auf der Kurslinie 185° ab. Dies ergibt 53° 56,7' N, 007° 51,2' E."
-      },
-      {
-        number: 6,
-        question: "Um 10:30 Uhr wird die Leuchttonne Helgoland-O gepeilt. MgP = 040°. Berechnen Sie die rwP (Mw = +1°, Abl = -1°).",
-        options: [
-          "040°",
-          "042°",
-          "038°",
-          "044°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: rwP = MgP + Mw + Abl = 040° + 1° + (-1°) = 040°."
-      },
-      {
-        number: 7,
-        question: "Zeichnen Sie die rwP (040°) in die Karte. Welchen Ob erhalten Sie um 10:30 Uhr?",
-        options: [
-          "53° 56,7' N, 007° 51,2' E",
-          "53° 55,5' N, 007° 50,0' E",
-          "53° 57,2' N, 007° 52,5' E",
-          "53° 56,0' N, 007° 51,0' E"
-        ],
-        correctIndex: 0,
-        explanation: "Die Peillinie schneidet die Kurslinie exakt im Koppelort. Der Ob lautet 53° 56,7' N, 007° 51,2' E."
-      },
-      {
-        number: 8,
-        question: "In der Seekarte finden Sie ein Symbol eines Blitzes in einem roten Kreis mit der Aufschrift 'U-Kabel'. Was bedeutet dies?",
-        options: [
-          "Unterwasserkabel mit Ankerverbot",
-          "Elektrische Sperrzone",
-          "Unterwasser-Stromerzeuger",
-          "Fischzuchtanlage mit Stromleitung"
-        ],
-        correctIndex: 0,
-        explanation: "Dieses Symbol warnt vor Unterwasserkabeln, in deren Nähe Ankern und Schleppfischen wegen Beschädigungsgefahr verboten ist."
-      },
-      {
-        number: 9,
-        question: "Welches Ausweichmanöver muss eine Yacht unter Motor durchführen, wenn sie auf Kollisionskurs mit einem Segelschiff unter Segeln ist?",
-        options: [
-          "Die Yacht unter Motor muss ausweichen (Maschinenfahrzeug weicht Segelfahrzeug aus).",
-          "Das Segelschiff muss ausweichen.",
-          "Beide müssen nach Steuerbord ausweichen.",
-          "Wer von Backbord kommt, weicht aus."
-        ],
-        correctIndex: 0,
-        explanation: "Laut KVR (Regel 18) weichen Maschinenfahrzeuge den Segelfahrzeugen aus."
-      }
-    ]
-  },
-  {
-    id: 10,
-    title: "Navigationsaufgabe 10",
-    description: "Ausgangslage: Die Yacht läuft nördlich von Wangerooge im Weser-Fahrwasser. Um 10:30 Uhr steht sie dicht bei der Leuchttonne 'Weser 1'. Es soll der Weser aufwärts gefolgt werden. Die Fdg beträgt 8,5 kn.",
-    questions: [
-      {
-        number: 1,
-        question: "Geben Sie die Position der Leuchttonne 'Weser 1' an.",
-        options: [
-          "53° 51,8' N, 007° 53,2' E",
-          "53° 50,2' N, 007° 51,0' E",
-          "53° 53,0' N, 007° 55,0' E",
-          "53° 51,0' N, 007° 52,0' E"
-        ],
-        correctIndex: 0,
-        explanation: "Die Position wird am Kartenrand abgelesen."
-      },
-      {
-        number: 2,
-        question: "Von der Tonne wird der Kurs zur Tonne 'Weser 3' abgesetzt. Welcher rwK ergibt sich aus der Karte?",
-        options: [
-          "225°",
-          "230°",
-          "220°",
-          "235°"
-        ],
-        correctIndex: 0,
-        explanation: "Der gemessene rwK beträgt 225°."
-      },
-      {
-        number: 3,
-        question: "Mw = +2° (Ost), Abl = +3° (Ost). Berechnen Sie den Magnetkompasskurs (MgK).",
-        options: [
-          "220°",
-          "230°",
-          "228°",
-          "222°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: MgK = rwK - Mw - Abl = 225° - 2° - 3° = 220°."
-      },
-      {
-        number: 4,
-        question: "Die Distanz zwischen 'Weser 1' und 'Weser 3' beträgt...",
-        options: [
-          "8,5 sm",
-          "7,0 sm",
-          "9,5 sm",
-          "10,0 sm"
-        ],
-        correctIndex: 0,
-        explanation: "Am Breitenmaßstab abgegriffen beträgt die Strecke 8,5 sm."
-      },
-      {
-        number: 5,
-        question: "Wie lange braucht die Yacht für diese Distanz bei einer Fdg von 8,5 kn?",
-        options: [
-          "1 Std. 00 Min.",
-          "45 Min.",
-          "1 Std. 15 Min.",
-          "50 Min."
-        ],
-        correctIndex: 0,
-        explanation: "Formel: t = d / V = 8,5 sm / 8,5 kn = 1,0 Std. = 60 Min."
-      },
-      {
-        number: 6,
-        question: "Unterwegs wird das Wangerooge-Ostfeuer gepeilt. MgP = 315°. Berechnen Sie die rwP (Mw = +2°, Abl = +3°).",
-        options: [
-          "320°",
-          "310°",
-          "314°",
-          "316°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: rwP = MgP + Mw + Abl = 315° + 2° + 3° = 320°."
-      },
-      {
-        number: 7,
-        question: "Zeichnen Sie die rwP (320°) in die Seekarte ein. Wo schneidet sie die Kurslinie (Ob um 11:00 Uhr, nach 4,25 sm Fahrt)?",
-        options: [
-          "53° 48,8' N, 007° 47,2' E",
-          "53° 47,0' N, 007° 45,0' E",
-          "53° 50,0' N, 007° 49,0' E",
-          "53° 48,0' N, 007° 46,0' E"
-        ],
-        correctIndex: 0,
-        explanation: "Der Schnittpunkt aus rwK 225° und der Peillinie 320° ergibt 53° 48,8' N, 007° 47,2' E."
-      },
-      {
-        number: 8,
-        question: "Was bedeutet das Kartensymbol einer schwarzen Linie mit Querstrichen rechtwinklig zum Ufer?",
-        options: [
-          "Buhne (Küstenschutzbauwerk)",
-          "Anleger für Yachten",
-          "Grenze des Schutzgebietes",
-          "Flussmündung"
-        ],
-        correctIndex: 0,
-        explanation: "Rechtwinklige Striche zum Ufer stellen Buhnen dar, die dem Küstenschutz und der Strömungsbeeinflussung dienen."
-      },
-      {
-        number: 9,
-        question: "Darf eine Buhne bei Tidehochwasser überfahren werden?",
-        options: [
-          "Nein, da sie knapp unter der Wasseroberfläche liegen kann und erhebliche Beschädigungsgefahr besteht.",
-          "Ja, Boote mit geringem Tiefgang dürfen immer drüber fahren.",
-          "Ja, tagsüber bei guter Sicht.",
-          "Nur mit Genehmigung der Küstenwache."
-        ],
-        correctIndex: 0,
-        explanation: "Buhnen stellen bei Hochwasser unsichtbare Unterwasserhindernisse dar; das Überfahren ist extrem gefährlich."
-      }
-    ]
-  },
-  {
-    id: 11,
-    title: "Navigationsaufgabe 11",
-    description: "Ausgangslage: Die Yacht steht um 12:00 Uhr dicht bei der Leuchttonne 'Minsener Oog' (Jade-Reede). Sie läuft Kurs Richtung Elbe-Einfahrt. Die Fdg beträgt 6,5 kn.",
-    questions: [
-      {
-        number: 1,
-        question: "Geben Sie die Position der Leuchttonne 'Minsener Oog' an.",
-        options: [
-          "53° 47,2' N, 008° 01,5' E",
-          "53° 46,0' N, 007° 59,0' E",
-          "53° 48,5' N, 008° 03,0' E",
-          "53° 47,0' N, 008° 00,0' E"
-        ],
-        correctIndex: 0,
-        explanation: "Die Position lautet laut Seekarte 53° 47,2' N, 008° 01,5' E."
-      },
-      {
-        number: 2,
-        question: "Es wird Kurs zur Tonne 'Elbe 2' abgesetzt. Welcher rwK ergibt sich aus der Karte?",
-        options: [
-          "045°",
-          "050°",
-          "040°",
-          "055°"
-        ],
-        correctIndex: 0,
-        explanation: "Der gemessene rwK beträgt 045°."
-      },
-      {
-        number: 3,
-        question: "Mw = +1° (Ost), Abl = +2° (Ost). Berechnen Sie den Magnetkompasskurs (MgK).",
-        options: [
-          "042°",
-          "048°",
-          "046°",
-          "044°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: MgK = rwK - Mw - Abl = 045° - 1° - 2° = 042°."
-      },
-      {
-        number: 4,
-        question: "Die Distanz zwischen 'Minsener Oog' und 'Elbe 2' beträgt...",
-        options: [
-          "13,0 sm",
-          "11,5 sm",
-          "14,5 sm",
-          "15,0 sm"
-        ],
-        correctIndex: 0,
-        explanation: "Das Abgreifen auf der Karte ergibt eine Distanz von 13,0 sm."
-      },
-      {
-        number: 5,
-        question: "Berechnen Sie die Fahrtzeit bei einer Fdg von 6,5 kn.",
-        options: [
-          "2 Std. 00 Min.",
-          "1 Std. 45 Min.",
-          "2 Std. 15 Min.",
-          "1 Std. 30 Min."
-        ],
-        correctIndex: 0,
-        explanation: "Formel: t = d / V = 13 sm / 6,5 kn = 2,0 Std. = 120 Min."
-      },
-      {
-        number: 6,
-        question: "Unterwegs (um 13:00 Uhr) wird der Leuchtturm 'Alte Weser' gepeilt. MgP = 270°. Berechnen Sie die rwP (Mw = +1°, Abl = +2°).",
-        options: [
-          "273°",
-          "267°",
-          "271°",
-          "269°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: rwP = MgP + Mw + Abl = 270° + 1° + 2° = 273°."
-      },
-      {
-        number: 7,
-        question: "Welchen Ob bestimmen Sie um 13:00 Uhr (zurückgelegte Distanz 6,5 sm)?",
-        options: [
-          "53° 51,8' N, 008° 09,2' E",
-          "53° 50,5' N, 008° 07,0' E",
-          "53° 53,0' N, 008° 11,0' E",
-          "53° 51,0' N, 008° 08,0' E"
-        ],
-        correctIndex: 0,
-        explanation: "Der Koppelort (Ok) nach 6,5 sm Fahrt auf 045° liegt bei 53° 51,8' N, 008° 09,2' E."
-      },
-      {
-        number: 8,
-        question: "In der Seekarte befindet sich nahe der Route ein rot-weißer Kreis mit dem Symbol 'Windpark'. Was müssen Sie hier beachten?",
-        options: [
-          "Sicherheitsabstand einhalten, Durchfahrtsverbot für die meisten Freizeitfahrzeuge.",
-          "Hier darf geankert werden.",
-          "Hier herrscht Windschatten.",
-          "Fischerei ist hier besonders empfohlen."
-        ],
-        correctIndex: 0,
-        explanation: "Windparks sind für die private Schifffahrt in der Regel gesperrt; Sicherheitszonen müssen unbedingt umfahren werden."
-      },
-      {
-        number: 9,
-        question: "Welche Lichterführung hat ein manövrierunfähiges Fahrzeug in Fahrt bei Nacht?",
-        options: [
-          "Zwei rote Rundumlichter übereinander, Seitenlichter und Hecklicht.",
-          "Zwei grüne Rundumlichter übereinander.",
-          "Ein rotes Rundumlicht.",
-          "Ein weißes Rundumlicht."
-        ],
-        correctIndex: 0,
-        explanation: "Ein manövrierunfähiges Fahrzeug in Fahrt zeigt zwei rote Rundumlichter übereinander sowie Seitenlichter und Hecklicht (sofern es Fahrt durchs Wasser macht)."
-      }
-    ]
-  },
-  {
-    id: 12,
-    title: "Navigationsaufgabe 12",
-    description: "Ausgangslage: Die Yacht steht um 14:30 Uhr dicht bei der Leuchttonne 'Helgoland-O'. Es soll Kurs auf die Jade-Mündung genommen werden. Fdg beträgt 7,5 kn.",
-    questions: [
-      {
-        number: 1,
-        question: "Geben Sie die Position der Leuchttonne 'Helgoland-O' an.",
-        options: [
-          "54° 10,8' N, 007° 55,4' E",
-          "54° 11,5' N, 007° 53,0' E",
-          "54° 09,2' N, 007° 57,1' E",
-          "54° 12,0' N, 007° 56,0' E"
-        ],
-        correctIndex: 0,
-        explanation: "Die Position von Helgoland-O lautet 54° 10,8' N, 007° 55,4' E."
-      },
-      {
-        number: 2,
-        question: "Es wird Kurs zur Tonne 'Jade' abgesetzt. Welcher rwK ergibt sich aus der Seekarte?",
-        options: [
-          "195°",
-          "200°",
-          "190°",
-          "205°"
-        ],
-        correctIndex: 0,
-        explanation: "Der gemessene rwK beträgt 195°."
-      },
-      {
-        number: 3,
-        question: "Mw = +2° (Ost), Abl = -3° (West). Berechnen Sie den Magnetkompasskurs (MgK).",
-        options: [
-          "196°",
-          "194°",
-          "192°",
-          "198°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: MgK = rwK - Mw - Abl = 195° - (+2°) - (-3°) = 195° - 2° + 3° = 196°."
-      },
-      {
-        number: 4,
-        question: "Die Distanz zwischen 'Helgoland-O' und 'Jade' beträgt...",
-        options: [
-          "18,8 sm",
-          "17,0 sm",
-          "20,5 sm",
-          "19,8 sm"
-        ],
-        correctIndex: 0,
-        explanation: "Die gemessene Distanz am Kartenrand beträgt 18,8 sm."
-      },
-      {
-        number: 5,
-        question: "Berechnen Sie die voraussichtliche Ankunftszeit (ETA) an der Tonne 'Jade' bei Fdg = 7,5 kn.",
-        options: [
-          "17:00 Uhr",
-          "16:45 Uhr",
-          "17:15 Uhr",
-          "16:30 Uhr"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: t = d / V = 18,8 / 7,5 = 2,5 Stunden (2 Std. 30 Min.). Abfahrt war um 14:30 Uhr, d.h. Ankunft um 17:00 Uhr."
-      },
-      {
-        number: 6,
-        question: "Unterwegs (um 16:00 Uhr) wird Mellumplate-Leuchtturm gepeilt. MgP = 090°. Berechnen Sie die rwP (Mw = +2°, Abl = -3°).",
-        options: [
-          "089°",
-          "091°",
-          "093°",
-          "087°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: rwP = MgP + Mw + Abl = 090° + 2° + (-3°) = 089°."
-      },
-      {
-        number: 7,
-        question: "Bestimmen Sie die Koordinaten des Koppelorts (Ok) für 16:00 Uhr (zurückgelegte Distanz 11,25 sm auf rwK 195°).",
-        options: [
-          "53° 59,9' N, 007° 50,9' E",
-          "53° 58,0' N, 007° 49,0' E",
-          "54° 01,5' N, 007° 52,0' E",
-          "53° 59,0' N, 007° 50,0' E"
-        ],
-        correctIndex: 0,
-        explanation: "Das Abtragen von 11,25 sm auf 195° ab Startpunkt ergibt 53° 59,9' N, 007° 50,9' E."
-      },
-      {
-        number: 8,
-        question: "Nach Einzeichnen der rwP (089°) schneidet der Strahl den Kurs. Wie lautet der Ob um 16:00 Uhr?",
-        options: [
-          "53° 59,9' N, 007° 50,9' E",
-          "53° 59,0' N, 007° 50,0' E",
-          "54° 00,5' N, 007° 51,5' E",
-          "53° 58,0' N, 007° 49,5' E"
-        ],
-        correctIndex: 0,
-        explanation: "Der Ob deckt sich mit dem Ok, da keine Strömungsverschiebung stattgefunden hat."
-      },
-      {
-        number: 9,
-        question: "Was bedeutet das Symbol 'Sand' (S) oder 'Schlick' (M) in der Seekarte bei Tiefenangaben?",
-        options: [
-          "Bodenbeschaffenheit des Meeresgrundes (wichtig für Ankerhalt).",
-          "Gefahr von Untiefen.",
-          "Badeverbotszonen.",
-          "Naturschutzgebiete."
-        ],
-        correctIndex: 0,
-        explanation: "Buchstaben wie S (Sand), M (Mud/Schlick), R (Rock/Fels) geben die Bodenbeschaffenheit an, was für die Wahl des Ankerplatzes entscheidend ist."
-      }
-    ]
-  },
-  {
-    id: 13,
-    title: "Navigationsaufgabe 13",
-    description: "Ausgangslage: Die Yacht steht um 07:45 Uhr dicht bei der Leuchttonne 'Key-Buoy' (Weser-Fahrwasser). Es soll Kurs auf Helgoland genommen werden. Die Fdg beträgt 8,0 kn.",
-    questions: [
-      {
-        number: 1,
-        question: "Geben Sie die Position der Leuchttonne 'Key-Buoy' an.",
-        options: [
-          "53° 48,0' N, 008° 08,0' E",
-          "53° 46,5' N, 008° 06,0' E",
-          "53° 49,2' N, 008° 10,5' E",
-          "53° 47,5' N, 008° 07,0' E"
-        ],
-        correctIndex: 0,
-        explanation: "Die Position der Key-Buoy lautet 53° 48,0' N, 008° 08,0' E."
-      },
-      {
-        number: 2,
-        question: "Es wird Kurs nach Helgoland abgesetzt. Welcher rwK ergibt sich aus der Karte?",
-        options: [
-          "315°",
-          "320°",
-          "310°",
-          "325°"
-        ],
-        correctIndex: 0,
-        explanation: "Die Kurslinie zeigt einen rwK von 315°."
-      },
-      {
-        number: 3,
-        question: "Mw = +1° (Ost), Abl = +4° (Ost). Berechnen Sie den Magnetkompasskurs (MgK).",
-        options: [
-          "310°",
-          "320°",
-          "318°",
-          "312°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: MgK = rwK - Mw - Abl = 315° - 1° - 4° = 310°."
-      },
-      {
-        number: 4,
-        question: "Die Distanz von 'Key-Buoy' nach Helgoland (Südhafen) beträgt...",
-        options: [
-          "24,0 sm",
-          "22,5 sm",
-          "25,0 sm",
-          "26,5 sm"
-        ],
-        correctIndex: 0,
-        explanation: "Die Distanzmessung in der Karte ergibt 24,0 sm."
-      },
-      {
-        number: 5,
-        question: "Berechnen Sie die voraussichtliche Fahrtzeit nach Helgoland bei einer Fdg von 8,0 kn.",
-        options: [
-          "3 Std. 00 Min.",
-          "2 Std. 45 Min.",
-          "3 Std. 15 Min.",
-          "2 Std. 30 Min."
-        ],
-        correctIndex: 0,
-        explanation: "Formel: t = d / V = 24 sm / 8 kn = 3,0 Stunden."
-      },
-      {
-        number: 6,
-        question: "Unterwegs (um 09:15 Uhr) wird der Leuchtturm Roter Sand gepeilt. MgP = 180°. Berechnen Sie die rwP (Mw = +1°, Abl = +4°).",
-        options: [
-          "185°",
-          "175°",
-          "181°",
-          "179°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: rwP = MgP + Mw + Abl = 180° + 1° + 4° = 185°."
-      },
-      {
-        number: 7,
-        question: "Bestimmen Sie die Koordinaten des Koppelorts (Ok) für 09:15 Uhr (zurückgelegte Distanz 12,0 sm auf rwK 315°).",
-        options: [
-          "53° 56,5' N, 007° 54,8' E",
-          "53° 55,0' N, 007° 52,0' E",
-          "53° 58,0' N, 007° 56,5' E",
-          "53° 56,0' N, 007° 53,0' E"
-        ],
-        correctIndex: 0,
-        explanation: "Vom Startpunkt 12,0 sm auf Kurs 315° abtragen ergibt 53° 56,5' N, 007° 54,8' E."
-      },
-      {
-        number: 8,
-        question: "Auf der Karte sehen Sie in der Nähe der Route das Symbol 'Wrack' mit Masten darüber gezeichnet. Was bedeutet dieses Symbol?",
-        options: [
-          "Ein Wrack, das bei Niedrigwasser sichtbar ist oder ein überragendes Hindernis darstellt.",
-          "Eine Ankerstelle.",
-          "Ein Messgerät der Küstenwache.",
-          "Ein künstliches Riff."
-        ],
-        correctIndex: 0,
-        explanation: "Ein Wrack mit überragenden Masten ist ein sichtbares Schifffahrtshindernis, das unbedingt umfahren werden muss."
-      },
-      {
-        number: 9,
-        question: "Welchen Mindestabstand sollten Sie zu bemannten Feuerschiffen oder Großtonnen einhalten?",
-        options: [
-          "Aus Sicherheitsgründen ausreichend Abstand halten (meist wird empfohlen mindestens 0,5 sm bis 1 sm).",
-          "Kein Mindestabstand vorgegeben.",
-          "Es darf direkt vorbeigefahren werden (10 m).",
-          "Mindestens 100 m."
-        ],
-        correctIndex: 0,
-        explanation: "Um Sog, Wellenschlag und Kollisionen bei plötzlichen Manövern zu vermeiden, hält man deutlichen Sicherheitsabstand zu festliegenden Schiffen."
-      }
-    ]
-  },
-  {
-    id: 14,
-    title: "Navigationsaufgabe 14",
-    description: "Ausgangslage: Die Yacht steht um 11:15 Uhr dicht bei der Leuchttonne 'Elbe 2'. Es soll Kurs auf Cuxhaven gesteuert werden. Die Fdg beträgt 7,0 kn.",
-    questions: [
-      {
-        number: 1,
-        question: "Geben Sie die Position der Leuchttonne 'Elbe 2' an.",
-        options: [
-          "54° 00,0' N, 008° 12,5' E",
-          "53° 58,5' N, 008° 10,0' E",
-          "54° 01,2' N, 008° 14,0' E",
-          "53° 59,5' N, 008° 11,5' E"
-        ],
-        correctIndex: 0,
-        explanation: "Die Position am Randmaßstab lautet 54° 00,0' N, 008° 12,5' E."
-      },
-      {
-        number: 2,
-        question: "Vom Ausgangspunkt wird Kurs Cuxhaven (rwK = 135°) abgesetzt. Tragen Sie diesen Kurs in der Karte ein.",
-        options: [
-          "135°",
-          "140°",
-          "130°",
-          "145°"
-        ],
-        correctIndex: 0,
-        explanation: "Die Kurslinie verläuft in Richtung 135°."
-      },
-      {
-        number: 3,
-        question: "Mw = +2° (Ost), Abl = -2° (West). Berechnen Sie den Magnetkompasskurs (MgK).",
-        options: [
-          "135°",
-          "139°",
-          "131°",
-          "137°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: MgK = rwK - Mw - Abl = 135° - (+2°) - (-2°) = 135° - 2° + 2° = 135°."
-      },
-      {
-        number: 4,
-        question: "Die Distanz bis Cuxhaven (Amerikahafen) beträgt...",
-        options: [
-          "14,0 sm",
-          "12,5 sm",
-          "15,5 sm",
-          "16,0 sm"
-        ],
-        correctIndex: 0,
-        explanation: "Die Messung auf dem rwK-Strahl ergibt 14,0 sm."
-      },
-      {
-        number: 5,
-        question: "Berechnen Sie die voraussichtliche Ankunftszeit (ETA) in Cuxhaven bei einer Fdg von 7,0 kn.",
-        options: [
-          "13:15 Uhr",
-          "13:00 Uhr",
-          "13:30 Uhr",
-          "12:45 Uhr"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: t = d / V = 14 sm / 7 kn = 2,0 Stunden. Abfahrt 11:15 Uhr, d.h. Ankunft um 13:15 Uhr."
-      },
-      {
-        number: 6,
-        question: "Unterwegs (um 12:15 Uhr) wird die Bake Scharhörn gepeilt. MgP = 230°. Berechnen Sie die rwP (Mw = +2°, Abl = -2°).",
-        options: [
-          "230°",
-          "234°",
-          "226°",
-          "232°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: rwP = MgP + Mw + Abl = 230° + 2° + (-2°) = 230°."
-      },
-      {
-        number: 7,
-        question: "Bestimmen Sie die Koordinaten des Koppelorts (Ok) für 12:15 Uhr (zurückgelegte Distanz 7,0 sm auf rwK 135°).",
-        options: [
-          "53° 55,0' N, 008° 19,8' E",
-          "53° 54,0' N, 008° 17,5' E",
-          "53° 56,2' N, 008° 22,0' E",
-          "53° 53,5' N, 008° 18,0' E"
-        ],
-        correctIndex: 0,
-        explanation: "Vom Startpunkt 7,0 sm auf 135° abtragen ergibt 53° 55,0' N, 008° 19,8' E."
-      },
-      {
-        number: 8,
-        question: "In der Seekarte kreuzt Ihre Route ein Fahrwasser. Welche rechtliche Bedeutung haben Fahrwassermarkierungen (Lateralsystem) in diesem Bereich?",
-        options: [
-          "Sie begrenzen den Schifffahrtsweg; an Steuerbord grün, an Backbord rot (von See kommend).",
-          "Sie markieren Tiefwassergebiete für alle Boote.",
-          "Es handelt sich um ein Badeverbot.",
-          "Hier darf beliebig gekreuzt werden."
-        ],
-        correctIndex: 0,
-        explanation: "Das IALA-A Lateralsystem begrenzt Fahrwasser: Steuerbordseite ist grün markiert (spitze Tonnen), Backbordseite rot (stumpfe Tonnen) in Richtung der Betonnungsrichtung (von See kommend)."
-      },
-      {
-        number: 9,
-        question: "Welches Toppzeichen trägt eine Backbordtonne in der Elbmündung?",
-        options: [
-          "Einen roten Zylinder",
-          "Einen grünen Kegel (Spitze oben)",
-          "Ein rotes Kreuz",
-          "Einen gelben Ball"
-        ],
-        correctIndex: 0,
-        explanation: "Backbordtonnen (rot) tragen als Toppzeichen einen roten Zylinder, Steuerbordtonnen (grün) einen grünen Kegel."
-      }
-    ]
-  },
-  {
-    id: 15,
-    title: "Navigationsaufgabe 15",
-    description: "Ausgangslage: Die Yacht befindet sich auf der Weser nahe der Leuchttonne 'Jade 12' um 16:00 Uhr. Es soll Kurs in Richtung Wilhelmshaven abgesetzt werden. Die Fdg beträgt 6,0 kn.",
-    questions: [
-      {
-        number: 1,
-        question: "Geben Sie die Position der Leuchttonne 'Jade 12' an.",
-        options: [
-          "53° 44,8' N, 008° 07,2' E",
-          "53° 43,5' N, 008° 05,0' E",
-          "53° 46,0' N, 008° 09,5' E",
-          "53° 44,0' N, 008° 06,0' E"
-        ],
-        correctIndex: 0,
-        explanation: "Die Position am Randmaßstab abgelesen lautet 53° 44,8' N, 008° 07,2' E."
-      },
-      {
-        number: 2,
-        question: "Es wird Kurs nach Wilhelmshaven (rwK = 180°) abgesetzt. Tragen Sie diesen Kurs in der Karte ein.",
-        options: [
-          "180°",
-          "185°",
-          "175°",
-          "190°"
-        ],
-        correctIndex: 0,
-        explanation: "Der Kurs verläuft exakt nach Süden (180°)."
-      },
-      {
-        number: 3,
-        question: "Mw = +1° (Ost), Abl = +3° (Ost). Berechnen Sie den Magnetkompasskurs (MgK).",
-        options: [
-          "176°",
-          "184°",
-          "182°",
-          "178°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: MgK = rwK - Mw - Abl = 180° - 1° - 3° = 176°."
-      },
-      {
-        number: 4,
-        question: "Die Distanz bis zur Hafeneinfahrt Wilhelmshaven beträgt...",
-        options: [
-          "9,0 sm",
-          "8,0 sm",
-          "10,5 sm",
-          "9,8 sm"
-        ],
-        correctIndex: 0,
-        explanation: "Die Distanzmessung auf der Kurslinie ergibt 9,0 sm."
-      },
-      {
-        number: 5,
-        question: "Berechnen Sie die voraussichtliche Fahrtzeit bei einer Fdg von 6,0 kn.",
-        options: [
-          "1 Std. 30 Min.",
-          "1 Std. 15 Min.",
-          "1 Std. 45 Min.",
-          "2 Std. 00 Min."
-        ],
-        correctIndex: 0,
-        explanation: "Formel: t = d / V = 9 sm / 6 kn = 1,5 Std. = 1 Std. 30 Min."
-      },
-      {
-        number: 6,
-        question: "Unterwegs (um 17:00 Uhr) wird Mellumplate-Leuchtturm gepeilt. MgP = 290°. Berechnen Sie die rwP (Mw = +1°, Abl = +3°).",
-        options: [
-          "294°",
-          "286°",
-          "288°",
-          "292°"
-        ],
-        correctIndex: 0,
-        explanation: "Formel: rwP = MgP + Mw + Abl = 290° + 1° + 3° = 294°."
-      },
-      {
-        number: 7,
-        question: "Bestimmen Sie die Koordinaten des Koppelorts (Ok) für 17:00 Uhr (zurückgelegte Distanz 6,0 sm auf rwK 180°).",
-        options: [
-          "53° 38,8' N, 008° 07,2' E",
-          "53° 40,0' N, 008° 05,0' E",
-          "53° 37,5' N, 008° 09,0' E",
-          "53° 39,2' N, 008° 06,5' E"
-        ],
-        correctIndex: 0,
-        explanation: "Das Abtragen von 6,0 sm auf 180° (Süd) ab Startpunkt ergibt 53° 38,8' N, 008° 07,2' E."
-      },
-      {
-        number: 8,
-        question: "Was bedeutet das Symbol 'Tonne' in rot-grün quergestreift mit einem roten Zylinder als Toppzeichen in einer Fahrwassergabelung?",
-        options: [
-          "Abzweigtonne (Steuerbordseite des Hauptfahrwassers)",
-          "Abzweigtonne (Backbordseite des Hauptfahrwassers)",
-          "Einzelgefahrenstelle",
-          "Mitte des Fahrwassers (Ansteuerung)"
-        ],
-        correctIndex: 0,
-        explanation: "Eine rot-grün quergestreifte Tonne mit rotem Zylinder-Toppzeichen markiert eine Fahrwassergabelung, bei der das Hauptfahrwasser rechts (Steuerbord) vorbeiführt; sie stellt die Backbordseite des Hauptfahrwassers dar."
-      },
-      {
-        number: 9,
-        question: "Welches Schallsignal gibt ein Fahrzeug ab, das die Absicht hat, Sie im engen Fahrwasser an Ihrer Backbordseite zu überholen?",
-        options: [
-          "Zwei lange und zwei kurze Töne",
-          "Zwei lange und ein kurzer Ton",
-          "Zwei kurze Töne",
-          "Ein langer Ton"
-        ],
-        correctIndex: 0,
-        explanation: "Das Signal für 'Ich beabsichtige, Sie an Ihrer Backbordseite zu überholen' beträgt laut KVR zwei lange und zwei kurze Töne (lang-lang-kurz-kurz)."
+        "correctIndex": 3,
+        "explanation": "Offizielles ELWIS-Ergebnis: 53° 59,6' N und 008° 23,2 E. Tragen Sie die Position in die Seekarte ein. Siehe Karte"
       }
     ]
   }

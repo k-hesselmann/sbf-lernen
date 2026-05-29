@@ -96,14 +96,14 @@ export default function Sidebar() {
               <button
                 onClick={() => { setView('exams'); setMobileSidebarOpen(false); }}
                 className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200 text-left relative
-                  ${currentView === 'exams' || currentView === 'exam' || currentView === 'examResult'
+                  ${currentView === 'exams'
                     ? 'text-ocean-300 bg-ocean-500/10'
                     : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'}`}
               >
-                {(currentView === 'exams' || currentView === 'exam' || currentView === 'examResult') && (
+                {currentView === 'exams' && (
                   <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-3 bg-ocean-400 rounded-r-full" />
                 )}
-                <Trophy className={`w-3.5 h-3.5 flex-shrink-0 ${currentView === 'exams' || currentView === 'exam' || currentView === 'examResult' ? 'text-ocean-400' : 'text-slate-500'}`} />
+                <Trophy className={`w-3.5 h-3.5 flex-shrink-0 ${currentView === 'exams' ? 'text-ocean-400' : 'text-slate-500'}`} />
                 <span className="truncate">Prüfungs-Center</span>
               </button>
             </div>

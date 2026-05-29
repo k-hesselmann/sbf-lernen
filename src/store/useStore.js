@@ -3,6 +3,7 @@ import { persist } from 'zustand/middleware'
 import { allQuestions, getQuestionsForExam } from '../data/index.js'
 import { EXAM_TYPES, EXAM_CONFIG, CATEGORIES, CATEGORY_LABELS } from '../data/examConfig.js'
 import { prepareQuestions } from '../utils/shuffleOptions.js'
+import { getOfficialBogenQuestions } from '../data/officialExams.js'
 
 /**
  * SM-2 Spaced Repetition Algorithm (simplified)
@@ -286,42 +287,47 @@ const useStore = create(
       },
 
       // ─── Exam Actions ───
-      startExam: () => {
-        const { selectedExamType } = get()
+      startExam: (officialBogenNumber = null) => {
+        const { selectedExamType, questions } = get()
         const config = EXAM_CONFIG[selectedExamType]
         const examQuestions = getQuestionsForExam(selectedExamType)
-        const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5)
 
         let selectedQuestions = []
-        let navQuestions = []
 
-        // Select questions per section according to official distribution
-        for (const section of config.sections) {
-          const pool = examQuestions.filter((q) => q.category === section.category)
-          if (section.category === CATEGORIES.NAVIGATION_SEE) {
-            // Select exactly 1 random Navigation Task (out of 15) and get its 9 sequential questions in order
-            const taskNum = Math.floor(Math.random() * 15) + 1
-            const taskPrefix = `N-${taskNum.toString().padStart(2, '0')}-`
-            const taskQuestions = pool.filter((q) => q.id.startsWith(taskPrefix))
-            
-            // Ensure they are ordered 1 to 9 based on their ID
-            taskQuestions.sort((a, b) => {
-              const numA = parseInt(a.id.split('-')[2], 10)
-              const numB = parseInt(b.id.split('-')[2], 10)
-              return numA - numB
-            })
-            navQuestions = taskQuestions
-          } else {
-            const selected = shuffle(pool).slice(0, Math.min(section.examCount, pool.length))
-            selectedQuestions.push(...selected)
+        if (officialBogenNumber !== null) {
+          selectedQuestions = getOfficialBogenQuestions(selectedExamType, officialBogenNumber, questions)
+        } else {
+          const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5)
+          let navQuestions = []
+
+          // Select questions per section according to official distribution
+          for (const section of config.sections) {
+            const pool = examQuestions.filter((q) => q.category === section.category)
+            if (section.category === CATEGORIES.NAVIGATION_SEE) {
+              // Select exactly 1 random Navigation Task (out of 15) and get its 9 sequential questions in order
+              const taskNum = Math.floor(Math.random() * 15) + 1
+              const taskPrefix = `N-${taskNum.toString().padStart(2, '0')}-`
+              const taskQuestions = pool.filter((q) => q.id.startsWith(taskPrefix))
+              
+              // Ensure they are ordered 1 to 9 based on their ID
+              taskQuestions.sort((a, b) => {
+                const numA = parseInt(a.id.split('-')[2], 10)
+                const numB = parseInt(b.id.split('-')[2], 10)
+                return numA - numB
+              })
+              navQuestions = taskQuestions
+            } else {
+              const selected = shuffle(pool).slice(0, Math.min(section.examCount, pool.length))
+              selectedQuestions.push(...selected)
+            }
           }
+
+          // Shuffle non-navigation questions
+          selectedQuestions = shuffle(selectedQuestions)
+
+          // Append the sequential navigation questions at the end of the exam
+          selectedQuestions.push(...navQuestions)
         }
-
-        // Shuffle non-navigation questions
-        selectedQuestions = shuffle(selectedQuestions)
-
-        // Append the sequential navigation questions at the end of the exam
-        selectedQuestions.push(...navQuestions)
 
         // Build sections info for result evaluation
         const sectionInfo = config.sections.map((s) => ({
@@ -343,6 +349,7 @@ const useStore = create(
             duration: config.duration * 60 * 1000,
             submitted: false,
             sectionInfo,
+            officialBogenNumber,
           },
           currentView: 'exam',
         })
@@ -392,6 +399,7 @@ const useStore = create(
           correctAnswers: totalCorrect,
           passed: allSectionsPassed,
           sectionResults,
+          officialBogenNumber: exam.officialBogenNumber,
           questions: exam.questions.map((q) => ({
             id: q.id,
             question: q.question,

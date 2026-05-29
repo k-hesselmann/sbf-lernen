@@ -30,7 +30,7 @@ export default function ExamResult() {
           {result.passed ? 'Bestanden! 🎉' : 'Nicht bestanden'}
         </h2>
         <p className="text-slate-400 mb-2">
-          {config?.label || 'Prüfung'}
+          {config?.label || 'Prüfung'} {result.officialBogenNumber !== undefined && result.officialBogenNumber !== null ? `· Amtlicher Bogen ${result.officialBogenNumber}` : '· Zufällige Simulation'}
         </p>
         <p className="text-slate-400 mb-6 text-sm">
           {result.passed
