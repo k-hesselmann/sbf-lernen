@@ -65,7 +65,12 @@ export default function Dashboard() {
   }
 
   // Global stats across all questions in the database
-  const stats = useMemo(() => useStore.getState().getGlobalStats(), [questions, cardProgress])
+  const stats = useMemo(() => {
+    // Reference dependencies to satisfy ESLint dependency check
+    void questions
+    void cardProgress
+    return useStore.getState().getGlobalStats()
+  }, [questions, cardProgress])
 
   // Category and Topic stats computed in a single pass
   const categoryTopicStats = useMemo(() => {
@@ -261,6 +266,26 @@ export default function Dashboard() {
 
         {/* Action & Stats (Right Column, 1/3 width) */}
         <div className="space-y-6">
+          {/* Quick Start Card (Double height, vertical layout, animated pulse glow) */}
+          <button
+            id="btn-quick-learn"
+            onClick={() => setView('learn')}
+            className="w-full glass-light rounded-2xl p-8 card-hover flex flex-col items-center justify-center text-center gap-5 cursor-pointer min-h-[190px] group border border-white/5 animate-border-pulse"
+          >
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-ocean-400 to-ocean-600 flex items-center justify-center
+              shadow-lg shadow-ocean-500/30 group-hover:shadow-ocean-500/40 group-hover:scale-105 transition-all duration-300 flex-shrink-0 text-white">
+              <Zap className="w-8 h-8 text-white fill-white/10" />
+            </div>
+            <div className="space-y-1">
+              <p className="text-lg font-bold text-white group-hover:text-ocean-300 transition-colors tracking-tight">
+                Lernsession starten
+              </p>
+              <p className="text-xs text-slate-400">
+                {dueCount} fällige Fragen warten
+              </p>
+            </div>
+          </button>
+
           {/* Gesamtfortschritt (Progress Ring) */}
           <div className="glass-light rounded-2xl p-6 flex flex-col items-center justify-center">
             <ProgressRing percentage={progressPercent} />
@@ -285,19 +310,19 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* Quick Start Card */}
+          {/* Questions Catalog Card */}
           <button
-            id="btn-quick-learn"
-            onClick={() => setView('learn')}
-            className="w-full glass-light rounded-2xl p-5 card-hover text-left group flex items-center gap-4"
+            id="btn-question-database"
+            onClick={() => setView('questions')}
+            className="w-full glass-light rounded-2xl p-5 card-hover text-left group flex items-center gap-4 cursor-pointer"
           >
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-ocean-400 to-ocean-600 flex items-center justify-center
-              shadow-lg shadow-ocean-500/20 group-hover:shadow-ocean-500/30 transition-all flex-shrink-0">
-              <Zap className="w-6 h-6 text-white" />
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-400 to-violet-600 flex items-center justify-center
+              shadow-lg shadow-violet-500/20 group-hover:shadow-violet-500/30 transition-all flex-shrink-0">
+              <BookOpen className="w-6 h-6 text-white" />
             </div>
             <div>
-              <p className="font-semibold text-white group-hover:text-ocean-300 transition-colors">Lernsession starten</p>
-              <p className="text-xs text-slate-400 mt-0.5">{dueCount} fällige Fragen warten</p>
+              <p className="font-semibold text-white group-hover:text-violet-300 transition-colors">Fragenkatalog</p>
+              <p className="text-xs text-slate-400 mt-0.5">Alle {stats.total} Fragen durchsuchen & filtern</p>
             </div>
           </button>
         </div>

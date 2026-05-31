@@ -8,14 +8,14 @@ import { prepareQuestion } from '../utils/shuffleOptions.js'
 export default function LearnMode() {
   const answerCard = useStore((s) => s.answerCard)
   const selectedExamType = useStore((s) => s.selectedExamType)
-  const selectedTopics = useStore((s) => s.selectedTopics) || []
+  const selectedTopics = useStore((s) => s.selectedTopics)
   const setSelectedTopics = useStore((s) => s.setSelectedTopics)
   const initializeTopics = useStore((s) => s.initializeTopics)
   const learningMode = useStore((s) => s.learningMode)
   const setLearningMode = useStore((s) => s.setLearningMode)
   const cardProgress = useStore((s) => s.cardProgress)
   const setView = useStore((s) => s.setView)
-  const pinnedQuestions = useStore((s) => s.pinnedQuestions) || []
+  const pinnedQuestions = useStore((s) => s.pinnedQuestions)
   const togglePinQuestion = useStore((s) => s.togglePinQuestion)
 
   const [isSessionActive, setIsSessionActive] = useState(false)
@@ -92,7 +92,6 @@ export default function LearnMode() {
 
   // Dynamic question counts per study mode
   const getModeCount = useCallback((mode) => {
-    const { cardProgress } = useStore.getState()
     let pool = getQuestionsForExam(selectedExamType)
     const topics = selectedTopics || []
     pool = pool.filter((q) => topics.includes(`${q.category}:${q.topic}`))
@@ -109,7 +108,6 @@ export default function LearnMode() {
         return !p || p.repetitions === 0
       }).length
     } else if (mode === 'difficult') {
-      const { pinnedQuestions } = useStore.getState()
       const pinned = pinnedQuestions || []
       return pool.filter((q) => {
         if (pinned.includes(q.id)) return true

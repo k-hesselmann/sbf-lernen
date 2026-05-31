@@ -106,7 +106,7 @@ export const EXAM_CONFIG = {
     label: 'SBF See (Motor)',
     shortLabel: 'SBF See (Motor)',
     icon: '⚓',
-    description: 'Seeschifffahrtsstraßen – Antriebsmaschine (Vollprüfung)',
+    description: 'Seeschifffahrtsstraßen – Antriebsmaschine',
     sections: [
       { category: CATEGORIES.BASIS, poolSize: 72, examCount: 7, passMin: 5 },
       { category: CATEGORIES.SEE_SPEZIFISCH, poolSize: 213, examCount: 23, passMin: 18 },
@@ -121,7 +121,7 @@ export const EXAM_CONFIG = {
     label: 'SBF Binnen (Motor)',
     shortLabel: 'SBF Binnen (Motor)',
     icon: '🚤',
-    description: 'Binnenschifffahrtsstraßen – Antriebsmaschine (Vollprüfung)',
+    description: 'Binnenschifffahrtsstraßen – Antriebsmaschine',
     sections: [
       { category: CATEGORIES.BASIS, poolSize: 72, examCount: 7, passMin: 5 },
       { category: CATEGORIES.BINNEN_SPEZIFISCH, poolSize: 181, examCount: 23, passMin: 18 },
@@ -135,7 +135,7 @@ export const EXAM_CONFIG = {
     label: 'SBF Binnen (Segel + Motor)',
     shortLabel: 'SBF Binnen (Segel + Motor)',
     icon: '⛵',
-    description: 'Binnenschifffahrtsstraßen – Segel & Motor (Vollprüfung)',
+    description: 'Binnenschifffahrtsstraßen – Segel & Motor',
     sections: [
       { category: CATEGORIES.BASIS, poolSize: 72, examCount: 7, passMin: 5 },
       { category: CATEGORIES.BINNEN_SPEZIFISCH, poolSize: 181, examCount: 23, passMin: 18 },
@@ -147,10 +147,10 @@ export const EXAM_CONFIG = {
     color: 'violet',
   },
   [EXAM_TYPES.SEE_MOTOR_ERGAENZUNG]: {
-    label: 'SBF See (Motor) – Ergänzungsprüfung',
+    label: 'SBF See (Motor)',
     shortLabel: 'SBF See (Motor) [Erg.]',
     icon: '⚓',
-    description: 'Für Inhaber SBF Binnen (ohne Basisfragen)',
+    description: 'Für Inhaber SBF Binnen',
     sections: [
       { category: CATEGORIES.SEE_SPEZIFISCH, poolSize: 213, examCount: 23, passMin: 18 },
       { category: CATEGORIES.NAVIGATION_SEE, poolSize: 15, examCount: 9, passMin: 7 },
@@ -161,10 +161,10 @@ export const EXAM_CONFIG = {
     color: 'ocean',
   },
   [EXAM_TYPES.BINNEN_MOTOR_ERGAENZUNG]: {
-    label: 'SBF Binnen (Motor) – Ergänzungsprüfung',
+    label: 'SBF Binnen (Motor)',
     shortLabel: 'SBF Binnen (Motor) [Erg.]',
     icon: '🚤',
-    description: 'Für Inhaber SBF See (ohne Basisfragen)',
+    description: 'Für Inhaber SBF See',
     sections: [
       { category: CATEGORIES.BINNEN_SPEZIFISCH, poolSize: 181, examCount: 23, passMin: 18 },
     ],
@@ -174,10 +174,10 @@ export const EXAM_CONFIG = {
     color: 'amber',
   },
   [EXAM_TYPES.BINNEN_SEGEL_ERGAENZUNG]: {
-    label: 'SBF Binnen (Segel + Motor) – Ergänzungsprüfung',
+    label: 'SBF Binnen (Segel + Motor)',
     shortLabel: 'SBF Binnen (Segel+Mot) [Erg.]',
     icon: '⛵',
-    description: 'Für Inhaber SBF See (ohne Basisfragen)',
+    description: 'Für Inhaber SBF See',
     sections: [
       { category: CATEGORIES.BINNEN_SPEZIFISCH, poolSize: 181, examCount: 23, passMin: 18 },
       { category: CATEGORIES.SEGEL_SPEZIFISCH, poolSize: 47, examCount: 7, passMin: 5 },

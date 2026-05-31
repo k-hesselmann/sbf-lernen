@@ -265,3 +265,14 @@ body {
   animation: cardLeaveRight 0.18s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
+/* ─── Card Border Pulse Animation ─── */
+@keyframes borderPulse {
+  0%, 100% { border-color: rgba(255, 255, 255, 0.05); }
+  50% { border-color: rgba(255, 255, 255, 0.25); }
+}
+
+.animate-border-pulse {
+  animation: borderPulse 4s ease-in-out infinite;
+}
+
+

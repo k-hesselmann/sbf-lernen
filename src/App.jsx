@@ -6,6 +6,7 @@ import LearnMode from './components/LearnMode'
 import ExamMode from './components/ExamMode'
 import ExamResult from './components/ExamResult'
 import ExamCenter from './components/ExamCenter'
+import QuestionDatabase from './components/QuestionDatabase'
 
 import { Menu, Anchor, Heart, X } from 'lucide-react'
 
@@ -25,6 +26,8 @@ function ViewRouter() {
       return <ExamResult />
     case 'exams':
       return <ExamCenter />
+    case 'questions':
+      return <QuestionDatabase />
     default:
       return <Dashboard />
   }

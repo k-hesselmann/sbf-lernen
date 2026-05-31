@@ -253,6 +253,31 @@ const useStore = create(
         return { newCount, learningCount, masteredCount, total: questions.length }
       },
 
+      getExamTypeStats: (examType) => {
+        const { cardProgress, examHistory } = get()
+        const examQuestions = getQuestionsForExam(examType)
+        let newCount = 0, learningCount = 0, masteredCount = 0
+        examQuestions.forEach((q) => {
+          const p = cardProgress[q.id]
+          if (!p || p.repetitions === 0) newCount++
+          else if (p.interval >= 6) masteredCount++
+          else learningCount++
+        })
+
+        const attempts = examHistory.filter((e) => e.examType === examType)
+        const total = attempts.length
+        const passed = attempts.filter((e) => e.passed).length
+        const failed = total - passed
+        const passRate = total > 0 ? Math.round((passed / total) * 100) : 0
+        const failRate = total > 0 ? Math.round((failed / total) * 100) : 0
+
+        return {
+          cardStats: { newCount, learningCount, masteredCount, total: examQuestions.length },
+          attempts,
+          historyStats: { total, passed, failed, passRate, failRate }
+        }
+      },
+
       /**
        * Get stats broken down by category for the selected exam type
        */
