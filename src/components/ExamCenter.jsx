@@ -60,17 +60,17 @@ function ExamCard({ examType, config, history, onSelect }) {
       {/* Right side: Stats & Start Button */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 flex-shrink-0">
         {/* Stats Section */}
-        <div className="flex flex-col gap-1 min-w-[155px] text-[10px] text-slate-400 px-3 py-1.5 sm:py-0 border-t border-b sm:border-none border-white/5 justify-center text-left sm:ml-auto">
+        <div className="flex flex-col gap-1 text-[10px] text-slate-400 px-3 py-1.5 sm:py-0 border-t border-b sm:border-none border-white/5 justify-center text-left sm:ml-auto sm:w-[145px]">
           {stats ? (
             <>
               <div className="flex justify-between sm:justify-start gap-1.5">
-                <span className="text-slate-500">Bestehensquote:</span>
+                <span className="text-slate-500">Erfolgsquote:</span>
                 <span className={`font-bold ${stats.rate >= 80 ? 'text-emerald-400' : stats.rate >= 50 ? 'text-amber-400' : 'text-rose-400'}`}>
                   {stats.rate}% <span className="text-[8px] text-slate-500 font-normal">({stats.attempts}x)</span>
                 </span>
               </div>
               <div className="flex justify-between sm:justify-start gap-1.5">
-                <span className="text-slate-500">Letzter Versuch:</span>
+                <span className="text-slate-500">Zuletzt:</span>
                 <span className={`font-mono font-bold ${stats.last.passed ? 'text-emerald-400' : 'text-rose-400'}`}>
                   {stats.last.correctAnswers}/{stats.last.totalQuestions}
                 </span>
@@ -343,7 +343,7 @@ export default function ExamCenter() {
               )}
             </div>
             {examHistory.length > 0 ? (
-              <div className="space-y-1.5 max-h-[210px] overflow-y-auto pr-1 custom-scrollbar">
+              <div className="space-y-1.5 max-h-[162px] overflow-y-auto pr-1 custom-scrollbar">
                 {examHistory.map((attempt) => {
                   const cfg = EXAM_CONFIG[attempt.examType] || { icon: '📝', shortLabel: 'Prüfung' }
                   return (
