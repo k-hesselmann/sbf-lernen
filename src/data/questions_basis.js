@@ -343,7 +343,7 @@ export const basisQuestions = [
     "id": "B-025",
     "category": "basis",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung haben diese Tafelzeichen?",
+    "question": "Welche Bedeutung haben folgende Tafelzeichen?",
     "options": [
       "Wasserflächen, auf denen mit Wasserski oder Wassermotorrädern gefahren werden darf.",
       "Genehmigungspflichtige Übungsstrecke für das Fahren mit Wasserski oder Wassermotorrädern.",

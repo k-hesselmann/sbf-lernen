@@ -115,12 +115,12 @@ export default function ExamMode() {
               </li>
               <li className="flex items-start gap-2.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-ocean-400 mt-1.5 flex-shrink-0" />
-                <span><strong>Freie Navigation:</strong> Du kannst jederzeit zwischen den Fragen springen. Markiere schwierige Fragen im oberen Navigator, um sie später zu korrigieren.</span>
+                <span><strong>Freie Navigation:</strong> Du kannst jederzeit frei zwischen den Fragen hin- und herspringen.</span>
               </li>
               {config.sections.some(s => s.category === 'navigation_see') && (
-                <li className="flex flex-col gap-1.5 text-emerald-400/90">
+                <li className="flex flex-col gap-1.5 text-slate-300">
                   <div className="flex items-start gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 flex-shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-ocean-400 mt-1.5 flex-shrink-0" />
                     <span><strong>Navigationsaufgabe:</strong> Dieser Test enthält eine Navigationskarten-Aufgabe. Nimm dir ausreichend Zeit dafür, da hier min. 7 von 9 Punkten erreicht werden müssen!</span>
                   </div>
                   <div className="ml-4 mt-1 p-3.5 rounded-lg bg-emerald-500/5 border border-emerald-500/10 text-xs text-slate-300 space-y-2">

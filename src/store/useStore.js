@@ -404,23 +404,15 @@ const useStore = create(
           passed: allSectionsPassed,
           sectionResults,
           officialBogenNumber: exam.officialBogenNumber,
+          shuffled: true, // Flag indicating new attempts keep shuffled answer order
           questions: exam.questions.map((q) => {
-            const originalQuestion = allQuestions.find((aq) => aq.id === q.id)
-            const selectedShuffledIdx = exam.answers[q.id]
-            let originalSelectedIdx = null
-            if (selectedShuffledIdx !== undefined && selectedShuffledIdx !== null) {
-              const selectedOptionText = q.options[selectedShuffledIdx]
-              if (originalQuestion) {
-                originalSelectedIdx = originalQuestion.options.indexOf(selectedOptionText)
-              }
-            }
             return {
               id: q.id,
               question: q.question,
               category: q.category,
-              options: originalQuestion ? originalQuestion.options : q.options,
-              selectedAnswer: originalSelectedIdx,
-              correctIndex: originalQuestion ? originalQuestion.correctIndex : q.correctIndex,
+              options: q.options,
+              selectedAnswer: exam.answers[q.id] !== undefined && exam.answers[q.id] !== null ? exam.answers[q.id] : null,
+              correctIndex: q.correctIndex,
               isCorrect: exam.answers[q.id] === q.correctIndex,
               image: q.image,
               explanation: q.solutionExplanation || null,

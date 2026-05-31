@@ -5,7 +5,7 @@ import { CATEGORY_LABELS, CATEGORY_COLORS, EXAM_CONFIG, TOPIC_LABELS } from '../
 import { allQuestions } from '../data/index.js'
 
 export default function ExamResult() {
-  const { examHistory, setView, startExam, viewExamResultId, pinnedQuestions, togglePinQuestion } = useStore()
+  const { examHistory, setView, prepareExam, viewExamResultId, pinnedQuestions, togglePinQuestion } = useStore()
   const result = viewExamResultId
     ? examHistory.find((r) => r.id === viewExamResultId)
     : examHistory[0]
@@ -144,7 +144,7 @@ export default function ExamResult() {
           Weiter lernen
         </button>
         <button
-          onClick={startExam}
+          onClick={() => prepareExam(result.examType)}
           className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium
             bg-ocean-500 text-white hover:bg-ocean-600 transition-all duration-200 shadow-lg shadow-ocean-500/20"
         >
@@ -165,13 +165,13 @@ export default function ExamResult() {
             const isExpanded = !!expandedQuestions[q.id]
             const isPinned = pinnedQuestions.includes(q.id)
             const originalQuestion = allQuestions.find((aq) => aq.id === q.id)
-            const options = q.options || originalQuestion?.options || []
+            const isOldExam = !result.shuffled
+            const options = isOldExam ? (originalQuestion?.options || []) : (q.options || originalQuestion?.options || [])
             const topic = q.topic || originalQuestion?.topic
 
-            const isOldExam = !q.options
             const correctIndex = isOldExam ? (originalQuestion?.correctIndex ?? 0) : q.correctIndex
             const selectedAnswer = isOldExam 
-              ? (q.isCorrect ? correctIndex : null)
+              ? (q.selectedAnswer !== undefined && q.selectedAnswer !== null ? q.selectedAnswer : (q.isCorrect ? correctIndex : null))
               : q.selectedAnswer
 
             return (
@@ -250,14 +250,14 @@ export default function ExamResult() {
 
                     {!q.isCorrect ? (
                       <p className="text-xs text-slate-400 mt-2.5">
-                        Deine Antwort: <span className="text-rose-400">{q.selectedAnswer !== null && q.selectedAnswer !== undefined ? String.fromCharCode(65 + q.selectedAnswer) : '—'}</span>
+                        Deine Antwort: <span className="text-rose-400">{selectedAnswer !== null && selectedAnswer !== undefined ? String.fromCharCode(65 + selectedAnswer) : '—'}</span>
                         {' · '}
-                        Richtig: <span className="text-emerald-400">{String.fromCharCode(65 + q.correctIndex)}</span>
+                        Richtig: <span className="text-emerald-400">{String.fromCharCode(65 + correctIndex)}</span>
                       </p>
                     ) : (
-                      q.selectedAnswer !== null && q.selectedAnswer !== undefined && (
+                      selectedAnswer !== null && selectedAnswer !== undefined && (
                         <p className="text-xs text-emerald-400/80 mt-2.5 font-medium">
-                          Richtig gelöst (Auswahl {String.fromCharCode(65 + q.selectedAnswer)})
+                          Richtig gelöst (Auswahl {String.fromCharCode(65 + selectedAnswer)})
                         </p>
                       )
                     )}
