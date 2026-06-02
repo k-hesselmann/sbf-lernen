@@ -524,12 +524,7 @@ export default function QuestionDatabase() {
                               )
                             })}
 
-                            {q.solutionExplanation && (
-                              <div className="p-3 rounded-lg bg-emerald-500/5 border border-emerald-500/10 text-xs text-slate-400 mt-2 leading-relaxed">
-                                <span className="font-semibold text-emerald-400/90 block mb-1">Erklärung / Lösungsweg:</span>
-                                {q.solutionExplanation}
-                              </div>
-                            )}
+
                           </div>
                         )}
                       </div>

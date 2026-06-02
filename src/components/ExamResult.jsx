@@ -261,12 +261,7 @@ export default function ExamResult() {
                         </p>
                       )
                     )}
-                    {q.explanation && (
-                      <div className="p-3 rounded-lg bg-emerald-500/5 border border-emerald-500/10 text-xs text-slate-400 mt-2 leading-relaxed">
-                        <span className="font-semibold text-emerald-400/90 block mb-1">Erklärung / Lösungsweg:</span>
-                        {q.explanation}
-                      </div>
-                    )}
+
                   </div>
                   
                   {/* Right Column details and bookmark pin */}

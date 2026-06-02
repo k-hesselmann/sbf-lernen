@@ -385,7 +385,7 @@ export const basisQuestions = [
     "id": "B-028",
     "category": "basis",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung haben Schifffahrtszeichen \"rot-weiß-rot\" übereinander?",
+    "question": "Welche Bedeutung haben folgende Schifffahrtszeichen?",
     "options": [
       "Brücke, Sperrwerk oder Schleuse geschlossen.",
       "Anlage dauerhaft gesperrt.",
@@ -399,7 +399,7 @@ export const basisQuestions = [
     "id": "B-029",
     "category": "basis",
     "topic": "schifffahrtszeichen",
-    "question": "Welche Bedeutung haben Schifffahrtszeichen \"rot-grün-rot\" übereinander?",
+    "question": "Welche Bedeutung haben folgende Schifffahrtszeichen?",
     "options": [
       "Anlage dauerhaft gesperrt.",
       "Brücke, Sperrwerk oder Schleuse geschlossen.",
@@ -413,7 +413,7 @@ export const basisQuestions = [
     "id": "B-030",
     "category": "basis",
     "topic": "schleusen",
-    "question": "Was bedeuten Lichter \"grün-weiß\" vor einer Schleuse?",
+    "question": "Was bedeuten diese Lichter vor einer Schleuse?",
     "options": [
       "Einfahrt frei, Gegenverkehr gesperrt.",
       "Einfahrt frei, Schleusentor öffnet.",

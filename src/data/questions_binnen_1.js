@@ -10,9 +10,9 @@ export const binnenQuestions1 = [
     "question": "Für welche Sportboote ist der Sportbootführerschein mit dem Geltungsbereich Binnenschifffahrtsstraßen vorgeschrieben?",
     "options": [
       "Für Sportboote von mehr als 11,03 kW (15 PS) Nutzleistung bei Verwendung eines Verbrennungsmotors bzw. 7,5 kW bei Verwendung eines Elektromotors Betriebsart S1 (Dauerbetrieb) und weniger als 20 m Länge.",
-      "Für Sportboote von weniger als 11,03 kW (15 PS) Nutzleistung und mehr als 20 m Länge.",
-      "Für Sportboote von mehr als 11,03 kW (15 PS) Nutzleistung und mehr als 20 m Länge.",
-      "Für Sportboote von weniger als 11,03 kW (15 PS) Nutzleistung und weniger als 20 m Länge."
+      "Für Sportboote von weniger als 11,03 kW (15 PS) Nutzleistung bei Verwendung eines Verbrennungsmotors bzw. 7,5 kW bei Verwendung eines Elektromotors Betriebsart S1 (Dauerbetrieb) und mehr als 20 m Länge.",
+      "Für Sportboote von mehr als 11,03 kW (15 PS) Nutzleistung bei Verwendung eines Verbrennungsmotors bzw. 7,5 kW bei Verwendung eines Elektromotors Betriebsart S1 (Dauerbetrieb) und mehr als 20 m Länge.",
+      "Für Sportboote von weniger als 11,03 kW (15 PS) Nutzleistung bei Verwendung eines Verbrennungsmotors bzw. 7,5 kW bei Verwendung eines Elektromotors Betriebsart S1 (Dauerbetrieb) und weniger als 20 m Länge." 
     ],
     "correctIndex": 0,
     "image": null
@@ -82,7 +82,7 @@ export const binnenQuestions1 = [
       "Mindestalter 16 Jahre.",
       "Nachweis der Zuverlässigkeit.",
       "Mindestalter 14 Jahre.",
-      "Besitz eines Sportbootführerscheins Binnen."
+      "Besitz eines Sportbootführerscheins mit dem Geltungsbereich Binnenschifffahrtsstraßen für Sportboote mit Antriebsmaschine oder eines gleichgestellten Befähigungszeugnisses."
     ],
     "correctIndex": 0,
     "image": null
@@ -109,7 +109,7 @@ export const binnenQuestions1 = [
     "options": [
       "Sie muss mindestens 16 Jahre alt und körperlich, geistig und fachlich geeignet sein.",
       "Sie muss mindestens 18 Jahre alt und körperlich, geistig und fachlich geeignet sein.",
-      "Sie muss mindestens 16 Jahre alt und Inhaber des Sportbootführerscheins Binnen sein.",
+      "Sie muss mindestens 16 Jahre alt und Inhaber des Sportbootführerscheins mit dem Geltungsbereich Binnenschifffahrtsstraßen für Sportboote mit Antriebsmaschine sein.",
       "Sie muss mindestens 14 Jahre alt und körperlich, geistig und fachlich geeignet sein."
     ],
     "correctIndex": 0,
@@ -449,7 +449,7 @@ export const binnenQuestions1 = [
       "Ein Fahrzeug über 135 m."
     ],
     "correctIndex": 0,
-    "image": "/questions/binnen-q104.png"
+    "image": null
   },
   {
     "id": "BI-033",
